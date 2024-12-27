@@ -9,6 +9,9 @@
       <div id="model_input">
         <input type="text" v-model="path" placeholder="Enter the model name" @keydown="clearModel(false)"
                @keydown.enter="loadModel" @keydown.delete="clearModel(false)">
+        <select v-model="path" @change="loadModel">
+          <option v-for="model in file_names" :key="model" :value="model">{{ model }}</option>
+        </select>
         <button v-if="!model_loaded" @click="loadModel" id="loadModel">Load model</button>
         <button v-if="model_loaded" @click="clearModel(true)" id="clearModel">Clear model</button>
         <div id="exampleModels">
@@ -54,8 +57,7 @@ export default defineComponent({
 
   mounted() {
     this.extractFileNames().then(() => {
-      const url = this.$router;
-      let model = url.params.modelId;
+      let model = this.$route.params.modelId;
 
       if (model) {
         this.path = model;
@@ -100,7 +102,7 @@ export default defineComponent({
       console.log("Extracting file names")
 
       try {
-        const response = await fetch('./models/file_names.txt');
+        const response = await fetch('/models/file_names.txt');
         if (response.ok) {
           const fileContent = await response.text();
           this.file_names = fileContent

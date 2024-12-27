@@ -60,7 +60,7 @@ export default defineComponent({
 
   mounted() {
     console.log("Reading model")
-    fetch(`./models/${this.model_reference}.json`).then(fileString => fileString.text())
+    fetch(`/models/${this.model_reference}.json`).then(fileString => fileString.text())
       .then(json => {
         let sbml = JSON.parse(json)
         this.modelLoaded = true;
