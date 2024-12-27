@@ -2,12 +2,13 @@
   <div id="appContainer">
     <div id="Header">
       <h1 id="title">Menelmacar</h1>
-      <img src="./src/assets/logo.png" alt="Logo" id="logo">
+      <img src="/assets/logo.png" alt="Logo" id="logo">
     </div>
 
     <div id="chooseModel">
       <div id="model_input">
-        <input type="text" v-model="path" placeholder="Enter the model name"  @keydown="clearModel(false)" @keydown.enter="loadModel" @keydown.delete="clearModel(false)" >
+        <input type="text" v-model="path" placeholder="Enter the model name" @keydown="clearModel(false)"
+               @keydown.enter="loadModel" @keydown.delete="clearModel(false)">
         <button v-if="!model_loaded" @click="loadModel" id="loadModel">Load model</button>
         <button v-if="model_loaded" @click="clearModel(true)" id="clearModel">Clear model</button>
         <div id="exampleModels">
@@ -16,8 +17,8 @@
           <button class="exampleModel" @click="path = 'BIOMD0000000012'; loadModel()">BIOMD0000000012</button>
         </div>
       </div>
-        <!-- Load the model only if its ID is in the public folder -->
-      <div v-if="model_loaded && file_names.includes(path)" >
+      <!-- Load the model only if its ID is in the public folder -->
+      <div v-if="model_loaded && file_names.includes(path)">
         <h2 style="font-size: 12pt;">Model: {{ path }}</h2>
       </div>
       <div v-else-if="no_model">
@@ -34,11 +35,11 @@
   </div>
 </template>
 
-<script>
-import { ref } from 'vue'
-import ModelViewer from './src/components/ModelViewer.vue';
+<script lang="ts">
+import {defineComponent, ref} from 'vue'
+import ModelViewer from './components/ModelViewer.vue';
 
-export default {
+export default defineComponent({
   name: 'App',
 
   components: {
@@ -53,25 +54,22 @@ export default {
 
   mounted() {
     this.extractFileNames().then(() => {
-      let url = window.location.href
-      let model = url.split("id?")[1]
+      const url = this.$router;
+      let model = url.params.modelId;
 
-      if (model != undefined && model != "") {
-        model = model.split("/")[0]
-        this.path = model
+      if (model) {
+        this.path = model;
         this.loadModel()
       }
     })
-
-
   },
 
   setup() {
-    let path = ref("")
-    let model_loaded = ref(false)
-    let no_model = ref(true)
+    const path = ref("");
+    const model_loaded = ref(false);
+    const no_model = ref(true);
 
-    return { 
+    return {
       path,
       model_loaded,
       no_model
@@ -81,11 +79,10 @@ export default {
   methods: {
     loadModel() {
       if (this.file_names.includes(this.path)) {
-        window.history.pushState({}, null, window.location.origin + "/id?" + this.path)
+        this.$router.push(`/view/${this.path}`)
         this.model_loaded = true
         this.no_model = true
-      }
-      else {
+      } else {
         this.no_model = false
       }
     },
@@ -95,7 +92,7 @@ export default {
       if (clear_path) {
         this.path = ""
       }
-      window.history.pushState({}, null, window.location.origin + "/")
+      this.$router.push(`/`)
     },
 
     // Open the file containing the names of the models and extract them into a list
@@ -105,25 +102,23 @@ export default {
       try {
         const response = await fetch('./models/file_names.txt');
         if (response.ok) {
-          let fileContent = await response.text();
-          let file_names = fileContent.split("\n").slice(0, -1)
-          for (let i = 0; i < file_names.length; i++) {
-            file_names[i] = file_names[i].split("\r")[0]
-          }
-          this.file_names = file_names
+          const fileContent = await response.text();
+          this.file_names = fileContent
+            .split("\n")
+            .slice(0, -1)
+            .map(file => file.split("\r").at(0));
         } else {
           console.error('Failed to load file');
-        } 
+        }
       } catch (error) {
         console.error('Error fetching file:', error);
       }
     }
   },
-}
-
+});
 </script>
 
-<style>
+<style lang="scss">
 #appContainer {
   display: flex;
   flex-direction: column;
@@ -143,7 +138,7 @@ export default {
   position: absolute;
   left: 5px;
   top: 5px;
-  height: 100px; 
+  height: 100px;
   width: fit-content;
 }
 
