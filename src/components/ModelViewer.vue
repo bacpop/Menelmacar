@@ -62,10 +62,10 @@ import MultipleViewer from './MultipleViewer.vue'
 import GraphViewer from './GraphViewer.vue'
 import VueSlider from 'vue-3-slider-component'
 import {PkgWrapper} from "@reside-ic/odinjs"
-import {ref} from 'vue'
+import {defineComponent, ref} from 'vue'
 import Popper from "vue3-popper";
 
-export default {
+export default defineComponent({
   name: 'ModelViewer',
 
   components: {
@@ -170,7 +170,7 @@ export default {
       }
     },
   }
-}
+});
 
 function range(start, end, len) {
   return Array(len).fill().map((_, idx) => start + idx * (end - start) / (len - 1));

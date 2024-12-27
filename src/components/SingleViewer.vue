@@ -29,9 +29,9 @@
 import * as d3 from 'd3'
 import {getTextWidth} from "./functions.ts"
 import VueSlider from 'vue-3-slider-component'
-import {ref, watch} from 'vue'
+import {defineComponent, ref, watch} from 'vue'
 
-export default {
+export default defineComponent({
   name: 'SingleViewer',
   props: ['times', 'results_names', 'results_y', 'log_scale'],
 
@@ -241,7 +241,7 @@ export default {
         .style("height", `${height_plot - margin.bottom}px`);
     }
   }
-}
+});
 </script>
 
 <style lang="scss">

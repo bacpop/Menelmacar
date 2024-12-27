@@ -32,10 +32,11 @@ import cytoscape from 'cytoscape';
 import fcose from 'cytoscape-fcose';
 import {adjustStylesheet} from './stylesheet.js';
 import Popper from "vue3-popper";
+import {defineComponent} from "vue";
 
 cytoscape.use(fcose);
 
-export default {
+export default defineComponent({
   name: 'GraphViewer',
 
   components: {
@@ -154,7 +155,7 @@ export default {
     }
 
   }
-}
+});
 </script>
 
 <style lang="scss">

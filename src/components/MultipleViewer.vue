@@ -4,8 +4,9 @@
 
 <script lang="ts">
 import * as d3 from 'd3'
+import {defineComponent} from "vue";
 
-export default {
+export default defineComponent({
   name: 'MultipleViewer',
   props: ['times', 'results_names', 'results_y'],
   mounted() {
@@ -145,5 +146,5 @@ export default {
         })
     }
   }
-}
+});
 </script>
