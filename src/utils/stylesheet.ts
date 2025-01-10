@@ -1,6 +1,6 @@
 // define stylesheet
 import cytoscape from 'cytoscape';
-import {getTextWidth} from './functions.js';
+import {getTextWidth} from './functions.ts';
 
 export function adjustStylesheet() {
   return cytoscape.stylesheet()

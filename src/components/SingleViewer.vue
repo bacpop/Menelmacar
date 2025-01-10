@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import * as d3 from 'd3'
-import {getTextWidth} from "./functions.ts"
+import {getTextWidth} from "../utils/functions.ts"
 import VueSlider from 'vue-3-slider-component'
 import {defineComponent, ref, watch} from 'vue'
 

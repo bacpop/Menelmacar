@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'GeistSans';
+    src: url('/assets/geist-sans/Geist-Variable.woff2') format('woff2');
+  }
+}
+
+body {
+  background-color: #282C40;
+}
