@@ -1,4 +1,8 @@
 {
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["./src/*"]
+  },
   "files": [],
   "references": [
     {

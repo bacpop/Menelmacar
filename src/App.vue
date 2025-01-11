@@ -14,6 +14,8 @@
           <br>
           <a href="" class="pt-4 inline-block text-azure">View bio models &raquo;</a>
         </p>
+        <ModelSelect />
+
         <div id="model_input">
           <input type="text" v-model="path" placeholder="Enter the model name" @keydown="clearModel(false)"
                  @keydown.enter="loadModel" @keydown.delete="clearModel(false)">
@@ -51,11 +53,13 @@
 import { defineComponent, ref } from 'vue'
 import ModelViewer from './components/ModelViewer.vue'
 import Header from '@/components/Header.vue'
+import ModelSelect from '@/components/ModelSelect.vue'
 
 export default defineComponent({
   name: 'App',
 
   components: {
+    ModelSelect,
     Header,
     ModelViewer
   },
