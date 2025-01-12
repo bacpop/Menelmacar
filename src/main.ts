@@ -2,17 +2,19 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import './index.scss'
+import Home from '@/pages/Home.vue'
+import Model from '@/pages/Model.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: App
+    component: Home
   },
   {
-    path: '/view/:modelId',
-    name: 'details',
-    component: App
+    path: '/view/:modelId/:tab?',
+    name: 'model',
+    component: Model
   }
 ]
 
