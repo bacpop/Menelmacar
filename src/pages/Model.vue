@@ -1,18 +1,26 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { cn } from '@/lib/utils.ts'
 import { PkgWrapper } from '@reside-ic/odinjs'
 import { extractParameters, range } from '@/utils/models.ts'
 import type { ModelResults } from '@/utils/types.ts'
+import SingleViewer from '@/components/SingleViewer.vue'
+import VueSlider from 'vue-3-slider-component'
+import { Button } from '@/components/ui/button'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
 const activeTab = ref(router.currentRoute.value.params.tab || 'plot')
 
 const parameters = ref(null)
-const time = ref(5)
 const modelResults: ModelResults = ref(null)
+
+const logScale = ref(false)
+const time = ref(5)
+const times = ref([])
+
+const hasResults = computed(() => modelResults.value !== null)
 
 watch(router.currentRoute, () => {
   if (router.currentRoute.value.params.modelId) {
@@ -35,14 +43,14 @@ const runModel = async () => {
   const model = models.model
 
   const mod = new PkgWrapper(model, parameters.value, 'error')
-  const times = range(0, time.value, 1000)
+  times.value = range(0, time.value, 1000)
 
-  modelResults.value = mod.run(times, null, {})
+  modelResults.value = mod.run(times.value, null, {})
 
   console.log(modelResults.value)
 }
 
-watch(modelId, () => {
+watch([modelId, time], () => {
   void runModel()
 })
 
@@ -73,7 +81,41 @@ onMounted(() => {
         </router-link>
       </div>
     </div>
+
     <div class="border-t border-slate w-full h-1"></div>
+
+    <div v-if="hasResults"
+         class="flex flex-col max-w-[1120px] w-full py-8 text-light-grey">
+      <div v-if="activeTab === 'plot'">
+        <div class="flex flex-row w-full gap-6 items-center">
+          <Button variant="outline" class="rounded-md uppercase bg-transparent">
+            Choose initial parameters
+          </Button>
+
+          <label>
+            <input type="checkbox"
+                   v-model="logScale" />
+            Y axis log scale
+          </label>
+
+          <div class="flex flex-row flex-grow gap-4 items-center">
+            <label for="time">Time: {{ time }}</label>
+            <VueSlider class="w-full flex-grow"
+                       v-model="time"
+                       :lazy="false"
+                       :min="5"
+                       :max="1000"
+                       :interval="1" />
+          </div>
+        </div>
+        <div class="bg-slate-dark rounded-md p-4 mt-8">
+          <SingleViewer :times="times"
+                        :results_names="modelResults.names"
+                        :results_y="modelResults.y"
+                        :log_scale="logScale" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
