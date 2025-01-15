@@ -18,3 +18,8 @@ export interface ModelResults {
    */
   y: number[][];
 }
+
+export interface ModelDetails {
+  name: string;
+  description: string;
+}

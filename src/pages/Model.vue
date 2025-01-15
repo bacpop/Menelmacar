@@ -4,10 +4,12 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { cn } from '@/lib/utils.ts'
 import { PkgWrapper } from '@reside-ic/odinjs'
 import { extractParameters, range } from '@/utils/models.ts'
-import type { ModelResults } from '@/utils/types.ts'
+import type { ModelDetails, ModelResults } from '@/utils/types.ts'
 import SingleViewer from '@/components/SingleViewer.vue'
 import VueSlider from 'vue-3-slider-component'
 import { Button } from '@/components/ui/button'
+import { getModelData } from '@/utils/api.ts'
+import { ExternalLink } from 'lucide-vue-next'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
@@ -21,6 +23,8 @@ const time = ref(5)
 const times = ref([])
 
 const hasResults = computed(() => modelResults.value !== null)
+
+const modelDetails: ModelDetails = ref(null)
 
 watch(router.currentRoute, () => {
   if (router.currentRoute.value.params.modelId) {
@@ -54,8 +58,16 @@ watch([modelId, time], () => {
   void runModel()
 })
 
-onMounted(() => {
+watch(modelId, async () => {
+  modelDetails.value = null
+  modelDetails.value = await getModelData(modelId.value)
+})
+
+onMounted(async () => {
   void runModel()
+
+  modelDetails.value = null
+  modelDetails.value = await getModelData(modelId.value)
 })
 
 </script>
@@ -63,9 +75,20 @@ onMounted(() => {
 <template>
   <div class="flex flex-col items-center justify-content-start py-10">
     <div class="flex flex-col max-w-[1120px] w-full">
-      <h1 class="text-2xl text-light-grey font-semibold">
-        {{ modelId }}
-      </h1>
+      <div class="text-light-grey flex flex-row items-center gap-2">
+        <div class="flex flex-col items-start gap-2">
+          <h1 class="text-2xl font-semibold">
+            {{ modelDetails?.name || 'Loading...' }}
+          </h1>
+          <a class="font-normal text-light-grey flex flex-row items-center gap-1 hover:underline"
+             :href="`https://www.ebi.ac.uk/biomodels/${modelId}`"
+             target="_blank">
+            {{ modelId }}
+            <ExternalLink size="16" />
+          </a>
+        </div>
+
+      </div>
       <div class="flex flex-row gap-8 pt-8">
         <router-link :to="'/view/'+modelId+'/plot'"
                      :class="cn('text-light-grey opacity-80 hover:opacity-100 pb-4 px-2 border-b-4 border-transparent', activeTab==='plot'?'border-blue':'')">

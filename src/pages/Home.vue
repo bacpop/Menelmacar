@@ -1,20 +1,19 @@
 <script setup lang="ts">
 import ModelSelect from '@/components/ModelSelect.vue'
-import { Accordion, AccordionItem, AccordionContent, AccordionTrigger } from '@/components/ui/accordion'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 </script>
 
 <template>
   <div class="w-full border border-slate rounded-md p-12 bg-[#3D425B] radial-bg">
     <h2 class="text-2xl text-light-grey font-semibold">
-      How does Menelmacar work?
+      What is Menelmacar?
     </h2>
     <p class="pt-2 pb-4 font-normal text-light-grey max-w-[60%]">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec iaculis, ante eu sagittis aliquet, sapien diam
-      gravida nunc, sed imperdiet tellus risus eu est. Integer iaculis augue ac ultricies rutrum.
-      <br>
-      <a href="" class="pt-4 inline-block text-azure">View bio models &raquo;</a>
+      Menelmacar - Making Execution of (Nearly) Every Life-science Model ACcessible to All Researchers, helps to
+      visualise models from the EMBL-EBI's BioModels database. You can investigate the models' development over time,
+      change parameter values and observe changes in the model trajectory, and see the model graph.
     </p>
-    <ModelSelect />
+    <ModelSelect :inline="false" />
   </div>
 
   <div class="w-full flex flex-row flex-nowrap justify-between gap-8 text-light-grey py-10 border-b border-slate">
