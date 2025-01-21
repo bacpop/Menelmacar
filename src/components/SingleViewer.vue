@@ -154,6 +154,10 @@ export default defineComponent({
           .range([height, 0])
       }
 
+      console.log('y_scale', y_scale.domain(), y_scale.range(), y_scale(1))
+
+      // 500 = m * 0 + b
+
       // Add the x-axis
       svg_container.append('g')
         .attr('transform', `translate(0, ${height})`)

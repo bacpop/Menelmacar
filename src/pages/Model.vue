@@ -5,11 +5,12 @@ import { cn } from '@/lib/utils.ts'
 import { PkgWrapper } from '@reside-ic/odinjs'
 import { extractParameters, range } from '@/utils/models.ts'
 import type { ModelDetails, ModelResults } from '@/utils/types.ts'
-import SingleViewer from '@/components/SingleViewer.vue'
 import VueSlider from 'vue-3-slider-component'
 import { Button } from '@/components/ui/button'
 import { getModelData } from '@/utils/api.ts'
 import { ExternalLink } from 'lucide-vue-next'
+import { LineChart } from '@/components/ui/chart-line'
+import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
@@ -21,6 +22,13 @@ const modelResults: ModelResults = ref(null)
 const logScale = ref(false)
 const time = ref(5)
 const times = ref([])
+
+const ymax = ref(100)
+// const max_y = ref(1000000000)
+// const min_y = ref(-1000000000)
+// const yRange = ref([])
+
+const chartData = ref([])
 
 const hasResults = computed(() => modelResults.value !== null)
 
@@ -51,10 +59,25 @@ const runModel = async () => {
 
   modelResults.value = mod.run(times.value, null, {})
 
-  console.log(modelResults.value)
+  const { yDomain, yRange } = rangeAndDomain(
+    modelResults.value,
+    ymax.value,
+    logScale.value
+  )
+
+  chartData.value = modelResults.value.y
+    .map((d, i) => (
+      ({
+        time: times.value[i],
+        ...modelResults.value.names.reduce((acc, i, ix) => ({
+          ...acc,
+          [i]: scale_y(d[ix], logScale.value, yDomain, yRange)
+        }), {})
+      })
+    ))
 }
 
-watch([modelId, time], () => {
+watch([modelId, time, ymax, logScale], () => {
   void runModel()
 })
 
@@ -131,11 +154,35 @@ onMounted(async () => {
                        :interval="1" />
           </div>
         </div>
-        <div class="bg-slate-dark rounded-md p-4 mt-8">
-          <SingleViewer :times="times"
-                        :results_names="modelResults.names"
-                        :results_y="modelResults.y"
-                        :log_scale="logScale" />
+        <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-col gap-4">
+          <div class="flex-grow flex flex-row gap-2 h-[500px]">
+            <div class="flex flex-col flex-grow w-[80px] h-full items-center">
+              <p class="whitespace-nowrap">Max Y</p>
+              <VueSlider
+                class="flex-grow h-full"
+                id="slider"
+                v-model="ymax"
+                :min="70"
+                :max="100"
+                :interval="0.1"
+                :tooltip="'none'"
+                :direction="'btt'" />
+            </div>
+            <LineChart
+              class="h-full"
+              :data="chartData"
+              :colors="['blue', 'pink', 'orange', 'red', 'green']"
+              :categories="modelResults.names"
+              :custom-tooltip="CustomChartTooltip"
+              :show-x-axis="true"
+              :show-y-axis="true"
+              :show-grid-line="false"
+              index="time" />
+          </div>
+          <!--          <SingleViewer :times="times"-->
+          <!--                        :results_names="modelResults.names"-->
+          <!--                        :results_y="modelResults.y"-->
+          <!--                        :log_scale="logScale" />-->
         </div>
       </div>
     </div>
