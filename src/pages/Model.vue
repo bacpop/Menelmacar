@@ -12,12 +12,16 @@ import { LineChart } from '@/components/ui/chart-line'
 import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
 import GraphViewer from '@/components/GraphViewer.vue'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
 const activeTab = ref(router.currentRoute.value.params.tab || 'plot')
 
 const parameters = ref(null)
+const paramsDropdownOpen = ref(false)
+
 const modelResults: ModelResults = ref(null)
 
 const logScale = ref(false)
@@ -82,7 +86,12 @@ const updateParam = (parameter: string, value: number) => {
   }
 }
 
-watch([modelId, time, ymax, logScale, parameters], () => {
+const applyParameters = () => {
+  void runModel()
+  paramsDropdownOpen.value = false
+}
+
+watch([modelId, time, ymax, logScale], () => {
   void runModel()
 })
 
@@ -138,8 +147,9 @@ onMounted(async () => {
     <div v-if="hasResults"
          class="flex flex-col max-w-[1120px] w-full py-8 text-light-grey">
       <div class="flex flex-row w-full gap-6 items-center">
-        <DropdownMenu :open="true">
+        <DropdownMenu :open="paramsDropdownOpen">
           <DropdownMenuTrigger
+            @click="paramsDropdownOpen = !paramsDropdownOpen"
             class="rounded-md uppercase bg-transparent border border-white font-medium transition-colors px-4 py-2 text-sm max-h-9 hover:bg-white hover:text-black">
             Initial parameters
           </DropdownMenuTrigger>
@@ -149,14 +159,19 @@ onMounted(async () => {
                                :prioritize-position="true"
                                class="bg-white rounded-md shadow-lg w-full">
             <DropdownMenuItem v-for="parameter in Object.keys(parameters)">
-              <label :for="`param_${parameter}`">
-                {{ parameter }}
-              </label>:
-              <input type="number"
+              <label :for="`param_${parameter}`" class="w-2/4">
+                {{ parameter }}:
+              </label>
+              <Input type="number"
                      :name="`param_${parameter}`"
                      :id="`param_${parameter}`"
                      :value="parameters[parameter]"
                      @input="event => updateParam(parameter, Number(event.target.value))" />
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Button @click="applyParameters">
+                Apply
+              </Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
