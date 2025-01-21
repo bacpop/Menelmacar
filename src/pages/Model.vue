@@ -11,6 +11,7 @@ import { getModelData } from '@/utils/api.ts'
 import { ExternalLink } from 'lucide-vue-next'
 import { LineChart } from '@/components/ui/chart-line'
 import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
+import GraphViewer from '@/components/GraphViewer.vue'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
@@ -200,6 +201,7 @@ onMounted(async () => {
 
       <div v-if="activeTab === 'graph'">
         <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-row flex-wrap gap-4">
+          <GraphViewer :model_reference="modelId"/>
         </div>
       </div>
     </div>
