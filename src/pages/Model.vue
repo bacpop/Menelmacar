@@ -6,12 +6,12 @@ import { PkgWrapper } from '@reside-ic/odinjs'
 import { extractParameters, range } from '@/utils/models.ts'
 import type { ModelDetails, ModelResults } from '@/utils/types.ts'
 import VueSlider from 'vue-3-slider-component'
-import { Button } from '@/components/ui/button'
 import { getModelData } from '@/utils/api.ts'
 import { ExternalLink } from 'lucide-vue-next'
 import { LineChart } from '@/components/ui/chart-line'
 import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
 import GraphViewer from '@/components/GraphViewer.vue'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
@@ -75,7 +75,14 @@ const runModel = async () => {
     ))
 }
 
-watch([modelId, time, ymax, logScale], () => {
+const updateParam = (parameter: string, value: number) => {
+  parameters.value = {
+    ...parameters.value,
+    [parameter]: value
+  }
+}
+
+watch([modelId, time, ymax, logScale, parameters], () => {
   void runModel()
 })
 
@@ -131,9 +138,28 @@ onMounted(async () => {
     <div v-if="hasResults"
          class="flex flex-col max-w-[1120px] w-full py-8 text-light-grey">
       <div class="flex flex-row w-full gap-6 items-center">
-        <Button variant="outline" class="rounded-md uppercase bg-transparent">
-          Choose initial parameters
-        </Button>
+        <DropdownMenu :open="true">
+          <DropdownMenuTrigger
+            class="rounded-md uppercase bg-transparent border border-white font-medium transition-colors px-4 py-2 text-sm max-h-9 hover:bg-white hover:text-black">
+            Initial parameters
+          </DropdownMenuTrigger>
+          <DropdownMenuContent side="bottom"
+                               align="start"
+                               side-offset="0"
+                               :prioritize-position="true"
+                               class="bg-white rounded-md shadow-lg w-full">
+            <DropdownMenuItem v-for="parameter in Object.keys(parameters)">
+              <label :for="`param_${parameter}`">
+                {{ parameter }}
+              </label>:
+              <input type="number"
+                     :name="`param_${parameter}`"
+                     :id="`param_${parameter}`"
+                     :value="parameters[parameter]"
+                     @input="event => updateParam(parameter, Number(event.target.value))" />
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         <label>
           <input type="checkbox"
@@ -201,7 +227,7 @@ onMounted(async () => {
 
       <div v-if="activeTab === 'graph'">
         <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-row flex-wrap gap-4">
-          <GraphViewer :model_reference="modelId"/>
+          <GraphViewer :model_reference="modelId" />
         </div>
       </div>
     </div>
