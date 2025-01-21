@@ -24,9 +24,6 @@ const time = ref(5)
 const times = ref([])
 
 const ymax = ref(100)
-// const max_y = ref(1000000000)
-// const min_y = ref(-1000000000)
-// const yRange = ref([])
 
 const chartData = ref([])
 
@@ -132,32 +129,33 @@ onMounted(async () => {
 
     <div v-if="hasResults"
          class="flex flex-col max-w-[1120px] w-full py-8 text-light-grey">
-      <div v-if="activeTab === 'plot'">
-        <div class="flex flex-row w-full gap-6 items-center">
-          <Button variant="outline" class="rounded-md uppercase bg-transparent">
-            Choose initial parameters
-          </Button>
+      <div class="flex flex-row w-full gap-6 items-center">
+        <Button variant="outline" class="rounded-md uppercase bg-transparent">
+          Choose initial parameters
+        </Button>
 
-          <label>
-            <input type="checkbox"
-                   v-model="logScale" />
-            Y axis log scale
-          </label>
+        <label>
+          <input type="checkbox"
+                 v-model="logScale" />
+          Y axis log scale
+        </label>
 
-          <div class="flex flex-row flex-grow gap-4 items-center">
-            <label for="time">Time: {{ time }}</label>
-            <VueSlider class="w-full flex-grow"
-                       v-model="time"
-                       :lazy="false"
-                       :min="5"
-                       :max="1000"
-                       :interval="1" />
-          </div>
+        <div class="flex flex-row flex-grow gap-4 items-center">
+          <label for="time">Time: {{ time }}</label>
+          <VueSlider class="w-full flex-grow"
+                     v-model="time"
+                     :lazy="false"
+                     :min="5"
+                     :max="1000"
+                     :interval="1" />
         </div>
+      </div>
+
+      <div v-if="activeTab === 'plot'">
         <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-col gap-4">
           <div class="flex-grow flex flex-row gap-2 h-[500px]">
             <div class="flex flex-col flex-grow w-[80px] h-full items-center">
-              <p class="whitespace-nowrap">Max Y</p>
+              <p class="whitespace-nowrap mb-4">Max Y</p>
               <VueSlider
                 class="flex-grow h-full"
                 id="slider"
@@ -179,10 +177,29 @@ onMounted(async () => {
               :show-grid-line="false"
               index="time" />
           </div>
-          <!--          <SingleViewer :times="times"-->
-          <!--                        :results_names="modelResults.names"-->
-          <!--                        :results_y="modelResults.y"-->
-          <!--                        :log_scale="logScale" />-->
+        </div>
+      </div>
+
+      <div v-if="activeTab === 'variables'">
+        <div class="mt-8 flex flex-row flex-wrap gap-4">
+          <div class="bg-slate-dark rounded-md p-4 flex-grow"
+               v-for="variable in modelResults.names">
+            <LineChart
+              class="h-full w-full"
+              :data="chartData"
+              :colors="['blue', 'pink', 'orange', 'red', 'green']"
+              :categories="[variable]"
+              :custom-tooltip="CustomChartTooltip"
+              :show-x-axis="true"
+              :show-y-axis="true"
+              :show-grid-line="false"
+              index="time" />
+          </div>
+        </div>
+      </div>
+
+      <div v-if="activeTab === 'graph'">
+        <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-row flex-wrap gap-4">
         </div>
       </div>
     </div>
