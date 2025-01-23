@@ -6,7 +6,7 @@ import { PkgWrapper } from '@reside-ic/odinjs'
 import { extractParameters, range } from '@/utils/models.ts'
 import type { ModelDetails, ModelResults } from '@/utils/types.ts'
 import { getModelData } from '@/utils/api.ts'
-import { ExternalLink } from 'lucide-vue-next'
+import { ArrowDown, ArrowUp, ExternalLink } from 'lucide-vue-next'
 import { LineChart } from '@/components/ui/chart-line'
 import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
 import GraphViewer from '@/components/GraphViewer.vue'
@@ -19,6 +19,9 @@ import { Slider } from '@/components/ui/slider'
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
 const activeTab = ref(router.currentRoute.value.params.tab || 'plot')
+
+const expandDescription = ref(false)
+const showExpandDescription = ref(false)
 
 const parameters = ref(null)
 const paramsDropdownOpen = ref(false)
@@ -136,6 +139,21 @@ onMounted(async () => {
           <h1 class="text-2xl font-semibold">
             {{ modelDetails?.name || 'Loading...' }}
           </h1>
+
+          <div @mouseenter="showExpandDescription =true"
+               @mouseleave="showExpandDescription = false"
+               :class="cn('relative rounded-md max-h-36 overflow-hidden transition-all text-gray-300', expandDescription && 'max-h-full')">
+
+            <div v-html="modelDetails?.description"></div>
+
+            <div
+              class="absolute bottom-0 left-0 h-20 pb-2 bg-gradient-to-t from-slate-darker to-slate-darker/30 w-full flex flex-row items-end justify-center cursor-pointer"
+              @click="expandDescription = !expandDescription">
+              <ArrowDown v-if="!expandDescription" size="16" />
+              <ArrowUp v-if="expandDescription" size="16" />
+            </div>
+          </div>
+
           <a class="font-normal text-light-grey flex flex-row items-center gap-1 hover:underline"
              :href="`https://www.ebi.ac.uk/biomodels/${modelId}`"
              target="_blank">
