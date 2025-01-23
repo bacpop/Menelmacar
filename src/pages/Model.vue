@@ -14,6 +14,7 @@ import GraphViewer from '@/components/GraphViewer.vue'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Checkbox } from '@/components/ui/checkbox'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
@@ -35,6 +36,19 @@ const chartData = ref([])
 const hasResults = computed(() => modelResults.value !== null)
 
 const modelDetails: ModelDetails = ref(null)
+
+const chartColors = [
+  '#FF6B6B',
+  '#4ECDC4',
+  '#FFA726',
+  '#9C27B0',
+  '#00BCD4',
+  '#8BC34A',
+  '#FF9800',
+  '#673AB7',
+  '#03A9F4',
+  '#E91E63'
+];
 
 watch(router.currentRoute, () => {
   if (router.currentRoute.value.params.modelId) {
@@ -176,9 +190,8 @@ onMounted(async () => {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <label>
-          <input type="checkbox"
-                 v-model="logScale" />
+        <label class="flex items-center gap-2">
+          <Checkbox :checked="logScale" @update:checked="logScale = !logScale" />
           Y axis log scale
         </label>
 
@@ -211,12 +224,12 @@ onMounted(async () => {
             <LineChart
               class="h-full"
               :data="chartData"
-              :colors="['blue', 'pink', 'orange', 'red', 'green']"
+              :colors="chartColors"
               :categories="modelResults.names"
-              :custom-tooltip="CustomChartTooltip"
               :show-x-axis="true"
               :show-y-axis="true"
               :show-grid-line="false"
+              :x-formatter="(tick) =>Number(chartData[tick].time).toFixed(4)"
               index="time" />
           </div>
         </div>
@@ -229,12 +242,12 @@ onMounted(async () => {
             <LineChart
               class="h-full w-full"
               :data="chartData"
-              :colors="['blue', 'pink', 'orange', 'red', 'green']"
+              :colors="chartColors"
               :categories="[variable]"
-              :custom-tooltip="CustomChartTooltip"
               :show-x-axis="true"
               :show-y-axis="true"
               :show-grid-line="false"
+              :x-formatter="(tick) =>Number(chartData[tick].time).toFixed(4)"
               index="time" />
           </div>
         </div>

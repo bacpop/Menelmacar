@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { cn } from '@/lib/utils.ts'
 
 defineProps<{
   title?: string
@@ -14,13 +15,18 @@ defineProps<{
 <template>
   <Card class="text-sm">
     <CardHeader v-if="title" class="p-3 border-b">
-      <CardTitle>
-        {{ title }}
+      <CardTitle class="font-medium text-md flex flex-row">
+        Time
+        <span class="font-semibold inline-block flex-grow text-right">
+          {{ Number(title).toFixed(2) }}s
+        </span>
       </CardTitle>
     </CardHeader>
     <CardContent class="p-3 min-w-[180px] flex flex-col gap-1">
-      <div v-for="(item, key) in data" :key="key" class="flex justify-between">
-        <div class="flex items-center">
+      <div v-for="(item, key) in data"
+           :key="key"
+           :class="cn('flex justify-between', !item.name?.trim().length && 'hidden')">
+        <div :class="cn('flex items-center')">
           <span class="w-2.5 h-2.5 mr-2">
             <svg width="100%" height="100%" viewBox="0 0 30 30">
               <path
@@ -33,7 +39,9 @@ defineProps<{
           </span>
           <span>{{ item.name }}</span>
         </div>
-        <span class="font-semibold ml-4">{{ item.value }}</span>
+        <span :class="cn('font-semibold ml-4')">
+          {{ Number(item.value).toFixed(4) }}
+        </span>
       </div>
     </CardContent>
   </Card>
