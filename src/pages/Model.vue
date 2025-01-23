@@ -110,6 +110,7 @@ watch([modelId, time, ymax, logScale], () => {
 })
 
 watch(modelId, async () => {
+  modelResults.value = null
   parameters.value = null
   void runModel()
 
