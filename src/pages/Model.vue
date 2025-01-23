@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils.ts'
 import { PkgWrapper } from '@reside-ic/odinjs'
 import { extractParameters, range } from '@/utils/models.ts'
 import type { ModelDetails, ModelResults } from '@/utils/types.ts'
-import VueSlider from 'vue-3-slider-component'
 import { getModelData } from '@/utils/api.ts'
 import { ExternalLink } from 'lucide-vue-next'
 import { LineChart } from '@/components/ui/chart-line'
@@ -15,6 +14,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Slider } from '@/components/ui/slider'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
@@ -26,10 +26,10 @@ const paramsDropdownOpen = ref(false)
 const modelResults: ModelResults = ref(null)
 
 const logScale = ref(false)
-const time = ref(5)
+const time = ref([5])
 const times = ref([])
 
-const ymax = ref(100)
+const ymax = ref([100])
 
 const chartData = ref([])
 
@@ -48,7 +48,7 @@ const chartColors = [
   '#673AB7',
   '#03A9F4',
   '#E91E63'
-];
+]
 
 watch(router.currentRoute, () => {
   if (router.currentRoute.value.params.modelId) {
@@ -71,13 +71,13 @@ const runModel = async () => {
   const model = models.model
 
   const mod = new PkgWrapper(model, parameters.value, 'error')
-  times.value = range(0, time.value, 1000)
+  times.value = range(0, time.value[0], 1000)
 
   modelResults.value = mod.run(times.value, null, {})
 
   const { yDomain, yRange } = rangeAndDomain(
     modelResults.value,
-    ymax.value,
+    ymax.value[0],
     logScale.value
   )
 
@@ -110,6 +110,9 @@ watch([modelId, time, ymax, logScale], () => {
 })
 
 watch(modelId, async () => {
+  parameters.value = null
+  void runModel()
+
   modelDetails.value = null
   modelDetails.value = await getModelData(modelId.value)
 })
@@ -117,6 +120,7 @@ watch(modelId, async () => {
 onMounted(async () => {
   void runModel()
 
+  parameters.value = null
   modelDetails.value = null
   modelDetails.value = await getModelData(modelId.value)
 })
@@ -196,13 +200,14 @@ onMounted(async () => {
         </label>
 
         <div class="flex flex-row flex-grow gap-4 items-center">
-          <label for="time">Time: {{ time }}</label>
-          <VueSlider class="w-full flex-grow"
-                     v-model="time"
-                     :lazy="false"
-                     :min="5"
-                     :max="1000"
-                     :interval="1" />
+          <label class="whitespace-nowrap">Time: {{ time[0] }}</label>
+          <Slider
+            v-model="time"
+            :default-value="[5]"
+            :max="1000"
+            :min="5"
+            :step="1"
+          />
         </div>
       </div>
 
@@ -211,15 +216,14 @@ onMounted(async () => {
           <div class="flex-grow flex flex-row gap-2 h-[500px]">
             <div class="flex flex-col flex-grow w-[80px] h-full items-center">
               <p class="whitespace-nowrap mb-4">Max Y</p>
-              <VueSlider
-                class="flex-grow h-full"
-                id="slider"
+              <Slider
                 v-model="ymax"
-                :min="70"
+                :default-value="[5]"
                 :max="100"
-                :interval="0.1"
-                :tooltip="'none'"
-                :direction="'btt'" />
+                :min="70"
+                :step="0.1"
+                orientation="vertical"
+              />
             </div>
             <LineChart
               class="h-full"
