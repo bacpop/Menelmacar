@@ -1,0 +1,196 @@
+export class model {
+  constructor(base, user, unusedUserAction) {
+    this.base = base;
+    this.internal = {};
+    var internal = this.internal;
+    internal.compartment = 1;
+    this.setUser(user, unusedUserAction);
+  }
+  initial(t) {
+    var internal = this.internal;
+    var state = Array(24).fill(0);
+    state[0] = internal.initial_APC;
+    state[1] = internal.initial_APC_Va;
+    state[2] = internal.initial_Va;
+    state[3] = internal.initial_Va_i_506;
+    state[4] = internal.initial_Va_i_306;
+    state[5] = internal.initial_APC_Va_i_506;
+    state[6] = internal.initial_APC_Va_i_306;
+    state[7] = internal.initial_Va_i_306_506;
+    state[8] = internal.initial_Va_1_306_Va_LC;
+    state[9] = internal.initial_Va_307_506;
+    state[10] = internal.initial_Va_507_679_709;
+    state[11] = internal.initial_APC_Va_1_306_Va_LC;
+    state[12] = internal.initial_Xa;
+    state[13] = internal.initial_Xa_Va;
+    state[14] = internal.initial_Xa_Va_i_506;
+    state[15] = internal.initial_Xa_Va_i_306_506;
+    state[16] = internal.initial_Xa_Va_i_306;
+    state[17] = internal.initial_Va_307_679_709;
+    state[18] = internal.initial_PT;
+    state[19] = internal.initial_Va_PT;
+    state[20] = internal.initial_Xa_Va_PT;
+    state[21] = internal.initial_Xa_Va_i_506_PT;
+    state[22] = internal.initial_Xa_Va_i_306_PT;
+    state[23] = internal.initial_Xa_Va_i_306_506_PT;
+    return state;
+  }
+  setUser(user, unusedUserAction) {
+    this.base.user.checkUser(user, ["APC_init", "APC_Va_1_306_Va_LC_init", "APC_Va_i_306_init", "APC_Va_i_506_init", "APC_Va_init", "Metabolite_13", "Metabolite_19", "Metabolite_2", "PT_init", "R01_koff", "R01_kon", "R02_kcat", "R03_kcat", "R04_koff", "R04_kon", "R05_koff", "R05_kon", "R06_kcat", "R07_kcat", "R08_kdis", "R09_kdis", "R10_koff", "R10_kon", "R11_koff", "R11_kon", "R12_koff", "R12_kon", "R13_koff", "R13_kon", "R14_koff", "R14_kon", "R15_kdis", "R16_kdis", "R17_koff", "R17_kon", "R19_koff", "R19_kon", "R20_koff", "R20_kon", "R21_koff", "R21_kon", "R22_koff", "R22_kon", "R23_dis", "R24_dis", "Va_1_306_Va_LC_init", "Va_307_506_init", "Va_307_679_709_init", "Va_507_679_709_init", "Va_i_306_506_init", "Va_i_306_init", "Va_i_506_init", "Va_init", "Va_PT_init", "Xa_init", "Xa_Va_i_306_506_init", "Xa_Va_i_306_506_PT_init", "Xa_Va_i_306_init", "Xa_Va_i_306_PT_init", "Xa_Va_i_506_init", "Xa_Va_i_506_PT_init", "Xa_Va_init", "Xa_Va_PT_init"], unusedUserAction);
+    var internal = this.internal;
+    this.base.user.setUserScalar(user, "APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "APC_Va_1_306_Va_LC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "APC_Va_i_306_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "APC_Va_i_506_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "APC_Va_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Metabolite_13", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Metabolite_19", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Metabolite_2", internal, 2e-08, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PT_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R01_koff", internal, 0.69999999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R01_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R02_kcat", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R03_kcat", internal, 0.192, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R04_koff", internal, 0.69999999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R04_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R05_koff", internal, 0.69999999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R05_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R06_kcat", internal, 0.192, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R07_kcat", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R08_kdis", internal, 0.028000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R09_kdis", internal, 0.028000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R10_koff", internal, 0.69999999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R10_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R11_koff", internal, 0.074999999999999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R11_kon", internal, 150000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R12_koff", internal, 0.14999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R12_kon", internal, 150000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R13_koff", internal, 0.14999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R13_kon", internal, 150000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R14_koff", internal, 0.14999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R14_kon", internal, 150000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R15_kdis", internal, 0.0035000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R16_kdis", internal, 0.0035000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R17_koff", internal, 70, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R17_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R19_koff", internal, 103, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R19_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R20_koff", internal, 103, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R20_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R21_koff", internal, 103, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R21_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R22_koff", internal, 103, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R22_kon", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R23_dis", internal, 0.0035000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R24_dis", internal, 0.0035000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_1_306_Va_LC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_307_506_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_307_679_709_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_507_679_709_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_i_306_506_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_i_306_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_i_506_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_PT_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_Va_i_306_506_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_Va_i_306_506_PT_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_Va_i_306_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_Va_i_306_PT_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_Va_i_506_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_Va_i_506_PT_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_Va_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Xa_Va_PT_init", internal, 0, -Infinity, Infinity, false);
+    internal.initial_APC = internal.APC_init;
+    internal.initial_APC_Va = internal.APC_Va_init;
+    internal.initial_APC_Va_1_306_Va_LC = internal.APC_Va_1_306_Va_LC_init;
+    internal.initial_APC_Va_i_306 = internal.APC_Va_i_306_init;
+    internal.initial_APC_Va_i_506 = internal.APC_Va_i_506_init;
+    internal.initial_PT = internal.PT_init;
+    internal.initial_Va = internal.Va_init;
+    internal.initial_Va_1_306_Va_LC = internal.Va_1_306_Va_LC_init;
+    internal.initial_Va_307_506 = internal.Va_307_506_init;
+    internal.initial_Va_307_679_709 = internal.Va_307_679_709_init;
+    internal.initial_Va_507_679_709 = internal.Va_507_679_709_init;
+    internal.initial_Va_i_306 = internal.Va_i_306_init;
+    internal.initial_Va_i_306_506 = internal.Va_i_306_506_init;
+    internal.initial_Va_i_506 = internal.Va_i_506_init;
+    internal.initial_Va_PT = internal.Va_PT_init;
+    internal.initial_Xa = internal.Xa_init;
+    internal.initial_Xa_Va = internal.Xa_Va_init;
+    internal.initial_Xa_Va_i_306 = internal.Xa_Va_i_306_init;
+    internal.initial_Xa_Va_i_306_506 = internal.Xa_Va_i_306_506_init;
+    internal.initial_Xa_Va_i_306_506_PT = internal.Xa_Va_i_306_506_PT_init;
+    internal.initial_Xa_Va_i_306_PT = internal.Xa_Va_i_306_PT_init;
+    internal.initial_Xa_Va_i_506 = internal.Xa_Va_i_506_init;
+    internal.initial_Xa_Va_i_506_PT = internal.Xa_Va_i_506_PT_init;
+    internal.initial_Xa_Va_PT = internal.Xa_Va_PT_init;
+    internal.param_for_curve_va_i_506_normalise = ((internal.Metabolite_19 < 2.9999999999999999e-07 ? 5.8999999999999999e-09 : ((internal.Metabolite_19 < 5.9999999999999997e-07 ? 1.08e-07 : 2.0100000000000001e-07))));
+    this.updateMetadata();
+  }
+  getInternal() {
+    return this.internal;
+  }
+  rhs(t, state, dstatedt) {
+    var internal = this.internal;
+    const APC = state[0];
+    const APC_Va = state[1];
+    const Va = state[2];
+    const Va_i_506 = state[3];
+    const Va_i_306 = state[4];
+    const APC_Va_i_506 = state[5];
+    const APC_Va_i_306 = state[6];
+    const Va_i_306_506 = state[7];
+    const Va_1_306_Va_LC = state[8];
+    const APC_Va_1_306_Va_LC = state[11];
+    const Xa = state[12];
+    const Xa_Va = state[13];
+    const Xa_Va_i_506 = state[14];
+    const Xa_Va_i_306_506 = state[15];
+    const Xa_Va_i_306 = state[16];
+    const PT = state[18];
+    const Va_PT = state[19];
+    const Xa_Va_PT = state[20];
+    const Xa_Va_i_506_PT = state[21];
+    const Xa_Va_i_306_PT = state[22];
+    const Xa_Va_i_306_506_PT = state[23];
+    dstatedt[0] = 0 - 1 * internal.compartment * (internal.R01_kon * APC * Va - internal.R01_koff * APC_Va) + 1 * internal.compartment * internal.R02_kcat * APC_Va + 1 * internal.compartment * internal.R03_kcat * APC_Va - 1 * internal.compartment * (internal.R04_kon * APC * Va_i_506 - internal.R04_koff * APC_Va_i_506) - 1 * internal.compartment * (internal.R05_kon * APC * Va_i_306 - internal.R05_koff * APC_Va_i_306) + 1 * internal.compartment * internal.R06_kcat * APC_Va_i_506 + 1 * internal.compartment * internal.R07_kcat * APC_Va_i_306 - 1 * internal.compartment * (internal.R10_kon * APC * Va_1_306_Va_LC - internal.R10_koff * APC_Va_1_306_Va_LC);
+    dstatedt[1] = 0 + 1 * internal.compartment * (internal.R01_kon * APC * Va - internal.R01_koff * APC_Va) - 1 * internal.compartment * internal.R02_kcat * APC_Va - 1 * internal.compartment * internal.R03_kcat * APC_Va;
+    dstatedt[11] = 0 + 1 * internal.compartment * (internal.R10_kon * APC * Va_1_306_Va_LC - internal.R10_koff * APC_Va_1_306_Va_LC);
+    dstatedt[6] = 0 + 1 * internal.compartment * (internal.R05_kon * APC * Va_i_306 - internal.R05_koff * APC_Va_i_306) - 1 * internal.compartment * internal.R07_kcat * APC_Va_i_306;
+    dstatedt[5] = 0 + 1 * internal.compartment * (internal.R04_kon * APC * Va_i_506 - internal.R04_koff * APC_Va_i_506) - 1 * internal.compartment * internal.R06_kcat * APC_Va_i_506;
+    dstatedt[18] = 0 - 1 * internal.compartment * (internal.R17_kon * Va * PT - internal.R17_koff * Va_PT) - 1 * internal.compartment * (internal.R19_kon * Xa_Va * PT - internal.R19_koff * Xa_Va_PT) - 1 * internal.compartment * (internal.R20_kon * Xa_Va_i_506 * PT - internal.R20_koff * Xa_Va_i_506_PT) - 1 * internal.compartment * (internal.R21_kon * Xa_Va_i_306 * PT - internal.R21_koff * Xa_Va_i_306_PT) - 1 * internal.compartment * (internal.R22_kon * Xa_Va_i_306_506 * PT - internal.R22_kon * Xa_Va_i_306_506_PT) + 1 * internal.compartment * internal.R23_dis * Xa_Va_i_306_PT + 1 * internal.compartment * internal.R24_dis * Xa_Va_i_306_506_PT;
+    dstatedt[2] = 0 - 1 * internal.compartment * (internal.R01_kon * APC * Va - internal.R01_koff * APC_Va) - 1 * internal.compartment * (internal.R11_kon * Xa * Va - internal.R11_koff * Xa_Va) - 1 * internal.compartment * (internal.R17_kon * Va * PT - internal.R17_koff * Va_PT);
+    dstatedt[8] = 0 + 1 * internal.compartment * internal.R08_kdis * Va_i_306 + 1 * internal.compartment * internal.R09_kdis * Va_i_306_506 - 1 * internal.compartment * (internal.R10_kon * APC * Va_1_306_Va_LC - internal.R10_koff * APC_Va_1_306_Va_LC) + 1 * internal.compartment * internal.R15_kdis * Xa_Va_i_306 + 1 * internal.compartment * internal.R16_kdis * Xa_Va_i_306_506 + 1 * internal.compartment * internal.R23_dis * Xa_Va_i_306_PT + 1 * internal.compartment * internal.R24_dis * Xa_Va_i_306_506_PT;
+    dstatedt[9] = 0 + 1 * internal.compartment * internal.R09_kdis * Va_i_306_506 + 1 * internal.compartment * internal.R16_kdis * Xa_Va_i_306_506 + 1 * internal.compartment * internal.R24_dis * Xa_Va_i_306_506_PT;
+    dstatedt[17] = 0 + 1 * internal.compartment * internal.R08_kdis * Va_i_306 + 1 * internal.compartment * internal.R15_kdis * Xa_Va_i_306 + 1 * internal.compartment * internal.R23_dis * Xa_Va_i_306_PT;
+    dstatedt[10] = 0 + 1 * internal.compartment * internal.R09_kdis * Va_i_306_506 + 1 * internal.compartment * internal.R16_kdis * Xa_Va_i_306_506 + 1 * internal.compartment * internal.R24_dis * Xa_Va_i_306_506_PT;
+    dstatedt[4] = 0 + 1 * internal.compartment * internal.R03_kcat * APC_Va - 1 * internal.compartment * (internal.R05_kon * APC * Va_i_306 - internal.R05_koff * APC_Va_i_306) - 1 * internal.compartment * internal.R08_kdis * Va_i_306 - 1 * internal.compartment * (internal.R13_kon * Xa * Va_i_306 - internal.R13_koff * Xa_Va_i_306);
+    dstatedt[7] = 0 + 1 * internal.compartment * internal.R06_kcat * APC_Va_i_506 + 1 * internal.compartment * internal.R07_kcat * APC_Va_i_306 - 1 * internal.compartment * internal.R09_kdis * Va_i_306_506 - 1 * internal.compartment * (internal.R14_kon * Xa * Va_i_306_506 - internal.R14_koff * Xa_Va_i_306_506);
+    dstatedt[3] = 0 + 1 * internal.compartment * internal.R02_kcat * APC_Va - 1 * internal.compartment * (internal.R04_kon * APC * Va_i_506 - internal.R04_koff * APC_Va_i_506) - 1 * internal.compartment * (internal.R12_kon * Xa * Va_i_506 - internal.R12_koff * Xa_Va_i_506);
+    dstatedt[19] = 0 + 1 * internal.compartment * (internal.R17_kon * Va * PT - internal.R17_koff * Va_PT);
+    dstatedt[12] = 0 - 1 * internal.compartment * (internal.R11_kon * Xa * Va - internal.R11_koff * Xa_Va) - 1 * internal.compartment * (internal.R12_kon * Xa * Va_i_506 - internal.R12_koff * Xa_Va_i_506) - 1 * internal.compartment * (internal.R13_kon * Xa * Va_i_306 - internal.R13_koff * Xa_Va_i_306) - 1 * internal.compartment * (internal.R14_kon * Xa * Va_i_306_506 - internal.R14_koff * Xa_Va_i_306_506) + 1 * internal.compartment * internal.R15_kdis * Xa_Va_i_306 + 1 * internal.compartment * internal.R16_kdis * Xa_Va_i_306_506 + 1 * internal.compartment * internal.R23_dis * Xa_Va_i_306_PT + 1 * internal.compartment * internal.R24_dis * Xa_Va_i_306_506_PT;
+    dstatedt[13] = 0 + 1 * internal.compartment * (internal.R11_kon * Xa * Va - internal.R11_koff * Xa_Va) - 1 * internal.compartment * (internal.R19_kon * Xa_Va * PT - internal.R19_koff * Xa_Va_PT);
+    dstatedt[16] = 0 + 1 * internal.compartment * (internal.R13_kon * Xa * Va_i_306 - internal.R13_koff * Xa_Va_i_306) - 1 * internal.compartment * internal.R15_kdis * Xa_Va_i_306 - 1 * internal.compartment * (internal.R21_kon * Xa_Va_i_306 * PT - internal.R21_koff * Xa_Va_i_306_PT);
+    dstatedt[15] = 0 + 1 * internal.compartment * (internal.R14_kon * Xa * Va_i_306_506 - internal.R14_koff * Xa_Va_i_306_506) - 1 * internal.compartment * internal.R16_kdis * Xa_Va_i_306_506 - 1 * internal.compartment * (internal.R22_kon * Xa_Va_i_306_506 * PT - internal.R22_kon * Xa_Va_i_306_506_PT);
+    dstatedt[23] = 0 + 1 * internal.compartment * (internal.R22_kon * Xa_Va_i_306_506 * PT - internal.R22_kon * Xa_Va_i_306_506_PT) - 1 * internal.compartment * internal.R24_dis * Xa_Va_i_306_506_PT;
+    dstatedt[22] = 0 + 1 * internal.compartment * (internal.R21_kon * Xa_Va_i_306 * PT - internal.R21_koff * Xa_Va_i_306_PT) - 1 * internal.compartment * internal.R23_dis * Xa_Va_i_306_PT;
+    dstatedt[14] = 0 + 1 * internal.compartment * (internal.R12_kon * Xa * Va_i_506 - internal.R12_koff * Xa_Va_i_506) - 1 * internal.compartment * (internal.R20_kon * Xa_Va_i_506 * PT - internal.R20_koff * Xa_Va_i_506_PT);
+    dstatedt[21] = 0 + 1 * internal.compartment * (internal.R20_kon * Xa_Va_i_506 * PT - internal.R20_koff * Xa_Va_i_506_PT);
+    dstatedt[20] = 0 + 1 * internal.compartment * (internal.R19_kon * Xa_Va * PT - internal.R19_koff * Xa_Va_PT);
+  }
+  names() {
+    return this.metadata.ynames.slice(1);
+  }
+  updateMetadata() {
+    this.metadata = {};
+    var internal = this.internal;
+    this.metadata.ynames = ["t", "APC", "APC_Va", "Va", "Va_i_506", "Va_i_306", "APC_Va_i_506", "APC_Va_i_306", "Va_i_306_506", "Va_1_306_Va_LC", "Va_307_506", "Va_507_679_709", "APC_Va_1_306_Va_LC", "Xa", "Xa_Va", "Xa_Va_i_506", "Xa_Va_i_306_506", "Xa_Va_i_306", "Va_307_679_709", "PT", "Va_PT", "Xa_Va_PT", "Xa_Va_i_506_PT", "Xa_Va_i_306_PT", "Xa_Va_i_306_506_PT"];
+    this.metadata.internalOrder = {APC_init: null, APC_Va_1_306_Va_LC_init: null, APC_Va_i_306_init: null, APC_Va_i_506_init: null, APC_Va_init: null, compartment: null, initial_APC: null, initial_APC_Va: null, initial_APC_Va_1_306_Va_LC: null, initial_APC_Va_i_306: null, initial_APC_Va_i_506: null, initial_PT: null, initial_Va: null, initial_Va_1_306_Va_LC: null, initial_Va_307_506: null, initial_Va_307_679_709: null, initial_Va_507_679_709: null, initial_Va_i_306: null, initial_Va_i_306_506: null, initial_Va_i_506: null, initial_Va_PT: null, initial_Xa: null, initial_Xa_Va: null, initial_Xa_Va_i_306: null, initial_Xa_Va_i_306_506: null, initial_Xa_Va_i_306_506_PT: null, initial_Xa_Va_i_306_PT: null, initial_Xa_Va_i_506: null, initial_Xa_Va_i_506_PT: null, initial_Xa_Va_PT: null, Metabolite_13: null, Metabolite_19: null, Metabolite_2: null, param_for_curve_va_i_506_normalise: null, PT_init: null, R01_koff: null, R01_kon: null, R02_kcat: null, R03_kcat: null, R04_koff: null, R04_kon: null, R05_koff: null, R05_kon: null, R06_kcat: null, R07_kcat: null, R08_kdis: null, R09_kdis: null, R10_koff: null, R10_kon: null, R11_koff: null, R11_kon: null, R12_koff: null, R12_kon: null, R13_koff: null, R13_kon: null, R14_koff: null, R14_kon: null, R15_kdis: null, R16_kdis: null, R17_koff: null, R17_kon: null, R19_koff: null, R19_kon: null, R20_koff: null, R20_kon: null, R21_koff: null, R21_kon: null, R22_koff: null, R22_kon: null, R23_dis: null, R24_dis: null, Va_1_306_Va_LC_init: null, Va_307_506_init: null, Va_307_679_709_init: null, Va_507_679_709_init: null, Va_i_306_506_init: null, Va_i_306_init: null, Va_i_506_init: null, Va_init: null, Va_PT_init: null, Xa_init: null, Xa_Va_i_306_506_init: null, Xa_Va_i_306_506_PT_init: null, Xa_Va_i_306_init: null, Xa_Va_i_306_PT_init: null, Xa_Va_i_506_init: null, Xa_Va_i_506_PT_init: null, Xa_Va_init: null, Xa_Va_PT_init: null};
+    this.metadata.variableOrder = {APC: null, APC_Va: null, Va: null, Va_i_506: null, Va_i_306: null, APC_Va_i_506: null, APC_Va_i_306: null, Va_i_306_506: null, Va_1_306_Va_LC: null, Va_307_506: null, Va_507_679_709: null, APC_Va_1_306_Va_LC: null, Xa: null, Xa_Va: null, Xa_Va_i_506: null, Xa_Va_i_306_506: null, Xa_Va_i_306: null, Va_307_679_709: null, PT: null, Va_PT: null, Xa_Va_PT: null, Xa_Va_i_506_PT: null, Xa_Va_i_306_PT: null, Xa_Va_i_306_506_PT: null};
+    this.metadata.outputOrder = null;
+  }
+  getMetadata() {
+    return this.metadata;
+  }
+}

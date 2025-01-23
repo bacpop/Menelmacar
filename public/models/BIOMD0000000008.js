@@ -59,13 +59,13 @@ export class model {
     const M = state[2];
     const Y = state[3];
     const Z = state[4];
-    dstatedt[0] = 0 + internal.vi - C * internal.k1 * X * Math.pow((C + internal.K5), (- 1)) - C * internal.kd - internal.a1 * C * Y + internal.a2 * Z + internal.alpha * internal.d1 * Z;
-    dstatedt[3] = 0 - internal.a1 * C * Y + internal.a2 * Z + internal.alpha * internal.kd * Z + internal.vs - internal.d1 * Y;
-    dstatedt[4] = 0 + internal.a1 * C * Y - internal.a2 * Z - internal.alpha * internal.d1 * Z - internal.alpha * internal.kd * Z;
+    dstatedt[0] = 0 + 1 * internal.vi - 1 * C * internal.k1 * X * Math.pow((C + internal.K5), (- 1)) - 1 * C * internal.kd - 1 * internal.a1 * C * Y + 1 * internal.a2 * Z + 1 * internal.alpha * internal.d1 * Z;
+    dstatedt[3] = 0 - 1 * internal.a1 * C * Y + 1 * internal.a2 * Z + 1 * internal.alpha * internal.kd * Z + 1 * internal.vs - 1 * internal.d1 * Y;
+    dstatedt[4] = 0 + 1 * internal.a1 * C * Y - 1 * internal.a2 * Z - 1 * internal.alpha * internal.d1 * Z - 1 * internal.alpha * internal.kd * Z;
     var V1 = C * internal.V1p * Math.pow((C + internal.K6), (- 1));
     var V3 = M * internal.V3p;
-    dstatedt[2] = 0 + (1 + - 1 * M) * V1 * Math.pow((internal.K1 + - 1 * M + 1), (- 1)) - M * internal.V2 * Math.pow((internal.K2 + M), (- 1));
-    dstatedt[1] = 0 + V3 * (1 + - 1 * X) * Math.pow((internal.K3 + - 1 * X + 1), (- 1)) - internal.V4 * X * Math.pow((internal.K4 + X), (- 1));
+    dstatedt[2] = 0 + 1 * (1 + - 1 * M) * V1 * Math.pow((internal.K1 + - 1 * M + 1), (- 1)) - 1 * M * internal.V2 * Math.pow((internal.K2 + M), (- 1));
+    dstatedt[1] = 0 + 1 * V3 * (1 + - 1 * X) * Math.pow((internal.K3 + - 1 * X + 1), (- 1)) - 1 * internal.V4 * X * Math.pow((internal.K4 + X), (- 1));
   }
   names() {
     return this.metadata.ynames.slice(1);

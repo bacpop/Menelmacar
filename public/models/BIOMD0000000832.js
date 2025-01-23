@@ -1,0 +1,197 @@
+export class model {
+  constructor(base, user, unusedUserAction) {
+    this.base = base;
+    this.internal = {};
+    var internal = this.internal;
+    internal.compartment = 1;
+    this.setUser(user, unusedUserAction);
+  }
+  initial(t) {
+    var internal = this.internal;
+    var state = Array(20).fill(0);
+    state[0] = internal.initial_Akt;
+    state[1] = internal.initial_RASSF1A;
+    state[2] = internal.initial_MST2;
+    state[3] = internal.initial_dMST2;
+    state[4] = internal.initial_aMST2;
+    state[5] = internal.initial_aMST2uRASSF1A;
+    state[6] = internal.initial_MST2uRASSF1A;
+    state[7] = internal.initial_iMST2;
+    state[8] = internal.initial_iRaf1uiMST2;
+    state[9] = internal.initial_aLATS1;
+    state[10] = internal.initial_LATS1;
+    state[11] = internal.initial_iRaf1;
+    state[12] = internal.initial_Raf1;
+    state[13] = internal.initial_aRaf1;
+    state[14] = internal.initial_ipRaf1;
+    state[15] = internal.initial_RasGDP;
+    state[16] = internal.initial_RasGTP;
+    state[17] = internal.initial_ERK;
+    state[18] = internal.initial_ppERK;
+    state[19] = internal.initial_pAkt;
+    return state;
+  }
+  setUser(user, unusedUserAction) {
+    this.base.user.checkUser(user, ["aEGFR", "Akt_init", "aLATS1_init", "aMST2_init", "aMST2_max", "aMST2uRASSF1A_init", "aRaf1_init", "dMST2_init", "ERK_init", "iMST2_init", "ipRaf1_init", "iRaf1_init", "iRaf1uiMST2_init", "ka_21", "ka_22", "ka_41", "ka_71", "kc_11", "kc_112", "kc_12", "kc_121", "kc_131", "kc_21", "kc_81", "kc_82", "kc_91", "kc_92", "kd_21", "kd_31", "kd_41", "kd_71", "Km_101", "Km_102", "Km_11", "Km_111", "Km_112", "Km_12", "Km_121", "Km_122", "Km_13", "Km_131", "Km_132", "Km_21", "Km_22", "Km_23", "Km_51", "Km_81", "Km_82", "Km_83", "Km_91", "Km_92", "Km_93", "LATS1_init", "Metabolite_4", "Metabolite_5", "ModelValue_51", "ModelValue_53", "MST2_init", "MST2uRASSF1A_init", "pAkt_init", "pAkt_max", "ppERK_init", "ppERK_max", "Raf1_init", "RasGDP_init", "RasGTP_init", "RASSF1A_init", "V_101", "V_102", "V_11", "V_111", "V_121", "V_131", "V_21", "V_22", "V_51", "V_81", "V_91"], unusedUserAction);
+    var internal = this.internal;
+    this.base.user.setUserScalar(user, "aEGFR", internal, 500, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Akt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "aLATS1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "aMST2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "aMST2_max", internal, 94.799999999999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "aMST2uRASSF1A_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "aRaf1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "dMST2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ERK_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "iMST2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ipRaf1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "iRaf1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "iRaf1uiMST2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ka_21", internal, 4472, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ka_22", internal, 0.068400000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ka_41", internal, 0.42370000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ka_71", internal, 28.120000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_11", internal, 0.0011490000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_112", internal, 0.0027420000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_12", internal, 0.71699999999999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_121", internal, 0.20610000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_131", internal, 5.3419999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_21", internal, 6684, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_81", internal, 6189, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_82", internal, 0.00029300000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_91", internal, 0.1177, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_92", internal, 0.92030000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kd_21", internal, 0.113, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kd_31", internal, 0.61170000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kd_41", internal, 1.226, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kd_71", internal, 0.00048859999999999995, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_101", internal, 457.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_102", internal, 3.1970000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_11", internal, 51.210000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_111", internal, 0.076780000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_112", internal, 207.09999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_12", internal, 0.014970000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_121", internal, 120.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_122", internal, 297.19999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_13", internal, 0.74399999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_131", internal, 0.036760000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_132", internal, 151, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_21", internal, 427.30000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_22", internal, 816.20000000000005, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_23", internal, 0.00083129999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_51", internal, 6.7080000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_81", internal, 0.085029999999999994, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_82", internal, 3961, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_83", internal, 22.260000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_91", internal, 0.8821, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_92", internal, 10.68, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km_93", internal, 0.90149999999999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "LATS1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Metabolite_4", internal, 185.59999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Metabolite_5", internal, 113.90000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ModelValue_51", internal, 200, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ModelValue_53", internal, 226.84, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MST2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MST2uRASSF1A_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "pAkt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "pAkt_max", internal, 200, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ppERK_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ppERK_max", internal, 226.84, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Raf1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RasGDP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RasGTP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RASSF1A_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_101", internal, 994.79999999999995, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_102", internal, 317.30000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_11", internal, 0.086870000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_111", internal, 254.69999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_121", internal, 1027, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_131", internal, 995.29999999999995, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_21", internal, 1414, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_22", internal, 7511, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_51", internal, 0.00056879999999999995, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_81", internal, 2261, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_91", internal, 2.0710000000000002, -Infinity, Infinity, false);
+    internal.initial_Akt = internal.Akt_init;
+    internal.initial_aLATS1 = internal.aLATS1_init;
+    internal.initial_aMST2 = internal.aMST2_init;
+    internal.initial_aMST2uRASSF1A = internal.aMST2uRASSF1A_init;
+    internal.initial_aRaf1 = internal.aRaf1_init;
+    internal.initial_dMST2 = internal.dMST2_init;
+    internal.initial_ERK = internal.ERK_init;
+    internal.initial_iMST2 = internal.iMST2_init;
+    internal.initial_ipRaf1 = internal.ipRaf1_init;
+    internal.initial_iRaf1 = internal.iRaf1_init;
+    internal.initial_iRaf1uiMST2 = internal.iRaf1uiMST2_init;
+    internal.initial_LATS1 = internal.LATS1_init;
+    internal.initial_MST2 = internal.MST2_init;
+    internal.initial_MST2uRASSF1A = internal.MST2uRASSF1A_init;
+    internal.initial_pAkt = internal.pAkt_init;
+    internal.initial_ppERK = internal.ppERK_init;
+    internal.initial_Raf1 = internal.Raf1_init;
+    internal.initial_RasGDP = internal.RasGDP_init;
+    internal.initial_RasGTP = internal.RasGTP_init;
+    internal.initial_RASSF1A = internal.RASSF1A_init;
+    this.updateMetadata();
+  }
+  getInternal() {
+    return this.internal;
+  }
+  rhs(t, state, dstatedt) {
+    var internal = this.internal;
+    const Akt = state[0];
+    const RASSF1A = state[1];
+    const MST2 = state[2];
+    const dMST2 = state[3];
+    const aMST2 = state[4];
+    const aMST2uRASSF1A = state[5];
+    const MST2uRASSF1A = state[6];
+    const iMST2 = state[7];
+    const iRaf1uiMST2 = state[8];
+    const aLATS1 = state[9];
+    const LATS1 = state[10];
+    const iRaf1 = state[11];
+    const Raf1 = state[12];
+    const aRaf1 = state[13];
+    const ipRaf1 = state[14];
+    const RasGDP = state[15];
+    const RasGTP = state[16];
+    const ERK = state[17];
+    const ppERK = state[18];
+    const pAkt = state[19];
+    dstatedt[0] = 0 - 1 * internal.compartment * (internal.kc_11 * internal.aEGFR * Akt / (internal.Km_11 + Akt)) + 1 * internal.compartment * (internal.V_11 * pAkt / (internal.Km_12 + pAkt)) - 1 * internal.compartment * (internal.kc_12 * Akt * RasGTP / (internal.Km_13 + Akt));
+    dstatedt[9] = 0 - 1 * internal.compartment * (internal.V_81 * aLATS1 / (internal.Km_81 + aLATS1)) + 1 * internal.compartment * (internal.kc_81 * aMST2 * LATS1 / (internal.Km_82 + LATS1)) + 1 * internal.compartment * (internal.kc_82 * aMST2uRASSF1A * LATS1 / (internal.Km_83 + LATS1));
+    dstatedt[4] = 0 - 1 * internal.compartment * (internal.V_21 * aMST2 / (internal.Km_21 + aMST2)) + 2 * internal.compartment * (internal.kd_31 * dMST2) - 1 * internal.compartment * (internal.ka_41 * aMST2 * RASSF1A - internal.kd_41 * aMST2uRASSF1A);
+    dstatedt[5] = 0 + 1 * internal.compartment * (internal.ka_41 * aMST2 * RASSF1A - internal.kd_41 * aMST2uRASSF1A) + 1 * internal.compartment * (internal.V_51 * MST2uRASSF1A / (internal.Km_51 + MST2uRASSF1A));
+    dstatedt[13] = 0 - 1 * internal.compartment * (internal.V_101 * aRaf1 / (internal.Km_101 + aRaf1)) + 1 * internal.compartment * (internal.V_102 * Raf1 / (internal.Km_102 + Raf1)) + 1 * internal.compartment * (internal.V_111 * ipRaf1 / (internal.Km_111 + ipRaf1)) - 1 * internal.compartment * (internal.kc_112 * aRaf1 * ppERK / (internal.Km_112 + aRaf1));
+    dstatedt[3] = 0 + 1 * internal.compartment * (internal.ka_21 * Math.pow((MST2), (2))) - 1 * internal.compartment * (internal.kd_31 * dMST2);
+    dstatedt[17] = 0 - 1 * internal.compartment * (internal.kc_131 * aRaf1 * ERK / (internal.Km_131 + ERK)) + 1 * internal.compartment * (internal.V_131 * ppERK / (internal.Km_132 + ppERK));
+    dstatedt[7] = 0 - 1 * internal.compartment * (internal.V_22 * iMST2 / (internal.Km_22 + iMST2)) + 1 * internal.compartment * (internal.kc_21 * MST2 * pAkt / (internal.Km_23 + MST2)) - 1 * internal.compartment * (internal.ka_71 * iMST2 * iRaf1 - internal.kd_71 * iRaf1uiMST2);
+    dstatedt[14] = 0 - 1 * internal.compartment * (internal.V_111 * ipRaf1 / (internal.Km_111 + ipRaf1)) + 1 * internal.compartment * (internal.kc_112 * aRaf1 * ppERK / (internal.Km_112 + aRaf1));
+    dstatedt[11] = 0 - 1 * internal.compartment * (internal.ka_71 * iMST2 * iRaf1 - internal.kd_71 * iRaf1uiMST2) + 1 * internal.compartment * (internal.V_91 * Raf1 / (internal.Km_91 + Raf1)) + 1 * internal.compartment * (internal.kc_91 * aLATS1 * Raf1 / (internal.Km_92 + Raf1)) - 1 * internal.compartment * (internal.kc_92 * iRaf1 * RasGTP / (internal.Km_93 + iRaf1));
+    dstatedt[8] = 0 + 1 * internal.compartment * (internal.ka_71 * iMST2 * iRaf1 - internal.kd_71 * iRaf1uiMST2);
+    dstatedt[10] = 0 + 1 * internal.compartment * (internal.V_81 * aLATS1 / (internal.Km_81 + aLATS1)) - 1 * internal.compartment * (internal.kc_81 * aMST2 * LATS1 / (internal.Km_82 + LATS1)) - 1 * internal.compartment * (internal.kc_82 * aMST2uRASSF1A * LATS1 / (internal.Km_83 + LATS1));
+    dstatedt[2] = 0 + 1 * internal.compartment * (internal.V_21 * aMST2 / (internal.Km_21 + aMST2)) + 1 * internal.compartment * (internal.V_22 * iMST2 / (internal.Km_22 + iMST2)) - 2 * internal.compartment * (internal.ka_21 * Math.pow((MST2), (2))) - 1 * internal.compartment * (internal.ka_22 * MST2 * RASSF1A - internal.kd_21 * MST2uRASSF1A) - 1 * internal.compartment * (internal.kc_21 * MST2 * pAkt / (internal.Km_23 + MST2));
+    dstatedt[6] = 0 + 1 * internal.compartment * (internal.ka_22 * MST2 * RASSF1A - internal.kd_21 * MST2uRASSF1A) - 1 * internal.compartment * (internal.V_51 * MST2uRASSF1A / (internal.Km_51 + MST2uRASSF1A));
+    dstatedt[19] = 0 + 1 * internal.compartment * (internal.kc_11 * internal.aEGFR * Akt / (internal.Km_11 + Akt)) - 1 * internal.compartment * (internal.V_11 * pAkt / (internal.Km_12 + pAkt)) + 1 * internal.compartment * (internal.kc_12 * Akt * RasGTP / (internal.Km_13 + Akt));
+    dstatedt[18] = 0 + 1 * internal.compartment * (internal.kc_131 * aRaf1 * ERK / (internal.Km_131 + ERK)) - 1 * internal.compartment * (internal.V_131 * ppERK / (internal.Km_132 + ppERK));
+    dstatedt[12] = 0 - 1 * internal.compartment * (internal.V_91 * Raf1 / (internal.Km_91 + Raf1)) - 1 * internal.compartment * (internal.kc_91 * aLATS1 * Raf1 / (internal.Km_92 + Raf1)) + 1 * internal.compartment * (internal.kc_92 * iRaf1 * RasGTP / (internal.Km_93 + iRaf1)) + 1 * internal.compartment * (internal.V_101 * aRaf1 / (internal.Km_101 + aRaf1)) - 1 * internal.compartment * (internal.V_102 * Raf1 / (internal.Km_102 + Raf1));
+    dstatedt[15] = 0 - 1 * internal.compartment * (internal.kc_121 * internal.aEGFR * RasGDP / (internal.Km_121 + RasGDP)) + 1 * internal.compartment * (internal.V_121 * RasGTP / (internal.Km_122 + RasGTP));
+    dstatedt[16] = 0 + 1 * internal.compartment * (internal.kc_121 * internal.aEGFR * RasGDP / (internal.Km_121 + RasGDP)) - 1 * internal.compartment * (internal.V_121 * RasGTP / (internal.Km_122 + RasGTP));
+    dstatedt[1] = 0 - 1 * internal.compartment * (internal.ka_22 * MST2 * RASSF1A - internal.kd_21 * MST2uRASSF1A) - 1 * internal.compartment * (internal.ka_41 * aMST2 * RASSF1A - internal.kd_41 * aMST2uRASSF1A);
+  }
+  names() {
+    return this.metadata.ynames.slice(1);
+  }
+  updateMetadata() {
+    this.metadata = {};
+    var internal = this.internal;
+    this.metadata.ynames = ["t", "Akt", "RASSF1A", "MST2", "dMST2", "aMST2", "aMST2uRASSF1A", "MST2uRASSF1A", "iMST2", "iRaf1uiMST2", "aLATS1", "LATS1", "iRaf1", "Raf1", "aRaf1", "ipRaf1", "RasGDP", "RasGTP", "ERK", "ppERK", "pAkt"];
+    this.metadata.internalOrder = {aEGFR: null, Akt_init: null, aLATS1_init: null, aMST2_init: null, aMST2_max: null, aMST2uRASSF1A_init: null, aRaf1_init: null, compartment: null, dMST2_init: null, ERK_init: null, iMST2_init: null, initial_Akt: null, initial_aLATS1: null, initial_aMST2: null, initial_aMST2uRASSF1A: null, initial_aRaf1: null, initial_dMST2: null, initial_ERK: null, initial_iMST2: null, initial_ipRaf1: null, initial_iRaf1: null, initial_iRaf1uiMST2: null, initial_LATS1: null, initial_MST2: null, initial_MST2uRASSF1A: null, initial_pAkt: null, initial_ppERK: null, initial_Raf1: null, initial_RasGDP: null, initial_RasGTP: null, initial_RASSF1A: null, ipRaf1_init: null, iRaf1_init: null, iRaf1uiMST2_init: null, ka_21: null, ka_22: null, ka_41: null, ka_71: null, kc_11: null, kc_112: null, kc_12: null, kc_121: null, kc_131: null, kc_21: null, kc_81: null, kc_82: null, kc_91: null, kc_92: null, kd_21: null, kd_31: null, kd_41: null, kd_71: null, Km_101: null, Km_102: null, Km_11: null, Km_111: null, Km_112: null, Km_12: null, Km_121: null, Km_122: null, Km_13: null, Km_131: null, Km_132: null, Km_21: null, Km_22: null, Km_23: null, Km_51: null, Km_81: null, Km_82: null, Km_83: null, Km_91: null, Km_92: null, Km_93: null, LATS1_init: null, Metabolite_4: null, Metabolite_5: null, ModelValue_51: null, ModelValue_53: null, MST2_init: null, MST2uRASSF1A_init: null, pAkt_init: null, pAkt_max: null, ppERK_init: null, ppERK_max: null, Raf1_init: null, RasGDP_init: null, RasGTP_init: null, RASSF1A_init: null, V_101: null, V_102: null, V_11: null, V_111: null, V_121: null, V_131: null, V_21: null, V_22: null, V_51: null, V_81: null, V_91: null};
+    this.metadata.variableOrder = {Akt: null, RASSF1A: null, MST2: null, dMST2: null, aMST2: null, aMST2uRASSF1A: null, MST2uRASSF1A: null, iMST2: null, iRaf1uiMST2: null, aLATS1: null, LATS1: null, iRaf1: null, Raf1: null, aRaf1: null, ipRaf1: null, RasGDP: null, RasGTP: null, ERK: null, ppERK: null, pAkt: null};
+    this.metadata.outputOrder = null;
+  }
+  getMetadata() {
+    return this.metadata;
+  }
+}

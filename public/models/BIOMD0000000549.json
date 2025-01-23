@@ -1,0 +1,1 @@
+[{"data": {"id": "compartment_1", "label": "Synovium"}, "group": "nodes", "classes": "compartment"}, {"data": {"id": "species_1", "label": "a", "parent": "compartment_1", "sboTerm": -1}, "group": "nodes", "classes": "species"}, {"data": {"id": "species_2", "label": "p", "parent": "compartment_1", "sboTerm": -1}, "group": "nodes", "classes": "species"}]
