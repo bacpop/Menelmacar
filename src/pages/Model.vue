@@ -10,7 +10,6 @@ import { ArrowDown, ArrowUp, ExternalLink } from 'lucide-vue-next'
 import { LineChart } from '@/components/ui/chart-line'
 import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
 import ModelGraph from '@/components/ModelGraph.vue'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -40,7 +39,7 @@ const hasResults = computed(() => modelResults.value !== null)
 
 const modelDetails: ModelDetails = ref(null)
 
-const chartColors = [
+const chartColors = ref([
   '#FF6B6B',
   '#4ECDC4',
   '#FFA726',
@@ -50,8 +49,40 @@ const chartColors = [
   '#FF9800',
   '#673AB7',
   '#03A9F4',
-  '#E91E63'
-]
+  '#E91E63',
+  '#FF5722',
+  '#2196F3',
+  '#FFEB3B',
+  '#4CAF50',
+  '#9E9E9E',
+  '#F44336',
+  '#2980B9',
+  '#F39C12',
+  '#8E44AD',
+  '#16A085',
+  '#34495E',
+  '#D35400',
+  '#27AE60',
+  '#7F8C8D',
+  '#C0392B'
+])
+
+const generateColorPalette = (count: number) => {
+  const newColors = [...chartColors.value]
+
+  while (newColors.length < count) {
+    const hue = Math.floor(Math.random() * 360)
+    const saturation = 70 + Math.floor(Math.random() * 30)
+    const lightness = 40 + Math.floor(Math.random() * 20)
+    const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`
+
+    if (!newColors.includes(color)) {
+      newColors.push(color)
+    }
+  }
+
+  return newColors
+}
 
 watch(router.currentRoute, () => {
   if (router.currentRoute.value.params.modelId) {
@@ -77,6 +108,10 @@ const runModel = async () => {
   times.value = range(0, time.value[0], 1000)
 
   modelResults.value = mod.run(times.value, null, {})
+
+  if (modelResults.value.names.length > chartColors.value.length) {
+    chartColors.value = generateColorPalette(modelResults.names.length)
+  }
 
   const { yDomain, yRange } = rangeAndDomain(
     modelResults.value,
@@ -143,7 +178,7 @@ onMounted(async () => {
           <div v-if="modelDetails?.description"
                :class="cn('relative rounded-md max-h-36 overflow-hidden transition-all text-gray-300', expandDescription && 'max-h-full')">
 
-            <div v-html="modelDetails?.description"></div>
+            <div class="description-content" v-html="modelDetails?.description"></div>
 
             <div v-if="modelDetails?.description.length > 1000"
                  class="absolute bottom-0 left-0 h-20 pb-2 bg-gradient-to-t from-slate-darker to-slate-darker/30 w-full flex flex-row items-end justify-center cursor-pointer"
@@ -239,7 +274,7 @@ onMounted(async () => {
 
       <div v-if="activeTab === 'plot'">
         <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-col gap-4">
-          <div class="flex-grow flex flex-row gap-2 h-[500px]">
+          <div class="flex-grow flex flex-row gap-2 h-[700px]">
             <div class="flex flex-col flex-grow w-[80px] h-full items-center">
               <p class="whitespace-nowrap mb-4">Max Y</p>
               <Slider
@@ -252,7 +287,7 @@ onMounted(async () => {
               />
             </div>
             <LineChart
-              class="h-full"
+              class="h-full w-full"
               :data="chartData"
               :colors="chartColors"
               :categories="modelResults.names"
@@ -268,15 +303,19 @@ onMounted(async () => {
       <div v-if="activeTab === 'variables'">
         <div class="mt-8 flex flex-row flex-wrap gap-4">
           <div class="bg-slate-dark rounded-md p-4 flex-grow"
-               v-for="variable in modelResults.names">
+               v-for="(variable, index) in modelResults.names">
+            <div class="w-full text-center text-sm font-semibold">
+              {{ variable }}
+            </div>
             <LineChart
-              class="h-full w-full"
+              class="h-full w-full max-h-[200px] mt-4"
               :data="chartData"
-              :colors="chartColors"
+              :colors="[chartColors[index]]"
               :categories="[variable]"
               :show-x-axis="true"
               :show-y-axis="true"
               :show-grid-line="false"
+              :show-legend="false"
               :x-formatter="(tick) =>Number(chartData[tick].time).toFixed(4)"
               index="time" />
           </div>
@@ -289,4 +328,12 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.description-content {
+  * {
+    background: transparent !important;
+  }
+}
+</style>
 
