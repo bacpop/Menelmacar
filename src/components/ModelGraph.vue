@@ -13,7 +13,7 @@
                       class="w-fit flex flex-col gap-1">
         <div class="flex flex-col gap-2 max-h-[350px] overflow-y-auto">
           <div v-for="parameter in Object.keys(layoutParameters)"
-               class="flex flex-row w-[300px]">
+               class="flex flex-row w-[300px] items-center">
             <label :for="`param_${parameter}`" class="inline-block w-11/12 whitespace-nowrap">
               {{ parameter }}:
             </label>
@@ -22,7 +22,7 @@
                    :id="`param_${parameter}`"
                    :value="layoutParameters[parameter]"
                    @input="event => updateParam(parameter, Number(event.target.value))"
-                   class="w-6/12" />
+                   class="w-6/12 outline-none focus-visible:ring-0" />
           </div>
         </div>
         <div class="flex flex-row justify-end mt-2 pt-4 gap-2 border-t">

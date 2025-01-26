@@ -15,6 +15,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Slider } from '@/components/ui/slider'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 const router = useRouter()
 const modelId = ref(router.currentRoute.value.params.modelId)
@@ -183,34 +184,41 @@ onMounted(async () => {
          class="flex flex-col max-w-[1120px] w-full py-8 text-light-grey">
       <div v-if="activeTab !== 'graph'"
            class="flex flex-row w-full gap-6 items-center">
-        <DropdownMenu :open="paramsDropdownOpen">
-          <DropdownMenuTrigger
-            @click="paramsDropdownOpen = !paramsDropdownOpen"
-            class="rounded-md uppercase bg-transparent border border-white font-medium transition-colors px-4 py-2 text-sm max-h-9 hover:bg-white hover:text-black">
-            Initial parameters
-          </DropdownMenuTrigger>
-          <DropdownMenuContent side="bottom"
-                               align="start"
-                               side-offset="0"
-                               :prioritize-position="true"
-                               class="bg-white rounded-md shadow-lg w-full">
-            <DropdownMenuItem v-for="parameter in Object.keys(parameters)">
-              <label :for="`param_${parameter}`" class="w-2/4">
-                {{ parameter }}:
-              </label>
-              <Input type="number"
-                     :name="`param_${parameter}`"
-                     :id="`param_${parameter}`"
-                     :value="parameters[parameter]"
-                     @input="event => updateParam(parameter, Number(event.target.value))" />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
+        <Popover :open="paramsDropdownOpen">
+          <PopoverTrigger as-child>
+            <Button variant="outline" class="uppercase rounded-md bg-transparent border-white"
+                    @click="paramsDropdownOpen = !paramsDropdownOpen">
+              Initial parameters
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent side="bottom"
+                          align="start"
+                          :prioritize-position="true"
+                          class="w-fit flex flex-col gap-1">
+            <div class="flex flex-col gap-2 max-h-[350px] overflow-y-auto">
+              <div v-for="parameter in Object.keys(parameters)"
+                   class="flex flex-row w-[400px] items-center">
+                <label :for="`param_${parameter}`" class="inline-block w-11/12 whitespace-nowrap">
+                  {{ parameter }}:
+                </label>
+                <Input type="number"
+                       :name="`param_${parameter}`"
+                       :id="`param_${parameter}`"
+                       :value="parameters[parameter]"
+                       @input="event => updateParam(parameter, Number(event.target.value))"
+                       class="w-6/12 outline-none focus-visible:ring-0" />
+              </div>
+            </div>
+            <div class="flex flex-row justify-end mt-2 pt-4 gap-2 border-t">
+              <Button variant="outline" @click="resetParams">
+                Reset
+              </Button>
               <Button @click="applyParameters">
                 Apply
               </Button>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </div>
+          </PopoverContent>
+        </Popover>
 
         <label class="flex items-center gap-2">
           <Checkbox :checked="logScale" @update:checked="logScale = !logScale" />
