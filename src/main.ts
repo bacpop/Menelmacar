@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import './index.scss'
 import Home from '@/pages/Home.vue'
 import Model from '@/pages/Model.vue'
+import { VueQueryPlugin } from '@tanstack/vue-query'
 
 const routes = [
   {
@@ -25,4 +26,5 @@ const router = createRouter({
 
 createApp(App)
   .use(router)
+  .use(VueQueryPlugin)
   .mount('#app')
