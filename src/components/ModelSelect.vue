@@ -12,15 +12,13 @@ import {
 } from 'reka-ui'
 import { Search } from 'lucide-vue-next'
 import { cn } from '@/lib/utils.ts'
-import { Button } from '@/components/ui/button'
 import { getAvailableModels } from '@/utils/api.ts'
 import ModelLabel from '@/components/ModelLabel.vue'
-import { watchDeep } from '@vueuse/core'
 
 const models = ref([])
 
 const router = useRouter()
-const value = ref(null)
+const value = ref('')
 const searchTerm = ref('')
 const searchOpen = ref(false)
 
@@ -37,11 +35,13 @@ watch(router.currentRoute, () => {
   }
 })
 
-watchDeep(value, () => {
-  if (value.value && value.value.value !== router.currentRoute.value.params.modelId) {
-    router.push(`/view/${value.value.value}`)
+const openModel = (modelId: string) => {
+  searchOpen.value = false
+  if (modelId && modelId !== router.currentRoute.value.params.modelId) {
+    value.value = modelId
+    router.push(`/view/${modelId}`)
   }
-})
+}
 
 onMounted(async () => {
   models.value = await getAvailableModels()
@@ -60,8 +60,7 @@ const filteredModels = computed(() => {
 
 <template>
   <div :class="cn('flex flex-row gap-4 items-center', inline ? 'w-full justify-end' : '')">
-    <ComboboxRoot v-model="value"
-                  :open="searchOpen"
+    <ComboboxRoot :open="searchOpen"
                   ignore-filter>
       <div class="flex items-center border-b px-3 bg-white rounded-md w-[450px]">
         <Search class="mr-2 h-4 w-4 shrink-0 opacity-50" />
@@ -80,6 +79,8 @@ const filteredModels = computed(() => {
           <ComboboxItem v-for="model in filteredModels"
                         :class="cn('relative flex flex-col items-start cursor-default select-none rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50')"
                         :key="model.value"
+                        @select.prevent
+                        @mousedown.prevent.stop="() => openModel(model.value)"
                         :value="model">
             <ModelLabel :model-id="model.value" />
             <br>
