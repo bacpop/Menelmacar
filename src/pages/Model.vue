@@ -181,7 +181,8 @@ onMounted(async () => {
 
     <div v-if="hasResults"
          class="flex flex-col max-w-[1120px] w-full py-8 text-light-grey">
-      <div class="flex flex-row w-full gap-6 items-center">
+      <div v-if="activeTab !== 'graph'"
+           class="flex flex-row w-full gap-6 items-center">
         <DropdownMenu :open="paramsDropdownOpen">
           <DropdownMenuTrigger
             @click="paramsDropdownOpen = !paramsDropdownOpen"
