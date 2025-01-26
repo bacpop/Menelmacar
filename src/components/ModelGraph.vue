@@ -1,43 +1,72 @@
 <template>
-  <div v-if="cy!==null" id="initial_layout">
-    <Popper>
-      <button id="choose_layout">Choose layout</button>
-      <template #content>
-        <div v-for="value in Object.entries(this.layoutParameters)" :key="value[1]">
-          <label class="keys_layout">{{ value[0] }}</label>
-          <input class="values_layout" type="number" :value="value[1]"
-                 @change="event => this.layoutParameters[value[0]] = +event.target.value" />
+  <div v-if="cy" class="flex flex-row justify-between">
+    <Popover :open="paramsDropdownOpen">
+      <PopoverTrigger as-child>
+        <Button variant="outline" class="uppercase rounded-md bg-transparent border-white"
+                @click="paramsDropdownOpen = !paramsDropdownOpen">
+          Layout parameters
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent side="bottom"
+                      align="start"
+                      :prioritize-position="true"
+                      class="w-fit flex flex-col gap-1">
+        <div class="flex flex-col gap-2 max-h-[350px] overflow-y-auto">
+          <div v-for="parameter in Object.keys(layoutParameters)"
+               class="flex flex-row w-[300px]">
+            <label :for="`param_${parameter}`" class="inline-block w-11/12 whitespace-nowrap">
+              {{ parameter }}:
+            </label>
+            <Input type="number"
+                   :name="`param_${parameter}`"
+                   :id="`param_${parameter}`"
+                   :value="layoutParameters[parameter]"
+                   @input="event => updateParam(parameter, Number(event.target.value))"
+                   class="w-6/12" />
+          </div>
         </div>
-        <div class="layout_button">
-          <button @click="reload">Reload with new layout</button>
+        <div class="flex flex-row justify-end mt-2 pt-4 gap-2 border-t">
+          <Button variant="outline" @click="resetParams">
+            Reset
+          </Button>
+          <Button @click="reload">
+            Apply
+          </Button>
         </div>
-        <div class="parameters_button">
-          <button @click="Object.assign(this.layoutParameters, this.initialLayoutParameters); reload()">Reset layout
-          </button>
-        </div>
-      </template>
-    </Popper>
-  </div>
-  <p v-if="!modelLoaded & !noModelFound">Loading image...</p>
-  <div v-else-if="noModelFound">
-    <h2>The JSON file for this model doesn't exist</h2>
-  </div>
-  <div id="graphHolder"></div>
-  <button id="downloadGraph" v-if="cy!==null" @click="downloadImage">Download graph as an image</button>
+      </PopoverContent>
+    </Popover>
 
+    <Button variant="outline" class="uppercase rounded-md bg-transparent border-white" @click="downloadImage">
+      <Download />
+      Download image
+    </Button>
+  </div>
+
+  <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-row flex-wrap gap-4">
+    <p v-if="!modelLoaded & !noModelFound">Loading...</p>
+    <div v-else-if="noModelFound">
+      <h2>The JSON file for this model doesn't exist</h2>
+    </div>
+    <div id="graphHolder"></div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import cytoscape from 'cytoscape'
 import fcose from 'cytoscape-fcose'
 import { adjustStylesheet } from '../utils/stylesheet.ts'
-import Popper from 'vue3-popper'
 import { onMounted, ref } from 'vue'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Download } from 'lucide-vue-next'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 
 cytoscape.use(fcose)
 
 const props = defineProps<{ modelReference: string }>()
 const modelReference = ref(props.modelReference)
+
+const paramsDropdownOpen = ref(false)
 
 const modelLoaded = ref(false)
 const noModelFound = ref(false)
@@ -59,15 +88,22 @@ const layoutParameters = ref({
 })
 const initialLayoutParameters = ref({})
 
+const updateParam = (parameter: string, value: number) => {
+  layoutParameters.value = {
+    ...layoutParameters.value,
+    [parameter]: value
+  }
+}
 
 onMounted(() => {
   console.log('Reading model')
   fetch(`/models/${modelReference.value}.json`).then(fileString => fileString.text())
     .then(json => {
-      let sbml = JSON.parse(json)
+      const sbml = JSON.parse(json)
       modelLoaded.value = true
       const cyContainer = document.getElementById('graphHolder')
       if (cyContainer) {
+        updateLayout()
         render(sbml)
       } else {
         console.error('Cytoscape container not found!')
@@ -78,7 +114,27 @@ onMounted(() => {
     })
 
   initialLayoutParameters.value = { ...layoutParameters.value }
+})
 
+const resetParams = () => {
+  layoutParameters.value = { ...initialLayoutParameters.value }
+  reload()
+}
+
+const render = (elements) => {
+  let stylesheet = adjustStylesheet()
+
+  cy.value = cytoscape({
+    container: document.getElementById('graphHolder'),
+    elements: elements,
+    style: stylesheet,
+    layout: {
+      ...layout.value
+    }
+  })
+}
+
+const updateLayout = () => {
   layout.value = {
     name: 'fcose',
     padding: layoutParameters.value['Padding'],
@@ -94,44 +150,18 @@ onMounted(() => {
     tilingPaddingVertical: layoutParameters.value['Tiling Padding Vert.'],
     tilingPaddingHorizontal: layoutParameters.value['Tiling Padding Hor.']
   }
-})
-
-const render = (elements) => {
-  let stylesheet = adjustStylesheet()
-
-  const cy = cytoscape({
-    container: document.getElementById('graphHolder'),
-    elements: elements,
-    style: stylesheet,
-    layout: {
-      name: 'fcose' // Or other layout options
-    }
-  })
-  cy.value = cy
 }
 
 const reload = () => {
-  this.layout = {
-    name: 'fcose',
-    padding: layoutParameters.value['Padding'],
-    nodeRepulsion: node => layoutParameters.value['Node Repulsion'],
-    idealEdgeLength: edge => layoutParameters.value['Ideal Edge Length'],
-    edgeElasticity: edge => layoutParameters.value['Edge Elasticity'],
-    nestingFactor: layoutParameters.value['Nesting Factor'],
-    numIter: layoutParameters.value['Number of Iter.'],
-    gravity: layoutParameters.value['Gravity'],
-    gravityRange: layoutParameters.value['Gravity Range'],
-    gravityCompound: layoutParameters.value['Gravity Compound'],
-    gravityRangeCompound: layoutParameters.value['Gravity Range Comp.'],
-    tilingPaddingVertical: layoutParameters.value['Tiling Padding Vert.'],
-    tilingPaddingHorizontal: layoutParameters.value['Tiling Padding Hor.']
-  }
+  paramsDropdownOpen.value = false
+
+  updateLayout()
 
   cy.value.layout(layout.value).run()
 }
 
 const downloadImage = () => {
-  let png = this.cy.jpg()
+  let png = cy.value.jpg()
   let a = document.createElement('a')
   a.href = png
   a.download = 'graph.jpg'
@@ -141,43 +171,8 @@ const downloadImage = () => {
 </script>
 
 <style lang="scss">
-:root {
-  --popper-theme-background-color: lightgray;
-  --popper-theme-background-color-hover: lightgray;
-  --popper-theme-text-color: black;
-  --popper-theme-border-width: 3px;
-  --popper-theme-border-style: solid;
-  --popper-theme-border-radius: 6px;
-  --popper-theme-padding: 5px;
-}
-
-#choose_layout {
-  margin: 10px 0;
-}
-
 #graphHolder {
-  width: calc(100% - 40px);
-  height: 400px;
-  margin: 40;
-  border: 1px solid black;
-}
-
-.keys_layout {
-  display: inline-block;
-  width: 150px;
-  padding-bottom: 5px;
-}
-
-.values_layout {
-  display: inline-block;
-  width: 150px;
-}
-
-#initial_layout {
-  margin-top: 10px;
-}
-
-#downloadGraph {
-  margin: 10px 0;
+  width: 100%;
+  height: 500px;
 }
 </style>

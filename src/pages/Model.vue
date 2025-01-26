@@ -276,9 +276,7 @@ onMounted(async () => {
       </div>
 
       <div v-if="activeTab === 'graph'">
-        <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-row flex-wrap gap-4">
-          <ModelGraph :model-reference="modelId" />
-        </div>
+        <ModelGraph :model-reference="modelId" />
       </div>
     </div>
   </div>
