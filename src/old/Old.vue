@@ -51,7 +51,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import ModelViewer from './components/ModelViewer.vue'
+import ModelViewer from './ModelViewer.vue'
 import Header from '@/components/layout/Header.vue'
 import ModelSelect from '@/components/ModelSelect.vue'
 

@@ -9,7 +9,7 @@ import { getModelData } from '@/utils/api.ts'
 import { ArrowDown, ArrowUp, ExternalLink } from 'lucide-vue-next'
 import { LineChart } from '@/components/ui/chart-line'
 import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
-import GraphViewer from '@/components/GraphViewer.vue'
+import ModelGraph from '@/components/ModelGraph.vue'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -277,7 +277,7 @@ onMounted(async () => {
 
       <div v-if="activeTab === 'graph'">
         <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-row flex-wrap gap-4">
-          <GraphViewer :model_reference="modelId" />
+          <ModelGraph :model-reference="modelId" />
         </div>
       </div>
     </div>

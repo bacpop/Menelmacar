@@ -59,7 +59,7 @@
 <script lang="ts">
 import SingleViewer from './SingleViewer.vue'
 import MultipleViewer from './MultipleViewer.vue'
-import GraphViewer from './GraphViewer.vue'
+import GraphViewer from '../components/GraphViewer.vue'
 import VueSlider from 'vue-3-slider-component'
 import {PkgWrapper} from "@reside-ic/odinjs"
 import {defineComponent, ref} from 'vue'
