@@ -21,7 +21,6 @@ const modelId = ref(router.currentRoute.value.params.modelId)
 const activeTab = ref(router.currentRoute.value.params.tab || 'plot')
 
 const expandDescription = ref(false)
-const showExpandDescription = ref(false)
 
 const parameters = ref(null)
 const paramsDropdownOpen = ref(false)
@@ -140,9 +139,7 @@ onMounted(async () => {
             {{ modelDetails?.name || 'Loading...' }}
           </h1>
 
-          <div @mouseenter="showExpandDescription =true"
-               @mouseleave="showExpandDescription = false"
-               :class="cn('relative rounded-md max-h-36 overflow-hidden transition-all text-gray-300', expandDescription && 'max-h-full')">
+          <div :class="cn('relative rounded-md max-h-36 overflow-hidden transition-all text-gray-300', expandDescription && 'max-h-full')">
 
             <div v-html="modelDetails?.description"></div>
 

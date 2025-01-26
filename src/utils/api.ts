@@ -11,14 +11,14 @@ export const getAvailableModels = async () => {
   const data = await response.text()
   const models: string[] = data.split('\n').slice(0, -1).map(file => file.split('\r').at(0))
 
-  const modelsData = await Promise.all(models.map(async model => {
-    return await getModelData(model)
-  }))
+  // const modelsData = await Promise.all(models.map(async model => {
+  //   return await getModelData(model)
+  // }))
 
   return models.map((model, index) => {
     return {
       value: model,
-      label: modelsData[index].name
+      label: "Loading...",
     }
   })
 }

@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { ComboboxAnchor, ComboboxContent, ComboboxInput, ComboboxItem, ComboboxPortal, ComboboxRoot } from 'radix-vue'
+import {
+  ComboboxAnchor,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxPortal,
+  ComboboxRoot
+} from 'radix-vue'
 import { Search } from 'lucide-vue-next'
 import { cn } from '@/lib/utils.ts'
 import { Button } from '@/components/ui/button'
@@ -11,6 +19,7 @@ const models = ref([])
 
 const router = useRouter()
 const value = ref('')
+const searchTerm = ref('')
 
 const props = defineProps<{ inline: boolean }>()
 const inline = ref(props.inline)
@@ -40,11 +49,22 @@ const loadModel = () => {
 onMounted(async () => {
   models.value = await getAvailableModels()
 })
+
+const filterFunction = (val: string[], term: string) => {
+  if (term.length === 0) {
+    return val.slice(0, 10)
+  }
+
+  return val.filter(item => {
+    return item.toLowerCase().includes(term.toLowerCase())
+  }).slice(0, 10)
+}
 </script>
 
 <template>
   <div :class="cn('flex flex-row gap-4 items-center', inline ? 'w-full justify-end' : '')">
-    <ComboboxRoot v-model="value">
+    <ComboboxRoot v-model="value"
+                  :filter-function="filterFunction">
       <div class="flex items-center border-b px-3 bg-white rounded-md w-[450px]">
         <Search class="mr-2 h-4 w-4 shrink-0 opacity-50" />
         <ComboboxInput
@@ -61,12 +81,16 @@ onMounted(async () => {
                         :class="cn('relative flex flex-col items-start cursor-default select-none rounded-sm px-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50')"
                         :key="model.value"
                         :value="model.value"
-                        :keywords="[model.value, model.label]"
                         @select="open = false">
             {{ model.label.substring(0, 50) }}{{ model.label.length > 50 ? '...' : '' }}
             <br>
             <span class="text-xs inline-block pt-1 opacity-75">{{ model.value }}</span>
           </ComboboxItem>
+          <ComboboxEmpty>
+            <span class="text-sm">
+              No models found.
+            </span>
+          </ComboboxEmpty>
         </ComboboxContent>
       </ComboboxPortal>
     </ComboboxRoot>
