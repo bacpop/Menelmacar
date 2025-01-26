@@ -6,7 +6,7 @@ import { PkgWrapper } from '@reside-ic/odinjs'
 import { extractParameters, range } from '@/utils/models.ts'
 import type { ModelDetails, ModelResults } from '@/utils/types.ts'
 import { getModelData } from '@/utils/api.ts'
-import { ArrowDown, ArrowUp, ExternalLink } from 'lucide-vue-next'
+import { ArrowDown, ArrowUp, ExternalLink, Maximize2, Minimize2 } from 'lucide-vue-next'
 import { LineChart } from '@/components/ui/chart-line'
 import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
 import ModelGraph from '@/components/ModelGraph.vue'
@@ -21,6 +21,7 @@ const modelId = ref(router.currentRoute.value.params.modelId)
 const activeTab = ref(router.currentRoute.value.params.tab || 'plot')
 
 const expandDescription = ref(false)
+const expandVar = ref({})
 
 const parameters = ref(null)
 const paramsDropdownOpen = ref(false)
@@ -175,6 +176,13 @@ onMounted(async () => {
             {{ modelDetails?.name || 'Loading...' }}
           </h1>
 
+          <a class="font-normal text-light-grey flex flex-row items-center gap-1 hover:underline"
+             :href="`https://www.ebi.ac.uk/biomodels/${modelId}`"
+             target="_blank">
+            {{ modelId }}
+            <ExternalLink size="16" />
+          </a>
+
           <div v-if="modelDetails?.description"
                :class="cn('relative rounded-md max-h-36 overflow-hidden transition-all text-gray-300', expandDescription && 'max-h-full')">
 
@@ -187,13 +195,6 @@ onMounted(async () => {
               <ArrowUp v-if="expandDescription" size="16" />
             </div>
           </div>
-
-          <a class="font-normal text-light-grey flex flex-row items-center gap-1 hover:underline"
-             :href="`https://www.ebi.ac.uk/biomodels/${modelId}`"
-             target="_blank">
-            {{ modelId }}
-            <ExternalLink size="16" />
-          </a>
         </div>
 
       </div>
@@ -302,13 +303,18 @@ onMounted(async () => {
 
       <div v-if="activeTab === 'variables'">
         <div class="mt-8 flex flex-row flex-wrap gap-4">
-          <div class="bg-slate-dark rounded-md p-4 flex-grow"
-               v-for="(variable, index) in modelResults.names">
+          <div v-for="(variable, index) in modelResults.names"
+               :class="cn('relative bg-slate-dark rounded-md p-4 flex-grow w-1/3', expandVar[index] && 'w-full h-[500px]')">
+            <Button @click="expandVar[index] = !expandVar[index]"
+                    class="absolute top-0 right-0 p-2 text-light-grey bg-transparent shadow-none hover:bg-transparent">
+              <Maximize2 v-if="!expandVar[index]" size="16" />
+              <Minimize2 v-if="expandVar[index]" size="16" />
+            </Button>
             <div class="w-full text-center text-sm font-semibold">
               {{ variable }}
             </div>
             <LineChart
-              class="h-full w-full max-h-[200px] mt-4"
+              :class="cn('h-full w-full max-h-[200px] mt-4', expandVar[index] && 'max-h-[420px]')"
               :data="chartData"
               :colors="[chartColors[index]]"
               :categories="[variable]"

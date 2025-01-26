@@ -41,7 +41,7 @@ function onLegendItemClick(d: BulletLegendItemInterface, i: number) {
 </script>
 
 <template>
-  <div ref="elRef" class="w-full mb-3">
+  <div ref="elRef" class="w-full mb-3 flex flex-row justify-end">
     <VisBulletLegend
       :items="items"
       :on-legend-item-click="onLegendItemClick"
