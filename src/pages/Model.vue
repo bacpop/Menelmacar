@@ -6,9 +6,9 @@ import { PkgWrapper } from '@reside-ic/odinjs'
 import { extractParameters, range } from '@/utils/models.ts'
 import type { ModelDetails, ModelResults } from '@/utils/types.ts'
 import { getModelData } from '@/utils/api.ts'
-import { ArrowDown, ArrowUp, ExternalLink, Maximize2, Minimize2 } from 'lucide-vue-next'
+import { ArrowDown, ArrowUp, Download, ExternalLink, Maximize2, Minimize2 } from 'lucide-vue-next'
 import { LineChart } from '@/components/ui/chart-line'
-import { rangeAndDomain, scale_y } from '@/utils/charts.ts'
+import { download, rangeAndDomain, scale_y } from '@/utils/charts.ts'
 import ModelGraph from '@/components/ModelGraph.vue'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -274,7 +274,12 @@ onMounted(async () => {
       </div>
 
       <div v-if="activeTab === 'plot'">
-        <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-col gap-4">
+        <div class="relative bg-slate-dark rounded-md p-4 mt-8 flex flex-col gap-4">
+          <Button class="absolute top-0 right-0 bg-transparent hover:bg-transparent shadow-none pt-6"
+                  @click="() => download()">
+            <Download />
+          </Button>
+
           <div class="flex-grow flex flex-row gap-2 h-[700px]">
             <div class="flex flex-col flex-grow w-[80px] h-full items-center">
               <p class="whitespace-nowrap mb-4">Max Y</p>
@@ -305,11 +310,17 @@ onMounted(async () => {
         <div class="mt-8 flex flex-row flex-wrap gap-4">
           <div v-for="(variable, index) in modelResults.names"
                :class="cn('relative bg-slate-dark rounded-md p-4 flex-grow w-1/3', expandVar[index] && 'w-full h-[500px]')">
-            <Button @click="expandVar[index] = !expandVar[index]"
-                    class="absolute top-0 right-0 p-2 text-light-grey bg-transparent shadow-none hover:bg-transparent">
-              <Maximize2 v-if="!expandVar[index]" size="16" />
-              <Minimize2 v-if="expandVar[index]" size="16" />
-            </Button>
+            <div class="flex flex-row gap-0 absolute top-0 right-0 ">
+              <Button @click="expandVar[index] = !expandVar[index]"
+                      class="p-2 pr-1 text-light-grey bg-transparent shadow-none hover:bg-transparent">
+                <Maximize2 v-if="!expandVar[index]" size="16" />
+                <Minimize2 v-if="expandVar[index]" size="16" />
+              </Button>
+              <Button class="bg-transparent hover:bg-transparent shadow-none p-2 pl-1"
+                      @click="() => download(index)">
+                <Download />
+              </Button>
+            </div>
             <div class="w-full text-center text-sm font-semibold">
               {{ variable }}
             </div>

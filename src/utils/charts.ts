@@ -66,3 +66,12 @@ export const log_scale_y = (value: number, yDomain: number[], yRange: number[]) 
   // Map that percentage to the range
   return yRange[0] + (yRange[1] - yRange[0]) * logPercentage
 }
+
+export const download = (index?: number) => {
+  const svg = document.querySelectorAll(`[data-vis-xy-container] > svg`)
+  const svgData = svg[index ?? 0].outerHTML
+  const a = document.createElement('a')
+  a.download = 'chart.svg'
+  a.href = 'data:image/svg+xml;base64,' + btoa(svgData)
+  a.click()
+}
