@@ -1,0 +1,1 @@
+[{"data": {"id": "compartment", "label": "compartment"}, "group": "nodes", "classes": "compartment"}, {"data": {"id": "S", "label": "panic_intensity", "parent": "compartment", "sboTerm": -1}, "group": "nodes", "classes": "species"}, {"data": {"id": "P", "label": "protection+prevention_intensity", "parent": "compartment", "sboTerm": -1}, "group": "nodes", "classes": "species"}]

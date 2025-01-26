@@ -42,9 +42,9 @@ export class model {
     const Removed = state[2];
     var N = Infected + Removed + Susceptible;
     var beta = internal.beta_0 * Math.pow((1 - internal.p), (t));
-    dstatedt[2] = 0 + internal.Malayasia * internal.delta * Infected;
-    dstatedt[1] = 0 + internal.Malayasia * (internal.z * beta * Susceptible * Infected / N) - internal.Malayasia * internal.delta * Infected;
-    dstatedt[0] = 0 - internal.Malayasia * (internal.z * beta * Susceptible * Infected / N);
+    dstatedt[2] = 0 + 1 * internal.Malayasia * internal.delta * Infected;
+    dstatedt[1] = 0 + 1 * internal.Malayasia * (internal.z * beta * Susceptible * Infected / N) - 1 * internal.Malayasia * internal.delta * Infected;
+    dstatedt[0] = 0 - 1 * internal.Malayasia * (internal.z * beta * Susceptible * Infected / N);
   }
   names() {
     return this.metadata.ynames.slice(1);

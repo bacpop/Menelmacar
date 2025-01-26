@@ -66,14 +66,14 @@ export class model {
     const YP = state[6];
     const CT = state[8];
     dstatedt[8] = 0 + 0;
+    dstatedt[0] = 0;
     dstatedt[7] = 0 + 0;
-    dstatedt[1] = 0 + internal.cell * internal.k6 * M - internal.cell * C2 * internal.k8notP + internal.cell * CP * internal.k9;
-    dstatedt[2] = 0 + internal.cell * C2 * internal.k8notP - internal.cell * CP * internal.k9 - internal.cell * CP * internal.k3 * Y;
-    dstatedt[0] = 0 - internal.cell * internal.k1aa + internal.cell * internal.k2 * Y + internal.cell * internal.k7 * YP;
-    dstatedt[3] = 0 - internal.cell * internal.k6 * M - internal.cell * internal.k5notP * M + internal.cell * pM * (internal.k4prime + internal.k4 * Math.pow((M / CT), (2)));
-    dstatedt[4] = 0 + internal.cell * CP * internal.k3 * Y + internal.cell * internal.k5notP * M - internal.cell * pM * (internal.k4prime + internal.k4 * Math.pow((M / CT), (2)));
-    dstatedt[5] = 0 - internal.cell * CP * internal.k3 * Y + internal.cell * internal.k1aa - internal.cell * internal.k2 * Y;
-    dstatedt[6] = 0 + internal.cell * internal.k6 * M - internal.cell * internal.k7 * YP;
+    dstatedt[1] = 0 + 1 * internal.cell * internal.k6 * M - 1 * internal.cell * C2 * internal.k8notP + 1 * internal.cell * CP * internal.k9;
+    dstatedt[2] = 0 + 1 * internal.cell * C2 * internal.k8notP - 1 * internal.cell * CP * internal.k9 - 1 * internal.cell * CP * internal.k3 * Y;
+    dstatedt[3] = 0 - 1 * internal.cell * internal.k6 * M - 1 * internal.cell * internal.k5notP * M + 1 * internal.cell * pM * (internal.k4prime + internal.k4 * Math.pow((M / CT), (2)));
+    dstatedt[4] = 0 + 1 * internal.cell * CP * internal.k3 * Y + 1 * internal.cell * internal.k5notP * M - 1 * internal.cell * pM * (internal.k4prime + internal.k4 * Math.pow((M / CT), (2)));
+    dstatedt[5] = 0 - 1 * internal.cell * CP * internal.k3 * Y + 1 * internal.cell * internal.k1aa - 1 * internal.cell * internal.k2 * Y;
+    dstatedt[6] = 0 + 1 * internal.cell * internal.k6 * M - 1 * internal.cell * internal.k7 * YP;
   }
   names() {
     return this.metadata.ynames.slice(1);

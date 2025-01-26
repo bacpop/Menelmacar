@@ -1,0 +1,198 @@
+export class model {
+  constructor(base, user, unusedUserAction) {
+    this.base = base;
+    this.internal = {};
+    var internal = this.internal;
+    internal.compartment_1 = 1;
+    this.setUser(user, unusedUserAction);
+  }
+  initial(t) {
+    var internal = this.internal;
+    var state = Array(30).fill(0);
+    state[0] = internal.initial_APC;
+    state[1] = internal.initial_Va;
+    state[2] = internal.initial_Va_APC;
+    state[3] = internal.initial_Va3;
+    state[4] = internal.initial_Va3_APC;
+    state[5] = internal.initial_Va5;
+    state[6] = internal.initial_Va5_APC;
+    state[7] = internal.initial_Va53;
+    state[8] = internal.initial_Va53_APC;
+    state[9] = internal.initial_Va56;
+    state[10] = internal.initial_Va56_APC;
+    state[11] = internal.initial_Va36;
+    state[12] = internal.initial_Va36_APC;
+    state[13] = internal.initial_Va536;
+    state[14] = internal.initial_Va536_APC;
+    state[15] = internal.initial_HC;
+    state[16] = internal.initial_LC;
+    state[17] = internal.initial_HC5;
+    state[18] = internal.initial_HC3;
+    state[19] = internal.initial_HC56;
+    state[20] = internal.initial_HC36;
+    state[21] = internal.initial_HC536;
+    state[22] = internal.initial_LC_APC;
+    state[23] = internal.initial_HC53;
+    state[24] = internal.initial_VaA3;
+    state[25] = internal.initial_VaA53;
+    state[26] = internal.initial_VaA36;
+    state[27] = internal.initial_VaA536;
+    state[28] = internal.initial_VaLCA1;
+    state[29] = internal.initial_VaLCA1_APC;
+    return state;
+  }
+  setUser(user, unusedUserAction) {
+    this.base.user.checkUser(user, ["APC_init", "HC_init", "HC3_init", "HC36_init", "HC5_init", "HC53_init", "HC536_init", "HC56_init", "k1", "k10", "k2", "k3", "k5", "k6", "k7", "k8", "k9", "LC_APC_init", "LC_init", "Va_APC_init", "Va_init", "Va3_APC_init", "Va3_init", "Va36_APC_init", "Va36_init", "Va5_APC_init", "Va5_init", "Va53_APC_init", "Va53_init", "Va536_APC_init", "Va536_init", "Va56_APC_init", "Va56_init", "VaA3_init", "VaA36_init", "VaA53_init", "VaA536_init", "VaLCA1_APC_init", "VaLCA1_init"], unusedUserAction);
+    var internal = this.internal;
+    this.base.user.setUserScalar(user, "APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HC3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HC36_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HC5_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HC53_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HC536_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HC56_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k1", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k10", internal, 2630, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k2", internal, 0.69999999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k3", internal, 0.064000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k5", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k6", internal, 0.00051999999999999995, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k7", internal, 0.028000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k8", internal, 2570, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k9", internal, 1.7200000000000001e-05, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "LC_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "LC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va3_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va36_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va36_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va5_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va5_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va53_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va53_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va536_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va536_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va56_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Va56_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VaA3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VaA36_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VaA53_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VaA536_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VaLCA1_APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VaLCA1_init", internal, 0, -Infinity, Infinity, false);
+    internal.initial_APC = internal.APC_init;
+    internal.initial_HC = internal.HC_init;
+    internal.initial_HC3 = internal.HC3_init;
+    internal.initial_HC36 = internal.HC36_init;
+    internal.initial_HC5 = internal.HC5_init;
+    internal.initial_HC53 = internal.HC53_init;
+    internal.initial_HC536 = internal.HC536_init;
+    internal.initial_HC56 = internal.HC56_init;
+    internal.initial_LC = internal.LC_init;
+    internal.initial_LC_APC = internal.LC_APC_init;
+    internal.initial_Va = internal.Va_init;
+    internal.initial_Va_APC = internal.Va_APC_init;
+    internal.initial_Va3 = internal.Va3_init;
+    internal.initial_Va3_APC = internal.Va3_APC_init;
+    internal.initial_Va36 = internal.Va36_init;
+    internal.initial_Va36_APC = internal.Va36_APC_init;
+    internal.initial_Va5 = internal.Va5_init;
+    internal.initial_Va5_APC = internal.Va5_APC_init;
+    internal.initial_Va53 = internal.Va53_init;
+    internal.initial_Va53_APC = internal.Va53_APC_init;
+    internal.initial_Va536 = internal.Va536_init;
+    internal.initial_Va536_APC = internal.Va536_APC_init;
+    internal.initial_Va56 = internal.Va56_init;
+    internal.initial_Va56_APC = internal.Va56_APC_init;
+    internal.initial_VaA3 = internal.VaA3_init;
+    internal.initial_VaA36 = internal.VaA36_init;
+    internal.initial_VaA53 = internal.VaA53_init;
+    internal.initial_VaA536 = internal.VaA536_init;
+    internal.initial_VaLCA1 = internal.VaLCA1_init;
+    internal.initial_VaLCA1_APC = internal.VaLCA1_APC_init;
+    this.updateMetadata();
+  }
+  getInternal() {
+    return this.internal;
+  }
+  rhs(t, state, dstatedt) {
+    var internal = this.internal;
+    const APC = state[0];
+    const Va = state[1];
+    const Va_APC = state[2];
+    const Va3 = state[3];
+    const Va3_APC = state[4];
+    const Va5 = state[5];
+    const Va5_APC = state[6];
+    const Va53 = state[7];
+    const Va53_APC = state[8];
+    const Va56 = state[9];
+    const Va56_APC = state[10];
+    const Va36 = state[11];
+    const Va36_APC = state[12];
+    const Va536 = state[13];
+    const Va536_APC = state[14];
+    const HC = state[15];
+    const LC = state[16];
+    const HC5 = state[17];
+    const HC3 = state[18];
+    const HC56 = state[19];
+    const HC36 = state[20];
+    const HC536 = state[21];
+    const LC_APC = state[22];
+    const HC53 = state[23];
+    const VaA3 = state[24];
+    const VaA53 = state[25];
+    const VaA36 = state[26];
+    const VaA536 = state[27];
+    const VaLCA1 = state[28];
+    const VaLCA1_APC = state[29];
+    dstatedt[0] = 0 - 1 * internal.compartment_1 * (internal.k1 * Va * APC - internal.k2 * Va_APC) - 1 * internal.compartment_1 * (internal.k1 * Va3 * APC - internal.k2 * Va3_APC) - 1 * internal.compartment_1 * (internal.k1 * Va5 * APC - internal.k2 * Va5_APC) - 1 * internal.compartment_1 * (internal.k1 * Va53 * APC - internal.k2 * Va53_APC) - 1 * internal.compartment_1 * (internal.k1 * Va56 * APC - internal.k2 * Va56_APC) - 1 * internal.compartment_1 * (internal.k1 * Va36 * APC - internal.k2 * Va36_APC) - 1 * internal.compartment_1 * (internal.k1 * Va536 * APC - internal.k2 * Va536_APC) - 1 * internal.compartment_1 * (internal.k1 * LC * APC - internal.k2 * LC_APC) - 1 * internal.compartment_1 * (internal.k1 * VaLCA1 * APC - internal.k2 * VaLCA1_APC);
+    dstatedt[15] = 0 + 1 * internal.compartment_1 * (internal.k9 * Va - internal.k10 * HC * LC);
+    dstatedt[18] = 0 + 1 * internal.compartment_1 * (internal.k9 * Va3 - internal.k10 * HC3 * LC);
+    dstatedt[20] = 0 + 1 * internal.compartment_1 * (internal.k9 * Va36 - internal.k10 * HC36 * LC);
+    dstatedt[17] = 0 + 1 * internal.compartment_1 * (internal.k9 * Va5 - internal.k10 * HC5 * LC);
+    dstatedt[23] = 0 + 1 * internal.compartment_1 * (internal.k9 * Va53 - internal.k10 * HC53 * LC);
+    dstatedt[21] = 0 + 1 * internal.compartment_1 * (internal.k9 * Va536 - internal.k10 * HC536 * LC);
+    dstatedt[19] = 0 + 1 * internal.compartment_1 * (internal.k9 * Va56 - internal.k10 * HC56 * LC);
+    dstatedt[16] = 0 + 1 * internal.compartment_1 * (internal.k9 * Va - internal.k10 * HC * LC) + 1 * internal.compartment_1 * (internal.k9 * Va5 - internal.k10 * HC5 * LC) + 1 * internal.compartment_1 * (internal.k9 * Va3 - internal.k10 * HC3 * LC) + 1 * internal.compartment_1 * (internal.k9 * Va56 - internal.k10 * HC56 * LC) + 1 * internal.compartment_1 * (internal.k9 * Va53 - internal.k10 * HC53 * LC) + 1 * internal.compartment_1 * (internal.k9 * Va36 - internal.k10 * HC36 * LC) + 1 * internal.compartment_1 * (internal.k9 * Va536 - internal.k10 * HC536 * LC) - 1 * internal.compartment_1 * (internal.k1 * LC * APC - internal.k2 * LC_APC);
+    dstatedt[22] = 0 + 1 * internal.compartment_1 * (internal.k1 * LC * APC - internal.k2 * LC_APC);
+    dstatedt[1] = 0 - 1 * internal.compartment_1 * (internal.k1 * Va * APC - internal.k2 * Va_APC) - 1 * internal.compartment_1 * (internal.k9 * Va - internal.k10 * HC * LC);
+    dstatedt[2] = 0 + 1 * internal.compartment_1 * (internal.k1 * Va * APC - internal.k2 * Va_APC) - 1 * internal.compartment_1 * internal.k5 * Va_APC - 1 * internal.compartment_1 * internal.k3 * Va_APC;
+    dstatedt[3] = 0 - 1 * internal.compartment_1 * (internal.k1 * Va3 * APC - internal.k2 * Va3_APC) - 1 * internal.compartment_1 * (internal.k9 * Va3 - internal.k10 * HC3 * LC) - 1 * internal.compartment_1 * (internal.k7 * Va3 - internal.k8 * VaA3 * VaLCA1);
+    dstatedt[4] = 0 + 1 * internal.compartment_1 * (internal.k1 * Va3 * APC - internal.k2 * Va3_APC) + 1 * internal.compartment_1 * internal.k3 * Va_APC - 1 * internal.compartment_1 * internal.k6 * Va3_APC - 1 * internal.compartment_1 * internal.k5 * Va3_APC - 1 * internal.compartment_1 * (internal.k7 * Va3_APC - internal.k8 * VaA3 * VaLCA1_APC);
+    dstatedt[11] = 0 - 1 * internal.compartment_1 * (internal.k1 * Va36 * APC - internal.k2 * Va36_APC) - 1 * internal.compartment_1 * (internal.k9 * Va36 - internal.k10 * HC36 * LC) - 1 * internal.compartment_1 * (internal.k7 * Va36 - internal.k8 * VaA36 * VaLCA1);
+    dstatedt[12] = 0 + 1 * internal.compartment_1 * (internal.k1 * Va36 * APC - internal.k2 * Va36_APC) + 1 * internal.compartment_1 * internal.k6 * Va3_APC - 1 * internal.compartment_1 * internal.k5 * Va36_APC - 1 * internal.compartment_1 * (internal.k7 * Va36_APC - internal.k8 * VaA36 * VaLCA1_APC);
+    dstatedt[5] = 0 - 1 * internal.compartment_1 * (internal.k1 * Va5 * APC - internal.k2 * Va5_APC) - 1 * internal.compartment_1 * (internal.k9 * Va5 - internal.k10 * HC5 * LC);
+    dstatedt[6] = 0 + 1 * internal.compartment_1 * (internal.k1 * Va5 * APC - internal.k2 * Va5_APC) + 1 * internal.compartment_1 * internal.k5 * Va_APC - 1 * internal.compartment_1 * internal.k6 * Va5_APC - 1 * internal.compartment_1 * internal.k3 * Va5_APC;
+    dstatedt[7] = 0 - 1 * internal.compartment_1 * (internal.k1 * Va53 * APC - internal.k2 * Va53_APC) - 1 * internal.compartment_1 * (internal.k9 * Va53 - internal.k10 * HC53 * LC) - 1 * internal.compartment_1 * (internal.k7 * Va53 - internal.k8 * VaA53 * VaLCA1);
+    dstatedt[8] = 0 + 1 * internal.compartment_1 * (internal.k1 * Va53 * APC - internal.k2 * Va53_APC) + 1 * internal.compartment_1 * internal.k3 * Va5_APC - 1 * internal.compartment_1 * internal.k6 * Va53_APC + 1 * internal.compartment_1 * internal.k5 * Va3_APC - 1 * internal.compartment_1 * (internal.k7 * Va53_APC - internal.k8 * VaA53 * VaLCA1_APC);
+    dstatedt[13] = 0 - 1 * internal.compartment_1 * (internal.k1 * Va536 * APC - internal.k2 * Va536_APC) - 1 * internal.compartment_1 * (internal.k9 * Va536 - internal.k10 * HC536 * LC) - 1 * internal.compartment_1 * (internal.k7 * Va536 - internal.k8 * VaA536 * VaLCA1);
+    dstatedt[14] = 0 + 1 * internal.compartment_1 * (internal.k1 * Va536 * APC - internal.k2 * Va536_APC) + 1 * internal.compartment_1 * internal.k3 * Va56_APC + 1 * internal.compartment_1 * internal.k6 * Va53_APC + 1 * internal.compartment_1 * internal.k5 * Va36_APC - 1 * internal.compartment_1 * (internal.k7 * Va536_APC - internal.k7 * VaA536 * VaLCA1_APC);
+    dstatedt[9] = 0 - 1 * internal.compartment_1 * (internal.k1 * Va56 * APC - internal.k2 * Va56_APC) - 1 * internal.compartment_1 * (internal.k9 * Va56 - internal.k10 * HC56 * LC);
+    dstatedt[10] = 0 + 1 * internal.compartment_1 * (internal.k1 * Va56 * APC - internal.k2 * Va56_APC) + 1 * internal.compartment_1 * internal.k6 * Va5_APC - 1 * internal.compartment_1 * internal.k3 * Va56_APC;
+    dstatedt[24] = 0 + 1 * internal.compartment_1 * (internal.k7 * Va3 - internal.k8 * VaA3 * VaLCA1) + 1 * internal.compartment_1 * (internal.k7 * Va3_APC - internal.k8 * VaA3 * VaLCA1_APC);
+    dstatedt[26] = 0 + 1 * internal.compartment_1 * (internal.k7 * Va36 - internal.k8 * VaA36 * VaLCA1) + 1 * internal.compartment_1 * (internal.k7 * Va36_APC - internal.k8 * VaA36 * VaLCA1_APC);
+    dstatedt[25] = 0 + 1 * internal.compartment_1 * (internal.k7 * Va53 - internal.k8 * VaA53 * VaLCA1) + 1 * internal.compartment_1 * (internal.k7 * Va53_APC - internal.k8 * VaA53 * VaLCA1_APC);
+    dstatedt[27] = 0 + 1 * internal.compartment_1 * (internal.k7 * Va536 - internal.k8 * VaA536 * VaLCA1) + 1 * internal.compartment_1 * (internal.k7 * Va536_APC - internal.k7 * VaA536 * VaLCA1_APC);
+    dstatedt[28] = 0 + 1 * internal.compartment_1 * (internal.k7 * Va3 - internal.k8 * VaA3 * VaLCA1) + 1 * internal.compartment_1 * (internal.k7 * Va53 - internal.k8 * VaA53 * VaLCA1) + 1 * internal.compartment_1 * (internal.k7 * Va36 - internal.k8 * VaA36 * VaLCA1) + 1 * internal.compartment_1 * (internal.k7 * Va536 - internal.k8 * VaA536 * VaLCA1) - 1 * internal.compartment_1 * (internal.k1 * VaLCA1 * APC - internal.k2 * VaLCA1_APC);
+    dstatedt[29] = 0 + 1 * internal.compartment_1 * (internal.k7 * Va3_APC - internal.k8 * VaA3 * VaLCA1_APC) + 1 * internal.compartment_1 * (internal.k7 * Va53_APC - internal.k8 * VaA53 * VaLCA1_APC) + 1 * internal.compartment_1 * (internal.k7 * Va36_APC - internal.k8 * VaA36 * VaLCA1_APC) + 1 * internal.compartment_1 * (internal.k7 * Va536_APC - internal.k7 * VaA536 * VaLCA1_APC) + 1 * internal.compartment_1 * (internal.k1 * VaLCA1 * APC - internal.k2 * VaLCA1_APC);
+  }
+  names() {
+    return this.metadata.ynames.slice(1);
+  }
+  updateMetadata() {
+    this.metadata = {};
+    var internal = this.internal;
+    this.metadata.ynames = ["t", "APC", "Va", "Va_APC", "Va3", "Va3_APC", "Va5", "Va5_APC", "Va53", "Va53_APC", "Va56", "Va56_APC", "Va36", "Va36_APC", "Va536", "Va536_APC", "HC", "LC", "HC5", "HC3", "HC56", "HC36", "HC536", "LC_APC", "HC53", "VaA3", "VaA53", "VaA36", "VaA536", "VaLCA1", "VaLCA1_APC"];
+    this.metadata.internalOrder = {APC_init: null, compartment_1: null, HC_init: null, HC3_init: null, HC36_init: null, HC5_init: null, HC53_init: null, HC536_init: null, HC56_init: null, initial_APC: null, initial_HC: null, initial_HC3: null, initial_HC36: null, initial_HC5: null, initial_HC53: null, initial_HC536: null, initial_HC56: null, initial_LC: null, initial_LC_APC: null, initial_Va: null, initial_Va_APC: null, initial_Va3: null, initial_Va3_APC: null, initial_Va36: null, initial_Va36_APC: null, initial_Va5: null, initial_Va5_APC: null, initial_Va53: null, initial_Va53_APC: null, initial_Va536: null, initial_Va536_APC: null, initial_Va56: null, initial_Va56_APC: null, initial_VaA3: null, initial_VaA36: null, initial_VaA53: null, initial_VaA536: null, initial_VaLCA1: null, initial_VaLCA1_APC: null, k1: null, k10: null, k2: null, k3: null, k5: null, k6: null, k7: null, k8: null, k9: null, LC_APC_init: null, LC_init: null, Va_APC_init: null, Va_init: null, Va3_APC_init: null, Va3_init: null, Va36_APC_init: null, Va36_init: null, Va5_APC_init: null, Va5_init: null, Va53_APC_init: null, Va53_init: null, Va536_APC_init: null, Va536_init: null, Va56_APC_init: null, Va56_init: null, VaA3_init: null, VaA36_init: null, VaA53_init: null, VaA536_init: null, VaLCA1_APC_init: null, VaLCA1_init: null};
+    this.metadata.variableOrder = {APC: null, Va: null, Va_APC: null, Va3: null, Va3_APC: null, Va5: null, Va5_APC: null, Va53: null, Va53_APC: null, Va56: null, Va56_APC: null, Va36: null, Va36_APC: null, Va536: null, Va536_APC: null, HC: null, LC: null, HC5: null, HC3: null, HC56: null, HC36: null, HC536: null, LC_APC: null, HC53: null, VaA3: null, VaA53: null, VaA36: null, VaA536: null, VaLCA1: null, VaLCA1_APC: null};
+    this.metadata.outputOrder = null;
+  }
+  getMetadata() {
+    return this.metadata;
+  }
+}

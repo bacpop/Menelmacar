@@ -46,11 +46,11 @@ export class model {
     const C = state[0];
     const M = state[1];
     const X = state[2];
-    dstatedt[0] = 0 + internal.cell * internal.vi - C * internal.cell * internal.kd - C * internal.cell * internal.vd * X * Math.pow((C + internal.Kd), (- 1));
+    dstatedt[0] = 0 + 1 * internal.cell * internal.vi - 1 * C * internal.cell * internal.kd - 1 * C * internal.cell * internal.vd * X * Math.pow((C + internal.Kd), (- 1));
     var V1 = C * internal.VM1 * Math.pow((C + internal.Kc), (- 1));
     var V3 = M * internal.VM3;
-    dstatedt[1] = 0 + internal.cell * (1 + - 1 * M) * V1 * Math.pow((internal.K1 + - 1 * M + 1), (- 1)) - internal.cell * M * internal.V2 * Math.pow((internal.K2 + M), (- 1));
-    dstatedt[2] = 0 + internal.cell * V3 * (1 + - 1 * X) * Math.pow((internal.K3 + - 1 * X + 1), (- 1)) - internal.cell * internal.V4 * X * Math.pow((internal.K4 + X), (- 1));
+    dstatedt[1] = 0 + 1 * internal.cell * (1 + - 1 * M) * V1 * Math.pow((internal.K1 + - 1 * M + 1), (- 1)) - 1 * internal.cell * M * internal.V2 * Math.pow((internal.K2 + M), (- 1));
+    dstatedt[2] = 0 + 1 * internal.cell * V3 * (1 + - 1 * X) * Math.pow((internal.K3 + - 1 * X + 1), (- 1)) - 1 * internal.cell * internal.V4 * X * Math.pow((internal.K4 + X), (- 1));
   }
   names() {
     return this.metadata.ynames.slice(1);

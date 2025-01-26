@@ -1,0 +1,1 @@
+[{"data": {"id": "Brain", "label": "Brain"}, "group": "nodes", "classes": "compartment"}, {"data": {"id": "Amyloid", "label": "Amyloid", "parent": "Brain", "sboTerm": -1}, "group": "nodes", "classes": "species"}]

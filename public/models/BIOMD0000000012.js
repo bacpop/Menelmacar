@@ -61,12 +61,12 @@ export class model {
     const X = state[3];
     const Y = state[4];
     const Z = state[5];
-    dstatedt[3] = 0 - internal.kd_mRNA * X + internal.a0_tr + internal.a_tr * Math.pow((internal.KM), (internal.n)) / (Math.pow((internal.KM), (internal.n)) + Math.pow((PZ), (internal.n)));
-    dstatedt[4] = 0 - internal.kd_mRNA * Y + internal.a0_tr + internal.a_tr * Math.pow((internal.KM), (internal.n)) / (Math.pow((internal.KM), (internal.n)) + Math.pow((PX), (internal.n)));
-    dstatedt[5] = 0 - internal.kd_mRNA * Z + internal.a0_tr + internal.a_tr * Math.pow((internal.KM), (internal.n)) / (Math.pow((internal.KM), (internal.n)) + Math.pow((PY), (internal.n)));
-    dstatedt[0] = 0 + internal.k_tl * X - internal.kd_prot * PX;
-    dstatedt[1] = 0 + internal.k_tl * Y - internal.kd_prot * PY;
-    dstatedt[2] = 0 + internal.k_tl * Z - internal.kd_prot * PZ;
+    dstatedt[3] = 0 - 1 * internal.kd_mRNA * X + 1 * internal.a0_tr + internal.a_tr * Math.pow((internal.KM), (internal.n)) / (Math.pow((internal.KM), (internal.n)) + Math.pow((PZ), (internal.n)));
+    dstatedt[4] = 0 - 1 * internal.kd_mRNA * Y + 1 * internal.a0_tr + internal.a_tr * Math.pow((internal.KM), (internal.n)) / (Math.pow((internal.KM), (internal.n)) + Math.pow((PX), (internal.n)));
+    dstatedt[5] = 0 - 1 * internal.kd_mRNA * Z + 1 * internal.a0_tr + internal.a_tr * Math.pow((internal.KM), (internal.n)) / (Math.pow((internal.KM), (internal.n)) + Math.pow((PY), (internal.n)));
+    dstatedt[0] = 0 + 1 * internal.k_tl * X - 1 * internal.kd_prot * PX;
+    dstatedt[1] = 0 + 1 * internal.k_tl * Y - 1 * internal.kd_prot * PY;
+    dstatedt[2] = 0 + 1 * internal.k_tl * Z - 1 * internal.kd_prot * PZ;
   }
   names() {
     return this.metadata.ynames.slice(1);
