@@ -139,13 +139,14 @@ onMounted(async () => {
             {{ modelDetails?.name || 'Loading...' }}
           </h1>
 
-          <div :class="cn('relative rounded-md max-h-36 overflow-hidden transition-all text-gray-300', expandDescription && 'max-h-full')">
+          <div v-if="modelDetails?.description"
+               :class="cn('relative rounded-md max-h-36 overflow-hidden transition-all text-gray-300', expandDescription && 'max-h-full')">
 
             <div v-html="modelDetails?.description"></div>
 
-            <div
-              class="absolute bottom-0 left-0 h-20 pb-2 bg-gradient-to-t from-slate-darker to-slate-darker/30 w-full flex flex-row items-end justify-center cursor-pointer"
-              @click="expandDescription = !expandDescription">
+            <div v-if="modelDetails?.description.length > 1000"
+                 class="absolute bottom-0 left-0 h-20 pb-2 bg-gradient-to-t from-slate-darker to-slate-darker/30 w-full flex flex-row items-end justify-center cursor-pointer"
+                 @click="expandDescription = !expandDescription">
               <ArrowDown v-if="!expandDescription" size="16" />
               <ArrowUp v-if="expandDescription" size="16" />
             </div>
