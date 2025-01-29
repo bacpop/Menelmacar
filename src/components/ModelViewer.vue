@@ -41,7 +41,7 @@
                 v-model="time"
                 :lazy="true" 
                 :min="5"
-                :max="1000"
+                :max="500"
                 :interval="1"
                 >
             </VueSlider>
@@ -107,7 +107,7 @@ export default {
         time: function() {
             const times = range(0, this.time, this.len)
             this.times = times
-            const results_all = this.mod.run(times, null, {})
+            const results_all = this.mod.run(times, null, {maxSteps: 1000000})
             this.results_y = results_all.y
 
             this.update_single += 1
@@ -137,7 +137,7 @@ export default {
             const mod = new PkgWrapper(this.model, this.parameters, "error")
             this.mod = mod
             const times = range(0, this.time, this.len)
-            const results_all = mod.run(times, null, {})
+            const results_all = mod.run(times, null, {maxSteps: 1000000})
             this.results_names = results_all.names
             this.results_y = results_all.y
             
