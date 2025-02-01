@@ -42,7 +42,7 @@
     </Button>
   </div>
 
-  <div class="bg-slate-dark rounded-md p-4 mt-8 flex flex-row flex-wrap gap-4">
+  <div class="bg-[#eceef4] rounded-md p-4 mt-8 flex flex-row flex-wrap gap-4">
     <p v-if="!modelLoaded & !noModelFound">Loading...</p>
     <div v-else-if="noModelFound">
       <h2>The JSON file for this model doesn't exist</h2>

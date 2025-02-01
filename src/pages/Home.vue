@@ -28,32 +28,25 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
   </div>
 
   <div class="w-full flex flex-row flex-nowrap justify-between gap-8 text-light-grey py-10 border-b border-slate">
-    <div class="flex flex-shrink flex-col gap-2">
+    <div class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
-        Plot your model
+        Plot a model
       </h2>
-      <div class="w-full h-[200px] bg-slate rounded-md"></div>
-      <p>
-        Duis nulla eros, pharetra at tristique ac, pulvinar in leo.
-      </p>
+      <img src="/assets/home-plot.png" alt="Plot a model" class="w-full h-[200px] bg-slate rounded-md overflow-hidden">
     </div>
-    <div class="flex flex-shrink flex-col gap-2">
+    <div class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
         Plot each variable individually
       </h2>
-      <div class="w-full h-[200px] bg-slate rounded-md"></div>
-      <p>
-        Duis nulla eros, pharetra at tristique ac, pulvinar in leo.
-      </p>
+      <img src="/assets/home-variables.png" alt="Plot each variable individually"
+           class="w-full h-[200px] bg-slate rounded-md overflow-hidden">
     </div>
-    <div class="flex flex-shrink flex-col gap-2">
+    <div class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
         Show as a graph
       </h2>
-      <div class="w-full h-[200px] bg-slate rounded-md"></div>
-      <p>
-        Duis nulla eros, pharetra at tristique ac, pulvinar in leo.
-      </p>
+      <img src="/assets/home-graph.png" alt="Show as a graph"
+           class="w-full h-[200px] bg-slate rounded-md overflow-hidden">
     </div>
   </div>
   <div class="w-full flex flex-col flex-nowrap justify-between gap-4 text-light-grey py-10 border-b border-slate">
