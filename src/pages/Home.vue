@@ -13,7 +13,18 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
       visualise models from the EMBL-EBI's BioModels database. You can investigate the models' development over time,
       change parameter values and observe changes in the model trajectory, and see the model graph.
     </p>
-    <ModelSelect :inline="false" />
+    <div class="flex flex-col gap-2">
+      <ModelSelect :inline="false" />
+      <div class="flex flex-row gap-2 text-light-grey text-sm">
+        Example models:
+        <RouterLink to="/view/BIOMD0000000012" class="hover:underline opacity-80 hover:opacity-100">
+          BIOMD0000000012
+        </RouterLink>
+        <RouterLink to="/view/BIOMD0000000003" class="hover:underline opacity-80 hover:opacity-100">
+          BIOMD0000000003
+        </RouterLink>
+      </div>
+    </div>
   </div>
 
   <div class="w-full flex flex-row flex-nowrap justify-between gap-8 text-light-grey py-10 border-b border-slate">

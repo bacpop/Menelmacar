@@ -32,7 +32,7 @@ const logScale = ref(false)
 const time = ref([5])
 const times = ref([])
 
-const ymax = ref([100])
+const ymax = ref([0, 100])
 
 const chartData = ref([])
 
@@ -116,7 +116,7 @@ const runModel = async () => {
 
   const { yDomain, yRange } = rangeAndDomain(
     modelResults.value,
-    ymax.value[0],
+    ymax.value,
     logScale.value
   )
 
@@ -161,6 +161,13 @@ watch(modelId, async () => {
 
   modelDetails.value = null
   modelDetails.value = await getModelData(modelId.value)
+})
+
+watch(activeTab, () => {
+  if (activeTab.value === 'variables') {
+    ymax.value = [0, 100]
+    void runModel()
+  }
 })
 
 onMounted(async () => {
@@ -272,7 +279,7 @@ onMounted(async () => {
           <Slider
             v-model="time"
             :default-value="[5]"
-            :max="1000"
+            :max="500"
             :min="5"
             :step="1"
           />
@@ -280,18 +287,18 @@ onMounted(async () => {
       </div>
 
       <div v-if="activeTab === 'plot'">
-        <div class="relative bg-slate-dark rounded-md p-4 mt-8 flex flex-col gap-4">
+        <div class="relative bg-slate-dark rounded-md p-4 mt-8 flex flex-col gap-4 h-[60vh]">
           <Button class="absolute top-0 right-0 bg-transparent hover:bg-transparent shadow-none pt-6"
                   @click="() => download()">
             <Download />
           </Button>
 
-          <div class="flex-grow flex flex-row gap-2 h-[700px]">
+          <div class="flex-grow flex flex-row gap-2 h-full">
             <div class="flex flex-col flex-grow w-[80px] h-full items-center">
               <p class="whitespace-nowrap mb-4">Max Y</p>
               <Slider
                 v-model="ymax"
-                :default-value="[5]"
+                :default-value="[0, 5]"
                 :max="100"
                 :min="70"
                 :step="0.1"
@@ -339,7 +346,7 @@ onMounted(async () => {
               :show-y-axis="true"
               :show-grid-line="false"
               :show-legend="false"
-              :x-formatter="(tick) =>Number(chartData[tick].time).toFixed(4)"
+              :x-formatter="(tick) => Number(chartData[tick].time).toFixed(4)"
               index="time" />
           </div>
         </div>
