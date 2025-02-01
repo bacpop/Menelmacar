@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import debounce from 'lodash.debounce'
 import {
   ComboboxAnchor,
   ComboboxContent,
@@ -12,7 +13,7 @@ import {
 } from 'reka-ui'
 import { Search } from 'lucide-vue-next'
 import { cn } from '@/lib/utils.ts'
-import { getAvailableModels } from '@/utils/api.ts'
+import { getAvailableModels, searchModels } from '@/utils/api.ts'
 import ModelLabel from '@/components/ModelLabel.vue'
 
 const models = ref([])
@@ -21,6 +22,7 @@ const router = useRouter()
 const value = ref('')
 const searchTerm = ref('')
 const searchOpen = ref(false)
+const apiResults = ref([])
 
 const props = defineProps<{ inline: boolean }>()
 const inline = ref(props.inline)
@@ -47,13 +49,18 @@ onMounted(async () => {
   models.value = await getAvailableModels()
 })
 
+watch(searchTerm, debounce(async () => {
+  const modelsResult = await searchModels(searchTerm.value)
+  apiResults.value = modelsResult?.models.map(model => model.id)
+}, 500))
+
 const filteredModels = computed(() => {
   if (searchTerm.value.length === 0) {
     return models.value.slice(0, 10)
   }
 
   return models.value.filter(model => {
-    return model.value.toLowerCase().includes(searchTerm.value.toLowerCase())
+    return model.value.toLowerCase().includes(searchTerm.value.toLowerCase()) || apiResults.value.includes(model.value)
   }).slice(0, 10)
 })
 </script>

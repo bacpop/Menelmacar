@@ -23,3 +23,10 @@ export interface ModelDetails {
   name: string;
   description: string;
 }
+
+export interface ModelSearchResult {
+  models: {
+    id: string;
+    name: string;
+  }[];
+}

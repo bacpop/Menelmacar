@@ -5,6 +5,11 @@ export const getModelData = async (modelId: string): Promise<ModelDetails> => {
   return await response.json()
 }
 
+export const searchModels = async (query: string): Promise<ModelSearchResult> => {
+  const response = await fetch(`https://www.ebi.ac.uk/biomodels/search?query=${query}&format=json`)
+  return await response.json()
+}
+
 export const getAvailableModels = async () => {
   const response = await fetch('/models/file_names.txt')
   const data = await response.text()

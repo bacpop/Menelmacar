@@ -106,7 +106,7 @@ const runModel = async () => {
   const model = models.model
 
   const mod = new PkgWrapper(model, parameters.value, 'error')
-  times.value = range(0, time.value[0], 1000)
+  times.value = range(0, time.value[0], 100)
 
   modelResults.value = mod.run(times.value, null, {})
 
