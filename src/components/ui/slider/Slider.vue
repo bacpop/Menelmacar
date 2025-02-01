@@ -2,7 +2,7 @@
 import type { SliderRootEmits, SliderRootProps } from 'radix-vue'
 import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from 'radix-vue'
 import { cn } from '@/lib/utils'
-import { computed, type HTMLAttributes } from 'vue'
+import { computed, type HTMLAttributes, watch } from 'vue'
 
 const props = defineProps<SliderRootProps & { class?: HTMLAttributes['class'] }>()
 const emits = defineEmits<SliderRootEmits>()
@@ -14,6 +14,10 @@ const delegatedProps = computed(() => {
 })
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
+
+watch(props, () => {
+  console.log(props.modelValue)
+})
 </script>
 
 <template>
@@ -26,7 +30,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
   >
     <SliderTrack
       class="relative h-2 w-full data-[orientation=vertical]:w-2 grow overflow-hidden rounded-full bg-secondary">
-      <SliderRange class="absolute h-full data-[orientation=vertical]:w-full bg-primary" />
+      <SliderRange :class="cn('absolute h-full data-[orientation=vertical]:w-full bg-primary', modelValue[1] ? `h-[calc(100%-${modelValue[0]}%)]` : '')" />
     </SliderTrack>
     <SliderThumb
       v-for="(_, key) in modelValue"

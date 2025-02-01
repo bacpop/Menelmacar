@@ -151,12 +151,15 @@ const resetParams = () => {
 }
 
 watch([modelId, time, ymax, logScale], () => {
+  console.log(ymax.value)
   void runModel()
 })
 
 watch(modelId, async () => {
   modelResults.value = null
   parameters.value = null
+  ymax.value = [0, 100]
+
   void runModel()
 
   modelDetails.value = null
@@ -298,9 +301,8 @@ onMounted(async () => {
               <p class="whitespace-nowrap mb-4">Max Y</p>
               <Slider
                 v-model="ymax"
-                :default-value="[0, 5]"
                 :max="100"
-                :min="70"
+                :min="0"
                 :step="0.1"
                 orientation="vertical"
               />
