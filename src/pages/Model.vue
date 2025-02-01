@@ -189,7 +189,7 @@ onMounted(async () => {
             <div class="description-content" v-html="modelDetails?.description"></div>
 
             <div v-if="modelDetails?.description.length > 1000"
-                 class="absolute bottom-0 left-0 h-20 pb-2 bg-gradient-to-t from-slate-darker to-slate-darker/30 w-full flex flex-row items-end justify-center cursor-pointer"
+                 :class="cn('absolute bottom-0 left-0 h-20 pb-2 bg-gradient-to-t from-slate-darker to-slate-darker/30 w-full flex flex-row items-end justify-center cursor-pointer', expandDescription && 'relative items-start h-8 mt-2')"
                  @click="expandDescription = !expandDescription">
               <ArrowDown v-if="!expandDescription" size="16" />
               <ArrowUp v-if="expandDescription" size="16" />
