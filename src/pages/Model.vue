@@ -144,6 +144,12 @@ const applyParameters = () => {
   paramsDropdownOpen.value = false
 }
 
+const resetParams = () => {
+  parameters.value = null
+  void runModel()
+  paramsDropdownOpen.value = false
+}
+
 watch([modelId, time, ymax, logScale], () => {
   void runModel()
 })
@@ -220,7 +226,7 @@ onMounted(async () => {
          class="flex flex-col max-w-[1120px] w-full py-8 text-light-grey">
       <div v-if="activeTab !== 'graph'"
            class="flex flex-row w-full gap-6 items-center">
-        <Popover :open="paramsDropdownOpen">
+        <Popover :open="parameters && paramsDropdownOpen">
           <PopoverTrigger as-child>
             <Button variant="outline" class="uppercase rounded-md bg-transparent border-white"
                     @click="paramsDropdownOpen = !paramsDropdownOpen">
