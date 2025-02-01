@@ -69,7 +69,14 @@ export const log_scale_y = (value: number, yDomain: number[], yRange: number[]) 
 
 export const download = (index?: number) => {
   const svg = document.querySelectorAll(`[data-vis-xy-container] > svg`)
-  const svgData = svg[index ?? 0].outerHTML
+
+  const newSvg = svg[index ?? 0].cloneNode(true) as HTMLElement
+  newSvg.querySelectorAll('path').forEach(element => {
+    element.setAttribute('fill', 'none');
+  });
+
+  const svgData = newSvg.outerHTML
+
   const a = document.createElement('a')
   a.download = 'chart.svg'
   a.href = 'data:image/svg+xml;base64,' + btoa(svgData)
