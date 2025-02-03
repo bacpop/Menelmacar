@@ -5,6 +5,7 @@ import './index.scss'
 import Home from '@/pages/Home.vue'
 import Model from '@/pages/Model.vue'
 import { VueQueryPlugin } from '@tanstack/vue-query'
+import VueGtag from 'vue-gtag'
 
 const routes = [
   {
@@ -27,4 +28,9 @@ const router = createRouter({
 createApp(App)
   .use(router)
   .use(VueQueryPlugin)
+  .use(VueGtag, {
+    config: {
+      id: 'G-T91W04JTYS'
+    }
+  })
   .mount('#app')

@@ -29,10 +29,10 @@ const paramsDropdownOpen = ref(false)
 const modelResults: ModelResults = ref(null)
 
 const logScale = ref(false)
-const time = ref([5])
+const time = ref([Number(router.currentRoute.value.query.time) || 5])
 const times = ref([])
 
-const ymax = ref([0, 100])
+const ymax = ref(router.currentRoute.value.query.ymax?.split(',').map(Number) ?? [0, 100])
 
 const chartData = ref([])
 
@@ -88,6 +88,8 @@ const generateColorPalette = (count: number) => {
 watch(router.currentRoute, () => {
   if (router.currentRoute.value.params.modelId) {
     modelId.value = router.currentRoute.value.params.modelId
+
+    document.title = `Menelmacar | ${modelId.value}`
   }
 
   if (router.currentRoute.value.params.tab) {
@@ -150,8 +152,16 @@ const resetParams = () => {
   paramsDropdownOpen.value = false
 }
 
+watch([time, ymax], () => {
+  router.push({
+    query: {
+      time: time.value[0].toString(),
+      ymax: ymax.value.join(',')
+    }
+  })
+})
+
 watch([modelId, time, ymax, logScale], () => {
-  console.log(ymax.value)
   void runModel()
 })
 
