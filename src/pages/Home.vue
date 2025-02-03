@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 </script>
 
 <template>
-  <div class="w-full border border-slate rounded-md p-12 bg-[#3D425B] radial-bg">
+  <div class="relative overflow-hidden w-full border border-slate rounded-md p-12 bg-[#3D425B] radial-bg">
     <h2 class="text-2xl text-light-grey font-semibold">
       What is Menelmacar?
     </h2>
@@ -25,29 +25,36 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
         </RouterLink>
       </div>
     </div>
+
+    <img src="/assets/home-image-charts.png"
+         class="absolute bottom-[-20%] right-0">
   </div>
 
   <div class="w-full flex flex-row flex-nowrap justify-between gap-8 text-light-grey py-10 border-b border-slate">
-    <div class="w-1/3 flex  flex-col gap-2">
+
+    <router-link to="/view/BIOMD0000000003/plot?time=70"
+                 class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
         Plot a model
       </h2>
       <img src="/assets/home-plot.png" alt="Plot a model" class="w-full h-[200px] bg-slate rounded-md overflow-hidden">
-    </div>
-    <div class="w-1/3 flex  flex-col gap-2">
+    </router-link>
+    <router-link to="/view/BIOMD0000000003/variables?time=70"
+                 class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
         Plot each variable individually
       </h2>
       <img src="/assets/home-variables.png" alt="Plot each variable individually"
            class="w-full h-[200px] bg-slate rounded-md overflow-hidden">
-    </div>
-    <div class="w-1/3 flex  flex-col gap-2">
+    </router-link>
+    <router-link to="/view/BIOMD0000000003/graph"
+                 class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
         Show as a graph
       </h2>
-      <img src="/assets/home-graph.png" alt="Show as a graph"
+      <img src="/assets/home-graph-2.png" alt="Show as a graph"
            class="w-full h-[200px] bg-slate rounded-md overflow-hidden">
-    </div>
+    </router-link>
   </div>
   <div class="w-full flex flex-col flex-nowrap justify-between gap-4 text-light-grey py-10 border-b border-slate">
     <h2 class="text-2xl">
