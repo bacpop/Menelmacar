@@ -110,7 +110,7 @@ const runModel = async () => {
   const mod = new PkgWrapper(model, parameters.value, 'error')
   times.value = range(0, time.value[0], 100)
 
-  modelResults.value = mod.run(times.value, null, {})
+  modelResults.value = mod.run(times.value, null, { maxSteps: 1_000_000 })
 
   if (modelResults.value.names.length > chartColors.value.length) {
     chartColors.value = generateColorPalette(modelResults.names.length)
