@@ -18,7 +18,7 @@ coverage
 /cypress/screenshots/
 
 # Editor directories and files
-.vscode/*
+vue-project/.vscode/settings.json
 !.vscode/extensions.json
 .idea
 *.suo
@@ -28,3 +28,7 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+test-results/
+playwright-report/
+vue-project
