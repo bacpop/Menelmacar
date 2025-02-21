@@ -30,7 +30,7 @@ watch(props, () => {
   >
     <SliderTrack
       class="relative h-2 w-full data-[orientation=vertical]:w-2 grow overflow-hidden rounded-full bg-secondary">
-      <SliderRange :class="cn('absolute h-full data-[orientation=vertical]:w-full bg-primary', modelValue[1] ? `h-[calc(100%-${modelValue[0]}%)]` : '')" />
+       <SliderRange class="absolute h-full data-[orientation=vertical]:w-full bg-primary" />
     </SliderTrack>
     <SliderThumb
       v-for="(_, key) in modelValue"
