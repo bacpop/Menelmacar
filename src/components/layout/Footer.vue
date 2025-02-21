@@ -6,6 +6,7 @@
       Noticed an error with a model? Report it here.
     </a>
     <p>&copy; 2025. All rights reserved.</p>
+    <p> Project idea and SBMLtoOdin: Leonie Lorenz and John Lees, Development of Menelmacar website: Antoine Andréoletti, Web design: Andrea Epifani, Zeqing Lu (Gomoku Studio) </p>
   </div>
 </template>
 
