@@ -1,4 +1,4 @@
-export const rangeAndDomain = (modelResults: { y: number[] }, ymax: [number, number], logScale: boolean) => {
+export const rangeAndDomain = (modelResults: { y: number[] }, ymax: number, logScale: boolean) => {
   let max_y = Math.max(...modelResults.y[0])
   let min_y = Math.min(...modelResults.y[0])
 
@@ -14,21 +14,21 @@ export const rangeAndDomain = (modelResults: { y: number[] }, ymax: [number, num
 
   const yDomain = [
     min_y - Math.abs(0.1 * min_y),
-    min_y + Math.exp(ymax[1]) / Math.exp(100) * max_y * 1.1
+    min_y + Math.exp(ymax) / Math.exp(100) * max_y * 1.1
   ]
 
   if (logScale) {
     if (min_y < 1e-6 && min_y > 0) {
       console.log('Values close to 0 in log scale')
       yDomain[0] = min_y - Math.abs(0.1 * min_y)
-      yDomain[1] = min_y + Math.exp(ymax[1]) / Math.exp(100) * max_y * 1.1
+      yDomain[1] = min_y + Math.exp(ymax) / Math.exp(100) * max_y * 1.1
     } else {
       yDomain[0] = Math.max(min_y - Math.abs(0.1 * min_y), 1e-100)
-      yDomain[1] = min_y + Math.exp(ymax[1]) / Math.exp(100) * max_y * 1.1
+      yDomain[1] = min_y + Math.exp(ymax) / Math.exp(100) * max_y * 1.1
     }
   }
 
-  const yRange = [ymax[0], Math.max(...yDomain)]
+  const yRange = [0, Math.max(...yDomain)]
 
   return { yDomain, yRange }
 }
