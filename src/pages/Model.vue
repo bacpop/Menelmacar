@@ -32,7 +32,7 @@ const logScale = ref(false)
 const time = ref([Number(router.currentRoute.value.query.time) || 5])
 const times = ref([])
 
-const ymax = ref(router.currentRoute.value.query.ymax?.split(',').map(Number) ?? [0, 100])
+const ymax = ref([Number(router.currentRoute.value.query.ymax?) ?? 100])
 
 const chartData = ref([])
 
@@ -168,7 +168,7 @@ watch([modelId, time, ymax, logScale], () => {
 watch(modelId, async () => {
   modelResults.value = null
   parameters.value = null
-  ymax.value = [0,100]
+  ymax.value = 100
 
   void runModel()
 
@@ -178,7 +178,7 @@ watch(modelId, async () => {
 
 watch(activeTab, () => {
   if (activeTab.value === 'variables') {
-    ymax.value = [0,100]
+    ymax.value = 100
     void runModel()
   }
 })
