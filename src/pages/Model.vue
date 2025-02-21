@@ -32,7 +32,7 @@ const logScale = ref(false)
 const time = ref([Number(router.currentRoute.value.query.time) || 5])
 const times = ref([])
 
-const ymax = ref([Number(router.currentRoute.value.query.ymax?) ?? 100])
+const ymax = ref([Number(router.currentRoute.value.query.ymax) || 100])
 
 const chartData = ref([])
 
@@ -156,7 +156,7 @@ watch([time, ymax], () => {
   router.push({
     query: {
       time: time.value[0].toString(),
-      ymax: ymax.value[0]
+      ymax: ymax.value[0],
     }
   })
 })
