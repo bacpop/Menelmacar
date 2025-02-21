@@ -156,7 +156,7 @@ watch([time, ymax], () => {
   router.push({
     query: {
       time: time.value[0].toString(),
-      ymax: ymax.value
+      ymax: ymax.value[0]
     }
   })
 })
