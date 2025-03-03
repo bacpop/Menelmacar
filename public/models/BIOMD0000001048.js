@@ -29,8 +29,8 @@ export class model {
     this.base.user.setUserScalar(user, "r", internal, 0.069000000000000006, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T0", internal, 3000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Tnew_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tplas_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ttum_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tplas_init", internal, 4000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ttum_init", internal, 1000000, -Infinity, Infinity, false);
     internal.initial_Tnew = internal.Tnew_init;
     internal.initial_Tplas = internal.Tplas_init;
     internal.initial_Ttum = internal.Ttum_init;

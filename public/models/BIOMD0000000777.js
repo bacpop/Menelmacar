@@ -22,13 +22,13 @@ export class model {
     this.base.user.setUserScalar(user, "d_1", internal, 0.041200000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_1", internal, 5000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_2", internal, 10000000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "M_Tumor_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "M_Tumor_Cells_init", internal, 2750000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu_1", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu_2", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "N_CTL_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "N_CTL_init", internal, 200000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_1", internal, 0.17999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_2", internal, 0.024500000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Z_THL_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Z_THL_init", internal, 7200000, -Infinity, Infinity, false);
     internal.initial_M_Tumor_Cells = internal.M_Tumor_Cells_init;
     internal.initial_N_CTL = internal.N_CTL_init;
     internal.initial_Z_THL = internal.Z_THL_init;

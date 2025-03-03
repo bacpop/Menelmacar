@@ -8,16 +8,13 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var Fraction_target_cells_remaining_init = internal.initial_Target_cells / internal.Metabolite_0;
-    internal.initial_Fraction_target_cells_remaining = Fraction_target_cells_remaining_init;
-    var state = Array(7).fill(0);
+    var state = Array(6).fill(0);
     state[0] = internal.initial_Target_cells;
     state[1] = internal.initial_Infected_cells;
     state[2] = internal.initial_Infected_cells_antiviral;
     state[3] = internal.initial_Refractory_cells;
     state[4] = internal.initial_Virions;
     state[5] = internal.initial_IFN;
-    state[6] = internal.initial_Fraction_target_cells_remaining;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -37,8 +34,8 @@ export class model {
     this.base.user.setUserScalar(user, "Pi", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Refractory_cells_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Rho", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Target_cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Virions_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Target_cells_init", internal, 400000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Virions_init", internal, 100, -Infinity, Infinity, false);
     internal.initial_IFN = internal.IFN_init;
     internal.initial_Infected_cells = internal.Infected_cells_init;
     internal.initial_Infected_cells_antiviral = internal.Infected_cells_antiviral_init;
@@ -58,7 +55,6 @@ export class model {
     const Refractory_cells = state[3];
     const Virions = state[4];
     const IFN = state[5];
-    dstatedt[6] = 0 + 0;
     dstatedt[5] = 0 + 1 * internal.whole_organism * (internal.Pi * internal.p * (Infected_cells + Infected_cells_antiviral)) - 1 * internal.whole_organism * internal.c * IFN;
     dstatedt[1] = 0 + 1 * internal.whole_organism * (internal.Beta * Virions * Target_cells) - 1 * internal.whole_organism * (internal.kxk * Infected_cells + internal.Phi * IFN * Infected_cells) - 1 * internal.whole_organism * internal.Delta * Infected_cells;
     dstatedt[2] = 0 + 1 * internal.whole_organism * (internal.kxk * Infected_cells + internal.Phi * IFN * Infected_cells) - 1 * internal.whole_organism * internal.Delta * Infected_cells_antiviral;
@@ -72,9 +68,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Target_cells", "Infected_cells", "Infected_cells_antiviral", "Refractory_cells", "Virions", "IFN", "Fraction_target_cells_remaining"];
-    this.metadata.internalOrder = {Beta: null, c: null, Delta: null, f: null, IFN_init: null, Infected_cells_antiviral_init: null, Infected_cells_init: null, initial_Fraction_target_cells_remaining: null, initial_IFN: null, initial_Infected_cells: null, initial_Infected_cells_antiviral: null, initial_Refractory_cells: null, initial_Target_cells: null, initial_Virions: null, kxk: null, Metabolite_0: null, p: null, Phi: null, Pi: null, Refractory_cells_init: null, Rho: null, Target_cells_init: null, Virions_init: null, whole_organism: null};
-    this.metadata.variableOrder = {Target_cells: null, Infected_cells: null, Infected_cells_antiviral: null, Refractory_cells: null, Virions: null, IFN: null, Fraction_target_cells_remaining: null};
+    this.metadata.ynames = ["t", "Target_cells", "Infected_cells", "Infected_cells_antiviral", "Refractory_cells", "Virions", "IFN"];
+    this.metadata.internalOrder = {Beta: null, c: null, Delta: null, f: null, IFN_init: null, Infected_cells_antiviral_init: null, Infected_cells_init: null, initial_IFN: null, initial_Infected_cells: null, initial_Infected_cells_antiviral: null, initial_Refractory_cells: null, initial_Target_cells: null, initial_Virions: null, kxk: null, Metabolite_0: null, p: null, Phi: null, Pi: null, Refractory_cells_init: null, Rho: null, Target_cells_init: null, Virions_init: null, whole_organism: null};
+    this.metadata.variableOrder = {Target_cells: null, Infected_cells: null, Infected_cells_antiviral: null, Refractory_cells: null, Virions: null, IFN: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

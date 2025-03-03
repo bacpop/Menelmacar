@@ -86,15 +86,15 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["Arr_init", "ArrTot", "betadark", "betasub", "Ca2_0", "Ca2_buff_init", "Ca2_free_init", "Ca2dark", "cGMP_init", "cGMPdark", "eT", "F", "fCa", "flash0Dur", "flash0Mag", "flashBG", "flashDel", "flashDur", "flashMag", "G_GTP_init", "Ga_GDP_init", "Ga_GTP_a_PDE_a_Ga_GTP_init", "Ga_GTP_init", "Ga_GTP_PDE_a_Ga_GTP_init", "gammaCa", "Gbg_init", "Gt_init", "Gtot", "Jdark", "k1", "k2", "kA2", "kA3", "kArr", "Kc", "kG1_0", "kG2", "kG3", "kG4_GDP", "kG5_GTP", "kG6", "kG7", "kGrecyc", "kGshutoff", "kOps", "Kp", "kP1", "kP1_rev", "kP2", "kP3", "kP4", "kPDEshutoff", "kRec3", "kRec4", "kRGS1", "kRGS2", "kRK1_0", "kRK2", "kRK3_ATP", "kRK4", "kRrecyc", "ktherm", "m", "ncg", "omega", "omega_arr", "Ops_G_GTP_init", "Ops_G_init", "Ops_Gt_init", "Ops_init", "otherstimulus", "PDE_a_Ga_GTP_init", "PDE_Ga_GTP_init", "PDE_init", "PDEtot", "R_init", "R0_G_GTP_init", "R0_G_init", "R0_Gt_init", "R0_init", "R0_RKpre_init", "R1_Arr_init", "R1_G_GTP_init", "R1_G_init", "R1_Gt_init", "R1_init", "R1_RKpost_init", "R1_RKpre_init", "R2_Arr_init", "R2_G_GTP_init", "R2_G_init", "R2_Gt_init", "R2_init", "R2_RKpost_init", "R2_RKpre_init", "R3_Arr_init", "R3_G_GTP_init", "R3_G_init", "R3_Gt_init", "R3_init", "R3_RKpost_init", "R3_RKpre_init", "R4_Arr_init", "R4_G_GTP_init", "R4_G_init", "R4_Gt_init", "R4_init", "R4_RKpost_init", "R4_RKpre_init", "R5_Arr_init", "R5_G_GTP_init", "R5_G_init", "R5_Gt_init", "R5_init", "R5_RKpost_init", "R5_RKpre_init", "R6_Arr_init", "R6_G_GTP_init", "R6_G_init", "R6_Gt_init", "R6_init", "R6_RKpost_init", "R6_RKpre_init", "Rec_wCa2_RK_init", "Rectot", "RGS_Ga_GTP_a_PDE_a_Ga_GTP_init", "RGS_init", "RGS_PDE_a_Ga_GTP_init", "RGStot", "RK_init", "RKdark", "Rtot", "Vcyto", "w"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "Arr_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Arr_init", internal, 31300000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ArrTot", internal, 31300000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "betadark", internal, 1.2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "betasub", internal, 0.00042999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ca2_0", internal, 0.01, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ca2_buff_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ca2_free_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ca2_buff_init", internal, 42.856999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ca2_free_init", internal, 0.59999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ca2dark", internal, 0.59999999999999998, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "cGMP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "cGMP_init", internal, 4, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cGMPdark", internal, 4, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "eT", internal, 400, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "F", internal, 96485.341499999995, -Infinity, Infinity, false);
@@ -112,7 +112,7 @@ export class model {
     this.base.user.setUserScalar(user, "Ga_GTP_PDE_a_Ga_GTP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gammaCa", internal, 47.554000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Gbg_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Gt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Gt_init", internal, 360000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Gtot", internal, 360000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Jdark", internal, 29.777799999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.38152900000000001, -Infinity, Infinity, false);
@@ -159,9 +159,9 @@ export class model {
     this.base.user.setUserScalar(user, "otherstimulus", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PDE_a_Ga_GTP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PDE_Ga_GTP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PDE_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PDE_init", internal, 13350000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PDEtot", internal, 13350000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "R_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R_init", internal, 3600000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R0_G_GTP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R0_G_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R0_Gt_init", internal, 0, -Infinity, Infinity, false);
@@ -209,13 +209,13 @@ export class model {
     this.base.user.setUserScalar(user, "R6_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R6_RKpost_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R6_RKpre_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Rec_wCa2_RK_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Rec_wCa2_RK_init", internal, 4204560, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Rectot", internal, 35, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RGS_Ga_GTP_a_PDE_a_Ga_GTP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "RGS_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RGS_init", internal, 3000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RGS_PDE_a_Ga_GTP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RGStot", internal, 3000000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "RK_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RK_init", internal, 10838, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RKdark", internal, 10838, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Rtot", internal, 3600000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Vcyto", internal, 1, -Infinity, Infinity, false);

@@ -32,8 +32,8 @@ export class model {
     this.base.user.setUserScalar(user, "Residual_error", internal, 0.20599999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SVAC_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "TRAN_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ts_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "VAC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ts_init", internal, 0.32400000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VAC_init", internal, 1, -Infinity, Infinity, false);
     internal.initial_REG = internal.REG_init;
     internal.initial_SVAC = internal.SVAC_init;
     internal.initial_TRAN = internal.TRAN_init;

@@ -4,8 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.cell = 1;
-    internal.k0 = 1;
-    internal.k2 = 2;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -39,25 +37,25 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a1frac", "actCycACdk1_init", "actCycACdk2_init", "actCycB_init", "actCycD_init", "actCycE_init", "APCP_init", "Cdc20A_init", "Cdc20T_init", "Cdh1_init", "CKI_init", "cycA_init", "cycB_init", "cycE_init", "DRG_init", "E2F_init", "E2FRB_init", "ERG_init", "FB", "FE", "J15", "J17", "J20", "Ja20", "Ja25", "JaAPC", "Jafb", "Jah1", "Jatf", "Jawee", "Jaweeb", "Ji20", "Ji25", "JiAPC", "Jifb", "Jih1", "Jitf", "Jiwee", "k10", "k15", "k16", "k17", "k17p", "k18", "K19", "K19a", "K20", "K21", "K22", "K23a", "K23b", "k24", "k24r", "k25p", "k25pp", "K26", "K26R", "k9", "ka20", "ka25", "kaAPC", "kacdh1", "kafab", "kah1p", "kah1pp", "kasa", "kase", "katfpp", "katfppp", "katfpppp", "kaweep", "kd20", "kdap", "kdapp", "kdbp", "kdbpp", "kdbppp", "kde2fcdc20", "kde2fcdh1", "kdep", "kdepp", "kdeppp", "kdepppp", "kdia", "kdie", "kdip", "kdipp", "kdippp", "kdipppp", "ke2f", "ki20", "ki25", "kiAPC", "kifb", "kih1pp", "kih1ppp", "kitfp", "kitfpp", "kitfppp", "kiwee", "kiweeb", "ks20pp", "ksap", "ksapp", "ksappp", "ksbp", "ksbpp", "ksbppp", "ksbpppp", "ksep", "ksepp", "ksip", "kweep", "kweepp", "LA", "LB", "LD", "LE", "mass_init", "pE2F_init", "pE2FRB_init", "PP1T", "ppRB_init", "preMPF_init", "Rb_init", "TriA_init", "TriD_init", "u"], unusedUserAction);
+    this.base.user.checkUser(user, ["a1frac", "actCycACdk1_init", "actCycACdk2_init", "actCycB_init", "actCycD_init", "actCycE_init", "APCP_init", "Cdc20A_init", "Cdc20T_init", "Cdh1_init", "CKI_init", "cycA_init", "cycB_init", "cycE_init", "DRG_init", "E2F_init", "E2FRB_init", "ERG_init", "FB", "FE", "J15", "J17", "J20", "Ja20", "Ja25", "JaAPC", "Jafb", "Jah1", "Jatf", "Jawee", "Jaweeb", "Ji20", "Ji25", "JiAPC", "Jifb", "Jih1", "Jitf", "Jiwee", "k0", "k10", "k15", "k16", "k17", "k17p", "k18", "K19", "K19a", "k2", "K20", "K21", "K22", "K23a", "K23b", "k24", "k24r", "k25p", "k25pp", "K26", "K26R", "k9", "ka20", "ka25", "kaAPC", "kacdh1", "kafab", "kah1p", "kah1pp", "kasa", "kase", "katfpp", "katfppp", "katfpppp", "kaweep", "kd20", "kdap", "kdapp", "kdbp", "kdbpp", "kdbppp", "kde2fcdc20", "kde2fcdh1", "kdep", "kdepp", "kdeppp", "kdepppp", "kdia", "kdie", "kdip", "kdipp", "kdippp", "kdipppp", "ke2f", "ki20", "ki25", "kiAPC", "kifb", "kih1pp", "kih1ppp", "kitfp", "kitfpp", "kitfppp", "kiwee", "kiweeb", "ks20pp", "ksap", "ksapp", "ksappp", "ksbp", "ksbpp", "ksbppp", "ksbpppp", "ksep", "ksepp", "ksip", "kweep", "kweepp", "LA", "LB", "LD", "LE", "mass_init", "pE2F_init", "pE2FRB_init", "PP1T", "ppRB_init", "preMPF_init", "Rb_init", "TriA_init", "TriD_init", "u"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a1frac", internal, 0.081282999999999994, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "actCycACdk1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "actCycACdk2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "actCycB_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "actCycACdk1_init", internal, 0.003801725709734, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "actCycACdk2_init", internal, 0.042969690553999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "actCycB_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "actCycD_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "actCycE_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "APCP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cdc20A_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cdc20T_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cdh1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CKI_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "cycA_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "cycB_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "cycE_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "actCycE_init", internal, 0.045865999999999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "APCP_init", internal, 0.81077999999999995, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cdc20A_init", internal, 0.2727, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cdc20T_init", internal, 0.27315, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cdh1_init", internal, 0.99736000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CKI_init", internal, 0.60183432000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "cycA_init", internal, 0.067924999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "cycB_init", internal, 2.3652000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "cycE_init", internal, 0.072512999999999994, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DRG_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "E2F_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "E2FRB_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "E2F_init", internal, 0.716055, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "E2FRB_init", internal, 0.27627000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ERG_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "FB", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "FE", internal, 25, -Infinity, Infinity, false);
@@ -79,6 +77,7 @@ export class model {
     this.base.user.setUserScalar(user, "Jih1", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Jitf", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Jiwee", internal, 0.050000000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k0", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k10", internal, 88.174999999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k15", internal, 5.2904999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k16", internal, 44.087499999999999, -Infinity, Infinity, false);
@@ -87,6 +86,7 @@ export class model {
     this.base.user.setUserScalar(user, "k18", internal, 176.34999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K19", internal, 35.270000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K19a", internal, 440.875, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k2", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K20", internal, 176.34999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K21", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K22", internal, 3.5270000000000001, -Infinity, Infinity, false);
@@ -159,14 +159,14 @@ export class model {
     this.base.user.setUserScalar(user, "LB", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LD", internal, 3.2999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LE", internal, 10, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "mass_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "pE2F_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "pE2FRB_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "mass_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "pE2F_init", internal, 1.3885369999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "pE2FRB_init", internal, 0.53642000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PP1T", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ppRB_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "preMPF_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Rb_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "TriA_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ppRB_init", internal, 14.080109999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "preMPF_init", internal, 2.3552057999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Rb_init", internal, 0.1071, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TriA_init", internal, 0.0211544, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "TriD_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "u", internal, 0.69393700000000003, -Infinity, Infinity, false);
     internal.initial_actCycACdk1 = internal.actCycACdk1_init;

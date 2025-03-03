@@ -11,18 +11,12 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var BSP_cell_init = internal.initial_x3 + internal.initial_x4;
-    var BSP_tot_init = internal.initial_x1 + internal.initial_x2 + internal.initial_x3 + internal.initial_x4 + internal.initial_x5;
-    internal.initial_BSP_cell = BSP_cell_init;
-    internal.initial_BSP_tot = BSP_tot_init;
-    var state = Array(7).fill(0);
+    var state = Array(5).fill(0);
     state[0] = internal.initial_x1;
     state[1] = internal.initial_x2;
     state[2] = internal.initial_x3;
     state[3] = internal.initial_x4;
     state[4] = internal.initial_x5;
-    state[5] = internal.initial_BSP_tot;
-    state[6] = internal.initial_BSP_cell;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -62,8 +56,6 @@ export class model {
     const x3 = state[2];
     const x4 = state[3];
     const x5 = state[4];
-    dstatedt[6] = 0 + 0;
-    dstatedt[5] = 0 + 0;
     dstatedt[0] = 0 - 1 * internal.p1 * x1 - 1 * internal.p3 * x1 + 1 * internal.p4 * x3 - 1 * internal.p6 * x1 * (internal.p8 - x2) + 1 * internal.p7 * x2 - 1 * internal.p12 * (x1 / internal.basolat - x5 / internal.apical);
     dstatedt[1] = 0 + 1 * internal.p6 * x1 * (internal.p8 - x2) - 1 * internal.p7 * x2;
     dstatedt[2] = 0 + 1 * internal.p1 * x1 - 1 * internal.p2 * x3 + 1 * internal.p3 * x1 - 1 * internal.p4 * x3 - 1 * internal.p5 * x3 - 1 * internal.p9 * x3 * (internal.p11 - x4) + 1 * internal.p10 * x4;
@@ -76,9 +68,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "x1", "x2", "x3", "x4", "x5", "BSP_tot", "BSP_cell"];
-    this.metadata.internalOrder = {apical: null, basolat: null, cell: null, initial_BSP_cell: null, initial_BSP_tot: null, initial_x1: null, initial_x2: null, initial_x3: null, initial_x4: null, initial_x5: null, p1: null, p10: null, p11: null, p12: null, p2: null, p3: null, p4: null, p5: null, p6: null, p7: null, p8: null, p9: null, pi: null, x1_init: null, x2_init: null, x3_init: null, x4_init: null, x5_init: null};
-    this.metadata.variableOrder = {x1: null, x2: null, x3: null, x4: null, x5: null, BSP_tot: null, BSP_cell: null};
+    this.metadata.ynames = ["t", "x1", "x2", "x3", "x4", "x5"];
+    this.metadata.internalOrder = {apical: null, basolat: null, cell: null, initial_x1: null, initial_x2: null, initial_x3: null, initial_x4: null, initial_x5: null, p1: null, p10: null, p11: null, p12: null, p2: null, p3: null, p4: null, p5: null, p6: null, p7: null, p8: null, p9: null, pi: null, x1_init: null, x2_init: null, x3_init: null, x4_init: null, x5_init: null};
+    this.metadata.variableOrder = {x1: null, x2: null, x3: null, x4: null, x5: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

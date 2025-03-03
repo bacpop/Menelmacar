@@ -25,7 +25,7 @@ export class model {
     this.base.user.setUserScalar(user, "Bmax_SAv", internal, 76, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dSAve_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dSAvi_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "EpoR_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "EpoR_init", internal, 76, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kde", internal, 0.016404200000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kdi", internal, 0.00317871, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kex_SAv", internal, 0.011010000000000001, -Infinity, Infinity, false);
@@ -34,7 +34,7 @@ export class model {
     this.base.user.setUserScalar(user, "kt", internal, 0.032936600000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SAv_EpoR_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SAv_EpoRi_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SAv_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SAv_init", internal, 999.29300000000001, -Infinity, Infinity, false);
     internal.initial_dSAve = internal.dSAve_init;
     internal.initial_dSAvi = internal.dSAvi_init;
     internal.initial_EpoR = internal.EpoR_init;

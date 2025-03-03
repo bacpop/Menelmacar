@@ -45,9 +45,9 @@ export class model {
     this.base.user.setUserScalar(user, "Infected_tumour_cells_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K1", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K2", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "M1_macrophages_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "M1_macrophages_init", internal, 2.5000000000000002e-06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "omega", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Oncolytic_viruses_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Oncolytic_viruses_init", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p_m1", internal, 0.56999999999999995, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p_m2", internal, 0.56999999999999995, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 0.62, -Infinity, Infinity, false);
@@ -55,8 +55,8 @@ export class model {
     this.base.user.setUserScalar(user, "r_v_m2", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r0_m1", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r0_m2", internal, 0.001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Uninfected_M2_macrophages_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Uninfected_tumour_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Uninfected_M2_macrophages_init", internal, 2.4999999999999999e-07, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Uninfected_tumour_cells_init", internal, 0.00050000000000000001, -Infinity, Infinity, false);
     internal.initial_Infected_M2_macrophages = internal.Infected_M2_macrophages_init;
     internal.initial_Infected_tumour_cells = internal.Infected_tumour_cells_init;
     internal.initial_M1_macrophages = internal.M1_macrophages_init;

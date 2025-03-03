@@ -74,32 +74,12 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const V_membrane = state[0];
-    const h = state[1];
-    const d = state[2];
-    const n = state[3];
-    const Ca_i_cytosolic_calcium = state[4];
-    const Ca_lum = state[5];
-    var d_infinity = 1 / (1 + Math.exp((internal.Vd - V_membrane) / internal.Sd));
-    dstatedt[5] = 0 + - internal.k_rel * (Ca_lum - Ca_i_cytosolic_calcium) + internal.k_pump * Ca_i_cytosolic_calcium;
-    var h_infinity = 1 / (1 + Math.exp((internal.Vh - V_membrane) / internal.Sh));
-    var i_K_ATP = internal.g_K_ATP * (V_membrane - internal.V_K);
-    var i_K_Ca = internal.g_K_Ca * Math.pow((Ca_i_cytosolic_calcium), (3)) / (Math.pow((internal.K_Ca), (3)) + Math.pow((Ca_i_cytosolic_calcium), (3))) * (V_membrane - internal.V_K);
-    var i_K_dr = internal.g_K_dr * Math.pow((n), (4)) * (V_membrane - internal.V_K);
-    var i_NaL = internal.g_NaL * (V_membrane - internal.V_Na);
-    var i_NS = internal.g_NS * Math.pow((internal.K_NS), (2)) / (Math.pow((internal.K_NS), (2)) + Math.pow((Ca_lum), (2))) * ((V_membrane - internal.VNS) / (1 - Math.exp(0.10000000000000001 * (internal.VNS - V_membrane))) - 10);
-    var m_infinity = 1 / (1 + Math.exp((internal.Vm - V_membrane) / internal.Sm));
-    var n_infinity = 1 / (1 + Math.exp((internal.Vn - V_membrane) / internal.Sn));
-    var tau_d = 1 / (internal.lamda_d * (Math.exp((internal.Vd - V_membrane) / (2 * internal.Sd)) + Math.exp((V_membrane - internal.Vd) / (2 * internal.Sd))));
-    var tau_h = 1 / (internal.lamda_h * (Math.exp((internal.Vh - V_membrane) / (2 * internal.Sh)) + Math.exp((V_membrane - internal.Vh) / (2 * internal.Sh))));
-    var tau_n = 1 / (internal.lamda_n * (Math.exp((internal.Vn - V_membrane) / (2 * internal.Sn)) + Math.exp((V_membrane - internal.Vn) / (2 * internal.Sn))));
-    dstatedt[2] = 0 + (d_infinity - d) / tau_d;
-    dstatedt[1] = 0 + (h_infinity - h) / tau_h;
-    dstatedt[3] = 0 + (n_infinity - n) / tau_n;
-    var i_Ca = internal.P_Ca * d * internal.f_infinity * 2 * internal.F * V_membrane / (internal.R * internal.T) * (internal.Ca_o - Ca_i_cytosolic_calcium * Math.exp(2 * internal.F * V_membrane / (internal.R * internal.T))) / (1 - Math.exp(2 * internal.F * V_membrane / (internal.R * internal.T)));
-    var i_fast = internal.g_fast * Math.pow((m_infinity), (3)) * h * (V_membrane - internal.V_fast);
-    dstatedt[4] = 0 + internal.k_rel * (Ca_lum - Ca_i_cytosolic_calcium) - (internal.omega * i_Ca + internal.k_Ca * Ca_i_cytosolic_calcium + internal.k_pump * Ca_i_cytosolic_calcium);
-    dstatedt[0] = 0 + - (i_K_dr + i_K_Ca + i_K_ATP + i_fast + i_Ca + i_NS + i_NaL) / internal.Cm;
+    dstatedt[4] = 0;
+    dstatedt[5] = 0;
+    dstatedt[2] = 0;
+    dstatedt[1] = 0;
+    dstatedt[3] = 0;
+    dstatedt[0] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

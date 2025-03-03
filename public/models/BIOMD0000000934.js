@@ -8,13 +8,7 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var Clb12_total_init = internal.initial_Cdk1_Clb1or2 + internal.initial_Cdk1_Clb1or2_Sic1;
-    var Clb34_total_init = internal.initial_Cdk1_Clb3or4 + internal.initial_Cdk1_Clb3or4_Sic1;
-    var Clb56_total_init = internal.initial_Cdk1_Clb5or6 + internal.initial_Cdk1_Clb5or6_Sic1;
-    internal.initial_Clb12_total = Clb12_total_init;
-    internal.initial_Clb34_total = Clb34_total_init;
-    internal.initial_Clb56_total = Clb56_total_init;
-    var state = Array(16).fill(0);
+    var state = Array(13).fill(0);
     state[0] = internal.initial_Sic1;
     state[1] = internal.initial_Cdk1_Clb5or6;
     state[2] = internal.initial_Cdk1_Clb5or6_Sic1;
@@ -28,9 +22,6 @@ export class model {
     state[10] = internal.initial_Sic1_degraded_re14;
     state[11] = internal.initial_Sic1_degraded_re18;
     state[12] = internal.initial_Sic1_degraded_re5;
-    state[13] = internal.initial_Clb34_total;
-    state[14] = internal.initial_Clb12_total;
-    state[15] = internal.initial_Clb56_total;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -71,7 +62,7 @@ export class model {
     this.base.user.setUserScalar(user, "Sic1_degraded_re14_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Sic1_degraded_re18_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Sic1_degraded_re5_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Sic1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Sic1_init", internal, 5, -Infinity, Infinity, false);
     internal.initial_Cdk1_Clb1or2 = internal.Cdk1_Clb1or2_init;
     internal.initial_Cdk1_Clb1or2_Sic1 = internal.Cdk1_Clb1or2_Sic1_init;
     internal.initial_Cdk1_Clb3or4 = internal.Cdk1_Clb3or4_init;
@@ -99,9 +90,6 @@ export class model {
     const Cdk1_Clb3or4_Sic1 = state[5];
     const Cdk1_Clb1or2 = state[7];
     const Cdk1_Clb1or2_Sic1 = state[8];
-    dstatedt[14] = 0 + 0;
-    dstatedt[13] = 0 + 0;
-    dstatedt[15] = 0 + 0;
     dstatedt[7] = 0 + 1 * internal.cell * (internal.k9 * (1 + internal.kD * Cdk1_Clb1or2 + internal.kB * Cdk1_Clb3or4 + internal.kC * Cdk1_Clb5or6)) - 1 * internal.cell * internal.k10 * Cdk1_Clb1or2 - 1 * internal.cell * internal.k11 * Sic1 * Cdk1_Clb1or2 + 1 * internal.cell * internal.k12 * Cdk1_Clb1or2_Sic1;
     dstatedt[8] = 0 + 1 * internal.cell * internal.k11 * Sic1 * Cdk1_Clb1or2 - 1 * internal.cell * internal.k12 * Cdk1_Clb1or2_Sic1 - 1 * internal.cell * internal.k13 * Cdk1_Clb1or2_Sic1 - 1 * internal.cell * (internal.k14 * Cdk1_Clb1or2_Sic1 * (1 + Cdk1_Clb5or6 + Cdk1_Clb3or4 + Cdk1_Clb1or2));
     dstatedt[4] = 0 + 1 * internal.cell * (internal.k7 * (1 + internal.kA * Cdk1_Clb5or6)) - 1 * internal.cell * internal.k8 * Cdk1_Clb3or4 - 1 * internal.cell * internal.k15 * Sic1 * Cdk1_Clb3or4 + 1 * internal.cell * internal.k16 * Cdk1_Clb3or4_Sic1;
@@ -122,9 +110,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Sic1", "Cdk1_Clb5or6", "Cdk1_Clb5or6_Sic1", "Clb5or6_degraded", "Cdk1_Clb3or4", "Cdk1_Clb3or4_Sic1", "Clb3or4_degraded", "Cdk1_Clb1or2", "Cdk1_Clb1or2_Sic1", "Clb1or2_degraded", "Sic1_degraded_re14", "Sic1_degraded_re18", "Sic1_degraded_re5", "Clb34_total", "Clb12_total", "Clb56_total"];
-    this.metadata.internalOrder = {Cdk1_Clb1or2_init: null, Cdk1_Clb1or2_Sic1_init: null, Cdk1_Clb3or4_init: null, Cdk1_Clb3or4_Sic1_init: null, Cdk1_Clb5or6_init: null, Cdk1_Clb5or6_Sic1_init: null, cell: null, Clb1or2_degraded_init: null, Clb3or4_degraded_init: null, Clb5or6_degraded_init: null, initial_Cdk1_Clb1or2: null, initial_Cdk1_Clb1or2_Sic1: null, initial_Cdk1_Clb3or4: null, initial_Cdk1_Clb3or4_Sic1: null, initial_Cdk1_Clb5or6: null, initial_Cdk1_Clb5or6_Sic1: null, initial_Clb12_total: null, initial_Clb1or2_degraded: null, initial_Clb34_total: null, initial_Clb3or4_degraded: null, initial_Clb56_total: null, initial_Clb5or6_degraded: null, initial_Sic1: null, initial_Sic1_degraded_re14: null, initial_Sic1_degraded_re18: null, initial_Sic1_degraded_re5: null, k1: null, k10: null, k11: null, k12: null, k13: null, k14: null, k15: null, k16: null, k17: null, k18: null, k2: null, k26: null, k3: null, k4: null, k5: null, k6: null, k7: null, k8: null, k9: null, kA: null, kB: null, kC: null, kD: null, Sic1_degraded_re14_init: null, Sic1_degraded_re18_init: null, Sic1_degraded_re5_init: null, Sic1_init: null};
-    this.metadata.variableOrder = {Sic1: null, Cdk1_Clb5or6: null, Cdk1_Clb5or6_Sic1: null, Clb5or6_degraded: null, Cdk1_Clb3or4: null, Cdk1_Clb3or4_Sic1: null, Clb3or4_degraded: null, Cdk1_Clb1or2: null, Cdk1_Clb1or2_Sic1: null, Clb1or2_degraded: null, Sic1_degraded_re14: null, Sic1_degraded_re18: null, Sic1_degraded_re5: null, Clb34_total: null, Clb12_total: null, Clb56_total: null};
+    this.metadata.ynames = ["t", "Sic1", "Cdk1_Clb5or6", "Cdk1_Clb5or6_Sic1", "Clb5or6_degraded", "Cdk1_Clb3or4", "Cdk1_Clb3or4_Sic1", "Clb3or4_degraded", "Cdk1_Clb1or2", "Cdk1_Clb1or2_Sic1", "Clb1or2_degraded", "Sic1_degraded_re14", "Sic1_degraded_re18", "Sic1_degraded_re5"];
+    this.metadata.internalOrder = {Cdk1_Clb1or2_init: null, Cdk1_Clb1or2_Sic1_init: null, Cdk1_Clb3or4_init: null, Cdk1_Clb3or4_Sic1_init: null, Cdk1_Clb5or6_init: null, Cdk1_Clb5or6_Sic1_init: null, cell: null, Clb1or2_degraded_init: null, Clb3or4_degraded_init: null, Clb5or6_degraded_init: null, initial_Cdk1_Clb1or2: null, initial_Cdk1_Clb1or2_Sic1: null, initial_Cdk1_Clb3or4: null, initial_Cdk1_Clb3or4_Sic1: null, initial_Cdk1_Clb5or6: null, initial_Cdk1_Clb5or6_Sic1: null, initial_Clb1or2_degraded: null, initial_Clb3or4_degraded: null, initial_Clb5or6_degraded: null, initial_Sic1: null, initial_Sic1_degraded_re14: null, initial_Sic1_degraded_re18: null, initial_Sic1_degraded_re5: null, k1: null, k10: null, k11: null, k12: null, k13: null, k14: null, k15: null, k16: null, k17: null, k18: null, k2: null, k26: null, k3: null, k4: null, k5: null, k6: null, k7: null, k8: null, k9: null, kA: null, kB: null, kC: null, kD: null, Sic1_degraded_re14_init: null, Sic1_degraded_re18_init: null, Sic1_degraded_re5_init: null, Sic1_init: null};
+    this.metadata.variableOrder = {Sic1: null, Cdk1_Clb5or6: null, Cdk1_Clb5or6_Sic1: null, Clb5or6_degraded: null, Cdk1_Clb3or4: null, Cdk1_Clb3or4_Sic1: null, Clb3or4_degraded: null, Cdk1_Clb1or2: null, Cdk1_Clb1or2_Sic1: null, Clb1or2_degraded: null, Sic1_degraded_re14: null, Sic1_degraded_re18: null, Sic1_degraded_re5: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

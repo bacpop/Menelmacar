@@ -22,9 +22,9 @@ export class model {
     this.base.user.setUserScalar(user, "delta", internal, 0.0001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Removal_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Susceptible_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Susceptible_init", internal, 500, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "zeta", internal, 0.0001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Zombie_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Zombie_init", internal, 1, -Infinity, Infinity, false);
     internal.initial_Removal = internal.Removal_init;
     internal.initial_Susceptible = internal.Susceptible_init;
     internal.initial_Zombie = internal.Zombie_init;

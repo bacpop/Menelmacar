@@ -3,7 +3,6 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.k1 = 1;
     internal.Whole_organism = 1;
     this.setUser(user, unusedUserAction);
   }
@@ -17,15 +16,16 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["damaged_cancer_cells_init", "f", "free_virus_init", "h", "infected_cancer_cells_init", "m", "uninfected_cancer_cells_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["damaged_cancer_cells_init", "f", "free_virus_init", "h", "infected_cancer_cells_init", "k1", "m", "uninfected_cancer_cells_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "damaged_cancer_cells_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "f", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "free_virus_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "free_virus_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "h", internal, 0.14999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "infected_cancer_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k1", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "m", internal, 0.02, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "uninfected_cancer_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "uninfected_cancer_cells_init", internal, 0.40000000000000002, -Infinity, Infinity, false);
     internal.initial_damaged_cancer_cells = internal.damaged_cancer_cells_init;
     internal.initial_free_virus = internal.free_virus_init;
     internal.initial_infected_cancer_cells = internal.infected_cancer_cells_init;

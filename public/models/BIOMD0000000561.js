@@ -8,23 +8,23 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var Amyloid_init = (1 - 1 / (internal.kb * (Math.exp(internal.ka * t) - 1) + 1)) * internal.deltamt;
-    internal.initial_Amyloid = Amyloid_init;
     var state = Array(1).fill(0);
     state[0] = internal.initial_Amyloid;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["C", "C_0", "ka", "kb", "sigmao", "V"], unusedUserAction);
+    this.base.user.checkUser(user, ["Amyloid_init", "C", "C_0", "deltamt", "gamma", "ka", "kb", "sigmao", "V"], unusedUserAction);
     var internal = this.internal;
+    this.base.user.setUserScalar(user, "Amyloid_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C_0", internal, 2, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "deltamt", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "gamma", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ka", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kb", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sigmao", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V", internal, 1, -Infinity, Infinity, false);
-    internal.gamma = (internal.C_0 - internal.C) / internal.C;
-    internal.deltamt = internal.sigmao * internal.V * internal.C * internal.gamma;
+    internal.initial_Amyloid = internal.Amyloid_init;
     this.updateMetadata();
   }
   getInternal() {
@@ -32,7 +32,7 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[0] = 0 + 0;
+    dstatedt[0] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -41,7 +41,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "Amyloid"];
-    this.metadata.internalOrder = {Brain: null, C: null, C_0: null, deltamt: null, gamma: null, initial_Amyloid: null, ka: null, kb: null, sigmao: null, V: null};
+    this.metadata.internalOrder = {Amyloid_init: null, Brain: null, C: null, C_0: null, deltamt: null, gamma: null, initial_Amyloid: null, ka: null, kb: null, sigmao: null, V: null};
     this.metadata.variableOrder = {Amyloid: null};
     this.metadata.outputOrder = null;
   }

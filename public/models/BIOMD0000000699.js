@@ -9,31 +9,7 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var Active_Bfa1_at_the_Cytosol_init = (internal.q * (internal.initial_Bfa1 + internal.initial_Bfa1_Tem1GTP + internal.initial_Bfa1_Tem1GDP) + internal.initial_Bfa1P4 + internal.initial_Bfa1P4_Tem1GTP + internal.initial_Bfa1P4_Tem1GDP) * internal.c2 * internal.avogadro;
-    var Active_Bfa1_at_the_SPB_init = (internal.q * (internal.initial_B_Bfa1 + internal.initial_B_Bfa1_Tem1GTP + internal.initial_B_Bfa1_Tem1GDP) + internal.initial_B_Bfa1P4 + internal.initial_B_Bfa1P4_Tem1GTP + internal.initial_B_Bfa1P4_Tem1GDP) * internal.c3 * internal.avogadro;
-    var Active_Tem1_at_the_SPB_init = (internal.initial_T_Tem1GTP + internal.initial_B_Bfa1_Tem1GTP + internal.initial_B_Bfa1P4_Tem1GTP + internal.initial_B_Bfa1P5_Tem1GTP) * internal.c3 * internal.avogadro;
-    var Active_Tem1_in_the_Cytosol_init = (internal.initial_Tem1GTP + internal.initial_Bfa1_Tem1GTP + internal.initial_Bfa1P4_Tem1GTP + internal.initial_Bfa1P5_Tem1GTP) * internal.c2 * internal.avogadro;
-    var Inactive_Bfa1_at_the_SPB_init = ((1 - internal.q) * (internal.initial_B_Bfa1 + internal.initial_B_Bfa1_Tem1GTP + internal.initial_B_Bfa1_Tem1GDP) + internal.initial_B_Bfa1P5 + internal.initial_B_Bfa1P5_Tem1GTP + internal.initial_B_Bfa1P5_Tem1GDP) * internal.c3 * internal.avogadro;
-    var Inactive_Bfa1_in_the_cytosol_init = ((1 - internal.q) * (internal.initial_Bfa1 + internal.initial_Bfa1_Tem1GDP + internal.initial_Bfa1_Tem1GTP) + internal.initial_Bfa1P5 + internal.initial_Bfa1P5_Tem1GTP + internal.initial_Bfa1P5_Tem1GDP) * internal.c2 * internal.avogadro;
-    var Inactive_Tem1_at_the_SPB_init = (internal.initial_T_Tem1GDP + internal.initial_B_Bfa1_Tem1GDP + internal.initial_B_Bfa1P4_Tem1GDP + internal.initial_B_Bfa1P5_Tem1GDP) * internal.c3 * internal.avogadro;
-    var Inactive_Tem1_in_the_cytosol_init = (internal.initial_Tem1GDP + internal.initial_Bfa1_Tem1GDP + internal.initial_Bfa1P4_Tem1GDP + internal.initial_Bfa1P5_Tem1GDP) * internal.c2 * internal.avogadro;
-    var Total_Bfa1_at_the_SPB_init = internal.initial_Active_Bfa1_at_the_SPB + internal.initial_Inactive_Bfa1_at_the_SPB;
-    var Total_Bfa1_in_the_Cytosol_init = internal.initial_Active_Bfa1_at_the_Cytosol + internal.initial_Inactive_Bfa1_in_the_cytosol;
-    var Total_Tem1_at_the_SPB_init = internal.initial_Active_Tem1_at_the_SPB + internal.initial_Inactive_Tem1_at_the_SPB;
-    var Total_Tem1_in_the_Cytosol_init = internal.initial_Active_Tem1_in_the_Cytosol + internal.initial_Inactive_Tem1_in_the_cytosol;
-    internal.initial_Active_Bfa1_at_the_Cytosol = Active_Bfa1_at_the_Cytosol_init;
-    internal.initial_Active_Bfa1_at_the_SPB = Active_Bfa1_at_the_SPB_init;
-    internal.initial_Active_Tem1_at_the_SPB = Active_Tem1_at_the_SPB_init;
-    internal.initial_Active_Tem1_in_the_Cytosol = Active_Tem1_in_the_Cytosol_init;
-    internal.initial_Inactive_Bfa1_at_the_SPB = Inactive_Bfa1_at_the_SPB_init;
-    internal.initial_Inactive_Bfa1_in_the_cytosol = Inactive_Bfa1_in_the_cytosol_init;
-    internal.initial_Inactive_Tem1_at_the_SPB = Inactive_Tem1_at_the_SPB_init;
-    internal.initial_Inactive_Tem1_in_the_cytosol = Inactive_Tem1_in_the_cytosol_init;
-    internal.initial_Total_Bfa1_at_the_SPB = Total_Bfa1_at_the_SPB_init;
-    internal.initial_Total_Bfa1_in_the_Cytosol = Total_Bfa1_in_the_Cytosol_init;
-    internal.initial_Total_Tem1_at_the_SPB = Total_Tem1_at_the_SPB_init;
-    internal.initial_Total_Tem1_in_the_Cytosol = Total_Tem1_in_the_Cytosol_init;
-    var state = Array(36).fill(0);
+    var state = Array(24).fill(0);
     state[0] = internal.initial_SPB_B;
     state[1] = internal.initial_SPB_T;
     state[2] = internal.initial_Bfa1;
@@ -58,18 +34,6 @@ export class model {
     state[21] = internal.initial_Bfa1_Tem1GDP;
     state[22] = internal.initial_Bfa1P4_Tem1GDP;
     state[23] = internal.initial_Bfa1P5_Tem1GDP;
-    state[24] = internal.initial_Active_Bfa1_at_the_SPB;
-    state[25] = internal.initial_Active_Bfa1_at_the_Cytosol;
-    state[26] = internal.initial_Active_Tem1_at_the_SPB;
-    state[27] = internal.initial_Active_Tem1_in_the_Cytosol;
-    state[28] = internal.initial_Inactive_Bfa1_at_the_SPB;
-    state[29] = internal.initial_Inactive_Bfa1_in_the_cytosol;
-    state[30] = internal.initial_Inactive_Tem1_at_the_SPB;
-    state[31] = internal.initial_Inactive_Tem1_in_the_cytosol;
-    state[32] = internal.initial_Total_Bfa1_at_the_SPB;
-    state[33] = internal.initial_Total_Bfa1_in_the_Cytosol;
-    state[34] = internal.initial_Total_Tem1_at_the_SPB;
-    state[35] = internal.initial_Total_Tem1_in_the_Cytosol;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -77,7 +41,7 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "avogadro", internal, 6.0221415000000003e+23, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "B_Bfa1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "B_Bfa1_init", internal, 8.3300000000000005e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "B_Bfa1_Tem1GDP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "B_Bfa1_Tem1GTP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "B_Bfa1P4_init", internal, 0, -Infinity, Infinity, false);
@@ -86,7 +50,7 @@ export class model {
     this.base.user.setUserScalar(user, "B_Bfa1P5_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "B_Bfa1P5_Tem1GDP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "B_Bfa1P5_Tem1GTP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Bfa1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Bfa1_init", internal, 2.03e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Bfa1_Tem1GDP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Bfa1_Tem1GTP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Bfa1P4_init", internal, 0, -Infinity, Infinity, false);
@@ -115,12 +79,12 @@ export class model {
     this.base.user.setUserScalar(user, "krCdc5", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "krKin4", internal, 0.025100000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "q", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SPB_B_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SPB_T_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SPB_B_init", internal, 8.3300000000000005e-05, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SPB_T_init", internal, 0.000166, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T_Tem1GDP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T_Tem1GTP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tem1GDP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tem1GTP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tem1GDP_init", internal, 7.9900000000000007e-09, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tem1GTP_init", internal, 4.9100000000000003e-08, -Infinity, Infinity, false);
     internal.initial_B_Bfa1 = internal.B_Bfa1_init;
     internal.initial_B_Bfa1_Tem1GDP = internal.B_Bfa1_Tem1GDP_init;
     internal.initial_B_Bfa1_Tem1GTP = internal.B_Bfa1_Tem1GTP_init;
@@ -176,18 +140,6 @@ export class model {
     const Bfa1_Tem1GDP = state[21];
     const Bfa1P4_Tem1GDP = state[22];
     const Bfa1P5_Tem1GDP = state[23];
-    dstatedt[25] = 0 + 0;
-    dstatedt[24] = 0 + 0;
-    dstatedt[26] = 0 + 0;
-    dstatedt[27] = 0 + 0;
-    dstatedt[28] = 0 + 0;
-    dstatedt[29] = 0 + 0;
-    dstatedt[30] = 0 + 0;
-    dstatedt[31] = 0 + 0;
-    dstatedt[32] = 0 + 0;
-    dstatedt[33] = 0 + 0;
-    dstatedt[34] = 0 + 0;
-    dstatedt[35] = 0 + 0;
     dstatedt[9] = 0 + 1 * (internal.c3 * (internal.konB * SPB_B * Bfa1P5 - internal.koffB * B_Bfa1P5)) - 1 * (internal.c3 * (internal.konB5T * B_Bfa1P5 * Tem1GTP - internal.koffBT * B_Bfa1P5_Tem1GTP)) - 1 * (internal.c3 * (internal.konB5T * B_Bfa1P5 * Tem1GDP - internal.koffBT * B_Bfa1P5_Tem1GDP)) + 1 * internal.c3 * internal.kfCdc5 * B_Bfa1;
     dstatedt[17] = 0 + 1 * (internal.c3 * (internal.konB * SPB_B * Bfa1P5_Tem1GDP - internal.koffB * B_Bfa1P5_Tem1GDP)) + 1 * (internal.c3 * (internal.konB5T * B_Bfa1P5 * Tem1GDP - internal.koffBT * B_Bfa1P5_Tem1GDP)) + 1 * internal.c3 * internal.kfCdc5 * B_Bfa1_Tem1GDP + 1 * internal.c3 * internal.khyd * B_Bfa1P5_Tem1GTP;
     dstatedt[14] = 0 + 1 * (internal.c3 * (internal.konB * SPB_B * Bfa1P5_Tem1GTP - internal.koffB * B_Bfa1P5_Tem1GTP)) + 1 * (internal.c3 * (internal.konB5T * B_Bfa1P5 * Tem1GTP - internal.koffBT * B_Bfa1P5_Tem1GTP)) + 1 * internal.c3 * internal.kfCdc5 * B_Bfa1_Tem1GTP - 1 * internal.c3 * internal.khyd * B_Bfa1P5_Tem1GTP;
@@ -220,9 +172,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "SPB_B", "SPB_T", "Bfa1", "Bfa1P4", "Bfa1P5", "Tem1GTP", "Tem1GDP", "B_Bfa1", "B_Bfa1P4", "B_Bfa1P5", "T_Tem1GTP", "T_Tem1GDP", "B_Bfa1_Tem1GTP", "B_Bfa1P4_Tem1GTP", "B_Bfa1P5_Tem1GTP", "B_Bfa1_Tem1GDP", "B_Bfa1P4_Tem1GDP", "B_Bfa1P5_Tem1GDP", "Bfa1_Tem1GTP", "Bfa1P4_Tem1GTP", "Bfa1P5_Tem1GTP", "Bfa1_Tem1GDP", "Bfa1P4_Tem1GDP", "Bfa1P5_Tem1GDP", "Active_Bfa1_at_the_SPB", "Active_Bfa1_at_the_Cytosol", "Active_Tem1_at_the_SPB", "Active_Tem1_in_the_Cytosol", "Inactive_Bfa1_at_the_SPB", "Inactive_Bfa1_in_the_cytosol", "Inactive_Tem1_at_the_SPB", "Inactive_Tem1_in_the_cytosol", "Total_Bfa1_at_the_SPB", "Total_Bfa1_in_the_Cytosol", "Total_Tem1_at_the_SPB", "Total_Tem1_in_the_Cytosol"];
-    this.metadata.internalOrder = {alpha: null, avogadro: null, B_Bfa1_init: null, B_Bfa1_Tem1GDP_init: null, B_Bfa1_Tem1GTP_init: null, B_Bfa1P4_init: null, B_Bfa1P4_Tem1GDP_init: null, B_Bfa1P4_Tem1GTP_init: null, B_Bfa1P5_init: null, B_Bfa1P5_Tem1GDP_init: null, B_Bfa1P5_Tem1GTP_init: null, Bfa1_init: null, Bfa1_Tem1GDP_init: null, Bfa1_Tem1GTP_init: null, Bfa1P4_init: null, Bfa1P4_Tem1GDP_init: null, Bfa1P4_Tem1GTP_init: null, Bfa1P5_init: null, Bfa1P5_Tem1GDP_init: null, Bfa1P5_Tem1GTP_init: null, c2: null, c3: null, initial_Active_Bfa1_at_the_Cytosol: null, initial_Active_Bfa1_at_the_SPB: null, initial_Active_Tem1_at_the_SPB: null, initial_Active_Tem1_in_the_Cytosol: null, initial_B_Bfa1: null, initial_B_Bfa1_Tem1GDP: null, initial_B_Bfa1_Tem1GTP: null, initial_B_Bfa1P4: null, initial_B_Bfa1P4_Tem1GDP: null, initial_B_Bfa1P4_Tem1GTP: null, initial_B_Bfa1P5: null, initial_B_Bfa1P5_Tem1GDP: null, initial_B_Bfa1P5_Tem1GTP: null, initial_Bfa1: null, initial_Bfa1_Tem1GDP: null, initial_Bfa1_Tem1GTP: null, initial_Bfa1P4: null, initial_Bfa1P4_Tem1GDP: null, initial_Bfa1P4_Tem1GTP: null, initial_Bfa1P5: null, initial_Bfa1P5_Tem1GDP: null, initial_Bfa1P5_Tem1GTP: null, initial_Inactive_Bfa1_at_the_SPB: null, initial_Inactive_Bfa1_in_the_cytosol: null, initial_Inactive_Tem1_at_the_SPB: null, initial_Inactive_Tem1_in_the_cytosol: null, initial_SPB_B: null, initial_SPB_T: null, initial_T_Tem1GDP: null, initial_T_Tem1GTP: null, initial_Tem1GDP: null, initial_Tem1GTP: null, initial_Total_Bfa1_at_the_SPB: null, initial_Total_Bfa1_in_the_Cytosol: null, initial_Total_Tem1_at_the_SPB: null, initial_Total_Tem1_in_the_Cytosol: null, kfCdc5: null, kfKin4: null, kfKin4Cyto: null, khyd: null, khydB4T: null, khydBT: null, knex: null, koffB: null, koffB4: null, koffBT: null, koffT: null, konB: null, konB4: null, konB4T: null, konB5T: null, konBT: null, konT: null, krCdc5: null, krKin4: null, q: null, SPB_B_init: null, SPB_T_init: null, T_Tem1GDP_init: null, T_Tem1GTP_init: null, Tem1GDP_init: null, Tem1GTP_init: null};
-    this.metadata.variableOrder = {SPB_B: null, SPB_T: null, Bfa1: null, Bfa1P4: null, Bfa1P5: null, Tem1GTP: null, Tem1GDP: null, B_Bfa1: null, B_Bfa1P4: null, B_Bfa1P5: null, T_Tem1GTP: null, T_Tem1GDP: null, B_Bfa1_Tem1GTP: null, B_Bfa1P4_Tem1GTP: null, B_Bfa1P5_Tem1GTP: null, B_Bfa1_Tem1GDP: null, B_Bfa1P4_Tem1GDP: null, B_Bfa1P5_Tem1GDP: null, Bfa1_Tem1GTP: null, Bfa1P4_Tem1GTP: null, Bfa1P5_Tem1GTP: null, Bfa1_Tem1GDP: null, Bfa1P4_Tem1GDP: null, Bfa1P5_Tem1GDP: null, Active_Bfa1_at_the_SPB: null, Active_Bfa1_at_the_Cytosol: null, Active_Tem1_at_the_SPB: null, Active_Tem1_in_the_Cytosol: null, Inactive_Bfa1_at_the_SPB: null, Inactive_Bfa1_in_the_cytosol: null, Inactive_Tem1_at_the_SPB: null, Inactive_Tem1_in_the_cytosol: null, Total_Bfa1_at_the_SPB: null, Total_Bfa1_in_the_Cytosol: null, Total_Tem1_at_the_SPB: null, Total_Tem1_in_the_Cytosol: null};
+    this.metadata.ynames = ["t", "SPB_B", "SPB_T", "Bfa1", "Bfa1P4", "Bfa1P5", "Tem1GTP", "Tem1GDP", "B_Bfa1", "B_Bfa1P4", "B_Bfa1P5", "T_Tem1GTP", "T_Tem1GDP", "B_Bfa1_Tem1GTP", "B_Bfa1P4_Tem1GTP", "B_Bfa1P5_Tem1GTP", "B_Bfa1_Tem1GDP", "B_Bfa1P4_Tem1GDP", "B_Bfa1P5_Tem1GDP", "Bfa1_Tem1GTP", "Bfa1P4_Tem1GTP", "Bfa1P5_Tem1GTP", "Bfa1_Tem1GDP", "Bfa1P4_Tem1GDP", "Bfa1P5_Tem1GDP"];
+    this.metadata.internalOrder = {alpha: null, avogadro: null, B_Bfa1_init: null, B_Bfa1_Tem1GDP_init: null, B_Bfa1_Tem1GTP_init: null, B_Bfa1P4_init: null, B_Bfa1P4_Tem1GDP_init: null, B_Bfa1P4_Tem1GTP_init: null, B_Bfa1P5_init: null, B_Bfa1P5_Tem1GDP_init: null, B_Bfa1P5_Tem1GTP_init: null, Bfa1_init: null, Bfa1_Tem1GDP_init: null, Bfa1_Tem1GTP_init: null, Bfa1P4_init: null, Bfa1P4_Tem1GDP_init: null, Bfa1P4_Tem1GTP_init: null, Bfa1P5_init: null, Bfa1P5_Tem1GDP_init: null, Bfa1P5_Tem1GTP_init: null, c2: null, c3: null, initial_B_Bfa1: null, initial_B_Bfa1_Tem1GDP: null, initial_B_Bfa1_Tem1GTP: null, initial_B_Bfa1P4: null, initial_B_Bfa1P4_Tem1GDP: null, initial_B_Bfa1P4_Tem1GTP: null, initial_B_Bfa1P5: null, initial_B_Bfa1P5_Tem1GDP: null, initial_B_Bfa1P5_Tem1GTP: null, initial_Bfa1: null, initial_Bfa1_Tem1GDP: null, initial_Bfa1_Tem1GTP: null, initial_Bfa1P4: null, initial_Bfa1P4_Tem1GDP: null, initial_Bfa1P4_Tem1GTP: null, initial_Bfa1P5: null, initial_Bfa1P5_Tem1GDP: null, initial_Bfa1P5_Tem1GTP: null, initial_SPB_B: null, initial_SPB_T: null, initial_T_Tem1GDP: null, initial_T_Tem1GTP: null, initial_Tem1GDP: null, initial_Tem1GTP: null, kfCdc5: null, kfKin4: null, kfKin4Cyto: null, khyd: null, khydB4T: null, khydBT: null, knex: null, koffB: null, koffB4: null, koffBT: null, koffT: null, konB: null, konB4: null, konB4T: null, konB5T: null, konBT: null, konT: null, krCdc5: null, krKin4: null, q: null, SPB_B_init: null, SPB_T_init: null, T_Tem1GDP_init: null, T_Tem1GTP_init: null, Tem1GDP_init: null, Tem1GTP_init: null};
+    this.metadata.variableOrder = {SPB_B: null, SPB_T: null, Bfa1: null, Bfa1P4: null, Bfa1P5: null, Tem1GTP: null, Tem1GDP: null, B_Bfa1: null, B_Bfa1P4: null, B_Bfa1P5: null, T_Tem1GTP: null, T_Tem1GDP: null, B_Bfa1_Tem1GTP: null, B_Bfa1P4_Tem1GTP: null, B_Bfa1P5_Tem1GTP: null, B_Bfa1_Tem1GDP: null, B_Bfa1P4_Tem1GDP: null, B_Bfa1P5_Tem1GDP: null, Bfa1_Tem1GTP: null, Bfa1P4_Tem1GTP: null, Bfa1P5_Tem1GTP: null, Bfa1_Tem1GDP: null, Bfa1P4_Tem1GDP: null, Bfa1P5_Tem1GDP: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

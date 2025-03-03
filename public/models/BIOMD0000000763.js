@@ -21,13 +21,13 @@ export class model {
     this.base.user.setUserScalar(user, "delta_H", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 4.1500000000000004, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "N_Tumour_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "N_Tumour_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ntilde", internal, 0.040000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sigma_C", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sigma_H", internal, 0.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T_C_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T_H_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T_C_init", internal, 4.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T_H_init", internal, 0.59999999999999998, -Infinity, Infinity, false);
     internal.initial_N_Tumour = internal.N_Tumour_init;
     internal.initial_T_C = internal.T_C_init;
     internal.initial_T_H = internal.T_H_init;

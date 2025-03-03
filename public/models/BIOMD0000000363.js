@@ -4,7 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.k1 = 0.0050000000000000001;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -17,10 +16,11 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["II_init", "IIa_init", "M_init", "P2_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["II_init", "IIa_init", "k1", "M_init", "P2_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "II_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "II_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IIa_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k1", internal, 2.5000000000000001e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "M_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P2_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_II = internal.II_init;

@@ -1,0 +1,1 @@
+[{"data": {"id": "LN", "label": "Lymph node"}, "group": "nodes", "classes": "compartment"}, {"data": {"id": "L", "label": "L", "parent": "LN", "sboTerm": -1}, "group": "nodes", "classes": "species"}]

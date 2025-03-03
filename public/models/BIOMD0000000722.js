@@ -22,7 +22,7 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a_M", internal, 0.45000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "a_p", internal, 0.029000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Active_TGF_beta_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Active_TGF_beta_init", internal, 30, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b1", internal, 800000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b2", internal, 8100000000, -Infinity, Infinity, false);
@@ -45,7 +45,7 @@ export class model {
     this.base.user.setUserScalar(user, "k2", internal, 471000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "L", internal, 10000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LECs_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Macrophages_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Macrophages_init", internal, 1875, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p_0", internal, 250000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r1", internal, 3.0000000000000001e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r2", internal, 1.22, -Infinity, Infinity, false);
@@ -55,7 +55,7 @@ export class model {
     this.base.user.setUserScalar(user, "s_M", internal, 542, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "S_V", internal, 1.8999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T_L", internal, 18, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "VEGF_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VEGF_init", internal, 0.5, -Infinity, Infinity, false);
     internal.initial_Active_TGF_beta = internal.Active_TGF_beta_init;
     internal.initial_Capillaries = internal.Capillaries_init;
     internal.initial_LECs = internal.LECs_init;

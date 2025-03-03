@@ -20,12 +20,12 @@ export class model {
     state[0] = internal.initial_Ca;
     state[1] = internal.initial_zzs;
     state[2] = internal.initial_bbs;
-    state[3] = internal.initial_hhs;
-    state[4] = internal.initial_nns;
-    state[5] = internal.initial_rrs;
-    state[6] = internal.initial_ccs;
-    state[7] = internal.initial_qqs;
-    state[8] = internal.initial_V;
+    state[3] = internal.initial_nns;
+    state[4] = internal.initial_hhs;
+    state[5] = internal.initial_V;
+    state[6] = internal.initial_rrs;
+    state[7] = internal.initial_ccs;
+    state[8] = internal.initial_qqs;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -33,7 +33,7 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "ac", internal, 6, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "aq", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ca_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ca_init", internal, 0.00078700000000000005, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cm", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gA", internal, 1.3999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gCa", internal, 0.080000000000000002, -Infinity, Infinity, false);
@@ -89,22 +89,22 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
+    const Ca = state[0];
     const zzs = state[1];
     const bbs = state[2];
-    const hhs = state[3];
-    const nns = state[4];
-    const rrs = state[5];
-    const ccs = state[6];
-    const qqs = state[7];
-    const V = state[8];
-    const Ca = state[0];
+    const nns = state[3];
+    const hhs = state[4];
+    const V = state[5];
+    const rrs = state[6];
+    const ccs = state[7];
+    const qqs = state[8];
     var Ainfs = (1 / (1 + Math.exp(- (V - internal.thetaa) / internal.sigmaa)));
     dstatedt[2] = ((1 / (1 + Math.exp(- (V - internal.thetab) / internal.sigmab))) - bbs) / internal.tauBs;
-    dstatedt[6] = ((1 / (1 + Math.exp(- (V - internal.thetac) / internal.sigmac))) - ccs) / internal.tauKc;
-    dstatedt[3] = internal.phi * ((1 / (1 + Math.exp(- (V - internal.thetah) / internal.sigmah))) - hhs) / (1 + 7.5 * (1 / (1 + Math.exp(- (V - internal.t_tauh) / - 6))));
-    dstatedt[4] = internal.phi * ((1 / (1 + Math.exp(- (V - internal.thetan) / internal.sigman))) - nns) / (1 + 5 * (1 / (1 + Math.exp(- (V - internal.t_taun) / - 15))));
-    dstatedt[7] = ((1 / (1 + Math.pow((internal.aq), (internal.pwrq)) / Math.pow((Ca), (internal.pwrq)))) - qqs) / internal.tauq;
-    dstatedt[5] = ((1 / (1 + Math.exp(- (V - internal.thetar) / internal.sigmar))) - rrs) / internal.tauRs;
+    dstatedt[7] = ((1 / (1 + Math.exp(- (V - internal.thetac) / internal.sigmac))) - ccs) / internal.tauKc;
+    dstatedt[4] = internal.phi * ((1 / (1 + Math.exp(- (V - internal.thetah) / internal.sigmah))) - hhs) / (1 + 7.5 * (1 / (1 + Math.exp(- (V - internal.t_tauh) / - 6))));
+    dstatedt[3] = internal.phi * ((1 / (1 + Math.exp(- (V - internal.thetan) / internal.sigman))) - nns) / (1 + 5 * (1 / (1 + Math.exp(- (V - internal.t_taun) / - 15))));
+    dstatedt[8] = ((1 / (1 + Math.pow((internal.aq), (internal.pwrq)) / Math.pow((Ca), (internal.pwrq)))) - qqs) / internal.tauq;
+    dstatedt[6] = ((1 / (1 + Math.exp(- (V - internal.thetar) / internal.sigmar))) - rrs) / internal.tauRs;
     dstatedt[1] = ((1 / (1 + Math.exp(- (V - internal.thetaz) / internal.sigmaz))) - zzs) / internal.tauZs;
     var IAHP = internal.gKAHP * qqs * (V - internal.VK);
     var ICa = internal.gCa * Math.pow((rrs), (2)) * (V - internal.VCa);
@@ -118,7 +118,7 @@ export class model {
     var IKC = internal.gKCa * mKCa * ccs * (V - internal.VK);
     var INa = internal.gNa * Math.pow((Minfs), (internal.pms)) * hhs * (V - internal.VNa);
     var INaP = internal.gNaP * Pinfs * (V - internal.VNa);
-    dstatedt[8] = (- internal.gL * (V - internal.VL) - INa - INaP - IKdr - IA - Iz - ICa - IKC - IAHP + internal.Iapp) / internal.Cm;
+    dstatedt[5] = (- internal.gL * (V - internal.VL) - INa - INaP - IKdr - IA - Iz - ICa - IKC - IAHP + internal.Iapp) / internal.Cm;
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -126,9 +126,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Ca", "zzs", "bbs", "hhs", "nns", "rrs", "ccs", "qqs", "V"];
+    this.metadata.ynames = ["t", "Ca", "zzs", "bbs", "nns", "hhs", "V", "rrs", "ccs", "qqs"];
     this.metadata.internalOrder = {ac: null, aq: null, Ca_init: null, Cm: null, compartment_0000001: null, gA: null, gCa: null, gKAHP: null, gKCa: null, gKdr: null, gL: null, gNa: null, gNaP: null, gZ: null, Iapp: null, initial_bbs: null, initial_Ca: null, initial_ccs: null, initial_hhs: null, initial_nns: null, initial_qqs: null, initial_rrs: null, initial_V: null, initial_zzs: null, phi: null, pms: null, pns: null, pwrc: null, pwrq: null, sigmaa: null, sigmab: null, sigmac: null, sigmah: null, sigmam: null, sigman: null, sigmap: null, sigmar: null, sigmaz: null, t_tauh: null, t_taun: null, tauBs: null, tauCa: null, tauKc: null, tauq: null, tauRs: null, tauZs: null, thetaa: null, thetab: null, thetac: null, thetah: null, thetam: null, thetan: null, thetap: null, thetar: null, thetaz: null, uuCa: null, VCa: null, VK: null, VL: null, VNa: null};
-    this.metadata.variableOrder = {Ca: null, zzs: null, bbs: null, hhs: null, nns: null, rrs: null, ccs: null, qqs: null, V: null};
+    this.metadata.variableOrder = {Ca: null, zzs: null, bbs: null, nns: null, hhs: null, V: null, rrs: null, ccs: null, qqs: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

@@ -19,7 +19,7 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["C_init", "delta_QP", "gamma", "K", "k_PQ", "k_Qp_P", "KDE", "lambda_P", "P_init", "P0", "Q_init", "Q0", "Qp_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "C_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "delta_QP", internal, 0.0086999999999999994, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma", internal, 0.72899999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K", internal, 100, -Infinity, Infinity, false);
@@ -27,9 +27,9 @@ export class model {
     this.base.user.setUserScalar(user, "k_Qp_P", internal, 0.0030999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "KDE", internal, 0.23999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lambda_P", internal, 0.121, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P_init", internal, 7.1299999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P0", internal, 7.1299999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Q_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Q_init", internal, 41.200000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Q0", internal, 41.200000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Qp_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_C = internal.C_init;
@@ -43,15 +43,10 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const C = state[0];
-    const P = state[1];
-    const Q = state[2];
-    const Qp = state[3];
-    dstatedt[0] = 0 + - internal.KDE * C;
-    dstatedt[2] = 0 + internal.k_PQ - internal.gamma * C * internal.KDE * Q;
-    dstatedt[3] = 0 + internal.gamma * C * internal.KDE * Q - internal.k_Qp_P * Qp - internal.delta_QP * Qp;
-    var Pstar = P + Q + Qp;
-    dstatedt[1] = 0 + internal.lambda_P * P * (1 - Pstar / internal.K) + internal.k_Qp_P * Qp - internal.k_PQ * P - internal.gamma * C * internal.KDE * P;
+    dstatedt[0] = 0;
+    dstatedt[1] = 0;
+    dstatedt[2] = 0;
+    dstatedt[3] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

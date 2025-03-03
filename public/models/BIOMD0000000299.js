@@ -18,15 +18,15 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["FC_init", "FN_init", "k1", "k2", "Kd", "KI", "Km", "ks", "M_init", "n", "vd", "vm", "vs"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "FC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "FN_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "FC_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "FN_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 0.59999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kd", internal, 0.13, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "KI", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Km", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ks", internal, 0.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "M_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "M_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n", internal, 4, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "vd", internal, 1.3999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "vm", internal, 0.505, -Infinity, Infinity, false);
@@ -41,12 +41,9 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const M = state[0];
-    const FC = state[1];
-    const FN = state[2];
-    dstatedt[1] = 0 + internal.ks * M + internal.k2 * FN - (internal.vd * (FC / (internal.Kd + FC)) + internal.k1 * FC);
-    dstatedt[2] = 0 + internal.k1 * FC - internal.k2 * FN;
-    dstatedt[0] = 0 + internal.vs * (Math.pow((internal.KI), (internal.n)) / (Math.pow((internal.KI), (internal.n)) + Math.pow((FN), (internal.n)))) - internal.vm * (M / (internal.Km + M));
+    dstatedt[1] = 0;
+    dstatedt[2] = 0;
+    dstatedt[0] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

@@ -26,7 +26,7 @@ export class model {
     this.base.user.setUserScalar(user, "K5", internal, 1.2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "The_cumulative_FOD_excreted_in_the_non_urinary_pool__X3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "The_cumulative_FOD_excreted_in_the_urine__X2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "The_FOD_in_the_circulation__X1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "The_FOD_in_the_circulation__X1_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "The_FOD_in_the_gallbladder___intestinal_lumen__X5_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "The_FOD_in_the_metabolizing_tissues__X4_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_The_cumulative_FOD_excreted_in_the_non_urinary_pool__X3 = internal.The_cumulative_FOD_excreted_in_the_non_urinary_pool__X3_init;

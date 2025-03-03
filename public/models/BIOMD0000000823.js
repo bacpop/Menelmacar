@@ -30,12 +30,12 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["Akt_init", "DEPTOR_init", "iIRS_init", "imTORC2_init", "IR_init", "IRS_init", "k11ca", "k11cb", "k13f", "k13r", "k14f", "k14r", "k15c", "k3c", "k5ca", "k5cb", "k7c", "k9c", "kd18", "Km1", "Km10", "Km11a", "Km11b", "Km12", "Km15", "Km16", "Km2", "Km3", "Km4", "Km5a", "Km5b", "Km6", "Km7", "Km8", "Km9", "ks17", "mTORC1_DEPTOR_init", "mTORC1_init", "mTORC2_DEPTOR_init", "mTORC2_init", "pAkt_init", "pDEPTOR_init", "pIR_init", "pIRS_init", "pmTORC1_init", "pmTORC2_init", "V1", "V10", "V12", "V16", "V2", "V4", "V6", "V8"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "Akt_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "DEPTOR_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Akt_init", internal, 100, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "DEPTOR_init", internal, 350, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "iIRS_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "imTORC2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IR_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IRS_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IR_init", internal, 50, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IRS_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k11ca", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k11cb", internal, 0.13, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k13f", internal, 0.001, -Infinity, Infinity, false);
@@ -67,9 +67,9 @@ export class model {
     this.base.user.setUserScalar(user, "Km9", internal, 160, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ks17", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mTORC1_DEPTOR_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "mTORC1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "mTORC1_init", internal, 250, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mTORC2_DEPTOR_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "mTORC2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "mTORC2_init", internal, 200, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pAkt_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pDEPTOR_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pIR_init", internal, 0, -Infinity, Infinity, false);

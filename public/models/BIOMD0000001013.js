@@ -18,13 +18,13 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha_1", internal, 0.040000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha_2", internal, 2.5000000000000002e-10, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CAR_T_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CAR_T_cells_init", internal, 400000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g_C", internal, 2000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g_T", internal, 10000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho_C", internal, 0.90000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho_T", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tao_C", internal, 7, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tumour_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tumour_cells_init", internal, 6700000000, -Infinity, Infinity, false);
     internal.initial_CAR_T_cells = internal.CAR_T_cells_init;
     internal.initial_Tumour_cells = internal.Tumour_cells_init;
     this.updateMetadata();

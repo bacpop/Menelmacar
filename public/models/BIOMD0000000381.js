@@ -36,7 +36,7 @@ export class model {
     this.base.user.setUserScalar(user, "J", internal, 50000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kc", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 0.40000000000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "M_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "M_init", internal, 477000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ma_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Wmax", internal, 40000000, -Infinity, Infinity, false);
     internal.initial_Ba = internal.Ba_init;
@@ -56,13 +56,13 @@ export class model {
     const Bn = state[2];
     const Ba = state[3];
     const Cy = state[4];
-    dstatedt[2] = 0 + internal.d * Ba - (internal.f1 * M + internal.f2 * Ma) * Bn;
-    dstatedt[4] = 0 + internal.alpha * Bn * Ma - internal.delta * Cy;
-    dstatedt[0] = 0 + internal.J + (internal.kxk + internal.b) * Ma - internal.c * M - internal.f1 * M * Ba - internal.e1 * M * (M + Ma);
-    dstatedt[1] = 0 + internal.f1 * M * Ba - internal.kxk * Ma - internal.e2 * Ma * (M + Ma);
+    dstatedt[2] = internal.d * Ba - (internal.f1 * M + internal.f2 * Ma) * Bn;
+    dstatedt[4] = internal.alpha * Bn * Ma - internal.delta * Cy;
+    dstatedt[0] = internal.J + (internal.kxk + internal.b) * Ma - internal.c * M - internal.f1 * M * Ba - internal.e1 * M * (M + Ma);
+    dstatedt[1] = internal.f1 * M * Ba - internal.kxk * Ma - internal.e2 * Ma * (M + Ma);
     var parameter_1 = Math.pow(((t - 9) / 3), (2));
     var W = internal.Wmax * Math.exp(- parameter_1);
-    dstatedt[3] = 0 + W + internal.Amax * Cy / (internal.kc + Cy) - (internal.f1 * M + internal.f2 * Ma + internal.d) * Ba;
+    dstatedt[3] = W + internal.Amax * Cy / (internal.kc + Cy) - (internal.f1 * M + internal.f2 * Ma + internal.d) * Ba;
   }
   names() {
     return this.metadata.ynames.slice(1);

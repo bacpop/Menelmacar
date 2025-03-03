@@ -26,10 +26,10 @@ export class model {
     this.base.user.setUserScalar(user, "k_f", internal, 5000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_t", internal, 0.029999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_tl", internal, 1.3999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "m_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "mm_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "p_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "pm_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "m_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "mm_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "p_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "pm_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "S", internal, 1000, -Infinity, Infinity, false);
     internal.initial_m = internal.m_init;
     internal.initial_mm = internal.mm_init;
@@ -46,10 +46,10 @@ export class model {
     const mm = state[1];
     const m = state[2];
     const pm = state[3];
-    dstatedt[2] = 0 + internal.k_tl * mm - internal.k_f * p * m + (internal.k_b + internal.delta) * pm - internal.gamma * m;
-    dstatedt[1] = 0 + internal.k_t * Math.pow((p), (2)) - internal.beta * mm;
-    dstatedt[0] = 0 + internal.S - internal.k_f * p * m - internal.alpha * p + (internal.k_b + internal.gamma) * pm;
-    dstatedt[3] = 0 + internal.k_f * p * m - (internal.k_b + internal.delta) * pm - internal.gamma * pm;
+    dstatedt[2] = internal.k_tl * mm - internal.k_f * p * m + (internal.k_b + internal.delta) * pm - internal.gamma * m;
+    dstatedt[1] = internal.k_t * Math.pow((p), (2)) - internal.beta * mm;
+    dstatedt[0] = internal.S - internal.k_f * p * m - internal.alpha * p + (internal.k_b + internal.gamma) * pm;
+    dstatedt[3] = internal.k_f * p * m - (internal.k_b + internal.delta) * pm - internal.gamma * pm;
   }
   names() {
     return this.metadata.ynames.slice(1);

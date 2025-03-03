@@ -34,10 +34,10 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["II_init", "II_Va_Xa_init", "IIa_init", "IX_init", "IX_TF_VIIa_init", "IXa_init", "k1", "k10", "k11", "k12", "k13", "k14", "k15", "k16", "k17", "k18", "k19", "k2", "k20", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "mIIa_init", "TF_VIIa_init", "V_init", "Va_init", "Va_Xa_init", "VIII_init", "VIIIa_init", "VIIIa_IXa_init", "X_init", "X_TF_VIIa_init", "X_VIIIa_IXa_init", "Xa_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "II_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "II_init", internal, 1.3999999999999999e-06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "II_Va_Xa_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IIa_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IX_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IX_init", internal, 8.9999999999999999e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IX_TF_VIIa_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IXa_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 20000000, -Infinity, Infinity, false);
@@ -61,14 +61,14 @@ export class model {
     this.base.user.setUserScalar(user, "k8", internal, 400000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k9", internal, 0.0050000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mIIa_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "TF_VIIa_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TF_VIIa_init", internal, 5.0000000000000001e-09, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_init", internal, 2e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Va_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Va_Xa_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "VIII_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VIII_init", internal, 6.9999999999999996e-10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "VIIIa_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "VIIIa_IXa_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_init", internal, 1.6999999999999999e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "X_TF_VIIa_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "X_VIIIa_IXa_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xa_init", internal, 0, -Infinity, Infinity, false);
@@ -97,7 +97,6 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const I = state[18];
     const IX = state[0];
     const IX_TF_VIIa = state[1];
     const TF_VIIa = state[2];
@@ -116,25 +115,26 @@ export class model {
     const II_Va_Xa = state[15];
     const Va_Xa = state[16];
     const mIIa = state[17];
+    const I = state[18];
     dstatedt[18] = (- Math.abs(I - VIIIa_IXa) + (I - VIIIa_IXa)) * internal.k20;
     dstatedt[14] = 0 - 1 * internal.compartment_1 * (internal.k6 * II * Va_Xa - internal.k19 * II_Va_Xa);
     dstatedt[15] = 0 + 1 * internal.compartment_1 * (internal.k6 * II * Va_Xa - internal.k19 * II_Va_Xa) - 1 * internal.compartment_1 * internal.k14 * II_Va_Xa;
-    dstatedt[13] = 0 + 1 * internal.compartment_1 * internal.k2 * V * IIa - 1 * internal.compartment_1 * internal.k2 * V * IIa + 1 * internal.compartment_1 * internal.k4 * VIII * IIa - 1 * internal.compartment_1 * internal.k4 * VIII * IIa + 1 * internal.compartment_1 * internal.k5 * mIIa * Va_Xa;
+    dstatedt[13] = 0 - 1 * internal.compartment_1 * internal.k2 * V * IIa + 1 * internal.compartment_1 * internal.k2 * V * IIa - 1 * internal.compartment_1 * internal.k4 * VIII * IIa + 1 * internal.compartment_1 * internal.k4 * VIII * IIa + 1 * internal.compartment_1 * internal.k5 * mIIa * Va_Xa;
     dstatedt[0] = 0 - 1 * internal.compartment_1 * (internal.k6 * IX * TF_VIIa - internal.k16 * IX_TF_VIIa) - 1 * internal.compartment_1 * internal.k15 * IX * Xa - 1 * internal.compartment_1 * internal.k15 * IX * Va_Xa;
     dstatedt[1] = 0 + 1 * internal.compartment_1 * (internal.k6 * IX * TF_VIIa - internal.k16 * IX_TF_VIIa) - 1 * internal.compartment_1 * internal.k11 * IX_TF_VIIa;
     dstatedt[3] = 0 + 1 * internal.compartment_1 * internal.k11 * IX_TF_VIIa + 1 * internal.compartment_1 * internal.k15 * IX * Xa - 1 * internal.compartment_1 * (internal.k7 * VIIIa * IXa - internal.k9 * VIIIa_IXa) + 1 * internal.compartment_1 * internal.k15 * IX * Va_Xa;
-    dstatedt[17] = 0 + 1 * internal.compartment_1 * internal.k14 * II_Va_Xa - 1 * internal.compartment_1 * internal.k5 * mIIa * Va_Xa + 1 * internal.compartment_1 * internal.k2 * V * mIIa - 1 * internal.compartment_1 * internal.k2 * V * mIIa + 1 * internal.compartment_1 * internal.k4 * VIII * mIIa - 1 * internal.compartment_1 * internal.k4 * VIII * mIIa;
+    dstatedt[17] = 0 + 1 * internal.compartment_1 * internal.k14 * II_Va_Xa - 1 * internal.compartment_1 * internal.k5 * mIIa * Va_Xa - 1 * internal.compartment_1 * internal.k2 * V * mIIa + 1 * internal.compartment_1 * internal.k2 * V * mIIa - 1 * internal.compartment_1 * internal.k4 * VIII * mIIa + 1 * internal.compartment_1 * internal.k4 * VIII * mIIa;
     dstatedt[2] = 0 - 1 * internal.compartment_1 * (internal.k6 * IX * TF_VIIa - internal.k16 * IX_TF_VIIa) + 1 * internal.compartment_1 * internal.k11 * IX_TF_VIIa - 1 * internal.compartment_1 * (internal.k6 * X * TF_VIIa - internal.k17 * X_TF_VIIa) + 1 * internal.compartment_1 * internal.k12 * X_TF_VIIa;
     dstatedt[9] = 0 - 1 * internal.compartment_1 * internal.k1 * V * Xa - 1 * internal.compartment_1 * internal.k2 * V * IIa - 1 * internal.compartment_1 * internal.k2 * V * mIIa;
     dstatedt[10] = 0 + 1 * internal.compartment_1 * internal.k1 * V * Xa + 1 * internal.compartment_1 * internal.k2 * V * IIa - 1 * internal.compartment_1 * (internal.k6 * Va * Xa - internal.k10 * Va_Xa) + 1 * internal.compartment_1 * internal.k2 * V * mIIa;
-    dstatedt[16] = 0 - 1 * internal.compartment_1 * (internal.k6 * II * Va_Xa - internal.k19 * II_Va_Xa) + 1 * internal.compartment_1 * internal.k14 * II_Va_Xa + 1 * internal.compartment_1 * internal.k5 * mIIa * Va_Xa - 1 * internal.compartment_1 * internal.k5 * mIIa * Va_Xa + 1 * internal.compartment_1 * (internal.k6 * Va * Xa - internal.k10 * Va_Xa) + 1 * internal.compartment_1 * internal.k15 * IX * Va_Xa - 1 * internal.compartment_1 * internal.k15 * IX * Va_Xa;
+    dstatedt[16] = 0 - 1 * internal.compartment_1 * (internal.k6 * II * Va_Xa - internal.k19 * II_Va_Xa) + 1 * internal.compartment_1 * internal.k14 * II_Va_Xa - 1 * internal.compartment_1 * internal.k5 * mIIa * Va_Xa + 1 * internal.compartment_1 * internal.k5 * mIIa * Va_Xa + 1 * internal.compartment_1 * (internal.k6 * Va * Xa - internal.k10 * Va_Xa) - 1 * internal.compartment_1 * internal.k15 * IX * Va_Xa + 1 * internal.compartment_1 * internal.k15 * IX * Va_Xa;
     dstatedt[11] = 0 - 1 * internal.compartment_1 * internal.k3 * VIII * Xa - 1 * internal.compartment_1 * internal.k4 * VIII * IIa - 1 * internal.compartment_1 * internal.k4 * VIII * mIIa;
     dstatedt[12] = 0 + 1 * internal.compartment_1 * internal.k3 * VIII * Xa + 1 * internal.compartment_1 * internal.k4 * VIII * IIa - 1 * internal.compartment_1 * (internal.k7 * VIIIa * IXa - internal.k9 * VIIIa_IXa) + 1 * internal.compartment_1 * internal.k4 * VIII * mIIa;
     dstatedt[7] = 0 - 1 * internal.compartment_1 * (internal.k6 * X * VIIIa_IXa - internal.k18 * X_VIIIa_IXa) + 1 * internal.compartment_1 * internal.k13 * X_VIIIa_IXa + 1 * internal.compartment_1 * (internal.k7 * VIIIa * IXa - internal.k9 * VIIIa_IXa) - 1 * internal.compartment_1 * ((internal.compartment_1 * Math.abs(I - VIIIa_IXa) + (I - VIIIa_IXa)) / internal.compartment_1);
     dstatedt[4] = 0 - 1 * internal.compartment_1 * (internal.k6 * X * TF_VIIa - internal.k17 * X_TF_VIIa) - 1 * internal.compartment_1 * (internal.k6 * X * VIIIa_IXa - internal.k18 * X_VIIIa_IXa);
     dstatedt[5] = 0 + 1 * internal.compartment_1 * (internal.k6 * X * TF_VIIa - internal.k17 * X_TF_VIIa) - 1 * internal.compartment_1 * internal.k12 * X_TF_VIIa;
     dstatedt[8] = 0 + 1 * internal.compartment_1 * (internal.k6 * X * VIIIa_IXa - internal.k18 * X_VIIIa_IXa) - 1 * internal.compartment_1 * internal.k13 * X_VIIIa_IXa;
-    dstatedt[6] = 0 + 1 * internal.compartment_1 * internal.k12 * X_TF_VIIa + 1 * internal.compartment_1 * internal.k13 * X_VIIIa_IXa + 1 * internal.compartment_1 * internal.k15 * IX * Xa - 1 * internal.compartment_1 * internal.k15 * IX * Xa + 1 * internal.compartment_1 * internal.k1 * V * Xa - 1 * internal.compartment_1 * internal.k1 * V * Xa + 1 * internal.compartment_1 * internal.k3 * VIII * Xa - 1 * internal.compartment_1 * internal.k3 * VIII * Xa - 1 * internal.compartment_1 * (internal.k6 * Va * Xa - internal.k10 * Va_Xa);
+    dstatedt[6] = 0 + 1 * internal.compartment_1 * internal.k12 * X_TF_VIIa + 1 * internal.compartment_1 * internal.k13 * X_VIIIa_IXa - 1 * internal.compartment_1 * internal.k15 * IX * Xa + 1 * internal.compartment_1 * internal.k15 * IX * Xa - 1 * internal.compartment_1 * internal.k1 * V * Xa + 1 * internal.compartment_1 * internal.k1 * V * Xa - 1 * internal.compartment_1 * internal.k3 * VIII * Xa + 1 * internal.compartment_1 * internal.k3 * VIII * Xa - 1 * internal.compartment_1 * (internal.k6 * Va * Xa - internal.k10 * Va_Xa);
   }
   names() {
     return this.metadata.ynames.slice(1);

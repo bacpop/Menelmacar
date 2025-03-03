@@ -4,7 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.v = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -16,7 +15,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a_12", "a_21", "a_31", "d", "d_3", "g", "h", "lambda", "ModelValue_1", "ModelValue_2", "ModelValue_3", "r_2", "s", "x_Tumor_Cells_init", "y_Healthy_Cells_init", "z_Effector_Cells_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["a_12", "a_21", "a_31", "d", "d_3", "g", "h", "lambda", "ModelValue_1", "ModelValue_2", "ModelValue_3", "r_2", "s", "v", "x_Tumor_Cells_init", "y_Healthy_Cells_init", "z_Effector_Cells_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a_12", internal, 0.19500000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "a_21", internal, 0.95399999999999996, -Infinity, Infinity, false);
@@ -31,9 +30,10 @@ export class model {
     this.base.user.setUserScalar(user, "ModelValue_3", internal, 11.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_2", internal, 0.34999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "s", internal, 11.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_Tumor_Cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_Healthy_Cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_Effector_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_Tumor_Cells_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_Healthy_Cells_init", internal, 0.90000000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_Effector_Cells_init", internal, 0.20000000000000001, -Infinity, Infinity, false);
     internal.initial_x_Tumor_Cells = internal.x_Tumor_Cells_init;
     internal.initial_y_Healthy_Cells = internal.y_Healthy_Cells_init;
     internal.initial_z_Effector_Cells = internal.z_Effector_Cells_init;

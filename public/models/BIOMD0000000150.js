@@ -3,9 +3,8 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
+    internal.basal_fluorescence = 1.2121064814814799;
     internal.geometry = 9.9999999999999998e-13;
-    internal.kb = 25;
-    internal.kf = 19000000;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -18,13 +17,14 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["basal_fluorescence", "Cdk2_init", "CDK2cycA_init", "CDK2cycA_star__init", "CyclinA_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Cdk2_init", "CDK2cycA_init", "CDK2cycA_star__init", "CyclinA_init", "kb", "kf"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "basal_fluorescence", internal, 1.2121064814814799, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cdk2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cdk2_init", internal, 9.9999999999999995e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CDK2cycA_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CDK2cycA_star__init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CyclinA_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CyclinA_init", internal, 3.9999999999999998e-07, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kb", internal, 0.55700000000000005, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kf", internal, 0.81299999999999994, -Infinity, Infinity, false);
     internal.initial_Cdk2 = internal.Cdk2_init;
     internal.initial_CDK2cycA = internal.CDK2cycA_init;
     internal.initial_CDK2cycA_star_ = internal.CDK2cycA_star__init;

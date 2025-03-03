@@ -32,10 +32,10 @@ export class model {
     this.base.user.setUserScalar(user, "rho", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sigma_1", internal, 0.29999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sigma_2", internal, 0.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "u_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ystar_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "u_init", internal, 9.9999999999999995e-07, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_init", internal, 0.29999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_init", internal, 0.80000000000000004, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ystar_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     internal.initial_u = internal.u_init;
     internal.initial_x = internal.x_init;
     internal.initial_y = internal.y_init;
@@ -47,11 +47,11 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const R = state[4];
     const x = state[0];
     const y = state[1];
     const u = state[2];
     const ystar = state[3];
+    const R = state[4];
     dstatedt[4] = R * ((internal.sigma_1 * y * (1 - internal.sigma_2 * y) - internal.myu_2 * ystar) / (y + ystar - 1)) / 3;
     dstatedt[2] = 0 + 1 * internal.compartment * (internal.nu_3 * x * y) - 1 * internal.compartment * (internal.myu_1 * u);
     dstatedt[0] = 0 + 1 * internal.compartment * (internal.phi_1 * x * (1 - internal.phi_2 * x)) + 1 * internal.compartment * (internal.delta * x * y / (internal.gamma + x)) - 1 * internal.compartment * (internal.nu_1 * x * y);

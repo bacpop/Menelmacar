@@ -7,12 +7,11 @@ export class model {
     internal.ER = 2.8000000000000002e-13;
     internal.initial_n = 0.00123;
     internal.initial_V = - 60.899999999999999;
+    internal.Pcaer = 0.105;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var ADP_cyt_init = 4000 - internal.initial_ATP_cyt;
-    internal.initial_ADP_cyt = ADP_cyt_init;
     var state = Array(8).fill(0);
     state[0] = internal.initial_Ca_cyt;
     state[1] = internal.initial_Ca_er;
@@ -25,10 +24,11 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a", "ATP_cyt_init", "b", "b_1", "b_2", "b_3", "b_4", "b_6", "b5_ast", "c", "Ca_cyt_init", "Ca_ec", "Ca_er_init", "Cm", "F", "f_1", "f_2", "f_3", "f_4", "f_6", "f5_ast", "fer", "fi", "gm_CRAN", "gmkatp", "gmkca", "gmKDr", "gmna", "gmvca", "gnaca", "IP3_cyt_init", "K_cyt", "K_ec", "kadp", "katp", "katpca", "Kcah", "Kcap", "Kcar", "Kcarp", "Kdd", "kdip", "kip", "Kip3", "Kipca", "Kkca", "Knaca", "Krca", "ksg", "Ksup", "Ktd", "Ktt", "Na_cyt_init", "Na_ec", "P", "Pcaer", "Pip3", "Pleak", "Pmcap", "Pnak", "Sn", "TV", "V_CRAN", "Vcah", "Vn", "Vtau"], unusedUserAction);
+    this.base.user.checkUser(user, ["a", "ADP_cyt_init", "ATP_cyt_init", "b", "b_1", "b_2", "b_3", "b_4", "b_6", "b5_ast", "c", "Ca_cyt_init", "Ca_ec", "Ca_er_init", "Cm", "F", "f_1", "f_2", "f_3", "f_4", "f_6", "f5_ast", "fer", "fi", "gm_CRAN", "gmkatp", "gmkca", "gmKDr", "gmna", "gmvca", "gnaca", "IP3_cyt_init", "K_cyt", "K_ec", "kadp", "katp", "katpca", "Kcah", "Kcap", "Kcar", "Kcarp", "Kdd", "kdip", "kip", "Kip3", "Kipca", "Kkca", "Knaca", "Krca", "ksg", "Ksup", "Ktd", "Ktt", "Na_cyt_init", "Na_ec", "P", "Pip3", "Pleak", "Pmcap", "Pnak", "Sn", "TV", "V_CRAN", "Vcah", "Vn", "Vtau"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a", internal, 65, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ATP_cyt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ADP_cyt_init", internal, 3067.9000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ATP_cyt_init", internal, 932.10000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b", internal, 20, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b_1", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b_2", internal, 0.0001, -Infinity, Infinity, false);
@@ -37,9 +37,9 @@ export class model {
     this.base.user.setUserScalar(user, "b_6", internal, 5.9999999999999997e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b5_ast", internal, 0.029999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c", internal, 20, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ca_cyt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ca_cyt_init", internal, 0.085000000000000006, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ca_ec", internal, 2600, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ca_er_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ca_er_init", internal, 22.800000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cm", internal, 6158, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "F", internal, 96485000000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "f_1", internal, 2.5000000000000002e-10, -Infinity, Infinity, false);
@@ -57,7 +57,7 @@ export class model {
     this.base.user.setUserScalar(user, "gmna", internal, 1200, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gmvca", internal, 770, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gnaca", internal, 271, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IP3_cyt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IP3_cyt_init", internal, 0.33000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K_cyt", internal, 132400, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K_ec", internal, 8000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kadp", internal, 0.00036999999999999999, -Infinity, Infinity, false);
@@ -79,10 +79,9 @@ export class model {
     this.base.user.setUserScalar(user, "Ksup", internal, 150400, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ktd", internal, 26, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ktt", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Na_cyt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Na_cyt_init", internal, 9858, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Na_ec", internal, 140000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P", internal, 4950, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Pcaer", internal, 0.105, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Pip3", internal, 1.2e-15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Pleak", internal, 9.9999999999999998e-17, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Pmcap", internal, 2000, -Infinity, Infinity, false);
@@ -97,6 +96,7 @@ export class model {
     internal.B4 = internal.b_4 * internal.P;
     internal.B6 = internal.b_6 * Math.pow((internal.Ksup), (2));
     internal.F4 = internal.f_4 * Math.pow((internal.K_ec), (2));
+    internal.initial_ADP_cyt = internal.ADP_cyt_init;
     internal.initial_ATP_cyt = internal.ATP_cyt_init;
     internal.initial_Ca_cyt = internal.Ca_cyt_init;
     internal.initial_Ca_er = internal.Ca_er_init;
@@ -110,15 +110,15 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const n = state[6];
-    const V = state[7];
     const Ca_cyt = state[0];
     const Ca_er = state[1];
     const IP3_cyt = state[2];
     const Na_cyt = state[3];
     const ATP_cyt = state[4];
     const ADP_cyt = state[5];
-    dstatedt[5] = 0 + 0;
+    const n = state[6];
+    const V = state[7];
+    dstatedt[5] = 0;
     var b_5 = internal.b5_ast * Math.exp(- V / (2 * internal.TV));
     var B2 = internal.b_2 * ADP_cyt;
     dstatedt[2] = 0 + 1 * internal.Cytoplasm * internal.kip * Math.pow((Ca_cyt), (2)) / (Math.pow((Ca_cyt), (2)) + Math.pow((internal.Kipca), (2))) - 1 * internal.Cytoplasm * internal.kdip * IP3_cyt;
@@ -163,7 +163,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "Ca_cyt", "Ca_er", "IP3_cyt", "Na_cyt", "ATP_cyt", "ADP_cyt", "n", "V"];
-    this.metadata.internalOrder = {a: null, ATP_cyt_init: null, b: null, b_1: null, b_2: null, b_3: null, b_4: null, b_6: null, B3: null, B4: null, b5_ast: null, B6: null, c: null, Ca_cyt_init: null, Ca_ec: null, Ca_er_init: null, Cm: null, Cytoplasm: null, ER: null, F: null, f_1: null, f_2: null, f_3: null, f_4: null, f_6: null, F4: null, f5_ast: null, fer: null, fi: null, gm_CRAN: null, gmkatp: null, gmkca: null, gmKDr: null, gmna: null, gmvca: null, gnaca: null, initial_ADP_cyt: null, initial_ATP_cyt: null, initial_Ca_cyt: null, initial_Ca_er: null, initial_IP3_cyt: null, initial_n: null, initial_Na_cyt: null, initial_V: null, IP3_cyt_init: null, K_cyt: null, K_ec: null, kadp: null, katp: null, katpca: null, Kcah: null, Kcap: null, Kcar: null, Kcarp: null, Kdd: null, kdip: null, kip: null, Kip3: null, Kipca: null, Kkca: null, Knaca: null, Krca: null, ksg: null, Ksup: null, Ktd: null, Ktt: null, Na_cyt_init: null, Na_ec: null, P: null, Pcaer: null, Pip3: null, Pleak: null, Pmcap: null, Pnak: null, Sn: null, TV: null, V_CRAN: null, Vcah: null, Vk: null, Vn: null, Vtau: null};
+    this.metadata.internalOrder = {a: null, ADP_cyt_init: null, ATP_cyt_init: null, b: null, b_1: null, b_2: null, b_3: null, b_4: null, b_6: null, B3: null, B4: null, b5_ast: null, B6: null, c: null, Ca_cyt_init: null, Ca_ec: null, Ca_er_init: null, Cm: null, Cytoplasm: null, ER: null, F: null, f_1: null, f_2: null, f_3: null, f_4: null, f_6: null, F4: null, f5_ast: null, fer: null, fi: null, gm_CRAN: null, gmkatp: null, gmkca: null, gmKDr: null, gmna: null, gmvca: null, gnaca: null, initial_ADP_cyt: null, initial_ATP_cyt: null, initial_Ca_cyt: null, initial_Ca_er: null, initial_IP3_cyt: null, initial_n: null, initial_Na_cyt: null, initial_V: null, IP3_cyt_init: null, K_cyt: null, K_ec: null, kadp: null, katp: null, katpca: null, Kcah: null, Kcap: null, Kcar: null, Kcarp: null, Kdd: null, kdip: null, kip: null, Kip3: null, Kipca: null, Kkca: null, Knaca: null, Krca: null, ksg: null, Ksup: null, Ktd: null, Ktt: null, Na_cyt_init: null, Na_ec: null, P: null, Pcaer: null, Pip3: null, Pleak: null, Pmcap: null, Pnak: null, Sn: null, TV: null, V_CRAN: null, Vcah: null, Vk: null, Vn: null, Vtau: null};
     this.metadata.variableOrder = {Ca_cyt: null, Ca_er: null, IP3_cyt: null, Na_cyt: null, ATP_cyt: null, ADP_cyt: null, n: null, V: null};
     this.metadata.outputOrder = null;
   }

@@ -3,13 +3,7 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.alpha = 0.001;
     internal.cell = 1;
-    internal.delta = 1.0000000000000001e-05;
-    internal.gamma = 1.0000000000000001e-05;
-    internal.kappa = 0.5;
-    internal.kd = 1;
-    internal.phi = 5.0000000000000004e-06;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -19,9 +13,15 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["c_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["alpha", "c_init", "delta", "gamma", "kappa", "kd", "phi"], unusedUserAction);
     var internal = this.internal;
+    this.base.user.setUserScalar(user, "alpha", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "delta", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "gamma", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kappa", internal, 0.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kd", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "phi", internal, 5.0000000000000004e-06, -Infinity, Infinity, false);
     internal.initial_c = internal.c_init;
     this.updateMetadata();
   }

@@ -19,17 +19,17 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha1", internal, 3, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha2", internal, 4, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "B_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "B_init", internal, 212.13, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta1", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta2", internal, 0.02, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C_init", internal, 11.06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g11", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g12", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g21", internal, - 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g22", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.23999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 0.0016999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_init", internal, 100, -Infinity, Infinity, false);
     internal.gamma = internal.g12 * internal.g21 - (1 - internal.g11) * (1 - internal.g22);
     internal.initial_B = internal.B_init;
     internal.initial_C = internal.C_init;
@@ -43,13 +43,9 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const C = state[0];
-    const B = state[1];
-    dstatedt[1] = 0 + internal.alpha2 * Math.pow((C), (internal.g12)) * Math.pow((B), (internal.g22)) - internal.beta2 * B;
-    dstatedt[0] = 0 + internal.alpha1 * Math.pow((C), (internal.g11)) * Math.pow((B), (internal.g21)) - internal.beta1 * C;
-    var y1 = ((C > internal.C_bar ? C - internal.C_bar : 0));
-    var y2 = ((B > internal.B_bar ? B - internal.B_bar : 0));
-    dstatedt[2] = 0 + internal.k2 * y2 - internal.k1 * y1;
+    dstatedt[1] = 0;
+    dstatedt[0] = 0;
+    dstatedt[2] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

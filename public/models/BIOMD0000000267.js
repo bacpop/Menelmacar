@@ -5,9 +5,6 @@ export class model {
     var internal = this.internal;
     internal.endosome = 1;
     internal.extracellular = 1;
-    internal.kB = 0.058000000000000003;
-    internal.kL = 0.012999999999999999;
-    internal.kT = 0.14099999999999999;
     internal.neuroplasm = 1;
     this.setUser(user, unusedUserAction);
   }
@@ -21,10 +18,13 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["bound_init", "free_init", "lytic_init", "translocate_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["bound_init", "free_init", "kB", "kL", "kT", "lytic_init", "translocate_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "bound_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "free_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "free_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kB", internal, 0.058000000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kL", internal, 0.012999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kT", internal, 0.14099999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lytic_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "translocate_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_bound = internal.bound_init;

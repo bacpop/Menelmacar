@@ -42,9 +42,9 @@ export class model {
     this.base.user.setUserScalar(user, "km2", internal, 5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "km3", internal, 5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T1_init", internal, 6, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T2_init", internal, 5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T3_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v10", internal, 15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v11", internal, 15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v12", internal, 15, -Infinity, Infinity, false);

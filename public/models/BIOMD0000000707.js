@@ -28,11 +28,11 @@ export class model {
     this.base.user.setUserScalar(user, "Double_Infected_Th_Cells_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 50, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lamda", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Normal_Th_cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Pathogen_Virus_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Normal_Th_cells_init", internal, 3, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Pathogen_Virus_init", internal, 149, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "q", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Recombinant_Virus_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Single_Infected_Th_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Recombinant_Virus_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Single_Infected_Th_Cells_init", internal, 6, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "u", internal, 2, -Infinity, Infinity, false);
     internal.initial_Double_Infected_Th_Cells = internal.Double_Infected_Th_Cells_init;
     internal.initial_Normal_Th_cells = internal.Normal_Th_cells_init;

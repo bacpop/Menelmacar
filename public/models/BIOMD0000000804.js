@@ -3,11 +3,7 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.B_init = Math.pow((3000), (2 / 3));
-    internal.C_init = 1.1000000000000001 * Math.pow((3000), (2 / 3)) / 200;
     internal.tme = 1;
-    internal.initial_B = internal.B_init;
-    internal.initial_C = internal.C_init;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -19,14 +15,16 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["ab", "ac", "at", "bb", "bc", "bt", "gbb", "gbc", "gcb", "gcc", "gtc", "gtt", "hbt", "hct", "Metabolite_0", "Metabolite_1", "Metabolite_2", "T_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["ab", "ac", "at", "B_init", "bb", "bc", "bt", "C_init", "gbb", "gbc", "gcb", "gcc", "gtc", "gtt", "hbt", "hct", "Metabolite_0", "Metabolite_1", "Metabolite_2", "T_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "ab", internal, 4, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ac", internal, 3, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "at", internal, 0.316227766016838, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "B_init", internal, Math.pow((3000), (2 / 3)), -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "bb", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "bc", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "bt", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C_init", internal, 1.1000000000000001 * Math.pow((3000), (2 / 3)) / 200, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gbb", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gbc", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gcb", internal, - 0.5, -Infinity, Infinity, false);
@@ -39,6 +37,8 @@ export class model {
     this.base.user.setUserScalar(user, "Metabolite_1", internal, 208.00838230519, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Metabolite_2", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T_init", internal, 10, -Infinity, Infinity, false);
+    internal.initial_B = internal.B_init;
+    internal.initial_C = internal.C_init;
     internal.initial_T = internal.T_init;
     this.updateMetadata();
   }

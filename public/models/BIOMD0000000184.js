@@ -32,9 +32,9 @@ export class model {
     this.base.user.setUserScalar(user, "vM2", internal, 15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "vM3", internal, 40, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "vp", internal, 0.050000000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Y_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Z_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Y_init", internal, 1.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Z_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     internal.initial_X = internal.X_init;
     internal.initial_Y = internal.Y_init;
     internal.initial_Z = internal.Z_init;

@@ -6,16 +6,6 @@ export class model {
     internal.cytosol = 1;
     internal.extracellular = 1;
     internal.intravesicular = 1;
-    internal.K = 10;
-    internal.K2 = 0.10000000000000001;
-    internal.Kd = 5000;
-    internal.Kf = 1;
-    internal.Kr = 5;
-    internal.Ky = 0.20000000000000001;
-    internal.v0 = 1;
-    internal.v1 = 1;
-    internal.Vm2 = 6.5;
-    internal.Vm3 = 50;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -29,15 +19,25 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a", "beta", "d", "EC_init", "Fraction_Inactive_Channels_init", "Rho_init", "Y_init", "Z_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["a", "beta", "d", "EC_init", "Fraction_Inactive_Channels_init", "K", "K2", "Kd", "Kf", "Kr", "Ky", "Rho_init", "v0", "v1", "Vm2", "Vm3", "Y_init", "Z_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a", internal, 40000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EC_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Fraction_Inactive_Channels_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K", internal, 10, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K2", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kd", internal, 5000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kf", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kr", internal, 5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ky", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Rho_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Y_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v0", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v1", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vm2", internal, 6.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vm3", internal, 50, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Y_init", internal, 0.35999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Z_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_EC = internal.EC_init;
     internal.initial_Fraction_Inactive_Channels = internal.Fraction_Inactive_Channels_init;

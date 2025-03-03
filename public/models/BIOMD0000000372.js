@@ -60,23 +60,12 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const x1 = state[0];
-    const x2 = state[1];
-    const x3 = state[2];
-    const G = state[3];
-    const Ii = state[4];
-    const Ip = state[5];
-    dstatedt[4] = 0 + internal.E * (Ip / internal.Vp - Ii / internal.Vi) - Ii / internal.ti;
-    dstatedt[0] = 0 + 3 / internal.td * (Ip / 1 - x1);
-    dstatedt[1] = 0 + 3 / internal.td * (x1 - x2);
-    dstatedt[2] = 0 + 3 / internal.td * (x2 - x3);
-    var f1_G = internal.Rm / (1 + Math.exp((internal.C1 - G / internal.Vg) / internal.a1));
-    var f2_G = internal.Ub * (1 - Math.exp(- G / (internal.C2 * internal.Vg)));
-    var f3_G = G / (internal.C3 * internal.Vg);
-    var f4_Ii = internal.U0 + (internal.Um - internal.U0) / (1 + Math.exp(- internal.beta * Math.log(Ii / internal.C4 * (1 / internal.Vi + 1 / (internal.E * internal.ti)))));
-    var f5_x3 = internal.Rg / (1 + Math.exp(internal.alpha * (x3 * 1 / internal.Vp - internal.C5)));
-    dstatedt[3] = 0 + internal.Gin + f5_x3 + - (f2_G + f3_G * f4_Ii);
-    dstatedt[5] = 0 + f1_G - (internal.E * (Ip / internal.Vp - Ii / internal.Vi) + Ip / internal.tp);
+    dstatedt[3] = 0;
+    dstatedt[4] = 0;
+    dstatedt[5] = 0;
+    dstatedt[0] = 0;
+    dstatedt[1] = 0;
+    dstatedt[2] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

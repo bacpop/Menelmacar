@@ -8,30 +8,6 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var ARF_init = internal.alphaARF - 2 * internal.initial_ARF2 - internal.initial_ARFIAA;
-    var ARRBp_init = internal.alphaARRB - internal.etaAHKph * internal.initial_ARRBph;
-    var CkAHK_init = internal.alphaAHK - internal.etaAHKph * (internal.initial_AHKph + internal.initial_CkAHKph);
-    var CkAHKph_init = internal.alphaPH - internal.initial_AHKph - internal.initial_ARRAph - internal.initial_ARRBph;
-    var F1_init = internal.initial_ARF / internal.thetaARF / (1 + internal.initial_ARF / internal.thetaARF + internal.initial_ARF2 / internal.thetaARF2 + internal.initial_ARFIAA / internal.thARFIAA + internal.initial_ARF * internal.initial_IAAp / internal.psiARFIAA + Math.pow((internal.initial_ARF), (2)) / internal.psiARF + internal.initial_ARRBph / internal.thARRBph);
-    var F2_init = (internal.initial_ARF2 / internal.thetaARF2 + Math.pow((internal.initial_ARF), (2)) / internal.psiARF) / (1 + internal.initial_ARF / internal.thetaARF + internal.initial_ARF2 / internal.thetaARF2 + internal.initial_ARFIAA / internal.thARFIAA + internal.initial_ARF * internal.initial_IAAp / internal.psiARFIAA + Math.pow((internal.initial_ARF), (2)) / internal.psiARF + internal.initial_ARRBph / internal.thARRBph);
-    var F3_init = internal.initial_ARRBph / internal.thARRBph / (1 + internal.initial_ARF / internal.thetaARF + internal.initial_ARF2 / internal.thetaARF2 + internal.initial_ARFIAA / internal.thARFIAA + internal.initial_ARF * internal.initial_IAAp / internal.psiARFIAA + Math.pow((internal.initial_ARF), (2)) / internal.psiARF + internal.initial_ARRBph / internal.thARRBph);
-    var F4_init = internal.initial_ARRBph / internal.thARRBph / (1 + internal.initial_ARRAph / internal.thARRAph + internal.initial_ARRBph / internal.thARRBph);
-    var F5a_init = internal.initial_ARF / internal.thetaARF / (1 + internal.initial_ARF / internal.thetaARF + internal.initial_ARF2 / internal.thetaARF2 + internal.initial_ARFIAA / internal.thARFIAA + internal.initial_ARF * internal.initial_IAAp / internal.psiARFIAA + Math.pow((internal.initial_ARF), (2)) / internal.psiARF);
-    var F5b_init = (internal.initial_ARF2 / internal.thetaARF2 + Math.pow((internal.initial_ARF), (2)) / internal.psiARF) / (1 + internal.initial_ARF / internal.thetaARF + internal.initial_ARF2 / internal.thetaARF2 + internal.initial_ARFIAA / internal.thARFIAA + internal.initial_ARF * internal.initial_IAAp / internal.psiARFIAA + Math.pow((internal.initial_ARF), (2)) / internal.psiARF);
-    var F6_init = internal.initial_ARp / internal.thetaARp / (1 + internal.initial_ARp / internal.thetaARp);
-    var TIR1_init = internal.alphaTIR1 - internal.initial_AuxTIR1 - internal.initial_AuxTIAA;
-    internal.initial_ARF = ARF_init;
-    internal.initial_ARRBp = ARRBp_init;
-    internal.initial_CkAHK = CkAHK_init;
-    internal.initial_CkAHKph = CkAHKph_init;
-    internal.initial_F1 = F1_init;
-    internal.initial_F2 = F2_init;
-    internal.initial_F3 = F3_init;
-    internal.initial_F4 = F4_init;
-    internal.initial_F5a = F5a_init;
-    internal.initial_F5b = F5b_init;
-    internal.initial_F6 = F6_init;
-    internal.initial_TIR1 = TIR1_init;
     var state = Array(32).fill(0);
     state[0] = internal.initial_IAAm;
     state[1] = internal.initial_IAAp;
@@ -68,9 +44,9 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["AHKph_init", "alphaAHK", "alphaARF", "alphaARRB", "alphaAux", "alphaCk", "alphaPH", "alphaTIR1", "ARF2_init", "ARFIAA_init", "ARm_init", "ARp_init", "ARRAm_init", "ARRAp_init", "ARRAph_init", "ARRBph_init", "Aux_init", "AuxTIAA_init", "AuxTIR1_init", "Ck_init", "CRm_init", "CRp_init", "deltaARp", "deltaARRAp", "deltaCRp", "deltaIAAp", "deltaPINp", "eps", "etaAHKph", "etaARFIAA", "etaAuxTIR1", "etaCkPh", "IAAm_init", "IAAp_init", "IAAs_init", "ka", "kd", "la", "lambda1", "lambda3", "ld", "muAux", "muCk", "muIAAs", "pa", "pd", "phiARp", "phiARRAp", "phiCRp", "phiIAAp", "phiPINp", "PINm_init", "PINp_init", "psiARF", "psiARFIAA", "qa", "qd", "ra", "rd", "sa", "sd", "thARFIAA", "thARRAph", "thARRBph", "thetaARF", "thetaARF2", "thetaARp", "thetaIAAp", "ua", "ud"], unusedUserAction);
+    this.base.user.checkUser(user, ["AHKph_init", "alphaAHK", "alphaARF", "alphaARRB", "alphaAux", "alphaCk", "alphaPH", "alphaTIR1", "ARF_init", "ARF2_init", "ARFIAA_init", "ARm_init", "ARp_init", "ARRAm_init", "ARRAp_init", "ARRAph_init", "ARRBp_init", "ARRBph_init", "Aux_init", "AuxTIAA_init", "AuxTIR1_init", "Ck_init", "CkAHK_init", "CkAHKph_init", "CRm_init", "CRp_init", "deltaARp", "deltaARRAp", "deltaCRp", "deltaIAAp", "deltaPINp", "eps", "etaAHKph", "etaARFIAA", "etaAuxTIR1", "etaCkPh", "F1_init", "F2_init", "F3_init", "F4_init", "F5a_init", "F5b_init", "F6_init", "IAAm_init", "IAAp_init", "IAAs_init", "ka", "kd", "la", "lambda1", "lambda3", "ld", "muAux", "muCk", "muIAAs", "pa", "pd", "phiARp", "phiARRAp", "phiCRp", "phiIAAp", "phiPINp", "PINm_init", "PINp_init", "psiARF", "psiARFIAA", "qa", "qd", "ra", "rd", "sa", "sd", "thARFIAA", "thARRAph", "thARRBph", "thetaARF", "thetaARF2", "thetaARp", "thetaIAAp", "TIR1_init", "ua", "ud"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "AHKph_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "AHKph_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alphaAHK", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alphaARF", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alphaARRB", internal, 2, -Infinity, Infinity, false);
@@ -78,6 +54,7 @@ export class model {
     this.base.user.setUserScalar(user, "alphaCk", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alphaPH", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alphaTIR1", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ARF_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ARF2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ARFIAA_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ARm_init", internal, 0, -Infinity, Infinity, false);
@@ -85,11 +62,14 @@ export class model {
     this.base.user.setUserScalar(user, "ARRAm_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ARRAp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ARRAph_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ARRBp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ARRBph_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Aux_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Aux_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AuxTIAA_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AuxTIR1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ck_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ck_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CkAHK_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CkAHKph_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CRm_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CRp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "deltaARp", internal, 1, -Infinity, Infinity, false);
@@ -102,6 +82,13 @@ export class model {
     this.base.user.setUserScalar(user, "etaARFIAA", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "etaAuxTIR1", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "etaCkPh", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "F1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "F2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "F3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "F4_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "F5a_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "F5b_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "F6_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IAAm_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IAAp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IAAs_init", internal, 0, -Infinity, Infinity, false);
@@ -138,9 +125,11 @@ export class model {
     this.base.user.setUserScalar(user, "thetaARF2", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "thetaARp", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "thetaIAAp", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TIR1_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ua", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ud", internal, 1, -Infinity, Infinity, false);
     internal.initial_AHKph = internal.AHKph_init;
+    internal.initial_ARF = internal.ARF_init;
     internal.initial_ARF2 = internal.ARF2_init;
     internal.initial_ARFIAA = internal.ARFIAA_init;
     internal.initial_ARm = internal.ARm_init;
@@ -148,18 +137,29 @@ export class model {
     internal.initial_ARRAm = internal.ARRAm_init;
     internal.initial_ARRAp = internal.ARRAp_init;
     internal.initial_ARRAph = internal.ARRAph_init;
+    internal.initial_ARRBp = internal.ARRBp_init;
     internal.initial_ARRBph = internal.ARRBph_init;
     internal.initial_Aux = internal.Aux_init;
     internal.initial_AuxTIAA = internal.AuxTIAA_init;
     internal.initial_AuxTIR1 = internal.AuxTIR1_init;
     internal.initial_Ck = internal.Ck_init;
+    internal.initial_CkAHK = internal.CkAHK_init;
+    internal.initial_CkAHKph = internal.CkAHKph_init;
     internal.initial_CRm = internal.CRm_init;
     internal.initial_CRp = internal.CRp_init;
+    internal.initial_F1 = internal.F1_init;
+    internal.initial_F2 = internal.F2_init;
+    internal.initial_F3 = internal.F3_init;
+    internal.initial_F4 = internal.F4_init;
+    internal.initial_F5a = internal.F5a_init;
+    internal.initial_F5b = internal.F5b_init;
+    internal.initial_F6 = internal.F6_init;
     internal.initial_IAAm = internal.IAAm_init;
     internal.initial_IAAp = internal.IAAp_init;
     internal.initial_IAAs = internal.IAAs_init;
     internal.initial_PINm = internal.PINm_init;
     internal.initial_PINp = internal.PINp_init;
+    internal.initial_TIR1 = internal.TIR1_init;
     this.updateMetadata();
   }
   getInternal() {
@@ -199,18 +199,18 @@ export class model {
     const F5a = state[29];
     const F5b = state[30];
     const F6 = state[31];
-    dstatedt[13] = 0 + 0;
-    dstatedt[22] = 0 + 0;
-    dstatedt[24] = 0 + 0;
-    dstatedt[23] = 0 + 0;
-    dstatedt[25] = 0 + 0;
-    dstatedt[26] = 0 + 0;
-    dstatedt[27] = 0 + 0;
-    dstatedt[28] = 0 + 0;
-    dstatedt[29] = 0 + 0;
-    dstatedt[30] = 0 + 0;
-    dstatedt[31] = 0 + 0;
-    dstatedt[12] = 0 + 0;
+    dstatedt[13] = 0;
+    dstatedt[22] = 0;
+    dstatedt[24] = 0;
+    dstatedt[23] = 0;
+    dstatedt[25] = 0;
+    dstatedt[26] = 0;
+    dstatedt[27] = 0;
+    dstatedt[28] = 0;
+    dstatedt[29] = 0;
+    dstatedt[30] = 0;
+    dstatedt[31] = 0;
+    dstatedt[12] = 0;
     dstatedt[16] = 0 + 1 * 1 / internal.eps * (internal.rd * CkAHKph - internal.ra * AHKph * Ck);
     dstatedt[6] = 0 + 1 * internal.qa * Math.pow((ARF), (2)) - internal.qd * ARF2;
     dstatedt[5] = 0 + 1 * internal.pa * ARF * IAAp - internal.pd * ARFIAA;
@@ -239,7 +239,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "IAAm", "IAAp", "AuxTIR1", "AuxTIAA", "IAAs", "ARFIAA", "ARF2", "Aux", "PINm", "PINp", "ARm", "ARp", "TIR1", "ARF", "CRm", "CRp", "AHKph", "Ck", "ARRBph", "ARRAph", "ARRAm", "ARRAp", "ARRBp", "CkAHKph", "CkAHK", "F1", "F2", "F3", "F4", "F5a", "F5b", "F6"];
-    this.metadata.internalOrder = {AHKph_init: null, alphaAHK: null, alphaARF: null, alphaARRB: null, alphaAux: null, alphaCk: null, alphaPH: null, alphaTIR1: null, ARF2_init: null, ARFIAA_init: null, ARm_init: null, ARp_init: null, ARRAm_init: null, ARRAp_init: null, ARRAph_init: null, ARRBph_init: null, Aux_init: null, AuxTIAA_init: null, AuxTIR1_init: null, cell: null, Ck_init: null, CRm_init: null, CRp_init: null, deltaARp: null, deltaARRAp: null, deltaCRp: null, deltaIAAp: null, deltaPINp: null, eps: null, etaAHKph: null, etaARFIAA: null, etaAuxTIR1: null, etaCkPh: null, IAAm_init: null, IAAp_init: null, IAAs_init: null, initial_AHKph: null, initial_ARF: null, initial_ARF2: null, initial_ARFIAA: null, initial_ARm: null, initial_ARp: null, initial_ARRAm: null, initial_ARRAp: null, initial_ARRAph: null, initial_ARRBp: null, initial_ARRBph: null, initial_Aux: null, initial_AuxTIAA: null, initial_AuxTIR1: null, initial_Ck: null, initial_CkAHK: null, initial_CkAHKph: null, initial_CRm: null, initial_CRp: null, initial_F1: null, initial_F2: null, initial_F3: null, initial_F4: null, initial_F5a: null, initial_F5b: null, initial_F6: null, initial_IAAm: null, initial_IAAp: null, initial_IAAs: null, initial_PINm: null, initial_PINp: null, initial_TIR1: null, ka: null, kd: null, la: null, lambda1: null, lambda3: null, ld: null, muAux: null, muCk: null, muIAAs: null, pa: null, pd: null, phiARp: null, phiARRAp: null, phiCRp: null, phiIAAp: null, phiPINp: null, PINm_init: null, PINp_init: null, psiARF: null, psiARFIAA: null, qa: null, qd: null, ra: null, rd: null, sa: null, sd: null, thARFIAA: null, thARRAph: null, thARRBph: null, thetaARF: null, thetaARF2: null, thetaARp: null, thetaIAAp: null, ua: null, ud: null};
+    this.metadata.internalOrder = {AHKph_init: null, alphaAHK: null, alphaARF: null, alphaARRB: null, alphaAux: null, alphaCk: null, alphaPH: null, alphaTIR1: null, ARF_init: null, ARF2_init: null, ARFIAA_init: null, ARm_init: null, ARp_init: null, ARRAm_init: null, ARRAp_init: null, ARRAph_init: null, ARRBp_init: null, ARRBph_init: null, Aux_init: null, AuxTIAA_init: null, AuxTIR1_init: null, cell: null, Ck_init: null, CkAHK_init: null, CkAHKph_init: null, CRm_init: null, CRp_init: null, deltaARp: null, deltaARRAp: null, deltaCRp: null, deltaIAAp: null, deltaPINp: null, eps: null, etaAHKph: null, etaARFIAA: null, etaAuxTIR1: null, etaCkPh: null, F1_init: null, F2_init: null, F3_init: null, F4_init: null, F5a_init: null, F5b_init: null, F6_init: null, IAAm_init: null, IAAp_init: null, IAAs_init: null, initial_AHKph: null, initial_ARF: null, initial_ARF2: null, initial_ARFIAA: null, initial_ARm: null, initial_ARp: null, initial_ARRAm: null, initial_ARRAp: null, initial_ARRAph: null, initial_ARRBp: null, initial_ARRBph: null, initial_Aux: null, initial_AuxTIAA: null, initial_AuxTIR1: null, initial_Ck: null, initial_CkAHK: null, initial_CkAHKph: null, initial_CRm: null, initial_CRp: null, initial_F1: null, initial_F2: null, initial_F3: null, initial_F4: null, initial_F5a: null, initial_F5b: null, initial_F6: null, initial_IAAm: null, initial_IAAp: null, initial_IAAs: null, initial_PINm: null, initial_PINp: null, initial_TIR1: null, ka: null, kd: null, la: null, lambda1: null, lambda3: null, ld: null, muAux: null, muCk: null, muIAAs: null, pa: null, pd: null, phiARp: null, phiARRAp: null, phiCRp: null, phiIAAp: null, phiPINp: null, PINm_init: null, PINp_init: null, psiARF: null, psiARFIAA: null, qa: null, qd: null, ra: null, rd: null, sa: null, sd: null, thARFIAA: null, thARRAph: null, thARRBph: null, thetaARF: null, thetaARF2: null, thetaARp: null, thetaIAAp: null, TIR1_init: null, ua: null, ud: null};
     this.metadata.variableOrder = {IAAm: null, IAAp: null, AuxTIR1: null, AuxTIAA: null, IAAs: null, ARFIAA: null, ARF2: null, Aux: null, PINm: null, PINp: null, ARm: null, ARp: null, TIR1: null, ARF: null, CRm: null, CRp: null, AHKph: null, Ck: null, ARRBph: null, ARRAph: null, ARRAm: null, ARRAp: null, ARRBp: null, CkAHKph: null, CkAHK: null, F1: null, F2: null, F3: null, F4: null, F5a: null, F5b: null, F6: null};
     this.metadata.outputOrder = null;
   }

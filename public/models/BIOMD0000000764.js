@@ -4,6 +4,7 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.k1 = 1;
+    internal.kxk = 97.751710654936502;
     internal.tme = 1;
     this.setUser(user, unusedUserAction);
   }
@@ -61,11 +62,10 @@ export class model {
     const I = state[1];
     const V = state[2];
     const C = state[3];
+    dstatedt[3] = 0 + 1 * internal.tme * (internal.kxk) - 1 * internal.tme * internal.p * C;
     dstatedt[1] = 0 + 1 * internal.tme * (internal.bet * U * V) - 1 * internal.tme * internal.k1 * I - 1 * internal.tme * (internal.d1 * C * I);
     dstatedt[0] = 0 + 1 * internal.tme * (internal.alph * U * (1 - U - I)) - 1 * internal.tme * (internal.d0 * C * U) - 1 * internal.tme * (internal.bet * U * V);
     dstatedt[2] = 0 - 1 * internal.tme * (internal.bet * U * V) + 1 * internal.tme * (internal.b * I) - 1 * internal.tme * internal.y * V;
-    var kxk = internal.f * Math.exp(- internal.a * t);
-    dstatedt[3] = 0 + 1 * internal.tme * (kxk) - 1 * internal.tme * internal.p * C;
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -74,7 +74,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "U", "I", "V", "C"];
-    this.metadata.internalOrder = {a: null, aa: null, alph: null, alpha: null, b: null, bb: null, bet: null, beta: null, C_init: null, C0: null, d0: null, d1: null, delta: null, delta0: null, delta1: null, f: null, gamma: null, I_init: null, initial_C: null, initial_I: null, initial_U: null, initial_V: null, K: null, k1: null, lamda: null, Metabolite_3: null, p: null, q: null, tme: null, U_init: null, V_init: null, V0: null, y: null};
+    this.metadata.internalOrder = {a: null, aa: null, alph: null, alpha: null, b: null, bb: null, bet: null, beta: null, C_init: null, C0: null, d0: null, d1: null, delta: null, delta0: null, delta1: null, f: null, gamma: null, I_init: null, initial_C: null, initial_I: null, initial_U: null, initial_V: null, K: null, k1: null, kxk: null, lamda: null, Metabolite_3: null, p: null, q: null, tme: null, U_init: null, V_init: null, V0: null, y: null};
     this.metadata.variableOrder = {U: null, I: null, V: null, C: null};
     this.metadata.outputOrder = null;
   }

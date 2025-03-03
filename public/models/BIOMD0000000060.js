@@ -3,16 +3,7 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.Ca = 0.90000000000000002;
     internal.compartment = 1;
-    internal.ka_minus = 28.800000000000001;
-    internal.ka_plus = 1500;
-    internal.kb_minus = 385.89999999999998;
-    internal.kb_plus = 1500;
-    internal.kc_minus = 0.10000000000000001;
-    internal.kc_plus = 1.75;
-    internal.m = 3;
-    internal.n = 4;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -25,8 +16,17 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Pc1_init", "Pc2_init", "Po1_init", "Po2_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Ca", "ka_minus", "ka_plus", "kb_minus", "kb_plus", "kc_minus", "kc_plus", "m", "n", "Pc1_init", "Pc2_init", "Po1_init", "Po2_init"], unusedUserAction);
     var internal = this.internal;
+    this.base.user.setUserScalar(user, "Ca", internal, 0.90000000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ka_minus", internal, 28.800000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ka_plus", internal, 1500, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kb_minus", internal, 385.89999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kb_plus", internal, 1500, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_minus", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kc_plus", internal, 1.75, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "m", internal, 3, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "n", internal, 4, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Pc1_init", internal, 0.96299999999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Pc2_init", internal, 0.036999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Po1_init", internal, 0, -Infinity, Infinity, false);

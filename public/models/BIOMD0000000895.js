@@ -31,10 +31,10 @@ export class model {
     this.base.user.setUserScalar(user, "cCD4CD8", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ccMr", internal, 25000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ccSe", internal, 500000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CD4_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CD4_init", internal, 9000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CD4n", internal, 0.40000000000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CD4rec_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CD8_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CD4rec_init", internal, 27000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CD8_init", internal, 7000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cdaMa", internal, 30000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "compCD8", internal, 0.84999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cSeMr", internal, 1, -Infinity, Infinity, false);
@@ -62,10 +62,10 @@ export class model {
     this.base.user.setUserScalar(user, "kSeMr", internal, 4.9999999999999998e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lMi", internal, 0.80000000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ma_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Mi_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Mi_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mMi", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Mr_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Mrrec_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Mr_init", internal, 9000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Mrrec_init", internal, 20000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "N", internal, 30, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ncompCD4", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ndCD4", internal, 8, -Infinity, Infinity, false);
@@ -75,8 +75,8 @@ export class model {
     this.base.user.setUserScalar(user, "pSi", internal, 4.0999999999999996, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sCD4", internal, 490000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sCD8", internal, 430000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Se_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Si_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Se_init", internal, 200, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Si_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sMr", internal, 300000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "vrecCD4", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "vrecMr", internal, 1, -Infinity, Infinity, false);

@@ -20,11 +20,11 @@ export class model {
     this.base.user.setUserScalar(user, "a", internal, 0.017999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c", internal, 1.0089999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Effector_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Effector_cells_init", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g1", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g2", internal, 0.0001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g3", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IL_2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL_2_init", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu2", internal, 0.0378, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu3", internal, 1.8, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p1", internal, 0.043999999999999997, -Infinity, Infinity, false);
@@ -32,7 +32,7 @@ export class model {
     this.base.user.setUserScalar(user, "r2", internal, 0.123, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "s1", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "s2", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tumor_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tumor_cells_init", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
     internal.initial_Effector_cells = internal.Effector_cells_init;
     internal.initial_IL_2 = internal.IL_2_init;
     internal.initial_Tumor_cells = internal.Tumor_cells_init;

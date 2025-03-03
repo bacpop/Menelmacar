@@ -4,20 +4,7 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.cytoplasm = 1;
-    internal.K1 = 289000;
-    internal.k2a = 6.4999999999999994e-05;
-    internal.k2d = 0.039899999999999998;
-    internal.k3 = 16.600000000000001;
-    internal.k4cn = 0.0049699999999999996;
-    internal.k4nc = 0.78300000000000003;
-    internal.k5cn = 0.56299999999999994;
-    internal.k5nc = 5.6299999999999999;
-    internal.k6a = 0.000144;
-    internal.k6d = 0.049200000000000001;
-    internal.K7 = 8950;
-    internal.KCAT = 3.5099999999999998;
     internal.nucleus = 1;
-    internal.Vmax7 = 17100;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -36,8 +23,20 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Pi_init", "R_smad_cyt_init", "R_smad_nuc_init", "R_smad_P_cyt_init", "R_smad_P_nuc_init", "R_smad_P_smad4_cyt_init", "R_smad_P_smad4_nuc_init", "receptor_init", "smad4_cyt_init", "smad4_nuc_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["K1", "k2a", "k2d", "k3", "k4cn", "k4nc", "k5cn", "k5nc", "k6a", "k6d", "K7", "KCAT", "Pi_init", "R_smad_cyt_init", "R_smad_nuc_init", "R_smad_P_cyt_init", "R_smad_P_nuc_init", "R_smad_P_smad4_cyt_init", "R_smad_P_smad4_nuc_init", "receptor_init", "smad4_cyt_init", "smad4_nuc_init", "Vmax7"], unusedUserAction);
     var internal = this.internal;
+    this.base.user.setUserScalar(user, "K1", internal, 289000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k2a", internal, 6.4999999999999994e-05, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k2d", internal, 0.039899999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k3", internal, 16.600000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k4cn", internal, 0.0049699999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k4nc", internal, 0.78300000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k5cn", internal, 0.56299999999999994, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k5nc", internal, 5.6299999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k6a", internal, 0.000144, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k6d", internal, 0.049200000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K7", internal, 8950, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "KCAT", internal, 3.5099999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Pi_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R_smad_cyt_init", internal, 162000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R_smad_nuc_init", internal, 18000, -Infinity, Infinity, false);
@@ -48,6 +47,7 @@ export class model {
     this.base.user.setUserScalar(user, "receptor_init", internal, 10000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "smad4_cyt_init", internal, 120000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "smad4_nuc_init", internal, 30000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vmax7", internal, 17100, -Infinity, Infinity, false);
     internal.initial_Pi = internal.Pi_init;
     internal.initial_R_smad_cyt = internal.R_smad_cyt_init;
     internal.initial_R_smad_nuc = internal.R_smad_nuc_init;

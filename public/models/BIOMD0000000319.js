@@ -4,13 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.cell = 1;
-    internal.d = 0;
-    internal.ks = 1.99;
-    internal.L1 = 500000000;
-    internal.L2 = 100;
-    internal.sigma1 = 10;
-    internal.sigma2 = 10;
-    internal.v_Km1 = 0.45000000000000001;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -22,11 +15,18 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["alpha_init", "beta_init", "gamma_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["alpha_init", "beta_init", "d", "gamma_init", "ks", "L1", "L2", "sigma1", "sigma2", "v_Km1"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "alpha_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "beta_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "gamma_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "alpha_init", internal, 29.19988, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "beta_init", internal, 188.80000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "d", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "gamma_init", internal, 0.3367, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ks", internal, 1.99, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "L1", internal, 500000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "L2", internal, 100, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "sigma1", internal, 10, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "sigma2", internal, 10, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v_Km1", internal, 0.45000000000000001, -Infinity, Infinity, false);
     internal.initial_alpha = internal.alpha_init;
     internal.initial_beta = internal.beta_init;
     internal.initial_gamma = internal.gamma_init;

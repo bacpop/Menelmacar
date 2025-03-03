@@ -9,9 +9,7 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var tumor_init = internal.initial_Cancer_Stem_Cell_S + internal.initial_Differentiated_tumor_cell_D + internal.initial_Progenitor_tumor_cell_E;
-    internal.initial_tumor = tumor_init;
-    var state = Array(11).fill(0);
+    var state = Array(10).fill(0);
     state[0] = internal.initial_Cancer_Stem_Cell_S;
     state[1] = internal.initial_IL_6__Cell_bound_IL_6R_complex_on_S;
     state[2] = internal.initial_Progenitor_tumor_cell_E;
@@ -22,7 +20,6 @@ export class model {
     state[7] = internal.initial_IL_6R_on_S;
     state[8] = internal.initial_IL_6R_on_E;
     state[9] = internal.initial_IL_6R_on_D;
-    state[10] = internal.initial_tumor;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -31,10 +28,10 @@ export class model {
     this.base.user.setUserScalar(user, "A_in", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "A_out", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha_S", internal, 0.59999999999999998, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cancer_Stem_Cell_S_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cancer_Stem_Cell_S_init", internal, 1000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "delta_D", internal, 0.061199999999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "delta_E", internal, 0.061199999999999997, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Differentiated_tumor_cell_D_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Differentiated_tumor_cell_D_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma_D", internal, 2.3799999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma_E", internal, 2.3799999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma_S", internal, 2.3799999999999999, -Infinity, Infinity, false);
@@ -42,9 +39,9 @@ export class model {
     this.base.user.setUserScalar(user, "IL_6__Cell_bound_IL_6R_complex_on_E_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL_6__Cell_bound_IL_6R_complex_on_S_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL_6__L_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IL_6R_on_D_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IL_6R_on_E_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IL_6R_on_S_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL_6R_on_D_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL_6R_on_E_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL_6R_on_S_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K_f", internal, 2.3500000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K_p", internal, 24.949999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K_r", internal, 2.2400000000000002, -Infinity, Infinity, false);
@@ -53,7 +50,7 @@ export class model {
     this.base.user.setUserScalar(user, "n", internal, 2.6000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P_Ns", internal, 728455, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P_Smax", internal, 0.90000000000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Progenitor_tumor_cell_E_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Progenitor_tumor_cell_E_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Pstar_Smin", internal, 0.014, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R_Ts", internal, 1.66e-06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho", internal, 6.9999999999999997e-07, -Infinity, Infinity, false);
@@ -87,7 +84,6 @@ export class model {
     const IL_6R_on_S = state[7];
     const IL_6R_on_E = state[8];
     const IL_6R_on_D = state[9];
-    dstatedt[10] = 0 + 0;
     dstatedt[6] = 0 - 1 * internal.compartment * (internal.K_f * IL_6__L * IL_6R_on_S) + 1 * internal.compartment * (internal.K_r * IL_6__Cell_bound_IL_6R_complex_on_S) - 1 * internal.compartment * (internal.K_f * IL_6__L * IL_6R_on_E) + 1 * internal.compartment * (internal.K_r * IL_6__Cell_bound_IL_6R_complex_on_E) - 1 * internal.compartment * (internal.K_f * IL_6__L * IL_6R_on_D) + 1 * internal.compartment * (internal.K_r * IL_6__Cell_bound_IL_6R_complex_on_D) - 1 * internal.compartment * (internal.lambda * IL_6__L) + 1 * internal.compartment * (internal.rho * (Cancer_Stem_Cell_S + Progenitor_tumor_cell_E + Differentiated_tumor_cell_D));
     var P_DD = internal.A_out * internal.alpha_E * Progenitor_tumor_cell_E;
     var phi_S = IL_6__Cell_bound_IL_6R_complex_on_S / (internal.R_Ts * Cancer_Stem_Cell_S);
@@ -116,9 +112,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Cancer_Stem_Cell_S", "IL_6__Cell_bound_IL_6R_complex_on_S", "Progenitor_tumor_cell_E", "Differentiated_tumor_cell_D", "IL_6__Cell_bound_IL_6R_complex_on_E", "IL_6__Cell_bound_IL_6R_complex_on_D", "IL_6__L", "IL_6R_on_S", "IL_6R_on_E", "IL_6R_on_D", "tumor"];
-    this.metadata.internalOrder = {A_in: null, A_out: null, alpha_E: null, alpha_S: null, Cancer_Stem_Cell_S_init: null, compartment: null, delta_D: null, delta_E: null, delta_S: null, Differentiated_tumor_cell_D_init: null, gamma_D: null, gamma_E: null, gamma_S: null, IL_6__Cell_bound_IL_6R_complex_on_D_init: null, IL_6__Cell_bound_IL_6R_complex_on_E_init: null, IL_6__Cell_bound_IL_6R_complex_on_S_init: null, IL_6__L_init: null, IL_6R_on_D_init: null, IL_6R_on_E_init: null, IL_6R_on_S_init: null, initial_Cancer_Stem_Cell_S: null, initial_Differentiated_tumor_cell_D: null, initial_IL_6__Cell_bound_IL_6R_complex_on_D: null, initial_IL_6__Cell_bound_IL_6R_complex_on_E: null, initial_IL_6__Cell_bound_IL_6R_complex_on_S: null, initial_IL_6__L: null, initial_IL_6R_on_D: null, initial_IL_6R_on_E: null, initial_IL_6R_on_S: null, initial_Progenitor_tumor_cell_E: null, initial_tumor: null, K_f: null, K_p: null, K_r: null, lambda: null, myu: null, n: null, P_Ns: null, P_Smax: null, Progenitor_tumor_cell_E_init: null, Pstar_Smin: null, R_Td: null, R_Te: null, R_Ts: null, rho: null};
-    this.metadata.variableOrder = {Cancer_Stem_Cell_S: null, IL_6__Cell_bound_IL_6R_complex_on_S: null, Progenitor_tumor_cell_E: null, Differentiated_tumor_cell_D: null, IL_6__Cell_bound_IL_6R_complex_on_E: null, IL_6__Cell_bound_IL_6R_complex_on_D: null, IL_6__L: null, IL_6R_on_S: null, IL_6R_on_E: null, IL_6R_on_D: null, tumor: null};
+    this.metadata.ynames = ["t", "Cancer_Stem_Cell_S", "IL_6__Cell_bound_IL_6R_complex_on_S", "Progenitor_tumor_cell_E", "Differentiated_tumor_cell_D", "IL_6__Cell_bound_IL_6R_complex_on_E", "IL_6__Cell_bound_IL_6R_complex_on_D", "IL_6__L", "IL_6R_on_S", "IL_6R_on_E", "IL_6R_on_D"];
+    this.metadata.internalOrder = {A_in: null, A_out: null, alpha_E: null, alpha_S: null, Cancer_Stem_Cell_S_init: null, compartment: null, delta_D: null, delta_E: null, delta_S: null, Differentiated_tumor_cell_D_init: null, gamma_D: null, gamma_E: null, gamma_S: null, IL_6__Cell_bound_IL_6R_complex_on_D_init: null, IL_6__Cell_bound_IL_6R_complex_on_E_init: null, IL_6__Cell_bound_IL_6R_complex_on_S_init: null, IL_6__L_init: null, IL_6R_on_D_init: null, IL_6R_on_E_init: null, IL_6R_on_S_init: null, initial_Cancer_Stem_Cell_S: null, initial_Differentiated_tumor_cell_D: null, initial_IL_6__Cell_bound_IL_6R_complex_on_D: null, initial_IL_6__Cell_bound_IL_6R_complex_on_E: null, initial_IL_6__Cell_bound_IL_6R_complex_on_S: null, initial_IL_6__L: null, initial_IL_6R_on_D: null, initial_IL_6R_on_E: null, initial_IL_6R_on_S: null, initial_Progenitor_tumor_cell_E: null, K_f: null, K_p: null, K_r: null, lambda: null, myu: null, n: null, P_Ns: null, P_Smax: null, Progenitor_tumor_cell_E_init: null, Pstar_Smin: null, R_Td: null, R_Te: null, R_Ts: null, rho: null};
+    this.metadata.variableOrder = {Cancer_Stem_Cell_S: null, IL_6__Cell_bound_IL_6R_complex_on_S: null, Progenitor_tumor_cell_E: null, Differentiated_tumor_cell_D: null, IL_6__Cell_bound_IL_6R_complex_on_E: null, IL_6__Cell_bound_IL_6R_complex_on_D: null, IL_6__L: null, IL_6R_on_S: null, IL_6R_on_E: null, IL_6R_on_D: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

@@ -32,12 +32,12 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["Bid_init", "CD95_init", "CD95L_init", "DISC_init", "DISCp55_init", "FADD_init", "kBid", "kD216", "kD216trans_p43", "kD216trans_p55", "kD374", "kD374probe", "kD374trans_p43", "kD374trans_p55", "kDISC", "kdiss_p18", "KDL", "KDR", "koff_FADD", "kon_FADD", "mCherry_init", "mGFP_init", "p18_init", "p18inactive_init", "p30_init", "p43_init", "p55free_init", "PrER_init", "PrER_mGFP_init", "PrNES_init", "PrNES_mCherry_init", "tBid_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "Bid_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CD95_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CD95L_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Bid_init", internal, 224, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CD95_init", internal, 12, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CD95L_init", internal, 16.600000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DISC_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DISCp55_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "FADD_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "FADD_init", internal, 90, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kBid", internal, 0.00052134055139546999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kD216", internal, 0.0063977593741674603, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kD216trans_p43", internal, 5.29906975294056e-05, -Infinity, Infinity, false);
@@ -58,11 +58,11 @@ export class model {
     this.base.user.setUserScalar(user, "p18inactive_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p30_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p43_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "p55free_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "p55free_init", internal, 127, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PrER_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PrER_mGFP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PrER_mGFP_init", internal, 3316, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PrNES_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PrNES_mCherry_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PrNES_mCherry_init", internal, 1909, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tBid_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_Bid = internal.Bid_init;
     internal.initial_CD95 = internal.CD95_init;

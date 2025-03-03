@@ -22,8 +22,8 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["x_Cancer_init", "y_Immune_System_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "x_Cancer_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_Immune_System_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_Cancer_init", internal, 0.00050000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_Immune_System_init", internal, 0.01, -Infinity, Infinity, false);
     internal.initial_x_Cancer = internal.x_Cancer_init;
     internal.initial_y_Immune_System = internal.y_Immune_System_init;
     this.updateMetadata();

@@ -8,15 +8,7 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var C3b_total_init = internal.initial_C3b + internal.initial_C3bP;
-    var C3bB_closed_total_init = internal.initial_C3bB_closed + internal.initial_C3bBP_closed;
-    var C3bB_open_total_init = internal.initial_C3bB_open + internal.initial_C3bBP_open;
-    var C3bBb_total_init = internal.initial_C3bBb + internal.initial_C3bBbP;
-    internal.initial_C3b_total = C3b_total_init;
-    internal.initial_C3bB_closed_total = C3bB_closed_total_init;
-    internal.initial_C3bB_open_total = C3bB_open_total_init;
-    internal.initial_C3bBb_total = C3bBb_total_init;
-    var state = Array(22).fill(0);
+    var state = Array(18).fill(0);
     state[0] = internal.initial_C3;
     state[1] = internal.initial_C3b;
     state[2] = internal.initial_C3bB_closed;
@@ -35,17 +27,13 @@ export class model {
     state[15] = internal.initial_C3bBP_open;
     state[16] = internal.initial_C3bBbP;
     state[17] = internal.initial_C3bP;
-    state[18] = internal.initial_C3b_total;
-    state[19] = internal.initial_C3bB_closed_total;
-    state[20] = internal.initial_C3bB_open_total;
-    state[21] = internal.initial_C3bBb_total;
     return state;
   }
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["Bb_init", "C3_init", "C3b_init", "C3bB_closed_init", "C3bB_open_init", "C3bBb_init", "C3bBbH_init", "C3bBbP_init", "C3bBP_closed_init", "C3bBP_open_init", "C3bH_init", "C3bP_init", "d1", "d2", "d3", "d4", "Factor_B_init", "Factor_D_init", "Factor_H_init", "Factor_I_init", "iC3b_init", "k1", "k10", "k13", "k14", "k15", "k16", "k18", "k19", "k2", "k20", "k21", "k22", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "ks1", "ks2", "ks3", "ks4", "Properdin_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "Bb_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C3_init", internal, 6, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C3b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C3bB_closed_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C3bB_open_init", internal, 0, -Infinity, Infinity, false);
@@ -60,10 +48,10 @@ export class model {
     this.base.user.setUserScalar(user, "d2", internal, 0.00033300000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d3", internal, 0.00022000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d4", internal, 0.00016000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Factor_B_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Factor_D_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Factor_H_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Factor_I_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Factor_B_init", internal, 2, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Factor_D_init", internal, 0.080000000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Factor_H_init", internal, 3, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Factor_I_init", internal, 0.40000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "iC3b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.0001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k10", internal, 0.10680000000000001, -Infinity, Infinity, false);
@@ -88,7 +76,7 @@ export class model {
     this.base.user.setUserScalar(user, "ks2", internal, 0.00079799999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ks3", internal, 0.00067000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ks4", internal, 6.9999999999999994e-05, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Properdin_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Properdin_init", internal, 0.29999999999999999, -Infinity, Infinity, false);
     internal.initial_Bb = internal.Bb_init;
     internal.initial_C3 = internal.C3_init;
     internal.initial_C3b = internal.C3b_init;
@@ -134,10 +122,6 @@ export class model {
     const C3bBP_open = state[15];
     const C3bBbP = state[16];
     const C3bP = state[17];
-    dstatedt[18] = 0 + 0;
-    dstatedt[19] = 0 + 0;
-    dstatedt[20] = 0 + 0;
-    dstatedt[21] = 0 + 0;
     dstatedt[12] = 0;
     dstatedt[10] = 0;
     dstatedt[6] = 0 + 1 * internal.Fluid_phase * internal.k21 * C3bBbH + 1 * internal.Fluid_phase * internal.k6 * C3bBb + 1 * internal.Fluid_phase * internal.k22 * C3bBbP;
@@ -163,9 +147,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "C3", "C3b", "C3bB_closed", "C3bB_open", "C3bBb", "C3bBbH", "Bb", "Factor_H", "Factor_B", "C3bH", "Factor_I", "iC3b", "Factor_D", "Properdin", "C3bBP_closed", "C3bBP_open", "C3bBbP", "C3bP", "C3b_total", "C3bB_closed_total", "C3bB_open_total", "C3bBb_total"];
-    this.metadata.internalOrder = {Bb_init: null, C3_init: null, C3b_init: null, C3bB_closed_init: null, C3bB_open_init: null, C3bBb_init: null, C3bBbH_init: null, C3bBbP_init: null, C3bBP_closed_init: null, C3bBP_open_init: null, C3bH_init: null, C3bP_init: null, d1: null, d2: null, d3: null, d4: null, Factor_B_init: null, Factor_D_init: null, Factor_H_init: null, Factor_I_init: null, Fluid_phase: null, iC3b_init: null, initial_Bb: null, initial_C3: null, initial_C3b: null, initial_C3b_total: null, initial_C3bB_closed: null, initial_C3bB_closed_total: null, initial_C3bB_open: null, initial_C3bB_open_total: null, initial_C3bBb: null, initial_C3bBb_total: null, initial_C3bBbH: null, initial_C3bBbP: null, initial_C3bBP_closed: null, initial_C3bBP_open: null, initial_C3bH: null, initial_C3bP: null, initial_Factor_B: null, initial_Factor_D: null, initial_Factor_H: null, initial_Factor_I: null, initial_iC3b: null, initial_Properdin: null, k1: null, k10: null, k13: null, k14: null, k15: null, k16: null, k17: null, k18: null, k19: null, k2: null, k20: null, k21: null, k22: null, k23: null, k24: null, k25: null, k3: null, k4: null, k5: null, k6: null, k7: null, k8: null, k9: null, ks1: null, ks2: null, ks3: null, ks4: null, Properdin_init: null};
-    this.metadata.variableOrder = {C3: null, C3b: null, C3bB_closed: null, C3bB_open: null, C3bBb: null, C3bBbH: null, Bb: null, Factor_H: null, Factor_B: null, C3bH: null, Factor_I: null, iC3b: null, Factor_D: null, Properdin: null, C3bBP_closed: null, C3bBP_open: null, C3bBbP: null, C3bP: null, C3b_total: null, C3bB_closed_total: null, C3bB_open_total: null, C3bBb_total: null};
+    this.metadata.ynames = ["t", "C3", "C3b", "C3bB_closed", "C3bB_open", "C3bBb", "C3bBbH", "Bb", "Factor_H", "Factor_B", "C3bH", "Factor_I", "iC3b", "Factor_D", "Properdin", "C3bBP_closed", "C3bBP_open", "C3bBbP", "C3bP"];
+    this.metadata.internalOrder = {Bb_init: null, C3_init: null, C3b_init: null, C3bB_closed_init: null, C3bB_open_init: null, C3bBb_init: null, C3bBbH_init: null, C3bBbP_init: null, C3bBP_closed_init: null, C3bBP_open_init: null, C3bH_init: null, C3bP_init: null, d1: null, d2: null, d3: null, d4: null, Factor_B_init: null, Factor_D_init: null, Factor_H_init: null, Factor_I_init: null, Fluid_phase: null, iC3b_init: null, initial_Bb: null, initial_C3: null, initial_C3b: null, initial_C3bB_closed: null, initial_C3bB_open: null, initial_C3bBb: null, initial_C3bBbH: null, initial_C3bBbP: null, initial_C3bBP_closed: null, initial_C3bBP_open: null, initial_C3bH: null, initial_C3bP: null, initial_Factor_B: null, initial_Factor_D: null, initial_Factor_H: null, initial_Factor_I: null, initial_iC3b: null, initial_Properdin: null, k1: null, k10: null, k13: null, k14: null, k15: null, k16: null, k17: null, k18: null, k19: null, k2: null, k20: null, k21: null, k22: null, k23: null, k24: null, k25: null, k3: null, k4: null, k5: null, k6: null, k7: null, k8: null, k9: null, ks1: null, ks2: null, ks3: null, ks4: null, Properdin_init: null};
+    this.metadata.variableOrder = {C3: null, C3b: null, C3bB_closed: null, C3bB_open: null, C3bBb: null, C3bBbH: null, Bb: null, Factor_H: null, Factor_B: null, C3bH: null, Factor_I: null, iC3b: null, Factor_D: null, Properdin: null, C3bBP_closed: null, C3bBP_open: null, C3bBbP: null, C3bP: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

@@ -9,9 +9,7 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var Total_population_init = internal.initial_Asymptomatic + internal.initial_Exposed + internal.initial_Infected + internal.initial_Recovered + internal.initial_Susceptible;
-    internal.initial_Total_population = Total_population_init;
-    var state = Array(12).fill(0);
+    var state = Array(11).fill(0);
     state[0] = internal.initial_Susceptible;
     state[1] = internal.initial_Exposed;
     state[2] = internal.initial_Infected;
@@ -20,10 +18,9 @@ export class model {
     state[5] = internal.initial_Quarantined;
     state[6] = internal.initial_Hospitalised;
     state[7] = internal.initial_Recovered;
-    state[8] = internal.initial_Recovered_from_hospitals;
-    state[9] = internal.initial_Deceased;
+    state[8] = internal.initial_Deceased;
+    state[9] = internal.initial_Recovered_from_hospitals;
     state[10] = internal.initial_Total_reported_cases;
-    state[11] = internal.initial_Total_population;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -80,20 +77,20 @@ export class model {
     const Susceptible_isolated = state[4];
     const Quarantined = state[5];
     const Hospitalised = state[6];
+    const Recovered = state[7];
     const Total_reported_cases = state[10];
-    const Total_population = state[11];
-    dstatedt[11] = 0 + 0;
-    dstatedt[3] = 0 + 1 * internal.China * ((1 - internal.theta) * internal.phi * Exposed) - 1 * internal.China * internal.gamma_A * Asymptomatic - 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Asymptomatic / Total_population);
-    dstatedt[9] = 0 + 1 * internal.China * internal.d * Hospitalised;
+    dstatedt[8] = 0 + 1 * internal.China * internal.d * Hospitalised;
     dstatedt[6] = 0 + 1 * internal.China * internal.q2 * Infected + 1 * internal.China * internal.eta * Quarantined - 1 * internal.China * internal.d * Hospitalised - 1 * internal.China * internal.gamma_H * Hospitalised;
+    dstatedt[7] = 0 + 1 * internal.China * internal.gamma_I * Infected + 1 * internal.China * internal.gamma_A * Asymptomatic + 1 * internal.China * internal.gamma_H * Hospitalised;
+    dstatedt[9] = internal.gamma_H * Hospitalised;
+    dstatedt[10] = internal.q2 * Infected + internal.eta * Quarantined;
+    var q_1_t = internal.q1 * Math.exp(- internal.delta * Total_reported_cases);
+    var Total_population = Asymptomatic + Exposed + Infected + Recovered + Susceptible;
+    var c_t = internal.c_0 * q_1_t;
+    dstatedt[3] = 0 + 1 * internal.China * ((1 - internal.theta) * internal.phi * Exposed) - 1 * internal.China * internal.gamma_A * Asymptomatic - 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Asymptomatic / Total_population);
     dstatedt[2] = 0 + 1 * internal.China * (internal.theta * internal.phi * Exposed) - 1 * internal.China * internal.q2 * Infected - 1 * internal.China * internal.d * Infected - 1 * internal.China * internal.gamma_I * Infected - 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Infected / Total_population);
     dstatedt[5] = 0 + 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Exposed / Total_population) + 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Infected / Total_population) + 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Asymptomatic / Total_population) - 1 * internal.China * internal.eta * Quarantined;
-    dstatedt[7] = 0 + 1 * internal.China * internal.gamma_I * Infected + 1 * internal.China * internal.gamma_A * Asymptomatic + 1 * internal.China * internal.gamma_H * Hospitalised;
-    dstatedt[8] = 0 + internal.gamma_H * Hospitalised;
     dstatedt[4] = 0 + 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Susceptible / Total_population) - 1 * internal.China * internal.mu * Susceptible_isolated;
-    dstatedt[10] = 0 + internal.q2 * Infected + internal.eta * Quarantined;
-    var q_1_t = internal.q1 * Math.exp(- internal.delta * Total_reported_cases);
-    var c_t = internal.c_0 * q_1_t;
     dstatedt[1] = 0 + 1 * internal.China * (internal.beta * c_t * (Infected + internal.xi * Asymptomatic) * Susceptible / Total_population) - 1 * internal.China * (internal.theta * internal.phi * Exposed) - 1 * internal.China * ((1 - internal.theta) * internal.phi * Exposed) - 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Exposed / Total_population);
     dstatedt[0] = 0 - 1 * internal.China * (internal.beta * c_t * (Infected + internal.xi * Asymptomatic) * Susceptible / Total_population) - 1 * internal.China * (internal.q3 * (internal.q2 * Infected + internal.eta * Quarantined) * Susceptible / Total_population) + 1 * internal.China * internal.mu * Susceptible_isolated;
   }
@@ -103,9 +100,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Susceptible", "Exposed", "Infected", "Asymptomatic", "Susceptible_isolated", "Quarantined", "Hospitalised", "Recovered", "Recovered_from_hospitals", "Deceased", "Total_reported_cases", "Total_population"];
-    this.metadata.internalOrder = {Asymptomatic_init: null, beta: null, c_0: null, China: null, d: null, Deceased_init: null, delta: null, eta: null, Exposed_init: null, gamma_A: null, gamma_H: null, gamma_I: null, Hospitalised_init: null, Infected_init: null, initial_Asymptomatic: null, initial_Deceased: null, initial_Exposed: null, initial_Hospitalised: null, initial_Infected: null, initial_Quarantined: null, initial_Recovered: null, initial_Recovered_from_hospitals: null, initial_Susceptible: null, initial_Susceptible_isolated: null, initial_Total_population: null, initial_Total_reported_cases: null, mu: null, phi: null, pi: null, q1: null, q2: null, q3: null, Quarantined_init: null, Recovered_from_hospitals_init: null, Recovered_init: null, Susceptible_init: null, Susceptible_isolated_init: null, theta: null, Total_reported_cases_init: null, xi: null};
-    this.metadata.variableOrder = {Susceptible: null, Exposed: null, Infected: null, Asymptomatic: null, Susceptible_isolated: null, Quarantined: null, Hospitalised: null, Recovered: null, Recovered_from_hospitals: null, Deceased: null, Total_reported_cases: null, Total_population: null};
+    this.metadata.ynames = ["t", "Susceptible", "Exposed", "Infected", "Asymptomatic", "Susceptible_isolated", "Quarantined", "Hospitalised", "Recovered", "Deceased", "Recovered_from_hospitals", "Total_reported_cases"];
+    this.metadata.internalOrder = {Asymptomatic_init: null, beta: null, c_0: null, China: null, d: null, Deceased_init: null, delta: null, eta: null, Exposed_init: null, gamma_A: null, gamma_H: null, gamma_I: null, Hospitalised_init: null, Infected_init: null, initial_Asymptomatic: null, initial_Deceased: null, initial_Exposed: null, initial_Hospitalised: null, initial_Infected: null, initial_Quarantined: null, initial_Recovered: null, initial_Recovered_from_hospitals: null, initial_Susceptible: null, initial_Susceptible_isolated: null, initial_Total_reported_cases: null, mu: null, phi: null, pi: null, q1: null, q2: null, q3: null, Quarantined_init: null, Recovered_from_hospitals_init: null, Recovered_init: null, Susceptible_init: null, Susceptible_isolated_init: null, theta: null, Total_reported_cases_init: null, xi: null};
+    this.metadata.variableOrder = {Susceptible: null, Exposed: null, Infected: null, Asymptomatic: null, Susceptible_isolated: null, Quarantined: null, Hospitalised: null, Recovered: null, Deceased: null, Recovered_from_hospitals: null, Total_reported_cases: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

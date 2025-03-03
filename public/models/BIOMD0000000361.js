@@ -4,8 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.k1 = 5;
-    internal.k2 = 770;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -22,13 +20,15 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["TFPI_init", "VIIa_TF_init", "VIIa_TF_X_init", "VIIa_TF_Xa_init", "X_init", "Xa_init", "Xa_TFPI_init", "Xa_TFPI_VIIa_TF_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["k1", "k2", "TFPI_init", "VIIa_TF_init", "VIIa_TF_X_init", "VIIa_TF_Xa_init", "X_init", "Xa_init", "Xa_TFPI_init", "Xa_TFPI_VIIa_TF_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "TFPI_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "VIIa_TF_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k1", internal, 0.44, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k2", internal, 0.066000000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TFPI_init", internal, 2.3999990000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VIIa_TF_init", internal, 0.99999970000000005, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "VIIa_TF_X_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "VIIa_TF_Xa_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_init", internal, 169.9999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xa_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xa_TFPI_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xa_TFPI_VIIa_TF_init", internal, 0, -Infinity, Infinity, false);

@@ -19,10 +19,10 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha_no_reg", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha_reg", internal, 150, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ARF_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "auxin_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ARF_init", internal, 49.9900030001007, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "auxin_init", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta", internal, 0.0030000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IAA_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IAA_init", internal, 0.033329996997297599, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SARF", internal, 25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Sauxin", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SIAA", internal, 1, -Infinity, Infinity, false);

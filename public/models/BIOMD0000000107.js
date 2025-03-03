@@ -8,17 +8,7 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var cdc2_init = internal.total_cdc2 - (internal.initial_dimer + internal.initial_p_dimer + internal.initial_p_dimer_p + internal.initial_dimer_p);
-    var cdc25_init = internal.total_cdc25 - internal.initial_cdc25_p;
-    var IE_init = internal.total_IE - internal.initial_IE_p;
-    var UbE_init = internal.total_UbE - internal.initial_UbE_star;
-    var wee1_init = internal.total_wee1 - internal.initial_wee1_p;
-    internal.initial_cdc2 = cdc2_init;
-    internal.initial_cdc25 = cdc25_init;
-    internal.initial_IE = IE_init;
-    internal.initial_UbE = UbE_init;
-    internal.initial_wee1 = wee1_init;
-    var state = Array(14).fill(0);
+    var state = Array(9).fill(0);
     state[0] = internal.initial_cyclin;
     state[1] = internal.initial_dimer;
     state[2] = internal.initial_dimer_p;
@@ -28,18 +18,13 @@ export class model {
     state[6] = internal.initial_wee1_p;
     state[7] = internal.initial_IE_p;
     state[8] = internal.initial_UbE_star;
-    state[9] = internal.initial_cdc2;
-    state[10] = internal.initial_cdc25;
-    state[11] = internal.initial_wee1;
-    state[12] = internal.initial_IE;
-    state[13] = internal.initial_UbE;
     return state;
   }
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["cdc25_p_init", "cyclin_init", "dimer_init", "dimer_p_init", "IE_p_init", "K_a", "K_b", "K_c", "K_d", "K_e", "K_f", "K_g", "K_h", "k1AA", "k3", "ka", "kbPPase", "kc", "kcak", "kd_anti_IE", "ke", "kfPPase", "kg", "khPPAse", "kinh", "p_dimer_init", "p_dimer_p_init", "total_cdc2", "total_cdc25", "total_IE", "total_UbE", "total_wee1", "UbE_star_init", "V2_double_prime", "V2_prime", "V25_double_prime", "V25_prime", "Vwee_double_prime", "Vwee_prime", "wee1_p_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "cdc25_p_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "cyclin_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "cyclin_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dimer_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dimer_p_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IE_p_init", internal, 0, -Infinity, Infinity, false);
@@ -103,12 +88,7 @@ export class model {
     const wee1_p = state[6];
     const IE_p = state[7];
     const UbE_star = state[8];
-    const cdc2 = state[9];
-    dstatedt[9] = 0 + 0;
-    dstatedt[10] = 0 + 0;
-    dstatedt[12] = 0 + 0;
-    dstatedt[13] = 0 + 0;
-    dstatedt[11] = 0 + 0;
+    var cdc2 = internal.total_cdc2 - (dimer + p_dimer + p_dimer_p + dimer_p);
     dstatedt[5] = 0 + 1 * internal.ka * dimer_p * (internal.total_cdc25 - cdc25_p) / (internal.K_a + internal.total_cdc25 - cdc25_p) - 1 * internal.kbPPase * cdc25_p / (internal.K_b + cdc25_p);
     dstatedt[7] = 0 + 1 * internal.kg * dimer_p * (internal.total_IE - IE_p) / (internal.K_g + internal.total_IE - IE_p) - 1 * internal.khPPAse * IE_p / (internal.K_h + IE_p);
     dstatedt[8] = 0 + 1 * internal.kc * IE_p * (internal.total_UbE - UbE_star) / (internal.K_c + internal.total_UbE - UbE_star) - 1 * internal.kd_anti_IE * UbE_star / (internal.K_d + UbE_star);
@@ -128,9 +108,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "cyclin", "dimer", "dimer_p", "p_dimer", "p_dimer_p", "cdc25_p", "wee1_p", "IE_p", "UbE_star", "cdc2", "cdc25", "wee1", "IE", "UbE"];
-    this.metadata.internalOrder = {cdc25_p_init: null, cyclin_init: null, cytoplasm: null, dimer_init: null, dimer_p_init: null, IE_p_init: null, initial_cdc2: null, initial_cdc25: null, initial_cdc25_p: null, initial_cyclin: null, initial_dimer: null, initial_dimer_p: null, initial_IE: null, initial_IE_p: null, initial_p_dimer: null, initial_p_dimer_p: null, initial_UbE: null, initial_UbE_star: null, initial_wee1: null, initial_wee1_p: null, K_a: null, K_b: null, K_c: null, K_d: null, K_e: null, K_f: null, K_g: null, K_h: null, k1AA: null, k3: null, ka: null, kbPPase: null, kc: null, kcak: null, kd_anti_IE: null, ke: null, kfPPase: null, kg: null, khPPAse: null, kinh: null, p_dimer_init: null, p_dimer_p_init: null, total_cdc2: null, total_cdc25: null, total_IE: null, total_UbE: null, total_wee1: null, UbE_star_init: null, V2_double_prime: null, V2_prime: null, V25_double_prime: null, V25_prime: null, Vwee_double_prime: null, Vwee_prime: null, wee1_p_init: null};
-    this.metadata.variableOrder = {cyclin: null, dimer: null, dimer_p: null, p_dimer: null, p_dimer_p: null, cdc25_p: null, wee1_p: null, IE_p: null, UbE_star: null, cdc2: null, cdc25: null, wee1: null, IE: null, UbE: null};
+    this.metadata.ynames = ["t", "cyclin", "dimer", "dimer_p", "p_dimer", "p_dimer_p", "cdc25_p", "wee1_p", "IE_p", "UbE_star"];
+    this.metadata.internalOrder = {cdc25_p_init: null, cyclin_init: null, cytoplasm: null, dimer_init: null, dimer_p_init: null, IE_p_init: null, initial_cdc25_p: null, initial_cyclin: null, initial_dimer: null, initial_dimer_p: null, initial_IE_p: null, initial_p_dimer: null, initial_p_dimer_p: null, initial_UbE_star: null, initial_wee1_p: null, K_a: null, K_b: null, K_c: null, K_d: null, K_e: null, K_f: null, K_g: null, K_h: null, k1AA: null, k3: null, ka: null, kbPPase: null, kc: null, kcak: null, kd_anti_IE: null, ke: null, kfPPase: null, kg: null, khPPAse: null, kinh: null, p_dimer_init: null, p_dimer_p_init: null, total_cdc2: null, total_cdc25: null, total_IE: null, total_UbE: null, total_wee1: null, UbE_star_init: null, V2_double_prime: null, V2_prime: null, V25_double_prime: null, V25_prime: null, Vwee_double_prime: null, Vwee_prime: null, wee1_p_init: null};
+    this.metadata.variableOrder = {cyclin: null, dimer: null, dimer_p: null, p_dimer: null, p_dimer_p: null, cdc25_p: null, wee1_p: null, IE_p: null, UbE_star: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

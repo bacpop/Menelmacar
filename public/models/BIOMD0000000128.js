@@ -26,10 +26,10 @@ export class model {
     this.base.user.checkUser(user, ["alpha", "c_init", "cAMP_init", "cAMPlow", "cer_init", "cm", "dact", "dinh", "dip3", "f", "fer", "gca", "gk", "kc", "ki", "kserca", "lambda", "perl", "sh", "sigmav", "sm", "sn", "taudir", "tauh", "taun", "vca", "vh", "vk", "vm", "vn"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha", internal, 4.5000000000000001e-06, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "c_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "cAMP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "c_init", internal, 0.29999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "cAMP_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cAMPlow", internal, 0.20000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "cer_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "cer_init", internal, 260, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cm", internal, 5300, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dact", internal, 0.34999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dinh", internal, 0.40000000000000002, -Infinity, Infinity, false);
@@ -65,13 +65,13 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
+    const c = state[0];
+    const cer = state[1];
+    const cAMP = state[2];
     const h = state[3];
     const inh = state[4];
     const V = state[5];
     const n = state[6];
-    const c = state[0];
-    const cer = state[1];
-    const cAMP = state[2];
     var ainf = 1 / (1 + internal.dact / c);
     var ETswitch = (t > 60000 ? 1 : 0);
     var girk = (t > 60000 ? 3000 : 1000);

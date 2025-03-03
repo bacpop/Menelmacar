@@ -4,6 +4,7 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
+    internal.kxk = 1.5133799999999999;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -23,24 +24,23 @@ export class model {
     this.base.user.setUserScalar(user, "alpha", internal, 127, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta", internal, 2.7515999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma", internal, 2.1272000000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "I_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "I_init", internal, 0.0011999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_3", internal, 2.7515999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_5", internal, 0.45000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 0.0155, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R_0", internal, 1.2935000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R_0_x", internal, 1.2606999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "S_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "S_init", internal, 0.94240000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T", internal, 3.29, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_e_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_e_init", internal, 0.056500000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_init", internal, 0.056500000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "w", internal, 0.45000000000000001, -Infinity, Infinity, false);
     internal.initial_I = internal.I_init;
     internal.initial_R = internal.R_init;
     internal.initial_S = internal.S_init;
     internal.initial_V = internal.V_init;
     internal.initial_V_e = internal.V_e_init;
-    internal.kxk = internal.ModelValue_3 * (1 - internal.ModelValue_5);
     this.updateMetadata();
   }
   getInternal() {
@@ -52,11 +52,11 @@ export class model {
     const V = state[1];
     const V_e = state[2];
     const I = state[3];
+    dstatedt[3] = 0 + 1 * internal.compartment * (internal.beta * I * S) + 1 * internal.compartment * (internal.kxk * I * V) - 1 * internal.compartment * internal.gamma * I;
     dstatedt[4] = 0 + 1 * internal.compartment * internal.gamma * I;
     dstatedt[0] = 0 - 1 * internal.compartment * (internal.beta * I * S) - 1 * internal.compartment * (internal.r * (1 - V_e / internal.A));
-    dstatedt[2] = 0 + 1 * internal.compartment * (internal.r * (1 - V_e / internal.A));
-    dstatedt[3] = 0 + 1 * internal.compartment * (internal.beta * I * S) + 1 * internal.compartment * (internal.kxk * I * V) - 1 * internal.compartment * internal.gamma * I;
     dstatedt[1] = 0 + 1 * internal.compartment * (internal.r * (1 - V_e / internal.A)) - 1 * internal.compartment * (internal.kxk * I * V);
+    dstatedt[2] = 0 + 1 * internal.compartment * (internal.r * (1 - V_e / internal.A));
   }
   names() {
     return this.metadata.ynames.slice(1);

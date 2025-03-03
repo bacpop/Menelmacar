@@ -38,10 +38,10 @@ export class model {
     this.base.user.setUserScalar(user, "l_p1", internal, 0.028000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "l_p2", internal, 0.028000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "l_p3", internal, 0.028000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_1_EGFR_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_1_EGFR_init", internal, 3.6e-12, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "X_10_p_MET_MET_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_2_ErbB3_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_3_MET_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_2_ErbB3_init", internal, 5.4999999999999999e-14, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_3_MET_init", internal, 7.4e-12, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "X_4_EGFR_EGFR_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "X_5_EGFR_ErbB3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "X_6_ErbB3_ErbB3_init", internal, 0, -Infinity, Infinity, false);
@@ -76,7 +76,7 @@ export class model {
     const X_8_p_EGFR_ErbB3 = state[8];
     const X_9_p_ErbB3_ErbB3 = state[9];
     dstatedt[0] = 0 - 2 * internal.compartment * (0.5 * internal.k_1 * Math.pow((X_1_EGFR), (2)) - internal.l_1 * X_4_EGFR_EGFR) - 1 * internal.compartment * (internal.k_3 * X_1_EGFR * X_2_ErbB3 - internal.l_3 * X_5_EGFR_ErbB3);
-    dstatedt[7] = 0 + 1 * internal.compartment * (internal.k_p1 * X_7_MET_MET - internal.l_p1 * X_10_p_MET_MET) + 1 * internal.compartment * (internal.k_p2 * X_5_EGFR_ErbB3 * X_10_p_MET_MET) - 1 * internal.compartment * (internal.k_p2 * X_5_EGFR_ErbB3 * X_10_p_MET_MET) + 1 * internal.compartment * (internal.k_p3 * X_6_ErbB3_ErbB3 * X_10_p_MET_MET) - 1 * internal.compartment * (internal.k_p3 * X_6_ErbB3_ErbB3 * X_10_p_MET_MET);
+    dstatedt[7] = 0 + 1 * internal.compartment * (internal.k_p1 * X_7_MET_MET - internal.l_p1 * X_10_p_MET_MET) - 1 * internal.compartment * (internal.k_p2 * X_5_EGFR_ErbB3 * X_10_p_MET_MET) + 1 * internal.compartment * (internal.k_p2 * X_5_EGFR_ErbB3 * X_10_p_MET_MET) - 1 * internal.compartment * (internal.k_p3 * X_6_ErbB3_ErbB3 * X_10_p_MET_MET) + 1 * internal.compartment * (internal.k_p3 * X_6_ErbB3_ErbB3 * X_10_p_MET_MET);
     dstatedt[2] = 0 - 2 * internal.compartment * (0.5 * internal.k_2 * Math.pow((X_2_ErbB3), (2)) - internal.l_2 * X_6_ErbB3_ErbB3) - 1 * internal.compartment * (internal.k_3 * X_1_EGFR * X_2_ErbB3 - internal.l_3 * X_5_EGFR_ErbB3);
     dstatedt[5] = 0 - 2 * internal.compartment * (0.5 * internal.k_4 * Math.pow((X_3_MET), (2)) - internal.l_4 * X_7_MET_MET);
     dstatedt[1] = 0 + 1 * internal.compartment * (0.5 * internal.k_1 * Math.pow((X_1_EGFR), (2)) - internal.l_1 * X_4_EGFR_EGFR);

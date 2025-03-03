@@ -23,9 +23,9 @@ export class model {
     this.base.user.setUserScalar(user, "Me", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ml", internal, 0.050099999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Mp", internal, 0.0025000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Population_of_Eggs_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Population_of_Larvae_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Population_of_Pupae_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Population_of_Eggs_init", internal, 10000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Population_of_Larvae_init", internal, 5000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Population_of_Pupae_init", internal, 3000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Te", internal, 0.36099999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Tl", internal, 0.13400000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Tp", internal, 0.34200000000000003, -Infinity, Infinity, false);

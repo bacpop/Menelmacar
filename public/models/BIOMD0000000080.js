@@ -4,16 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.cell = 1;
-    internal.k1 = 5000000;
-    internal.k10 = 55;
-    internal.k2 = 100000000;
-    internal.k3 = 5;
-    internal.k4 = 5000000;
-    internal.k5 = 1;
-    internal.k6 = 2;
-    internal.k7 = 10;
-    internal.k8 = 0.10000000000000001;
-    internal.k9 = 100000;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -32,18 +22,28 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["D_init", "DR_init", "DRG_GDP_init", "DRG_GTP_init", "DRG_init", "G_GDP_init", "G_GTP_init", "GDP_init", "GTP_init", "R_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["D_init", "DR_init", "DRG_GDP_init", "DRG_GTP_init", "DRG_init", "G_GDP_init", "G_GTP_init", "GDP_init", "GTP_init", "k1", "k10", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "R_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "D_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "D_init", internal, 3.1000000000000001e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DR_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DRG_GDP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DRG_GTP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DRG_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "G_GDP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "G_GDP_init", internal, 9.9999999999999995e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "G_GTP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GDP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "GTP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "R_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "GTP_init", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k1", internal, 5000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k10", internal, 55, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k2", internal, 100000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k3", internal, 5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k4", internal, 5000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k5", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k6", internal, 2, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k7", internal, 10, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k8", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k9", internal, 100000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R_init", internal, 1e-10, -Infinity, Infinity, false);
     internal.initial_D = internal.D_init;
     internal.initial_DR = internal.DR_init;
     internal.initial_DRG = internal.DRG_init;

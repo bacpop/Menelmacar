@@ -3,6 +3,7 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
+    internal.k_LRC = 2197;
     internal.V_cyt = 0.0010499999999999999;
     internal.V_medium = 1;
     internal.V_nuc = 0.00035;
@@ -30,9 +31,8 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["k_LRC", "k_Smads_Complex_c", "Kcd", "Kdeg_T1R_EE", "Kdeg_T2R_EE", "Kdiss_Smads_Complex_n", "Kexp_Smad2n", "Kexp_Smad4n", "ki_Cave", "ki_EE", "Kimp_Smad2c", "Kimp_Smad4c", "Kimp_Smads_Complex_c", "Klid", "kr_Cave", "kr_EE", "LRC_Cave_init", "LRC_EE_init", "LRC_Surf_init", "Smad2c_init", "Smad2n_init", "Smad4c_init", "Smad4n_init", "Smads_Complex_c_init", "Smads_Complex_n_init", "T1R_Cave_init", "T1R_EE_init", "T1R_Surf_init", "T2R_Cave_init", "T2R_EE_init", "T2R_Surf_init", "TGF_beta_init", "v_T1R", "v_T2R"], unusedUserAction);
+    this.base.user.checkUser(user, ["k_Smads_Complex_c", "Kcd", "Kdeg_T1R_EE", "Kdeg_T2R_EE", "Kdiss_Smads_Complex_n", "Kexp_Smad2n", "Kexp_Smad4n", "ki_Cave", "ki_EE", "Kimp_Smad2c", "Kimp_Smad4c", "Kimp_Smads_Complex_c", "Klid", "kr_Cave", "kr_EE", "LRC_Cave_init", "LRC_EE_init", "LRC_Surf_init", "Smad2c_init", "Smad2n_init", "Smad4c_init", "Smad4n_init", "Smads_Complex_c_init", "Smads_Complex_n_init", "T1R_Cave_init", "T1R_EE_init", "T1R_Surf_init", "T2R_Cave_init", "T2R_EE_init", "T2R_Surf_init", "TGF_beta_init", "v_T1R", "v_T2R"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "k_LRC", internal, 2197, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_Smads_Complex_c", internal, 6.8499999999999998e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kcd", internal, 0.0050000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kdeg_T1R_EE", internal, 0.0050000000000000001, -Infinity, Infinity, false);
@@ -51,19 +51,19 @@ export class model {
     this.base.user.setUserScalar(user, "LRC_Cave_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LRC_EE_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LRC_Surf_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Smad2c_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Smad2n_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Smad4c_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Smad4n_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Smad2c_init", internal, 492.61000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Smad2n_init", internal, 236.44999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Smad4c_init", internal, 1149.4000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Smad4n_init", internal, 551.72000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Smads_Complex_c_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Smads_Complex_n_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T1R_Cave_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T1R_EE_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T1R_Surf_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T2R_Cave_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T2R_EE_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T2R_Surf_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "TGF_beta_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T1R_Cave_init", internal, 2.0920000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T1R_EE_init", internal, 2.0600000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T1R_Surf_init", internal, 0.23699999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T2R_Cave_init", internal, 1.778, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T2R_EE_init", internal, 1.1479999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T2R_Surf_init", internal, 0.20200000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TGF_beta_init", internal, 0.080000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v_T1R", internal, 0.0103, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v_T2R", internal, 0.02869, -Infinity, Infinity, false);
     internal.initial_LRC_Cave = internal.LRC_Cave_init;

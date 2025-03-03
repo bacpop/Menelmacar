@@ -9,15 +9,12 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var S_init = 1 - (internal.initial_O + internal.initial_I1 + internal.initial_I2);
-    internal.initial_S = S_init;
-    var state = Array(6).fill(0);
-    state[0] = internal.initial_S;
-    state[1] = internal.initial_O;
-    state[2] = internal.initial_I1;
-    state[3] = internal.initial_I2;
-    state[4] = internal.initial_c;
-    state[5] = internal.initial_T;
+    var state = Array(5).fill(0);
+    state[0] = internal.initial_O;
+    state[1] = internal.initial_I1;
+    state[2] = internal.initial_I2;
+    state[3] = internal.initial_c;
+    state[4] = internal.initial_T;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -29,7 +26,7 @@ export class model {
     this.base.user.setUserScalar(user, "beta4", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "I2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "I2_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Jinflux_0", internal, 0.025000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_1", internal, 0.88, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 0.5, -Infinity, Infinity, false);
@@ -51,21 +48,20 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const T = state[5];
-    const S = state[0];
-    const O = state[1];
-    const I1 = state[2];
-    const I2 = state[3];
-    const c = state[4];
-    dstatedt[0] = 0 + 0;
-    dstatedt[5] = 1;
-    dstatedt[4] = 0 + 1 * internal.compartment * (internal.kflux * Math.pow((O), (4)) / internal.compartment) - 1 * internal.compartment * (internal.Vp * Math.pow((c), (2)) / (Math.pow((internal.Kp), (2)) + Math.pow((c), (2))) / internal.compartment) + 1 * internal.compartment * (internal.Jinflux_0 / internal.compartment);
+    const O = state[0];
+    const I1 = state[1];
+    const I2 = state[2];
+    const c = state[3];
+    const T = state[4];
+    dstatedt[4] = 1;
+    dstatedt[3] = 0 + 1 * internal.compartment * (internal.kflux * Math.pow((O), (4)) / internal.compartment) - 1 * internal.compartment * (internal.Vp * Math.pow((c), (2)) / (Math.pow((internal.Kp), (2)) + Math.pow((c), (2))) / internal.compartment) + 1 * internal.compartment * (internal.Jinflux_0 / internal.compartment);
     var k1 = internal.alpha1 * Math.pow((c), (3)) / (Math.pow((internal.beta1), (3)) + Math.pow((c), (3)));
     var p = 0.59999999999999998 * (1 - Math.exp(- T / internal.t_constant));
-    dstatedt[1] = 0 + 1 * internal.compartment * ((k1 * p * S - internal.k_1 * O) / internal.compartment) - 1 * internal.compartment * (internal.k2 * O / internal.compartment);
+    var S = 1 - (O + I1 + I2);
+    dstatedt[0] = 0 + 1 * internal.compartment * ((k1 * p * S - internal.k_1 * O) / internal.compartment) - 1 * internal.compartment * (internal.k2 * O / internal.compartment);
     var k4 = internal.alpha4 * p / (internal.beta4 + p);
-    dstatedt[2] = 0 + 1 * internal.compartment * (internal.k2 * O / internal.compartment) - 1 * internal.compartment * (internal.k3 * I1 / internal.compartment) - 1 * internal.compartment * (k4 * I1 / internal.compartment);
-    dstatedt[3] = 0 + 1 * internal.compartment * (k4 * I1 / internal.compartment) - 1 * internal.compartment * (internal.k5 * I2 / internal.compartment);
+    dstatedt[1] = 0 + 1 * internal.compartment * (internal.k2 * O / internal.compartment) - 1 * internal.compartment * (internal.k3 * I1 / internal.compartment) - 1 * internal.compartment * (k4 * I1 / internal.compartment);
+    dstatedt[2] = 0 + 1 * internal.compartment * (k4 * I1 / internal.compartment) - 1 * internal.compartment * (internal.k5 * I2 / internal.compartment);
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -73,9 +69,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "S", "O", "I1", "I2", "c", "T"];
-    this.metadata.internalOrder = {alpha1: null, alpha4: null, beta1: null, beta4: null, c_init: null, compartment: null, I1_init: null, I2_init: null, initial_c: null, initial_I1: null, initial_I2: null, initial_O: null, initial_S: null, initial_T: null, Jinflux_0: null, k_1: null, k2: null, k3: null, k5: null, kflux: null, Kp: null, O_init: null, t_constant: null, Vp: null};
-    this.metadata.variableOrder = {S: null, O: null, I1: null, I2: null, c: null, T: null};
+    this.metadata.ynames = ["t", "O", "I1", "I2", "c", "T"];
+    this.metadata.internalOrder = {alpha1: null, alpha4: null, beta1: null, beta4: null, c_init: null, compartment: null, I1_init: null, I2_init: null, initial_c: null, initial_I1: null, initial_I2: null, initial_O: null, initial_T: null, Jinflux_0: null, k_1: null, k2: null, k3: null, k5: null, kflux: null, Kp: null, O_init: null, t_constant: null, Vp: null};
+    this.metadata.variableOrder = {O: null, I1: null, I2: null, c: null, T: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

@@ -67,8 +67,8 @@ export class model {
     this.base.user.setUserScalar(user, "L", internal, 550, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MLT_c_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MLT_p_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "MLTH_c_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "MLTH_p_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MLTH_c_init", internal, 300, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MLTH_p_init", internal, 300, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "NADP_c_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "NADP2_c_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "NADPH_c_init", internal, 0, -Infinity, Infinity, false);
@@ -77,7 +77,7 @@ export class model {
     this.base.user.setUserScalar(user, "O2_p_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "O2minus_c_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "O2minus_p_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "per3_p_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "per3_p_init", internal, 300, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V", internal, 288, -Infinity, Infinity, false);
     internal.initial_coI_p = internal.coI_p_init;
     internal.initial_coII_p = internal.coII_p_init;

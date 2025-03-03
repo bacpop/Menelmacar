@@ -21,8 +21,8 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b", internal, 100, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "delta1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "delta2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "delta1_init", internal, 0.99999999999998501, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "delta2_init", internal, 0.98999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "h", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_0", internal, 0.01, -Infinity, Infinity, false);
@@ -30,8 +30,8 @@ export class model {
     this.base.user.setUserScalar(user, "ModelValue_3", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_4", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "notch1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "notch2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "notch1_init", internal, 0.99999999999998701, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "notch2_init", internal, 0.98999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho", internal, 1, -Infinity, Infinity, false);
     internal.initial_delta1 = internal.delta1_init;
     internal.initial_delta2 = internal.delta2_init;

@@ -26,7 +26,7 @@ export class model {
     this.base.user.checkUser(user, ["ERK_init", "ERKPP_init", "k1", "k10", "k11", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "MEKPP_ERK_init", "MEKPP_init", "Raf1_init", "Raf1_RKIP_ERKPP_init", "Raf1_RKIP_init", "RKIP_init", "RKIPP_init", "RKIPP_RP_init", "RP_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "ERK_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ERKPP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ERKPP_init", internal, 2.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.53000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k10", internal, 0.0012199999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k11", internal, 0.87, -Infinity, Infinity, false);
@@ -39,14 +39,14 @@ export class model {
     this.base.user.setUserScalar(user, "k8", internal, 0.070999999999999994, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k9", internal, 0.92000000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MEKPP_ERK_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "MEKPP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Raf1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MEKPP_init", internal, 2.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Raf1_init", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Raf1_RKIP_ERKPP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Raf1_RKIP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "RKIP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RKIP_init", internal, 2.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RKIPP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RKIPP_RP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "RP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RP_init", internal, 3, -Infinity, Infinity, false);
     internal.initial_ERK = internal.ERK_init;
     internal.initial_ERKPP = internal.ERKPP_init;
     internal.initial_MEKPP = internal.MEKPP_init;

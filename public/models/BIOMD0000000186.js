@@ -26,11 +26,11 @@ export class model {
     this.base.user.checkUser(user, ["APC_Cdc20_init", "APC_init", "Bub3_BubR1_Cdc20_init", "Bub3_BubR1_init", "Cdc20_CMad2_init", "Cdc20_init", "const_val_0", "const_val_1", "k1f", "k1r", "k2f", "k3f", "k4f", "k4r", "k5f", "k5r", "k7f", "k7r", "k8f", "k8r", "kf6", "Mad1_CMad2_init", "Mad1_CMad2_OMad2_init", "MCC_APC_init", "MCC_init", "OMad2_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "APC_Cdc20_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "APC_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "APC_init", internal, 8.9999999999999999e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Bub3_BubR1_Cdc20_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Bub3_BubR1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Bub3_BubR1_init", internal, 1.2700000000000001e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdc20_CMad2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cdc20_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cdc20_init", internal, 2.2000000000000001e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "const_val_0", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "const_val_1", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1f", internal, 200000, -Infinity, Infinity, false);
@@ -46,11 +46,11 @@ export class model {
     this.base.user.setUserScalar(user, "k8f", internal, 5000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k8r", internal, 0.080000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kf6", internal, 1000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Mad1_CMad2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Mad1_CMad2_init", internal, 4.9999999999999998e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Mad1_CMad2_OMad2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MCC_APC_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MCC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "OMad2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "OMad2_init", internal, 1.3e-07, -Infinity, Infinity, false);
     internal.initial_APC = internal.APC_init;
     internal.initial_APC_Cdc20 = internal.APC_Cdc20_init;
     internal.initial_Bub3_BubR1 = internal.Bub3_BubR1_init;

@@ -3,8 +3,14 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
+    internal.APAF1_tot = 0;
+    internal.C3_tot = 0;
+    internal.C9_tot = 0;
     internal.cell = 1;
+    internal.CytC_tot = 0;
     internal.mito = 1;
+    internal.SMAC_tot = 0;
+    internal.XIAP_ini = 0;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -40,10 +46,9 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["APAF1_init", "APAF1_tot", "BIR12_C3_init", "BIR12_init", "BIR12_SMAC_init", "BIR3R_C9_init", "BIR3R_init", "BIR3R_p2frag_init", "BIR3R_SMAC_init", "C3_init", "C3_tot", "C9_init", "C9_tot", "C9P_init", "ClvgPrds_init", "CytC_cell_init", "CytC_mit_init", "CytC_tot", "k10", "k10r", "k11", "k12", "k13", "k14", "k15", "k16", "k17", "k18", "k19", "k20", "k21", "k21r", "k22", "k22r", "k23", "k23r", "k24", "k25", "k26", "k26r", "k27", "k27r", "k28", "k28r", "k29", "k29r", "k3", "k30", "k30r", "k31", "k31r", "k32", "k32r", "k33", "k33r", "k34", "k34r", "k35", "k36", "k37", "k4", "k41", "k42", "k45", "k47", "k49", "k5", "k52", "k53", "k6", "k7", "k7r", "k8", "k8r", "k9", "k9r", "PC3_init", "PC9_init", "S_breakdown", "SMAC_init", "SMAC_mito_init", "SMAC_tot", "Substrate_init", "th_Apop", "th_CytC", "th_SMAC", "XIAP_2SMAC_init", "XIAP_C3_init", "XIAP_C9_C3_init", "XIAP_C9_init", "XIAP_ini", "XIAP_init", "XIAP_p2frag_2SMAC_init", "XIAP_p2frag_C3_init", "XIAP_p2frag_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["APAF1_init", "BIR12_C3_init", "BIR12_init", "BIR12_SMAC_init", "BIR3R_C9_init", "BIR3R_init", "BIR3R_p2frag_init", "BIR3R_SMAC_init", "C3_init", "C9_init", "C9P_init", "ClvgPrds_init", "CytC_cell_init", "CytC_mit_init", "k10", "k10r", "k11", "k12", "k13", "k14", "k15", "k16", "k17", "k18", "k19", "k20", "k21", "k21r", "k22", "k22r", "k23", "k23r", "k24", "k25", "k26", "k26r", "k27", "k27r", "k28", "k28r", "k29", "k29r", "k3", "k30", "k30r", "k31", "k31r", "k32", "k32r", "k33", "k33r", "k34", "k34r", "k35", "k36", "k37", "k4", "k41", "k42", "k45", "k47", "k49", "k5", "k52", "k53", "k6", "k7", "k7r", "k8", "k8r", "k9", "k9r", "PC3_init", "PC9_init", "S_breakdown", "SMAC_init", "SMAC_mito_init", "Substrate_init", "th_Apop", "th_CytC", "th_SMAC", "XIAP_2SMAC_init", "XIAP_C3_init", "XIAP_C9_C3_init", "XIAP_C9_init", "XIAP_init", "XIAP_p2frag_2SMAC_init", "XIAP_p2frag_C3_init", "XIAP_p2frag_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "APAF1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "APAF1_tot", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "APAF1_init", internal, 3.3719999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "BIR12_C3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "BIR12_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "BIR12_SMAC_init", internal, 0, -Infinity, Infinity, false);
@@ -52,14 +57,11 @@ export class model {
     this.base.user.setUserScalar(user, "BIR3R_p2frag_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "BIR3R_SMAC_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C3_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C3_tot", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C9_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C9_tot", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C9P_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ClvgPrds_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CytC_cell_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CytC_mit_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CytC_tot", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CytC_mit_init", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k10", internal, 156, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k10r", internal, 0.14399999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k11", internal, 12, -Infinity, Infinity, false);
@@ -118,13 +120,12 @@ export class model {
     this.base.user.setUserScalar(user, "k8r", internal, 0.14399999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k9", internal, 156, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k9r", internal, 0.14399999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PC3_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PC9_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PC3_init", internal, 0.12, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PC9_init", internal, 0.029999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "S_breakdown", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SMAC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SMAC_mito_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SMAC_tot", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Substrate_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SMAC_mito_init", internal, 0.126, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Substrate_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "th_Apop", internal, 2.2999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "th_CytC", internal, 1.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "th_SMAC", internal, 7, -Infinity, Infinity, false);
@@ -132,8 +133,7 @@ export class model {
     this.base.user.setUserScalar(user, "XIAP_C3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "XIAP_C9_C3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "XIAP_C9_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "XIAP_ini", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "XIAP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "XIAP_init", internal, 0.063, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "XIAP_p2frag_2SMAC_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "XIAP_p2frag_C3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "XIAP_p2frag_init", internal, 0, -Infinity, Infinity, false);
@@ -200,8 +200,8 @@ export class model {
     dstatedt[11] = 0 - 1 * internal.cell * (internal.k10 * C3 * BIR12 - internal.k10r * BIR12_C3) + 1 * internal.cell * internal.k11 * C3 * XIAP + 1 * internal.cell * internal.k12 * C3 * XIAP_C9 + 1 * internal.cell * internal.k14 * C3 * XIAP_p2frag - 1 * internal.cell * (internal.k30 * BIR12 * SMAC - internal.k30r * BIR12_SMAC) - 1 * internal.cell * internal.k45 * BIR12;
     dstatedt[12] = 0 + 1 * internal.cell * (internal.k10 * C3 * BIR12 - internal.k10r * BIR12_C3) + 1 * internal.cell * internal.k13 * C3 * XIAP_C3 + 1 * internal.cell * internal.k15 * C3 * XIAP_p2frag_C3 + 1 * internal.cell * internal.k16 * C3 * XIAP_C9_C3 - 1 * internal.cell * (internal.k32 * BIR12_C3 * SMAC - internal.k32r * BIR12_SMAC * C3) - 1 * internal.cell * internal.k49 * BIR12_C3;
     dstatedt[17] = 0 + 1 * internal.cell * internal.k17 * C3 * XIAP_2SMAC + 1 * internal.cell * (internal.k30 * BIR12 * SMAC - internal.k30r * BIR12_SMAC) + 1 * internal.cell * (internal.k32 * BIR12_C3 * SMAC - internal.k32r * BIR12_SMAC * C3) - 1 * internal.cell * internal.k47 * BIR12_SMAC;
-    dstatedt[4] = 0 + 1 * internal.cell * internal.k3 * C9 * PC3 + 1 * internal.cell * internal.k4 * C9 * C3 - 1 * internal.cell * internal.k4 * C9 * C3 + 1 * internal.cell * internal.k5 * C9P * PC3 + 2 * internal.cell * internal.k6 * PC3 * C3 - 1 * internal.cell * internal.k6 * PC3 * C3 - 1 * internal.cell * (internal.k7 * C3 * XIAP - internal.k7r * XIAP_C3) - 1 * internal.cell * (internal.k8 * C3 * XIAP_C9 - internal.k8r * XIAP_C9_C3) - 1 * internal.cell * (internal.k9 * C3 * XIAP_p2frag - internal.k9r * XIAP_p2frag_C3) - 1 * internal.cell * (internal.k10 * C3 * BIR12 - internal.k10r * BIR12_C3) + 1 * internal.cell * internal.k11 * C3 * XIAP - 1 * internal.cell * internal.k11 * C3 * XIAP + 1 * internal.cell * internal.k12 * C3 * XIAP_C9 - 1 * internal.cell * internal.k12 * C3 * XIAP_C9 + 1 * internal.cell * internal.k13 * C3 * XIAP_C3 - 1 * internal.cell * internal.k13 * C3 * XIAP_C3 + 1 * internal.cell * internal.k14 * C3 * XIAP_p2frag - 1 * internal.cell * internal.k14 * C3 * XIAP_p2frag + 1 * internal.cell * internal.k15 * C3 * XIAP_p2frag_C3 - 1 * internal.cell * internal.k15 * C3 * XIAP_p2frag_C3 + 1 * internal.cell * internal.k16 * C3 * XIAP_C9_C3 - 1 * internal.cell * internal.k16 * C3 * XIAP_C9_C3 + 1 * internal.cell * internal.k17 * C3 * XIAP_2SMAC - 1 * internal.cell * internal.k17 * C3 * XIAP_2SMAC + 1 * internal.cell * internal.k18 * C3 * XIAP_C9_C3 - 1 * internal.cell * internal.k18 * C3 * XIAP_C9_C3 + 1 * internal.cell * internal.k19 * C3 * XIAP_C9 - 1 * internal.cell * internal.k19 * C3 * XIAP_C9 + 1 * internal.cell * internal.k20 * C3 * BIR3R_C9 - 1 * internal.cell * internal.k20 * C3 * BIR3R_C9 + 1 * internal.cell * (internal.k28 * XIAP_C3 * SMAC * SMAC - internal.k28r * XIAP_2SMAC * C3) + 1 * internal.cell * (internal.k29 * XIAP_C9_C3 * SMAC * SMAC - internal.k29r * XIAP_2SMAC * C3 * C9) + 1 * internal.cell * (internal.k32 * BIR12_C3 * SMAC - internal.k32r * BIR12_SMAC * C3) - 1 * internal.cell * internal.k37 * C3 + 1 * internal.cell * internal.k53 * C3 * Substrate - 1 * internal.cell * internal.k53 * C3 * Substrate;
-    dstatedt[5] = 0 + 1 * internal.cell * internal.k4 * C9 * C3 + 1 * internal.cell * internal.k5 * C9P * PC3 - 1 * internal.cell * internal.k5 * C9P * PC3 + 1 * internal.cell * internal.k18 * C3 * XIAP_C9_C3 + 1 * internal.cell * internal.k19 * C3 * XIAP_C9 + 1 * internal.cell * internal.k20 * C3 * BIR3R_C9 - 1 * internal.cell * internal.k35 * C9P;
+    dstatedt[4] = 0 + 1 * internal.cell * internal.k3 * C9 * PC3 - 1 * internal.cell * internal.k4 * C9 * C3 + 1 * internal.cell * internal.k4 * C9 * C3 + 1 * internal.cell * internal.k5 * C9P * PC3 - 1 * internal.cell * internal.k6 * PC3 * C3 + 2 * internal.cell * internal.k6 * PC3 * C3 - 1 * internal.cell * (internal.k7 * C3 * XIAP - internal.k7r * XIAP_C3) - 1 * internal.cell * (internal.k8 * C3 * XIAP_C9 - internal.k8r * XIAP_C9_C3) - 1 * internal.cell * (internal.k9 * C3 * XIAP_p2frag - internal.k9r * XIAP_p2frag_C3) - 1 * internal.cell * (internal.k10 * C3 * BIR12 - internal.k10r * BIR12_C3) - 1 * internal.cell * internal.k11 * C3 * XIAP + 1 * internal.cell * internal.k11 * C3 * XIAP - 1 * internal.cell * internal.k12 * C3 * XIAP_C9 + 1 * internal.cell * internal.k12 * C3 * XIAP_C9 - 1 * internal.cell * internal.k13 * C3 * XIAP_C3 + 1 * internal.cell * internal.k13 * C3 * XIAP_C3 - 1 * internal.cell * internal.k14 * C3 * XIAP_p2frag + 1 * internal.cell * internal.k14 * C3 * XIAP_p2frag - 1 * internal.cell * internal.k15 * C3 * XIAP_p2frag_C3 + 1 * internal.cell * internal.k15 * C3 * XIAP_p2frag_C3 - 1 * internal.cell * internal.k16 * C3 * XIAP_C9_C3 + 1 * internal.cell * internal.k16 * C3 * XIAP_C9_C3 - 1 * internal.cell * internal.k17 * C3 * XIAP_2SMAC + 1 * internal.cell * internal.k17 * C3 * XIAP_2SMAC - 1 * internal.cell * internal.k18 * C3 * XIAP_C9_C3 + 1 * internal.cell * internal.k18 * C3 * XIAP_C9_C3 - 1 * internal.cell * internal.k19 * C3 * XIAP_C9 + 1 * internal.cell * internal.k19 * C3 * XIAP_C9 - 1 * internal.cell * internal.k20 * C3 * BIR3R_C9 + 1 * internal.cell * internal.k20 * C3 * BIR3R_C9 + 1 * internal.cell * (internal.k28 * XIAP_C3 * SMAC * SMAC - internal.k28r * XIAP_2SMAC * C3) + 1 * internal.cell * (internal.k29 * XIAP_C9_C3 * SMAC * SMAC - internal.k29r * XIAP_2SMAC * C3 * C9) + 1 * internal.cell * (internal.k32 * BIR12_C3 * SMAC - internal.k32r * BIR12_SMAC * C3) - 1 * internal.cell * internal.k37 * C3 - 1 * internal.cell * internal.k53 * C3 * Substrate + 1 * internal.cell * internal.k53 * C3 * Substrate;
+    dstatedt[5] = 0 + 1 * internal.cell * internal.k4 * C9 * C3 - 1 * internal.cell * internal.k5 * C9P * PC3 + 1 * internal.cell * internal.k5 * C9P * PC3 + 1 * internal.cell * internal.k18 * C3 * XIAP_C9_C3 + 1 * internal.cell * internal.k19 * C3 * XIAP_C9 + 1 * internal.cell * internal.k20 * C3 * BIR3R_C9 - 1 * internal.cell * internal.k35 * C9P;
     dstatedt[23] = 0 + 1 * internal.cell * internal.k53 * C3 * Substrate;
     dstatedt[26] = 0 + 1 * internal.cell * CytC_mit * Math.log(2) / internal.th_CytC;
     dstatedt[25] = 0 - 1 * internal.cell * CytC_mit * Math.log(2) / internal.th_CytC;
@@ -228,7 +228,7 @@ export class model {
     dstatedt[14] = 0 + 1 * internal.cell * internal.k12 * C3 * XIAP_C9 + 1 * internal.cell * internal.k16 * C3 * XIAP_C9_C3 - 1 * internal.cell * internal.k20 * C3 * BIR3R_C9 + 1 * internal.cell * (internal.k23 * C9 * BIR3R - internal.k23r * BIR3R_C9) - 1 * internal.cell * (internal.k33 * BIR3R_C9 * SMAC - internal.k33r * BIR3R_SMAC * C9) - 1 * internal.cell * k50 * BIR3R_C9;
     dstatedt[15] = 0 + 1 * internal.cell * internal.k14 * C3 * XIAP_p2frag + 1 * internal.cell * internal.k15 * C3 * XIAP_p2frag_C3 + 1 * internal.cell * internal.k20 * C3 * BIR3R_C9 - 1 * internal.cell * internal.k24 * BIR3R_p2frag - 1 * internal.cell * k51 * BIR3R_p2frag;
     dstatedt[18] = 0 + 1 * internal.cell * internal.k17 * C3 * XIAP_2SMAC + 1 * internal.cell * (internal.k31 * BIR3R * SMAC - internal.k31r * BIR3R_SMAC) + 1 * internal.cell * (internal.k33 * BIR3R_C9 * SMAC - internal.k33r * BIR3R_SMAC * C9) - 1 * internal.cell * k48 * BIR3R_SMAC;
-    dstatedt[2] = 0 + 1 * internal.cell * internal.k3 * C9 * PC3 - 1 * internal.cell * internal.k3 * C9 * PC3 - 1 * internal.cell * internal.k4 * C9 * C3 - 1 * internal.cell * (internal.k21 * C9 * XIAP - internal.k21r * XIAP_C9) - 1 * internal.cell * (internal.k22 * C9 * XIAP_C3 - internal.k22r * XIAP_C9_C3) - 1 * internal.cell * (internal.k23 * C9 * BIR3R - internal.k23r * BIR3R_C9) + 1 * internal.cell * (internal.k27 * XIAP_C9 * SMAC * SMAC - internal.k27r * XIAP_2SMAC * C9) + 1 * internal.cell * (internal.k29 * XIAP_C9_C3 * SMAC * SMAC - internal.k29r * XIAP_2SMAC * C3 * C9) + 1 * internal.cell * (internal.k33 * BIR3R_C9 * SMAC - internal.k33r * BIR3R_SMAC * C9) - 1 * internal.cell * internal.k36 * C9 + 1 * internal.cell * apo_lim * Math.log(2) / internal.th_Apop;
+    dstatedt[2] = 0 - 1 * internal.cell * internal.k3 * C9 * PC3 + 1 * internal.cell * internal.k3 * C9 * PC3 - 1 * internal.cell * internal.k4 * C9 * C3 - 1 * internal.cell * (internal.k21 * C9 * XIAP - internal.k21r * XIAP_C9) - 1 * internal.cell * (internal.k22 * C9 * XIAP_C3 - internal.k22r * XIAP_C9_C3) - 1 * internal.cell * (internal.k23 * C9 * BIR3R - internal.k23r * BIR3R_C9) + 1 * internal.cell * (internal.k27 * XIAP_C9 * SMAC * SMAC - internal.k27r * XIAP_2SMAC * C9) + 1 * internal.cell * (internal.k29 * XIAP_C9_C3 * SMAC * SMAC - internal.k29r * XIAP_2SMAC * C3 * C9) + 1 * internal.cell * (internal.k33 * BIR3R_C9 * SMAC - internal.k33r * BIR3R_SMAC * C9) - 1 * internal.cell * internal.k36 * C9 + 1 * internal.cell * apo_lim * Math.log(2) / internal.th_Apop;
     dstatedt[0] = 0 + 1 * internal.cell * (k1 - k1r * PC3) - 1 * internal.cell * internal.k3 * C9 * PC3 - 1 * internal.cell * internal.k5 * C9P * PC3 - 1 * internal.cell * internal.k6 * PC3 * C3;
     dstatedt[3] = 0 - 1 * internal.cell * apo_lim * Math.log(2) / internal.th_Apop;
     dstatedt[1] = 0 + 1 * internal.cell * (k2 - k2r * XIAP) - 1 * internal.cell * (internal.k7 * C3 * XIAP - internal.k7r * XIAP_C3) - 1 * internal.cell * internal.k11 * C3 * XIAP - 1 * internal.cell * (internal.k21 * C9 * XIAP - internal.k21r * XIAP_C9) + 1 * internal.cell * internal.k25 * XIAP_p2frag - 1 * internal.cell * (internal.k26 * XIAP * SMAC * SMAC - internal.k26r * XIAP_2SMAC);

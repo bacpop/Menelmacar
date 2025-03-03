@@ -28,8 +28,8 @@ export class model {
     this.base.user.setUserScalar(user, "BK", internal, 0.25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "BP", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Bwee", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cdk1CycB_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CycB_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cdk1CycB_init", internal, 20, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CycB_init", internal, 59.999999999999901, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EC50apc", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EC50cdc", internal, 30, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EC50K", internal, 0.17999999999999999, -Infinity, Infinity, false);

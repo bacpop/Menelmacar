@@ -16,12 +16,12 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["C_init", "e", "f", "g", "ixi", "M_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "C_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C_init", internal, 0.80000000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "e", internal, 3.4661599999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "f", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ixi", internal, 1.2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "M_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "M_init", internal, 0.40000000000000002, -Infinity, Infinity, false);
     internal.initial_C = internal.C_init;
     internal.initial_M = internal.M_init;
     this.updateMetadata();

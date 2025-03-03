@@ -16,14 +16,14 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["alpha_syn_init", "dalphasyn", "k1", "k2", "k3", "k4", "kalphasyn", "ROS_init", "S2_4"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "alpha_syn_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "alpha_syn_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dalphasyn", internal, 15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 17280, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 17280, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k3", internal, 0.16800000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k4", internal, 0.16800000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kalphasyn", internal, 8.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ROS_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ROS_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "S2_4", internal, 1, -Infinity, Infinity, false);
     internal.initial_alpha_syn = internal.alpha_syn_init;
     internal.initial_ROS = internal.ROS_init;

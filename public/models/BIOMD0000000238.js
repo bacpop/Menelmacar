@@ -8,6 +8,7 @@ export class model {
     internal.initial_BR = 0;
     internal.initial_M = 3.5;
     internal.initial_T = 38.784999999999997;
+    internal.kxk = 0;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -67,6 +68,7 @@ export class model {
     const M = state[0];
     const T = state[1];
     const BR = state[2];
+    dstatedt[1] = Math.pow((internal.c), (- 1)) * (M - internal.kxk * (T - internal.T_a));
     var f_prime = internal.delta_high_dose * Math.pow((1 + Math.exp(- internal.alpha * (t - (internal.tdose1 + internal.t_prime)))), (- 1));
     var tprime = t * 3600 * 1 - Math.floor(t * 3600 * 1 / internal.day_length) * internal.day_length;
     var X1 = (t - internal.tdose1) / 24;
@@ -78,8 +80,6 @@ export class model {
     var gNsTs1 = ((X1 > 0 ? Math.pow((internal.Ks), (internal.Ns)) / 6 * Math.exp(- internal.Ks * X1) * Math.pow((X1), (internal.Ns - 1)) : 0));
     var gNsTs2 = ((X2 > 0 ? Math.pow((internal.Ks), (internal.Ns)) / 6 * Math.exp(- internal.Ks * X2) * Math.pow((X2), (internal.Ns - 1)) : 0));
     var gNsTs3 = ((X3 > 0 ? Math.pow((internal.Ks), (internal.Ns)) / 6 * Math.exp(- internal.Ks * X3) * Math.pow((X3), (internal.Ns - 1)) : 0));
-    var kxk = internal.kb + internal.kinc * (T - internal.T_b * (1 + internal.pEtot * BR)) + internal.f2_drug;
-    dstatedt[1] = Math.pow((internal.c), (- 1)) * (M - kxk * (T - internal.T_a));
     var E_fast = internal.pEf2 * (gNfTf1 + gNfTf2 + gNfTf3);
     var E_slow = internal.AMT_dose * internal.pEs2 * (gNsTs1 + gNsTs2 + gNsTs3);
     var M_night = (1 - f_prime) * internal.M_night_baseline + f_prime * internal.M_day;
@@ -94,7 +94,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "M", "T", "BR"];
-    this.metadata.internalOrder = {alpha: null, AMT_dose: null, c: null, COMpartment: null, day_length: null, delta_high_dose: null, delta_T: null, f2_drug: null, initial_BR: null, initial_M: null, initial_T: null, kb: null, Kf: null, kinc: null, km: null, kR: null, Ks: null, M_b: null, M_day: null, M_night_baseline: null, Nf: null, Ns: null, pEf1: null, pEf2: null, pEf3: null, pEs1: null, pEs2: null, pEs3: null, pEtot: null, T_a: null, T_b: null, t_day: null, T_day: null, t_night: null, T_night: null, t_prime: null, tdose1: null, tdose2: null, tdose3: null, Tf: null, Ts: null};
+    this.metadata.internalOrder = {alpha: null, AMT_dose: null, c: null, COMpartment: null, day_length: null, delta_high_dose: null, delta_T: null, f2_drug: null, initial_BR: null, initial_M: null, initial_T: null, kb: null, Kf: null, kinc: null, km: null, kR: null, Ks: null, kxk: null, M_b: null, M_day: null, M_night_baseline: null, Nf: null, Ns: null, pEf1: null, pEf2: null, pEf3: null, pEs1: null, pEs2: null, pEs3: null, pEtot: null, T_a: null, T_b: null, t_day: null, T_day: null, t_night: null, T_night: null, t_prime: null, tdose1: null, tdose2: null, tdose3: null, Tf: null, Ts: null};
     this.metadata.variableOrder = {M: null, T: null, BR: null};
     this.metadata.outputOrder = null;
   }

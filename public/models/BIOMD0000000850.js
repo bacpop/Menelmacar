@@ -18,11 +18,11 @@ export class model {
     this.base.user.checkUser(user, ["gamma", "I_init", "K", "m", "U_init", "V_init", "xi"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "gamma", internal, 0.10000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "I_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "I_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "m", internal, 0.10000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "U_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "U_init", internal, 75, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_init", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "xi", internal, 0.01, -Infinity, Infinity, false);
     internal.initial_I = internal.I_init;
     internal.initial_U = internal.U_init;

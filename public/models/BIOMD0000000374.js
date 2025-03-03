@@ -4,6 +4,7 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.COMpartment = 1;
+    internal.jxj = 0.88;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -62,39 +63,11 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const V_membrane = state[0];
-    const n = state[1];
-    const jm = state[2];
-    const Ca_er_Ca_equations = state[3];
-    const Ca_i = state[4];
-    var a_infinity = 1 / (1 + internal.dact / Ca_i);
-    var h_infinity = 1 / (1 + Ca_i / internal.dinh);
-    var i_K = internal.g_K * n * (V_membrane + 70);
-    var i_K_ATP = internal.g_K_ATP * (V_membrane + 70);
-    var i_K_Ca = internal.g_K_Ca * Math.pow((Ca_i), (5)) / (Math.pow((Ca_i), (5)) + Math.pow((internal.kdkca), (5))) * (V_membrane + 70);
-    var i_leak = internal.g_leak * (V_membrane - internal.V_CRAC);
-    var J_er_leak = internal.perl * (Ca_er_Ca_equations - Ca_i);
-    var J_er_p = internal.verp * Math.pow((Ca_i), (2)) / (Math.pow((Ca_i), (2)) + Math.pow((internal.kerp), (2)));
-    var jm_infinity = 1 - 1 / (1 + Math.exp((53 + V_membrane) / 2));
-    var m_f_infinity = 1 / (1 + Math.exp((- 20 - V_membrane) / 7.5));
-    var m_s_infinity = 1 / (1 + Math.exp((- 16 - V_membrane) / 10));
-    var n_infinity = 1 / (1 + Math.exp((- 15 - V_membrane) / 6));
-    var r_infinity = 1 / (1 + Math.exp(1 * (Ca_er_Ca_equations - internal.Ca_er_bar)));
-    var tau_j = 50000 / (Math.exp((53 + V_membrane) / 4) + Math.exp((- 53 - V_membrane) / 4)) + 1500;
-    var tau_n = 9.0899999999999999 / (1 + Math.exp((15 + V_membrane) / 6));
-    dstatedt[2] = 0 + (jm_infinity - jm) / tau_j;
-    dstatedt[1] = 0 + internal.lambda_n * (n_infinity - n) / tau_n;
-    var i_Ca_f = internal.g_Ca_f * m_f_infinity * (V_membrane - internal.V_Ca);
-    var i_Ca_s = internal.g_Ca_s * m_s_infinity * (1 - jm) * (V_membrane - internal.V_Ca);
-    var i_CRAC = internal.g_CRAC * r_infinity * (V_membrane - internal.V_CRAC);
-    var O = Math.pow((a_infinity), (3)) * Math.pow((internal.b_infinity), (3)) * Math.pow((h_infinity), (3)) * 1;
-    var i_Ca = i_Ca_f + i_Ca_s;
-    var J_er_IP3 = O * (Ca_er_Ca_equations - Ca_i);
-    dstatedt[0] = 0 + - (i_Ca + i_K + i_K_ATP + i_K_Ca + i_CRAC + i_leak) / internal.Cm;
-    var J_er_tot = J_er_leak + J_er_IP3 - J_er_p;
-    var J_mem_tot = - internal.f * (internal.gamma * i_Ca + internal.k_Ca * Ca_i);
-    dstatedt[3] = 0 + - J_er_tot / (internal.lambda_er * internal.sigma_er);
-    dstatedt[4] = 0 + J_er_tot / internal.lambda_er + J_mem_tot;
+    dstatedt[3] = 0;
+    dstatedt[4] = 0;
+    dstatedt[2] = 0;
+    dstatedt[1] = 0;
+    dstatedt[0] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -103,7 +76,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "V_membrane", "n", "jm", "Ca_er_Ca_equations", "Ca_i"];
-    this.metadata.internalOrder = {b_infinity: null, Ca_er_bar: null, Ca_er_Ca_equations_init: null, Ca_i_init: null, Cm: null, COMpartment: null, dact: null, dinh: null, dip3: null, f: null, g_Ca_f: null, g_Ca_s: null, g_CRAC: null, g_K: null, g_K_ATP: null, g_K_Ca: null, g_leak: null, gamma: null, initial_Ca_er_Ca_equations: null, initial_Ca_i: null, initial_jm: null, initial_n: null, initial_V_membrane: null, IP3: null, jm_init: null, k_Ca: null, kdkca: null, kerp: null, lambda_er: null, lambda_n: null, n_init: null, perl: null, sigma_er: null, V_Ca: null, V_CRAC: null, V_membrane_init: null, verp: null};
+    this.metadata.internalOrder = {b_infinity: null, Ca_er_bar: null, Ca_er_Ca_equations_init: null, Ca_i_init: null, Cm: null, COMpartment: null, dact: null, dinh: null, dip3: null, f: null, g_Ca_f: null, g_Ca_s: null, g_CRAC: null, g_K: null, g_K_ATP: null, g_K_Ca: null, g_leak: null, gamma: null, initial_Ca_er_Ca_equations: null, initial_Ca_i: null, initial_jm: null, initial_n: null, initial_V_membrane: null, IP3: null, jm_init: null, jxj: null, k_Ca: null, kdkca: null, kerp: null, lambda_er: null, lambda_n: null, n_init: null, perl: null, sigma_er: null, V_Ca: null, V_CRAC: null, V_membrane_init: null, verp: null};
     this.metadata.variableOrder = {V_membrane: null, n: null, jm: null, Ca_er_Ca_equations: null, Ca_i: null};
     this.metadata.outputOrder = null;
   }

@@ -100,43 +100,18 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const G_p = state[0];
-    const G_t = state[1];
-    const I_l = state[2];
-    const I_p = state[3];
-    const Q_sto1 = state[4];
-    const Q_gut = state[5];
-    const I_1 = state[6];
-    const I_d = state[7];
-    const X = state[8];
-    const I_po = state[9];
-    const Y = state[10];
-    const Q_sto2 = state[11];
-    dstatedt[7] = 0 + - internal.k_i * (I_d - I_1);
-    dstatedt[3] = 0 + - internal.m_2 * I_p - internal.m_4 * I_p + internal.m_1 * I_l;
-    dstatedt[4] = 0 + - internal.k_gri * Q_sto1;
-    var EGP = internal.k_p1 - internal.k_p2 * G_p - internal.k_p3 * I_d - internal.k_p4 * I_po;
-    var G = G_p / internal.V_G;
-    var I = I_p / internal.V_I;
-    var Q_sto = Q_sto1 + Q_sto2;
-    var Ra = internal.f * internal.k_abs * Q_gut / internal.BW;
-    var S = internal.gamma * I_po;
-    var V_mmax = (1 - internal.part) * (internal.V_m0 + internal.V_mX * X);
-    dstatedt[0] = 0 + EGP + Ra - internal.E - internal.U_ii - internal.k_1 * G_p + internal.k_2 * G_t;
-    dstatedt[6] = 0 + - internal.k_i * (I_1 - I);
-    dstatedt[8] = 0 + - internal.p_2U * X + internal.p_2U * (I - internal.I_b);
-    dstatedt[10] = 0 + - internal.alpha * (Y - internal.beta * (G - internal.G_b));
-    var HE = - internal.m_5 * S + internal.m_6;
-    var k_empt = internal.k_min + (internal.k_max - internal.k_min) / 2 * (Math.tanh(internal.aa * (Q_sto - internal.b * internal.D)) - Math.tanh(internal.cc * (Q_sto - internal.d * internal.D)) + 2);
-    var S_po = Y + internal.K * (EGP + Ra - internal.E - internal.U_ii - internal.k_1 * G_p + internal.k_2 * G_t) / internal.V_G + internal.S_b;
-    var U_idm = V_mmax * G_t / (internal.K_m0 + G_t);
-    dstatedt[9] = 0 + - internal.gamma * I_po + S_po;
-    dstatedt[5] = 0 + - internal.k_abs * Q_gut + k_empt * Q_sto2;
-    dstatedt[11] = 0 + - k_empt * Q_sto2 + internal.k_gri * Q_sto1;
-    var m_3 = HE * internal.m_1 / (1 - HE);
-    var U_id = U_idm;
-    dstatedt[1] = 0 + - U_id + internal.k_1 * G_p - internal.k_2 * G_t;
-    dstatedt[2] = 0 + - internal.m_1 * I_l - m_3 * I_l + internal.m_2 * I_p + S;
+    dstatedt[0] = 0;
+    dstatedt[1] = 0;
+    dstatedt[6] = 0;
+    dstatedt[7] = 0;
+    dstatedt[2] = 0;
+    dstatedt[3] = 0;
+    dstatedt[9] = 0;
+    dstatedt[5] = 0;
+    dstatedt[4] = 0;
+    dstatedt[11] = 0;
+    dstatedt[8] = 0;
+    dstatedt[10] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

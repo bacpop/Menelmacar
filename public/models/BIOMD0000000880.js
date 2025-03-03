@@ -29,11 +29,11 @@ export class model {
     this.base.user.setUserScalar(user, "beta_1", internal, 2.0000000000000002e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta_2", internal, 2.0000000000000002e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta_3", internal, 2.0000000000000002e-05, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "D_Dendritic_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "D_Dendritic_Cells_init", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "e", internal, 1.04e-08, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "H_CD4_T_Cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "L_CD8_T_Cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T_Tumor_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "H_CD4_T_Cells_init", internal, 5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "L_CD8_T_Cells_init", internal, 10, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T_Tumor_Cells_init", internal, 1000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "u_1", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "u_2", internal, 0, -Infinity, Infinity, false);
     internal.initial_D_Dendritic_Cells = internal.D_Dendritic_Cells_init;

@@ -44,8 +44,8 @@ export class model {
     const N0 = state[0];
     const N1 = state[1];
     const N2 = state[2];
-    dstatedt[0] = 0 - 1 * internal.d0 * N0 + 1 * (internal.b0 + internal.c0 * N0 / (N0 + internal.m0)) * N0 - 1 * (internal.b0 + internal.c0 * N0 / (N0 + internal.m0)) * N0 + 2 * internal.a0 * N0 - 1 * internal.a0 * N0;
-    dstatedt[1] = 0 + 1 * (internal.b0 + internal.c0 * N0 / (N0 + internal.m0)) * N0 - 1 * internal.d1 * N1 + 1 * (internal.b1 + internal.c1 * N1 / (N1 + internal.m1)) * N1 - 1 * (internal.b1 + internal.c1 * N1 / (N1 + internal.m1)) * N1 + 2 * internal.a1 * N1 - 1 * internal.a1 * N1;
+    dstatedt[0] = 0 - 1 * internal.d0 * N0 - 1 * (internal.b0 + internal.c0 * N0 / (N0 + internal.m0)) * N0 + 1 * (internal.b0 + internal.c0 * N0 / (N0 + internal.m0)) * N0 - 1 * internal.a0 * N0 + 2 * internal.a0 * N0;
+    dstatedt[1] = 0 + 1 * (internal.b0 + internal.c0 * N0 / (N0 + internal.m0)) * N0 - 1 * internal.d1 * N1 - 1 * (internal.b1 + internal.c1 * N1 / (N1 + internal.m1)) * N1 + 1 * (internal.b1 + internal.c1 * N1 / (N1 + internal.m1)) * N1 - 1 * internal.a1 * N1 + 2 * internal.a1 * N1;
     dstatedt[2] = 0 + 1 * (internal.b1 + internal.c1 * N1 / (N1 + internal.m1)) * N1 - 1 * internal.d2 * N2;
   }
   names() {

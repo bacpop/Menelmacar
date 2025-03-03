@@ -8,15 +8,9 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var E_0_init = internal.initial_E / 100000;
-    var f_init = Math.pow((internal.initial_R), (internal.B - 1)) / (Math.pow((internal.initial_R), (internal.B - 1)) + 1);
-    internal.initial_E_0 = E_0_init;
-    internal.initial_f = f_init;
-    var state = Array(4).fill(0);
+    var state = Array(2).fill(0);
     state[0] = internal.initial_E;
     state[1] = internal.initial_R;
-    state[2] = internal.initial_f;
-    state[3] = internal.initial_E_0;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -45,10 +39,8 @@ export class model {
     var internal = this.internal;
     const E = state[0];
     const R = state[1];
-    const f = state[2];
-    const E_0 = state[3];
-    dstatedt[3] = 0 + 0;
-    dstatedt[2] = 0 + 0;
+    var E_0 = E / 100000;
+    var f = Math.pow((R), (internal.B - 1)) / (Math.pow((R), (internal.B - 1)) + 1);
     dstatedt[0] = 0 + 1 * internal.tumor_microenvironment * (internal.r * R * R * R * E / (internal.kxk + R * R * R)) - 1 * internal.tumor_microenvironment * (internal.d1 * E * R * R * R * f) - 1 * internal.tumor_microenvironment * internal.d0 * E + 1 * internal.tumor_microenvironment * (internal.sigma);
     dstatedt[1] = 0 + 1 * internal.tumor_microenvironment * (internal.lm * internal.B * R / 3) - 1 * internal.tumor_microenvironment * (internal.la * R / 3) - 1 * internal.tumor_microenvironment * (internal.c * E_0 * R * f) + 1 * internal.tumor_microenvironment * (internal.lm * (1 - internal.B) * internal.ld / Math.tanh(R / internal.ld)) - 1 * internal.tumor_microenvironment * (internal.lm * (1 - internal.B) * internal.ld * internal.ld / R);
   }
@@ -58,9 +50,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "E", "R", "f", "E_0"];
-    this.metadata.internalOrder = {B: null, c: null, d0: null, d1: null, E_init: null, initial_E: null, initial_E_0: null, initial_f: null, initial_R: null, kxk: null, la: null, ld: null, lm: null, r: null, R_init: null, sigma: null, tumor_microenvironment: null};
-    this.metadata.variableOrder = {E: null, R: null, f: null, E_0: null};
+    this.metadata.ynames = ["t", "E", "R"];
+    this.metadata.internalOrder = {B: null, c: null, d0: null, d1: null, E_init: null, initial_E: null, initial_R: null, kxk: null, la: null, ld: null, lm: null, r: null, R_init: null, sigma: null, tumor_microenvironment: null};
+    this.metadata.variableOrder = {E: null, R: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

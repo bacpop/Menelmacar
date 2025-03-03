@@ -25,7 +25,7 @@ export class model {
     this.base.user.setUserScalar(user, "d_1", internal, 9.9999999999999995e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d_2", internal, 3.9999999999999998e-06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d_3", internal, 0.0001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "D_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "D_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "e", internal, 0.041200000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "f_1", internal, 1e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "f_2", internal, 0.01, -Infinity, Infinity, false);
@@ -36,12 +36,12 @@ export class model {
     this.base.user.setUserScalar(user, "ixi", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "jxj", internal, 9.9999999999999995e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 9.9999999999999995e-08, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "L_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "N_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "L_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "N_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_1", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "s_1", internal, 13000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "s_2", internal, 480, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "u", internal, 1.7999999999999999e-08, -Infinity, Infinity, false);
     internal.initial_D = internal.D_init;
     internal.initial_L = internal.L_init;

@@ -4,24 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.Inh = 0;
-    internal.k3 = 1;
-    internal.k5 = 1;
-    internal.k7 = 1;
-    internal.Ki8 = 1;
-    internal.Km1 = 0.10000000000000001;
-    internal.Km2 = 0.10000000000000001;
-    internal.Km3 = 0.10000000000000001;
-    internal.Km4 = 1;
-    internal.Km5 = 0.10000000000000001;
-    internal.Km6 = 1;
-    internal.Km7 = 0.10000000000000001;
-    internal.Km8 = 1;
-    internal.Vm1 = 1;
-    internal.Vm2 = 0.01;
-    internal.Vm4 = 0.29999999999999999;
-    internal.Vm6 = 0.29999999999999999;
-    internal.Vm8 = 0.29999999999999999;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -38,10 +20,28 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["R_init", "Rin_init", "x1_init", "x1p_init", "x2_init", "x2p_init", "x3_init", "x3p_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Inh", "k3", "k5", "k7", "Ki8", "Km1", "Km2", "Km3", "Km4", "Km5", "Km6", "Km7", "Km8", "R_init", "Rin_init", "Vm1", "Vm2", "Vm4", "Vm6", "Vm8", "x1_init", "x1p_init", "x2_init", "x2p_init", "x3_init", "x3p_init"], unusedUserAction);
     var internal = this.internal;
+    this.base.user.setUserScalar(user, "Inh", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k3", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k5", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k7", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ki8", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km1", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km2", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km3", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km4", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km5", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km6", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km7", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km8", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R_init", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Rin_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vm1", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vm2", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vm4", internal, 0.29999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vm6", internal, 0.29999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vm8", internal, 0.29999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "x1_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "x1p_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "x2_init", internal, 1, -Infinity, Infinity, false);

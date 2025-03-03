@@ -36,10 +36,10 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "AS_b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AS_c_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "AS_m_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "AS_m_init", internal, 8797.1499999999996, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ASL_b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ASL_c_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ASL_m_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ASL_m_init", internal, 30.559999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ASLoOH_b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ASLoOH_c_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ASLoOH_m_init", internal, 0, -Infinity, Infinity, false);

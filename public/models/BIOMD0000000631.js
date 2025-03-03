@@ -4,6 +4,8 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.cell = 1;
+    internal.D = 0;
+    internal.L = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -24,11 +26,10 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["CL_m_init", "CL_p_init", "D", "d1", "d2D", "d2L", "d3D", "d3L", "d4D", "d4L", "d5D", "d5L", "EL_m_init", "EL_p_init", "g1", "g2", "hypocotyl_init", "K1", "K10", "K11", "K12", "k1D", "k1L", "k2", "K2", "k3", "K3", "k4", "K4", "k5", "K5", "K6", "K7", "K8", "K9", "L", "P_init", "p1", "p1L", "p2", "p3", "p4", "p5", "P51_m_init", "P51_p_init", "P97_m_init", "P97_p_init", "PIF_m_init", "PIF_p_init", "PP", "T", "v1", "v1L", "v2A", "v2B", "v2L", "v3", "v4", "v5"], unusedUserAction);
+    this.base.user.checkUser(user, ["CL_m_init", "CL_p_init", "d1", "d2D", "d2L", "d3D", "d3L", "d4D", "d4L", "d5D", "d5L", "EL_m_init", "EL_p_init", "g1", "g2", "hypocotyl_init", "K1", "K10", "K11", "K12", "k1D", "k1L", "k2", "K2", "k3", "K3", "k4", "K4", "k5", "K5", "K6", "K7", "K8", "K9", "P_init", "p1", "p1L", "p2", "p3", "p4", "p5", "P51_m_init", "P51_p_init", "P97_m_init", "P97_p_init", "PIF_m_init", "PIF_p_init", "PP", "T", "v1", "v1L", "v2A", "v2B", "v2L", "v3", "v4", "v5"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "CL_m_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CL_p_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "D", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CL_m_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CL_p_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d1", internal, 0.68000000000000005, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d2D", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d2L", internal, 0.28999999999999998, -Infinity, Infinity, false);
@@ -38,11 +39,11 @@ export class model {
     this.base.user.setUserScalar(user, "d4L", internal, 0.38, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d5D", internal, 0.52000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d5L", internal, 4, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "EL_m_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "EL_p_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "EL_m_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "EL_p_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g1", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g2", internal, 0.12, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "hypocotyl_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "hypocotyl_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K1", internal, 0.16, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K10", internal, 1.8999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K11", internal, 0.20999999999999999, -Infinity, Infinity, false);
@@ -61,20 +62,19 @@ export class model {
     this.base.user.setUserScalar(user, "K7", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K8", internal, 0.35999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K9", internal, 1.8999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "L", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p1", internal, 0.76000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p1L", internal, 0.41999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p2", internal, 1.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p3", internal, 0.64000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p4", internal, 1.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p5", internal, 0.62, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P51_m_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P51_p_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P97_m_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P97_p_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PIF_m_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PIF_p_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P51_m_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P51_p_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P97_m_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P97_p_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PIF_m_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PIF_p_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PP", internal, 12, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T", internal, 24, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v1", internal, 4.5800000000000001, -Infinity, Infinity, false);

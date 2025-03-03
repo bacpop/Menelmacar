@@ -19,8 +19,8 @@ export class model {
     this.base.user.setUserScalar(user, "alpha", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sigma", internal, 0.25, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_Malignant_Cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_Lymphocytes_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_Malignant_Cells_init", internal, 5.2999999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_Lymphocytes_init", internal, 6.7000000000000002, -Infinity, Infinity, false);
     internal.initial_x_Malignant_Cells = internal.x_Malignant_Cells_init;
     internal.initial_y_Lymphocytes = internal.y_Lymphocytes_init;
     this.updateMetadata();

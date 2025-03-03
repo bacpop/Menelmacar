@@ -17,10 +17,10 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["alpha_init", "beta_init", "Chi14", "gamma_init", "Ks1", "Ks2", "Ks3", "Ks4", "p", "r24", "r31", "Vm1"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "alpha_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "beta_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "alpha_init", internal, 0.46200000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "beta_init", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Chi14", internal, 1.1000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "gamma_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "gamma_init", internal, 0.33800000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ks1", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ks2", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ks3", internal, 0.01, -Infinity, Infinity, false);

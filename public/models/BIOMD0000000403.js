@@ -20,10 +20,10 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha1", internal, 3, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha2", internal, 4, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "B_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "B_init", internal, 300, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta1", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta2", internal, 0.02, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C_init", internal, 13, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g11", internal, 1.1000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g12", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g21", internal, - 0.5, -Infinity, Infinity, false);
@@ -36,10 +36,10 @@ export class model {
     this.base.user.setUserScalar(user, "r12", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r21", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r22", internal, 0.20000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tumour_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tumour_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v1", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v2", internal, 0.0080000000000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_init", internal, 100, -Infinity, Infinity, false);
     internal.gamma = internal.g12 / (1 + internal.r12) * internal.g21 * (1 + internal.r21) - (1 - internal.g11 * (1 + internal.r11)) * (1 - internal.g22 + internal.r22);
     internal.initial_B = internal.B_init;
     internal.initial_C = internal.C_init;
@@ -54,17 +54,10 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const C = state[0];
-    const B = state[1];
-    const Tumour = state[3];
-    dstatedt[0] = 0 + internal.alpha1 * Math.pow((C), (internal.g11 * (1 + internal.r11 * Tumour / internal.LT))) * Math.pow((B), (internal.g21 * (1 + internal.r21 * Tumour / internal.LT))) - internal.beta1 * C;
-    var V1 = ((t >= 600 ? internal.v1 : 0));
-    var V2 = ((t >= 600 ? internal.v2 : 0));
-    dstatedt[1] = 0 + internal.alpha2 * Math.pow((C), (internal.g12 / (1 + internal.r12 * Tumour / internal.LT))) * Math.pow((B), (internal.g22 - internal.r22 * Tumour / internal.LT)) - (internal.beta2 - V1) * B;
-    dstatedt[3] = 0 + (internal.gammaT - V2) * Tumour * Math.log(internal.LT / Tumour);
-    var y1 = ((C > internal.C_bar ? C - internal.C_bar : 0));
-    var y2 = ((B > internal.B_bar ? B - internal.B_bar : 0));
-    dstatedt[2] = 0 + internal.k2 * y2 - internal.k1 * y1;
+    dstatedt[1] = 0;
+    dstatedt[0] = 0;
+    dstatedt[3] = 0;
+    dstatedt[2] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

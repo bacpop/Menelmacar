@@ -4,8 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.geometry = 5.2360000000000001e-13;
-    internal.kb = 1.1519200000000001e-13;
-    internal.kf = 1.02102e-11;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -22,14 +20,16 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["NF1_init", "Pi_init", "RasGDP_init", "RasGDP_minus_NF1_Pi_init", "RasGDP_NF1_init", "RasGTP_init", "RasGTP_minus_NF1_init", "RasGTP_minus_NF1_star__init"], unusedUserAction);
+    this.base.user.checkUser(user, ["kb", "kf", "NF1_init", "Pi_init", "RasGDP_init", "RasGDP_minus_NF1_Pi_init", "RasGDP_NF1_init", "RasGTP_init", "RasGTP_minus_NF1_init", "RasGTP_minus_NF1_star__init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "NF1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Pi_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kb", internal, 3.3301000000000001e-12, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "kf", internal, 6.2831800000000005e-13, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "NF1_init", internal, 9.9993633817163197, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Pi_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RasGDP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RasGDP_minus_NF1_Pi_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RasGDP_NF1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "RasGTP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RasGTP_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RasGTP_minus_NF1_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RasGTP_minus_NF1_star__init", internal, 0, -Infinity, Infinity, false);
     internal.initial_NF1 = internal.NF1_init;

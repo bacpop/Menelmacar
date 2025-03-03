@@ -3,24 +3,13 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
+    internal.Cdh1T = 1;
     internal.compartment = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var Cdh1p_init = internal.initial_Cdh1T - internal.initial_Cdh1 - internal.initial_EmiC;
-    var CycA_init = internal.initial_CycAT - internal.initial_CycACki;
-    var CycD_init = internal.initial_CycDT - internal.initial_CycDCki;
-    var CycE_init = internal.initial_CycET - internal.initial_CycECki;
-    var E2F_init = internal.initial_E2FT - internal.initial_Comp1 - internal.initial_Comp2;
-    var Rb_init = internal.RbT - internal.initial_Rbp - internal.initial_Rbpp - internal.initial_Comp1 - internal.initial_Comp2;
-    internal.initial_Cdh1p = Cdh1p_init;
-    internal.initial_CycA = CycA_init;
-    internal.initial_CycD = CycD_init;
-    internal.initial_CycE = CycE_init;
-    internal.initial_E2F = E2F_init;
-    internal.initial_Rb = Rb_init;
-    var state = Array(25).fill(0);
+    var state = Array(18).fill(0);
     state[0] = internal.initial_Myc;
     state[1] = internal.initial_CycDT;
     state[2] = internal.initial_CycET;
@@ -38,22 +27,14 @@ export class model {
     state[14] = internal.initial_EmiC;
     state[15] = internal.initial_Cdh1;
     state[16] = internal.initial_UbI;
-    state[17] = internal.initial_E2F;
-    state[18] = internal.initial_Rb;
-    state[19] = internal.initial_Rbpp;
-    state[20] = internal.initial_CycE;
-    state[21] = internal.initial_CycD;
-    state[22] = internal.initial_CycA;
-    state[23] = internal.initial_Cdh1p;
-    state[24] = internal.initial_Cdh1T;
+    state[17] = internal.initial_Rbpp;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Cdh1_init", "Cdh1dp_init", "Cdh1T_init", "CkiT_init", "Comp1_init", "Comp2_init", "CycACki_init", "CycAT_init", "CycDCki_init", "CycDT_init", "CycECki_init", "CycET_init", "E2FT_init", "Emi1T_init", "EmiC_init", "JdpCdh1", "JdpRb", "JpCdh1", "JppRb", "JpRb", "JpRbp", "Kacdh1", "Kascdh1", "Kascki", "Kase2f", "Kdcki", "Kdckic", "Kdcyca", "Kdcycac", "Kdcycd", "Kdcyce", "Kdcycea", "Kde2f", "Kde2fa", "Kdemi1", "Kdemi1c", "Kdiscdh1", "Kdiscki", "Kdise2f", "Kdm", "Kdprbp", "Kdprbpp", "Kdub1", "Kdub1c", "Khcyca", "Khcyce", "Khe2f", "Khemi1", "Kicdh1a", "Kicdh1e", "Kppeb", "Kprb", "Kprbp", "Kscki", "Kscyca", "Kscycdm", "Kscycds", "Kscyce", "Kscyceb", "Kscycem", "Kse2f", "Kse2fb", "Kse2fm", "Ksemi1", "Ksm", "Ksub1", "Myc_init", "Rbp_init", "Rbpp_init", "RbT", "S", "UbI_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Cdh1_init", "Cdh1dp_init", "CkiT_init", "Comp1_init", "Comp2_init", "CycACki_init", "CycAT_init", "CycDCki_init", "CycDT_init", "CycECki_init", "CycET_init", "E2FT_init", "Emi1T_init", "EmiC_init", "JdpCdh1", "JdpRb", "JpCdh1", "JppRb", "JpRb", "JpRbp", "Kacdh1", "Kascdh1", "Kascki", "Kase2f", "Kdcki", "Kdckic", "Kdcyca", "Kdcycac", "Kdcycd", "Kdcyce", "Kdcycea", "Kde2f", "Kde2fa", "Kdemi1", "Kdemi1c", "Kdiscdh1", "Kdiscki", "Kdise2f", "Kdm", "Kdprbp", "Kdprbpp", "Kdub1", "Kdub1c", "Khcyca", "Khcyce", "Khe2f", "Khemi1", "Kicdh1a", "Kicdh1e", "Kppeb", "Kprb", "Kprbp", "Kscki", "Kscyca", "Kscycdm", "Kscycds", "Kscyce", "Kscyceb", "Kscycem", "Kse2f", "Kse2fb", "Kse2fm", "Ksemi1", "Ksm", "Ksub1", "Myc_init", "Rbp_init", "Rbpp_init", "RbT", "S", "UbI_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "Cdh1_init", internal, 0.998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdh1dp_init", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cdh1T_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CkiT_init", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Comp1_init", internal, 0.105, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Comp2_init", internal, 0, -Infinity, Infinity, false);
@@ -125,7 +106,6 @@ export class model {
     this.base.user.setUserScalar(user, "UbI_init", internal, 0.02, -Infinity, Infinity, false);
     internal.initial_Cdh1 = internal.Cdh1_init;
     internal.initial_Cdh1dp = internal.Cdh1dp_init;
-    internal.initial_Cdh1T = internal.Cdh1T_init;
     internal.initial_CkiT = internal.CkiT_init;
     internal.initial_Comp1 = internal.Comp1_init;
     internal.initial_Comp2 = internal.Comp2_init;
@@ -166,38 +146,30 @@ export class model {
     const EmiC = state[14];
     const Cdh1 = state[15];
     const UbI = state[16];
-    const E2F = state[17];
-    const Rb = state[18];
-    const Rbpp = state[19];
-    const CycE = state[20];
-    const CycD = state[21];
-    const CycA = state[22];
-    const Cdh1T = state[24];
-    dstatedt[23] = 0 + 0;
-    dstatedt[24] = 0;
-    dstatedt[22] = 0 + 0;
-    dstatedt[21] = 0 + 0;
-    dstatedt[20] = 0 + 0;
-    dstatedt[17] = 0 + 0;
-    dstatedt[18] = 0 + 0;
-    dstatedt[15] = 0 + 1 * internal.compartment * (internal.Kacdh1 * ((Cdh1T - EmiC - Cdh1) / (internal.JdpCdh1 + (Cdh1T - Cdh1dp))) + (internal.Kdiscdh1 + internal.Kdemi1 + internal.Kdemi1c * Cdh1) * (Cdh1dp - Cdh1)) - 1 * internal.compartment * ((internal.Kicdh1e * CycE + internal.Kicdh1a * CycA) * (Cdh1 / (internal.JpCdh1 + Cdh1dp)) + internal.Kascdh1 * Cdh1 * (Emi1T - EmiC));
-    dstatedt[12] = 0 + 1 * internal.compartment * (internal.Kacdh1 * ((Cdh1T - Cdh1dp) / (internal.JdpCdh1 + (Cdh1T - Cdh1dp)))) - 1 * internal.compartment * ((internal.Kicdh1e * CycE + internal.Kicdh1a * CycA) * (Cdh1dp / (internal.JpCdh1 + Cdh1dp)));
+    const Rbpp = state[17];
+    var CycA = CycAT - CycACki;
+    var CycD = CycDT - CycDCki;
+    var CycE = CycET - CycECki;
+    dstatedt[1] = 0 + 1 * internal.compartment * (internal.Kscycdm * Myc + internal.Kscycds * internal.S) - 1 * internal.compartment * (internal.Kdcycd * CycDT);
+    dstatedt[14] = 0 + 1 * internal.compartment * (internal.Kascdh1 * (internal.Cdh1T - EmiC) * (Emi1T - EmiC)) - 1 * internal.compartment * ((internal.Kdiscdh1 + internal.Kdemi1 + internal.Kdemi1c * Cdh1) * EmiC);
+    dstatedt[0] = 0 + 1 * internal.compartment * (internal.Ksm * internal.S) - 1 * internal.compartment * (internal.Kdm * Myc);
+    dstatedt[16] = 0 + 1 * internal.compartment * (internal.Ksub1) - 1 * internal.compartment * ((internal.Kdub1 + internal.Kdub1c * Cdh1) * UbI);
+    var E2F = E2FT - Comp1 - Comp2;
+    var Rb = internal.RbT - Rbp - Rbpp - Comp1 - Comp2;
+    dstatedt[15] = 0 + 1 * internal.compartment * (internal.Kacdh1 * ((internal.Cdh1T - EmiC - Cdh1) / (internal.JdpCdh1 + (internal.Cdh1T - Cdh1dp))) + (internal.Kdiscdh1 + internal.Kdemi1 + internal.Kdemi1c * Cdh1) * (Cdh1dp - Cdh1)) - 1 * internal.compartment * ((internal.Kicdh1e * CycE + internal.Kicdh1a * CycA) * (Cdh1 / (internal.JpCdh1 + Cdh1dp)) + internal.Kascdh1 * Cdh1 * (Emi1T - EmiC));
+    dstatedt[12] = 0 + 1 * internal.compartment * (internal.Kacdh1 * ((internal.Cdh1T - Cdh1dp) / (internal.JdpCdh1 + (internal.Cdh1T - Cdh1dp)))) - 1 * internal.compartment * ((internal.Kicdh1e * CycE + internal.Kicdh1a * CycA) * (Cdh1dp / (internal.JpCdh1 + Cdh1dp)));
     dstatedt[8] = 0 + 1 * internal.compartment * (internal.Kscki) - 1 * internal.compartment * ((internal.Kdcki + internal.Kdckic * (CycE + CycA) * UbI) * CkiT);
     dstatedt[5] = 0 + 1 * internal.compartment * (internal.Kase2f * E2F * Rb + internal.Kdprbp * (Comp2 / (internal.JdpRb + Comp2))) - 1 * internal.compartment * (internal.Kdise2f * Comp1 + internal.Kprb * CycD * (Comp1 / (internal.JpRb + Comp1)) + internal.Kppeb * (CycE + CycA) * (Comp1 / (internal.JppRb + Comp1)) + (internal.Kde2f + internal.Kde2fa * CycA) * Comp1);
     dstatedt[6] = 0 + 1 * internal.compartment * (internal.Kase2f * E2F * Rbp + internal.Kprb * CycD * (Comp1 / (internal.JpRb + Comp1))) - 1 * internal.compartment * (internal.Kdise2f * Comp2 + internal.Kdprbp * (Comp2 / (internal.JdpRb + Comp2)) + internal.Kprbp * (CycE + CycA) * (Comp2 / (internal.JpRbp + Comp2)) + (internal.Kde2f + internal.Kde2fa * CycA) * Comp2);
     dstatedt[11] = 0 + 1 * internal.compartment * (internal.Kascki * CycA * (CkiT - CycECki - CycDCki - CycACki)) - 1 * internal.compartment * ((internal.Kdiscki + internal.Kdcyca + internal.Kdcycac * Cdh1 + internal.Kdcki + internal.Kdckic * (CycE + CycA) * UbI) * CycACki);
     dstatedt[3] = 0 + 1 * internal.compartment * (internal.Kscyca * (E2F / (internal.Khcyca + E2F))) - 1 * internal.compartment * ((internal.Kdcyca + internal.Kdcycac * Cdh1) * CycAT);
     dstatedt[10] = 0 + 1 * internal.compartment * (internal.Kascki * CycD * (CkiT - CycECki - CycDCki - CycACki)) - 1 * internal.compartment * ((internal.Kdiscki + internal.Kdcycd + internal.Kdcki + internal.Kdckic * (CycE + CycA) * UbI) * CycDCki);
-    dstatedt[1] = 0 + 1 * internal.compartment * (internal.Kscycdm * Myc + internal.Kscycds * internal.S) - 1 * internal.compartment * (internal.Kdcycd * CycDT);
     dstatedt[9] = 0 + 1 * internal.compartment * (internal.Kascki * CycE * (CkiT - CycECki - CycDCki - CycACki)) - 1 * internal.compartment * ((internal.Kdiscki + internal.Kdcyce + internal.Kdcycea * CycA + internal.Kdcki + internal.Kdckic * (CycE + CycA) * UbI) * CycECki);
     dstatedt[2] = 0 + 1 * internal.compartment * (internal.Kscyceb + internal.Kscycem * Myc + internal.Kscyce * (E2F / (internal.Khcyce + E2F))) - 1 * internal.compartment * ((internal.Kdcyce + internal.Kdcycea * CycA) * CycET);
     dstatedt[4] = 0 + 1 * internal.compartment * (internal.Kse2fb + internal.Kse2fm * Myc + internal.Kse2f * (E2F / (internal.Khe2f + E2F))) - 1 * internal.compartment * ((internal.Kde2f + internal.Kde2fa * CycA) * E2FT);
     dstatedt[13] = 0 + 1 * internal.compartment * (internal.Ksemi1 * (E2F / (internal.Khemi1 + E2F))) - 1 * internal.compartment * ((internal.Kdemi1 + internal.Kdemi1c * Cdh1) * Emi1T);
-    dstatedt[14] = 0 + 1 * internal.compartment * (internal.Kascdh1 * (Cdh1T - EmiC) * (Emi1T - EmiC)) - 1 * internal.compartment * ((internal.Kdiscdh1 + internal.Kdemi1 + internal.Kdemi1c * Cdh1) * EmiC);
-    dstatedt[0] = 0 + 1 * internal.compartment * (internal.Ksm * internal.S) - 1 * internal.compartment * (internal.Kdm * Myc);
     dstatedt[7] = 0 + 1 * internal.compartment * (internal.Kprb * CycD * (Rb / (internal.JpRb + Rb)) + internal.Kdise2f * Comp2 + (internal.Kde2f + internal.Kde2fa * CycA) * Comp2) - 1 * internal.compartment * (internal.Kase2f * E2F * Rbp + internal.Kdprbp * (Rbp / (internal.JpRb + Rbp)) + internal.Kprbp * (CycE + CycA) * (Rbp / (internal.JpRbp + Rbp)));
-    dstatedt[19] = 0 + 1 * internal.compartment * (internal.Kprbp * (CycE + CycA) * (Rbp / (internal.JpRbp + Rbp)) + internal.Kprbp * (CycE + CycA) * (Comp2 / (internal.JpRbp + Comp2)) + internal.Kppeb * (CycE + CycA) * (Rb / (internal.JppRb + Rb)) + internal.Kppeb * (CycE + CycA) * (Comp1 / (internal.JppRb + Comp1))) - 1 * internal.compartment * (internal.Kdprbpp * (Rbpp / (internal.JdpRb + Rbpp)));
-    dstatedt[16] = 0 + 1 * internal.compartment * (internal.Ksub1) - 1 * internal.compartment * ((internal.Kdub1 + internal.Kdub1c * Cdh1) * UbI);
+    dstatedt[17] = 0 + 1 * internal.compartment * (internal.Kprbp * (CycE + CycA) * (Rbp / (internal.JpRbp + Rbp)) + internal.Kprbp * (CycE + CycA) * (Comp2 / (internal.JpRbp + Comp2)) + internal.Kppeb * (CycE + CycA) * (Rb / (internal.JppRb + Rb)) + internal.Kppeb * (CycE + CycA) * (Comp1 / (internal.JppRb + Comp1))) - 1 * internal.compartment * (internal.Kdprbpp * (Rbpp / (internal.JdpRb + Rbpp)));
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -205,9 +177,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Myc", "CycDT", "CycET", "CycAT", "E2FT", "Comp1", "Comp2", "Rbp", "CkiT", "CycECki", "CycDCki", "CycACki", "Cdh1dp", "Emi1T", "EmiC", "Cdh1", "UbI", "E2F", "Rb", "Rbpp", "CycE", "CycD", "CycA", "Cdh1p", "Cdh1T"];
-    this.metadata.internalOrder = {Cdh1_init: null, Cdh1dp_init: null, Cdh1T_init: null, CkiT_init: null, Comp1_init: null, Comp2_init: null, compartment: null, CycACki_init: null, CycAT_init: null, CycDCki_init: null, CycDT_init: null, CycECki_init: null, CycET_init: null, E2FT_init: null, Emi1T_init: null, EmiC_init: null, initial_Cdh1: null, initial_Cdh1dp: null, initial_Cdh1p: null, initial_Cdh1T: null, initial_CkiT: null, initial_Comp1: null, initial_Comp2: null, initial_CycA: null, initial_CycACki: null, initial_CycAT: null, initial_CycD: null, initial_CycDCki: null, initial_CycDT: null, initial_CycE: null, initial_CycECki: null, initial_CycET: null, initial_E2F: null, initial_E2FT: null, initial_Emi1T: null, initial_EmiC: null, initial_Myc: null, initial_Rb: null, initial_Rbp: null, initial_Rbpp: null, initial_UbI: null, JdpCdh1: null, JdpRb: null, JpCdh1: null, JppRb: null, JpRb: null, JpRbp: null, Kacdh1: null, Kascdh1: null, Kascki: null, Kase2f: null, Kdcki: null, Kdckic: null, Kdcyca: null, Kdcycac: null, Kdcycd: null, Kdcyce: null, Kdcycea: null, Kde2f: null, Kde2fa: null, Kdemi1: null, Kdemi1c: null, Kdiscdh1: null, Kdiscki: null, Kdise2f: null, Kdm: null, Kdprbp: null, Kdprbpp: null, Kdub1: null, Kdub1c: null, Khcyca: null, Khcyce: null, Khe2f: null, Khemi1: null, Kicdh1a: null, Kicdh1e: null, Kppeb: null, Kprb: null, Kprbp: null, Kscki: null, Kscyca: null, Kscycdm: null, Kscycds: null, Kscyce: null, Kscyceb: null, Kscycem: null, Kse2f: null, Kse2fb: null, Kse2fm: null, Ksemi1: null, Ksm: null, Ksub1: null, Myc_init: null, Rbp_init: null, Rbpp_init: null, RbT: null, S: null, UbI_init: null};
-    this.metadata.variableOrder = {Myc: null, CycDT: null, CycET: null, CycAT: null, E2FT: null, Comp1: null, Comp2: null, Rbp: null, CkiT: null, CycECki: null, CycDCki: null, CycACki: null, Cdh1dp: null, Emi1T: null, EmiC: null, Cdh1: null, UbI: null, E2F: null, Rb: null, Rbpp: null, CycE: null, CycD: null, CycA: null, Cdh1p: null, Cdh1T: null};
+    this.metadata.ynames = ["t", "Myc", "CycDT", "CycET", "CycAT", "E2FT", "Comp1", "Comp2", "Rbp", "CkiT", "CycECki", "CycDCki", "CycACki", "Cdh1dp", "Emi1T", "EmiC", "Cdh1", "UbI", "Rbpp"];
+    this.metadata.internalOrder = {Cdh1_init: null, Cdh1dp_init: null, Cdh1T: null, CkiT_init: null, Comp1_init: null, Comp2_init: null, compartment: null, CycACki_init: null, CycAT_init: null, CycDCki_init: null, CycDT_init: null, CycECki_init: null, CycET_init: null, E2FT_init: null, Emi1T_init: null, EmiC_init: null, initial_Cdh1: null, initial_Cdh1dp: null, initial_CkiT: null, initial_Comp1: null, initial_Comp2: null, initial_CycACki: null, initial_CycAT: null, initial_CycDCki: null, initial_CycDT: null, initial_CycECki: null, initial_CycET: null, initial_E2FT: null, initial_Emi1T: null, initial_EmiC: null, initial_Myc: null, initial_Rbp: null, initial_Rbpp: null, initial_UbI: null, JdpCdh1: null, JdpRb: null, JpCdh1: null, JppRb: null, JpRb: null, JpRbp: null, Kacdh1: null, Kascdh1: null, Kascki: null, Kase2f: null, Kdcki: null, Kdckic: null, Kdcyca: null, Kdcycac: null, Kdcycd: null, Kdcyce: null, Kdcycea: null, Kde2f: null, Kde2fa: null, Kdemi1: null, Kdemi1c: null, Kdiscdh1: null, Kdiscki: null, Kdise2f: null, Kdm: null, Kdprbp: null, Kdprbpp: null, Kdub1: null, Kdub1c: null, Khcyca: null, Khcyce: null, Khe2f: null, Khemi1: null, Kicdh1a: null, Kicdh1e: null, Kppeb: null, Kprb: null, Kprbp: null, Kscki: null, Kscyca: null, Kscycdm: null, Kscycds: null, Kscyce: null, Kscyceb: null, Kscycem: null, Kse2f: null, Kse2fb: null, Kse2fm: null, Ksemi1: null, Ksm: null, Ksub1: null, Myc_init: null, Rbp_init: null, Rbpp_init: null, RbT: null, S: null, UbI_init: null};
+    this.metadata.variableOrder = {Myc: null, CycDT: null, CycET: null, CycAT: null, E2FT: null, Comp1: null, Comp2: null, Rbp: null, CkiT: null, CycECki: null, CycDCki: null, CycACki: null, Cdh1dp: null, Emi1T: null, EmiC: null, Cdh1: null, UbI: null, Rbpp: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

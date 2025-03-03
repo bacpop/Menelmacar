@@ -25,7 +25,7 @@ export class model {
     this.base.user.setUserScalar(user, "b", internal, 1.02e-09, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta", internal, 0.0063, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c", internal, 2.9076999999999998e-13, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C_Lymphocytes_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C_Lymphocytes_init", internal, 2250000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "delta_C", internal, 1.8328, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "delta_L", internal, 1.8328, -Infinity, Infinity, false);
@@ -36,7 +36,7 @@ export class model {
     this.base.user.setUserScalar(user, "g_I", internal, 2503.5999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g_N", internal, 250360, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma", internal, 0.51990000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "I_IL_2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "I_IL_2_init", internal, 1073, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "jxj", internal, 0.012449999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K_C", internal, 0.034000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K_L", internal, 0.048599999999999997, -Infinity, Infinity, false);
@@ -44,7 +44,7 @@ export class model {
     this.base.user.setUserScalar(user, "K_T", internal, 0.90000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kappa", internal, 2503.5999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 20190000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "L_CD8_T_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "L_CD8_T_Cells_init", internal, 526800, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lxl", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "m", internal, 0.0089999999999999993, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "M_Chemotherapy_Drug_init", internal, 0, -Infinity, Infinity, false);
@@ -52,7 +52,7 @@ export class model {
     this.base.user.setUserScalar(user, "ModelValue_35_0", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_36_0", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu_I", internal, 11.742699999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "N_Natural_Killer_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "N_Natural_Killer_Cells_init", internal, 250000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "omega", internal, 0.078740000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p", internal, 2.794e-13, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p_I", internal, 2.9710000000000001, -Infinity, Infinity, false);
@@ -62,7 +62,7 @@ export class model {
     this.base.user.setUserScalar(user, "r_1", internal, 2.9077000000000001e-11, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_2", internal, 5.8466999999999997e-13, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "s", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T_Tumour_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T_Tumour_Cells_init", internal, 10000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "theta", internal, 0.0025035999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "u", internal, 4.4170000000000003e-14, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v_I", internal, 0, -Infinity, Infinity, false);

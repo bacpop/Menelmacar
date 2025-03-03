@@ -22,14 +22,14 @@ export class model {
     this.base.user.setUserScalar(user, "alpha_T", internal, 200000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta_T", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdc20_CMad2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cdc20_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cdc20_init", internal, 2.2000000000000001e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "const_val_0", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "const_val_1", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "eta_T", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma_T", internal, 1000000000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Mad1_CMad2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Mad1_CMad2_init", internal, 4.9999999999999998e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Mad1_CMad2_OMad2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "OMad2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "OMad2_init", internal, 1.4999999999999999e-07, -Infinity, Infinity, false);
     internal.initial_Cdc20 = internal.Cdc20_init;
     internal.initial_Cdc20_CMad2 = internal.Cdc20_CMad2_init;
     internal.initial_Mad1_CMad2 = internal.Mad1_CMad2_init;

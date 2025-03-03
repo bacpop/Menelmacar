@@ -21,8 +21,8 @@ export class model {
     this.base.user.setUserScalar(user, "C", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "delta", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "S_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "S_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     internal.initial_P = internal.P_init;
     internal.initial_S = internal.S_init;
     this.updateMetadata();
@@ -34,8 +34,8 @@ export class model {
     var internal = this.internal;
     const S = state[0];
     const P = state[1];
-    dstatedt[1] = 0 + (- internal.gamma + internal.delta * S) * P;
-    dstatedt[0] = 0 + (internal.alpha * (1 - S / internal.C) - internal.beta * P) * S;
+    dstatedt[1] = (- internal.gamma + internal.delta * S) * P;
+    dstatedt[0] = (internal.alpha * (1 - S / internal.C) - internal.beta * P) * S;
   }
   names() {
     return this.metadata.ynames.slice(1);

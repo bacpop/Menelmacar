@@ -3,8 +3,6 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.k1 = 0.59999999999999998;
-    internal.k2 = 0.10000000000000001;
     internal.RAR_retinoids = 1;
     this.setUser(user, unusedUserAction);
   }
@@ -19,13 +17,15 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["CA_init", "L_init", "LR_init", "LRCA_init", "R_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["CA_init", "k1", "k2", "L_init", "LR_init", "LRCA_init", "R_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "CA_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "L_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CA_init", internal, 30, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k1", internal, 0.014, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k2", internal, 0.20000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "L_init", internal, 0.00050000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LR_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LRCA_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "R_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R_init", internal, 0.0035000000000000001, -Infinity, Infinity, false);
     internal.initial_CA = internal.CA_init;
     internal.initial_L = internal.L_init;
     internal.initial_LR = internal.LR_init;

@@ -49,11 +49,11 @@ export class model {
     this.base.user.setUserScalar(user, "mun", internal, 1.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "munr", internal, 3.2999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mupt", internal, 0.37, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "N_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "N_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ninf", internal, 0.11, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pinf", internal, 20, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Pt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Pt_init", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sb", internal, 0.12, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "smr", internal, 0.17000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "snr", internal, 0.38, -Infinity, Infinity, false);

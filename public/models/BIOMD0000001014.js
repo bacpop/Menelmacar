@@ -9,14 +9,11 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var CAR_T_cells_total_init = internal.initial_CAR_T_cells_on_tumour + internal.initial_CAR_T_cells_off_tumour;
-    internal.initial_CAR_T_cells_total = CAR_T_cells_total_init;
-    var state = Array(5).fill(0);
+    var state = Array(4).fill(0);
     state[0] = internal.initial_CAR_T_cells_on_tumour;
     state[1] = internal.initial_Tumour_cells;
     state[2] = internal.initial_CAR_T_cells_off_tumour;
     state[3] = internal.initial_B_cells;
-    state[4] = internal.initial_CAR_T_cells_total;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -25,8 +22,8 @@ export class model {
     this.base.user.setUserScalar(user, "alpha_1", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha_2", internal, 2.5000000000000002e-10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha_B", internal, 4.5e-11, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "B_cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CAR_T_cells_off_tumour_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "B_cells_init", internal, 25000000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CAR_T_cells_off_tumour_init", internal, 200000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CAR_T_cells_on_tumour_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g_B", internal, 10000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g_C", internal, 2000000000, -Infinity, Infinity, false);
@@ -37,7 +34,7 @@ export class model {
     this.base.user.setUserScalar(user, "rho_T", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tao_B", internal, 60, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tao_C", internal, 7, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tumour_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tumour_cells_init", internal, 33500000000, -Infinity, Infinity, false);
     internal.initial_B_cells = internal.B_cells_init;
     internal.initial_CAR_T_cells_off_tumour = internal.CAR_T_cells_off_tumour_init;
     internal.initial_CAR_T_cells_on_tumour = internal.CAR_T_cells_on_tumour_init;
@@ -53,7 +50,6 @@ export class model {
     const Tumour_cells = state[1];
     const CAR_T_cells_off_tumour = state[2];
     const B_cells = state[3];
-    dstatedt[4] = 0 + 0;
     dstatedt[3] = 0 - 1 * internal.Off_tumour * (internal.alpha_B * B_cells * CAR_T_cells_off_tumour + 1 / internal.tao_B * B_cells);
     dstatedt[2] = 0 + 1 * internal.Off_tumour * (internal.rho_C_bar * CAR_T_cells_off_tumour * B_cells / (internal.g_B + B_cells)) - 1 * internal.Off_tumour * (1 / internal.tao_C * CAR_T_cells_off_tumour + internal.kxk * CAR_T_cells_off_tumour);
     dstatedt[0] = 0 + 1 * (internal.kxk * CAR_T_cells_off_tumour + internal.rho_C * CAR_T_cells_on_tumour * Tumour_cells / (internal.g_T + Tumour_cells)) - 1 * internal.On_tumour * (internal.alpha_1 * CAR_T_cells_on_tumour * Tumour_cells / (internal.g_C + CAR_T_cells_on_tumour) + 1 / internal.tao_C * CAR_T_cells_on_tumour);
@@ -65,9 +61,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "CAR_T_cells_on_tumour", "Tumour_cells", "CAR_T_cells_off_tumour", "B_cells", "CAR_T_cells_total"];
-    this.metadata.internalOrder = {alpha_1: null, alpha_2: null, alpha_B: null, B_cells_init: null, CAR_T_cells_off_tumour_init: null, CAR_T_cells_on_tumour_init: null, g_B: null, g_C: null, g_T: null, initial_B_cells: null, initial_CAR_T_cells_off_tumour: null, initial_CAR_T_cells_on_tumour: null, initial_CAR_T_cells_total: null, initial_Tumour_cells: null, kxk: null, Off_tumour: null, On_tumour: null, rho_C: null, rho_C_bar: null, rho_T: null, tao_B: null, tao_C: null, Tumour_cells_init: null};
-    this.metadata.variableOrder = {CAR_T_cells_on_tumour: null, Tumour_cells: null, CAR_T_cells_off_tumour: null, B_cells: null, CAR_T_cells_total: null};
+    this.metadata.ynames = ["t", "CAR_T_cells_on_tumour", "Tumour_cells", "CAR_T_cells_off_tumour", "B_cells"];
+    this.metadata.internalOrder = {alpha_1: null, alpha_2: null, alpha_B: null, B_cells_init: null, CAR_T_cells_off_tumour_init: null, CAR_T_cells_on_tumour_init: null, g_B: null, g_C: null, g_T: null, initial_B_cells: null, initial_CAR_T_cells_off_tumour: null, initial_CAR_T_cells_on_tumour: null, initial_Tumour_cells: null, kxk: null, Off_tumour: null, On_tumour: null, rho_C: null, rho_C_bar: null, rho_T: null, tao_B: null, tao_C: null, Tumour_cells_init: null};
+    this.metadata.variableOrder = {CAR_T_cells_on_tumour: null, Tumour_cells: null, CAR_T_cells_off_tumour: null, B_cells: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

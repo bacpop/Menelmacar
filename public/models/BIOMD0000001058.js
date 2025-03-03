@@ -24,11 +24,11 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["Cdc14_init", "Cdh1_init", "ClbMt_init", "ClbSt_init", "Cln_init", "jcdc14", "Jcdh1", "Jclbm", "Jmbf", "jsbf", "Jsic1", "kacdc14", "kacdh1", "kacdh1_0", "kasbf", "kasbf_0", "kass", "kdclbm", "kdclbm_0", "kdclbs", "kdclbs_0", "kdcln", "kdiss", "Kdiss", "kdnrm1", "kdpolo", "kdpolo_0", "kdsic", "kdsic_0", "kicdc14", "kicdh1", "kicdh1_0", "kisbf", "ksclbm", "ksclbm_0", "ksclbs", "kscln", "ksnrm1", "kspolo", "kssic", "MBF_init", "MBFtot", "ModelValue_14", "ModelValue_31", "ModelValue_37", "n", "ndClbM", "Nrm1t_init", "Polo_init", "SBF_init", "Sic1t_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "Cdc14_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cdc14_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdh1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ClbMt_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ClbSt_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cln_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ClbMt_init", internal, 0.999999999999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ClbSt_init", internal, 0.999999999999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cln_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "jcdc14", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Jcdh1", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Jclbm", internal, 0.050000000000000003, -Infinity, Infinity, false);
@@ -64,16 +64,16 @@ export class model {
     this.base.user.setUserScalar(user, "ksnrm1", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kspolo", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kssic", internal, 0.02, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "MBF_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MBF_init", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MBFtot", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_14", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_31", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_37", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ndClbM", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Nrm1t_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Polo_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SBF_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Nrm1t_init", internal, 0.50900000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Polo_init", internal, 0.249999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SBF_init", internal, 0.99999999999998501, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Sic1t_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_Cdc14 = internal.Cdc14_init;
     internal.initial_Cdh1 = internal.Cdh1_init;

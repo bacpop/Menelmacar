@@ -57,8 +57,8 @@ export class model {
     var f0 = internal.r0 * N0 * (1 - T / internal.K);
     var f1 = internal.r1 * N1 * (1 - T / internal.K);
     var p00 = 1 - internal.p01 - p03;
-    dstatedt[0] = 0 - 1 * internal.d0 * N0 * internal.K0X / (N3 + internal.K0X) + 1 * internal.p01 * f0 - 1 * internal.p01 * f0 + 2 * p00 * f0 - 1 * p00 * f0 + 1 * p03 * f0 - 1 * p03 * f0;
-    dstatedt[1] = 0 + 1 * internal.p01 * f0 - 1 * internal.d1 * N1 * internal.K1X / (N3 + internal.K1X) + 1 * internal.p12 * f1 - 1 * internal.p12 * f1 + 2 * internal.p11 * f1 - 1 * internal.p11 * f1;
+    dstatedt[0] = 0 - 1 * internal.d0 * N0 * internal.K0X / (N3 + internal.K0X) - 1 * internal.p01 * f0 + 1 * internal.p01 * f0 - 1 * p00 * f0 + 2 * p00 * f0 - 1 * p03 * f0 + 1 * p03 * f0;
+    dstatedt[1] = 0 + 1 * internal.p01 * f0 - 1 * internal.d1 * N1 * internal.K1X / (N3 + internal.K1X) - 1 * internal.p12 * f1 + 1 * internal.p12 * f1 - 1 * internal.p11 * f1 + 2 * internal.p11 * f1;
     dstatedt[2] = 0 + 1 * internal.p12 * f1 - 1 * internal.d2 * N2 * internal.K2X / (N3 + internal.K2X);
     dstatedt[3] = 0 + 1 * p03 * f0 - 1 * internal.d3 * N3;
   }

@@ -24,9 +24,9 @@ export class model {
     this.base.user.setUserScalar(user, "b", internal, 1.02e-14, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta", internal, 0.012, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c1", internal, 3.4100000000000001e-10, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Chemotherapeutic_drug_concentration__M_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Circulating_lymphocyte_population__C_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Effector_immune_cell_population__N_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Chemotherapeutic_drug_concentration__M_init", internal, 0.45000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Circulating_lymphocyte_population__C_init", internal, 62500000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Effector_immune_cell_population__N_init", internal, 300000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "eta", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g", internal, 0.014999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma", internal, 0.90000000000000002, -Infinity, Infinity, false);
@@ -37,7 +37,7 @@ export class model {
     this.base.user.setUserScalar(user, "mu", internal, 0.041200000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p", internal, 1.9999999999999999e-11, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "s", internal, 20.199999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tumor_Cell_Population__T_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tumor_Cell_Population__T_init", internal, 10000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Vm", internal, 0.45000000000000001, -Infinity, Infinity, false);
     internal.initial_Chemotherapeutic_drug_concentration__M = internal.Chemotherapeutic_drug_concentration__M_init;
     internal.initial_Circulating_lymphocyte_population__C = internal.Circulating_lymphocyte_population__C_init;

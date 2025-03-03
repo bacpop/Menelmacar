@@ -47,19 +47,9 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const V_membrane = state[0];
-    const n = state[1];
-    const s = state[2];
-    var i_K = internal.g_K * n * (V_membrane - internal.V_K);
-    var i_K_ATP = internal.g_K_ATP * internal.p * (V_membrane - internal.V_K);
-    var i_s = internal.g_s * s * (V_membrane - internal.V_K);
-    var m_infinity = 1 / (1 + Math.exp((internal.V_m - V_membrane) / internal.theta_m));
-    var n_infinity = 1 / (1 + Math.exp((internal.V_n - V_membrane) / internal.theta_n));
-    var s_infinity = 1 / (1 + Math.exp((internal.V_s - V_membrane) / internal.theta_s));
-    dstatedt[1] = 0 + internal.lamda * (n_infinity - n) / internal.tau_potassium_current_n_gate;
-    dstatedt[2] = 0 + (s_infinity - s) / internal.tau_s;
-    var i_Ca = internal.g_Ca * m_infinity * (V_membrane - internal.V_Ca);
-    dstatedt[0] = 0 + - (i_Ca + i_K + i_K_ATP + i_s) / internal.tau_membrane;
+    dstatedt[1] = 0;
+    dstatedt[2] = 0;
+    dstatedt[0] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

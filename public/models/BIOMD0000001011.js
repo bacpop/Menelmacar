@@ -18,9 +18,9 @@ export class model {
     this.base.user.checkUser(user, ["alpha", "B_cells_healthy_init", "CAR_T_cells_init", "Leukaemic_B_cells_init", "rho_L", "tao_B", "tao_C"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha", internal, 4.5e-11, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "B_cells_healthy_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CAR_T_cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Leukaemic_B_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "B_cells_healthy_init", internal, 25000000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CAR_T_cells_init", internal, 10000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Leukaemic_B_cells_init", internal, 50000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho_L", internal, 0.033333333329999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tao_B", internal, 60, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tao_C", internal, 14, -Infinity, Infinity, false);

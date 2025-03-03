@@ -22,8 +22,8 @@ export class model {
     this.base.user.setUserScalar(user, "B", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C", internal, 0.10000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_Normal_Hematopoietic_Stem_Cell_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_Leukemic_Cell_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_Normal_Hematopoietic_Stem_Cell_init", internal, 4.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_Leukemic_Cell_init", internal, 1.5, -Infinity, Infinity, false);
     internal.initial_x_Normal_Hematopoietic_Stem_Cell = internal.x_Normal_Hematopoietic_Stem_Cell_init;
     internal.initial_y_Leukemic_Cell = internal.y_Leukemic_Cell_init;
     this.updateMetadata();

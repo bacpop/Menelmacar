@@ -17,9 +17,9 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["Active_APC_init", "Active_Cdc2_kinase_init", "Cyclin_init", "K1", "K3", "K4", "Kc", "kd", "Kd", "V2", "V4", "vd", "Vm1", "Vm3", "vs"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "Active_APC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Active_Cdc2_kinase_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Cyclin_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Active_APC_init", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Active_Cdc2_kinase_init", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cyclin_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K1", internal, 0.002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K3", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K4", internal, 0.01, -Infinity, Infinity, false);

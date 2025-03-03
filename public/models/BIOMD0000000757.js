@@ -8,13 +8,7 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var CSC_Plot_init = internal.initial_CancerStemCell / 10000000;
-    var CTL_Plot_init = internal.initial_CytotoxicTcell / 100;
-    var Tumor_Plot_init = internal.initial_Tumor / 100000000;
-    internal.initial_CSC_Plot = CSC_Plot_init;
-    internal.initial_CTL_Plot = CTL_Plot_init;
-    internal.initial_Tumor_Plot = Tumor_Plot_init;
-    var state = Array(10).fill(0);
+    var state = Array(7).fill(0);
     state[0] = internal.initial_Tumor;
     state[1] = internal.initial_CancerStemCell;
     state[2] = internal.initial_CytotoxicTcell;
@@ -22,9 +16,6 @@ export class model {
     state[4] = internal.initial_IFNy;
     state[5] = internal.initial_MHC1;
     state[6] = internal.initial_MHC2;
-    state[7] = internal.initial_Tumor_Plot;
-    state[8] = internal.initial_CSC_Plot;
-    state[9] = internal.initial_CTL_Plot;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -90,9 +81,6 @@ export class model {
     const IFNy = state[4];
     const MHC1 = state[5];
     const MHC2 = state[6];
-    dstatedt[8] = 0 + 0;
-    dstatedt[9] = 0 + 0;
-    dstatedt[7] = 0 + 0;
     dstatedt[2] = 0 - 1 * internal.tumor_microenvironment * internal.uc * CytotoxicTcell + 1 * internal.tumor_microenvironment * (internal.N);
     dstatedt[4] = 0 + 1 * internal.tumor_microenvironment * (internal.ayc * CytotoxicTcell) - 1 * internal.tumor_microenvironment * internal.uy * IFNy;
     dstatedt[5] = 0 + 1 * internal.tumor_microenvironment * (internal.gm1) - 1 * internal.tumor_microenvironment * internal.um1 * MHC1 + 1 * internal.tumor_microenvironment * (internal.am1y * IFNy / (IFNy + internal.em1y));
@@ -107,9 +95,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Tumor", "CancerStemCell", "CytotoxicTcell", "TGFb", "IFNy", "MHC1", "MHC2", "Tumor_Plot", "CSC_Plot", "CTL_Plot"];
-    this.metadata.internalOrder = {abs: null, abt: null, am1y: null, am2b: null, am2y: null, as: null, asb: null, at: null, atb: null, ayc: null, CancerStemCell_init: null, CytotoxicTcell_init: null, em1y: null, em2b: null, em2y: null, es: null, esb: null, et: null, etb: null, gb: null, gm1: null, hs: null, ht: null, IFNy_init: null, initial_CancerStemCell: null, initial_CSC_Plot: null, initial_CTL_Plot: null, initial_CytotoxicTcell: null, initial_IFNy: null, initial_MHC1: null, initial_MHC2: null, initial_TGFb: null, initial_Tumor: null, initial_Tumor_Plot: null, k1: null, k2: null, MHC1_init: null, MHC2_init: null, N: null, r1: null, r2: null, ra: null, TGFb_init: null, Tumor_init: null, tumor_microenvironment: null, ub: null, uc: null, um1: null, um2: null, uy: null};
-    this.metadata.variableOrder = {Tumor: null, CancerStemCell: null, CytotoxicTcell: null, TGFb: null, IFNy: null, MHC1: null, MHC2: null, Tumor_Plot: null, CSC_Plot: null, CTL_Plot: null};
+    this.metadata.ynames = ["t", "Tumor", "CancerStemCell", "CytotoxicTcell", "TGFb", "IFNy", "MHC1", "MHC2"];
+    this.metadata.internalOrder = {abs: null, abt: null, am1y: null, am2b: null, am2y: null, as: null, asb: null, at: null, atb: null, ayc: null, CancerStemCell_init: null, CytotoxicTcell_init: null, em1y: null, em2b: null, em2y: null, es: null, esb: null, et: null, etb: null, gb: null, gm1: null, hs: null, ht: null, IFNy_init: null, initial_CancerStemCell: null, initial_CytotoxicTcell: null, initial_IFNy: null, initial_MHC1: null, initial_MHC2: null, initial_TGFb: null, initial_Tumor: null, k1: null, k2: null, MHC1_init: null, MHC2_init: null, N: null, r1: null, r2: null, ra: null, TGFb_init: null, Tumor_init: null, tumor_microenvironment: null, ub: null, uc: null, um1: null, um2: null, uy: null};
+    this.metadata.variableOrder = {Tumor: null, CancerStemCell: null, CytotoxicTcell: null, TGFb: null, IFNy: null, MHC1: null, MHC2: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

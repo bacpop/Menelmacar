@@ -20,9 +20,9 @@ export class model {
     this.base.user.checkUser(user, ["alpha_tr", "auxin_init", "auxinTIR1_init", "auxinTIR1VENUS_init", "delta", "ka", "kd", "la", "lambda", "ld", "lm", "mu", "TIR1_init", "TIR1T", "VENUS_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha_tr", internal, 30.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "auxin_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "auxinTIR1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "auxinTIR1VENUS_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "auxin_init", internal, 7.3799999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "auxinTIR1_init", internal, 0.28000000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "auxinTIR1VENUS_init", internal, 2.7799999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "delta", internal, 0.48599999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ka", internal, 0.00082200000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kd", internal, 0.33400000000000002, -Infinity, Infinity, false);
@@ -31,9 +31,9 @@ export class model {
     this.base.user.setUserScalar(user, "ld", internal, 4.4900000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lm", internal, 0.17499999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu", internal, 0.79000000000000004, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "TIR1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TIR1_init", internal, 15.4, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "TIR1T", internal, 18.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "VENUS_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VENUS_init", internal, 40.399999999999999, -Infinity, Infinity, false);
     internal.initial_auxin = internal.auxin_init;
     internal.initial_auxinTIR1 = internal.auxinTIR1_init;
     internal.initial_auxinTIR1VENUS = internal.auxinTIR1VENUS_init;

@@ -4,7 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment_1 = 1;
-    internal.Shalve = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -16,14 +15,15 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["parameter_1", "parameter_2", "parameter_3", "species_1_init", "species_2_init", "species_3_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["parameter_1", "parameter_2", "parameter_3", "Shalve", "species_1_init", "species_2_init", "species_3_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "parameter_1", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "parameter_2", internal, 0.29999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "parameter_3", internal, 5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Shalve", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "species_1_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "species_2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "species_3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_3_init", internal, 0.33000000000000002, -Infinity, Infinity, false);
     internal.initial_species_1 = internal.species_1_init;
     internal.initial_species_2 = internal.species_2_init;
     internal.initial_species_3 = internal.species_3_init;
@@ -37,9 +37,9 @@ export class model {
     const species_1 = state[0];
     const species_2 = state[1];
     const species_3 = state[2];
-    dstatedt[0] = 0 + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_1), (internal.parameter_3)))) - 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_1), (internal.parameter_3)))) + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_2), (internal.parameter_3)))) - 1 * internal.compartment_1 * (species_1 / internal.parameter_2 / (1 + species_1 / internal.parameter_2));
-    dstatedt[1] = 0 + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_2), (internal.parameter_3)))) - 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_2), (internal.parameter_3)))) + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_3), (internal.parameter_3)))) - 1 * internal.compartment_1 * (species_2 / internal.parameter_2 / (1 + species_2 / internal.parameter_2));
-    dstatedt[2] = 0 + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_1), (internal.parameter_3)))) + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_3), (internal.parameter_3)))) - 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_3), (internal.parameter_3)))) - 1 * internal.compartment_1 * (species_3 / internal.parameter_2 / (1 + species_3 / internal.parameter_2));
+    dstatedt[0] = 0 - 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_1), (internal.parameter_3)))) + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_1), (internal.parameter_3)))) + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_2), (internal.parameter_3)))) - 1 * internal.compartment_1 * (species_1 / internal.parameter_2 / (1 + species_1 / internal.parameter_2));
+    dstatedt[1] = 0 - 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_2), (internal.parameter_3)))) + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_2), (internal.parameter_3)))) + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_3), (internal.parameter_3)))) - 1 * internal.compartment_1 * (species_2 / internal.parameter_2 / (1 + species_2 / internal.parameter_2));
+    dstatedt[2] = 0 + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_1), (internal.parameter_3)))) - 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_3), (internal.parameter_3)))) + 1 * internal.compartment_1 * (internal.parameter_1 / (Math.pow((internal.Shalve), (internal.parameter_3)) + Math.pow((species_3), (internal.parameter_3)))) - 1 * internal.compartment_1 * (species_3 / internal.parameter_2 / (1 + species_3 / internal.parameter_2));
   }
   names() {
     return this.metadata.ynames.slice(1);

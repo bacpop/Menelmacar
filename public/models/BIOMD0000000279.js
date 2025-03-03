@@ -27,9 +27,9 @@ export class model {
     this.base.user.setUserScalar(user, "g22", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.23999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 0.0016999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x1_init", internal, 1.0606599999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x2_init", internal, 212.13200000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_init", internal, 100, -Infinity, Infinity, false);
     internal.gamma = internal.g12 * internal.g21 - (1 - internal.g11) * (1 - internal.g22);
     internal.initial_x1 = internal.x1_init;
     internal.initial_x2 = internal.x2_init;
@@ -43,13 +43,9 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const x1 = state[0];
-    const x2 = state[1];
-    dstatedt[0] = 0 + internal.alpha1 * Math.pow((x1), (internal.g11)) * Math.pow((x2), (internal.g21)) - internal.beta1 * x1;
-    dstatedt[1] = 0 + internal.alpha2 * Math.pow((x1), (internal.g12)) * Math.pow((x2), (internal.g22)) - internal.beta2 * x2;
-    var y1 = ((x1 > internal.x1_bar ? x1 - internal.x1_bar : 0));
-    var y2 = ((x2 > internal.x2_bar ? x2 - internal.x2_bar : 0));
-    dstatedt[2] = 0 + internal.k2 * y2 - internal.k1 * y1;
+    dstatedt[0] = 0;
+    dstatedt[1] = 0;
+    dstatedt[2] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

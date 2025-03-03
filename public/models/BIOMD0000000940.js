@@ -4,7 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.Cell = 1;
-    internal.const1 = 0.013299999999999999;
     internal.pi = 3.1415929999999999;
     this.setUser(user, unusedUserAction);
   }
@@ -34,13 +33,14 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["ATM_init", "AURKB_init", "BAD_init", "BRCA1_init", "CSF1R_init", "k_atm", "k_aurkb", "k_bad", "k_brca1", "k_csf1r", "k_map2k3", "k_map2k4", "k_mapk13", "k_mapk14", "k_parp1", "k_pik3r1", "k_pkn1", "k_prkaca", "k_pten", "k_shc1", "k_src", "k_tgfbr1", "k_tp53", "k_ywhaz", "k_zak", "kd_atm", "kd_aurkb", "kd_bad", "kd_brca1", "kd_csf1r", "kd_map2k3", "kd_map2k4", "kd_mapk13", "kd_mapk14", "kd_parp1", "kd_pik3r1", "kd_pkn1", "kd_prkaca", "kd_pten", "kd_shc1", "kd_src", "kd_tgfbr1", "kd_tp53", "kd_ywhaz", "kd_zak", "MAP2K3_init", "MAP2K4_init", "MAPK13_init", "MAPK14_init", "PARP1_init", "PIK3R1_init", "PKN1_init", "PRKACA_init", "PTEN_init", "SHC1_init", "SRC_init", "TGFBR1_init", "TP53_init", "YWHAZ_init", "ZAK_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["ATM_init", "AURKB_init", "BAD_init", "BRCA1_init", "const1", "CSF1R_init", "k_atm", "k_aurkb", "k_bad", "k_brca1", "k_csf1r", "k_map2k3", "k_map2k4", "k_mapk13", "k_mapk14", "k_parp1", "k_pik3r1", "k_pkn1", "k_prkaca", "k_pten", "k_shc1", "k_src", "k_tgfbr1", "k_tp53", "k_ywhaz", "k_zak", "kd_atm", "kd_aurkb", "kd_bad", "kd_brca1", "kd_csf1r", "kd_map2k3", "kd_map2k4", "kd_mapk13", "kd_mapk14", "kd_parp1", "kd_pik3r1", "kd_pkn1", "kd_prkaca", "kd_pten", "kd_shc1", "kd_src", "kd_tgfbr1", "kd_tp53", "kd_ywhaz", "kd_zak", "MAP2K3_init", "MAP2K4_init", "MAPK13_init", "MAPK14_init", "PARP1_init", "PIK3R1_init", "PKN1_init", "PRKACA_init", "PTEN_init", "SHC1_init", "SRC_init", "TGFBR1_init", "TP53_init", "YWHAZ_init", "ZAK_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "ATM_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "AURKB_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "BAD_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "BRCA1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CSF1R_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ATM_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "AURKB_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "BAD_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "BRCA1_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "const1", internal, 0.0067000000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CSF1R_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_atm", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_aurkb", internal, 3, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_bad", internal, 5, -Infinity, Infinity, false);
@@ -83,18 +83,18 @@ export class model {
     this.base.user.setUserScalar(user, "kd_zak", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MAP2K3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MAP2K4_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "MAPK13_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MAPK13_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MAPK14_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PARP1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PIK3R1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PARP1_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PIK3R1_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PKN1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PRKACA_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PTEN_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SHC1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SRC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "TGFBR1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PRKACA_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PTEN_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SHC1_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SRC_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TGFBR1_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "TP53_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "YWHAZ_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "YWHAZ_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ZAK_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_ATM = internal.ATM_init;
     internal.initial_AURKB = internal.AURKB_init;

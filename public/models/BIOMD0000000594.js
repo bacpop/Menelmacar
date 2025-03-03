@@ -8,14 +8,6 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var Tyr_init = internal.initial_EGFR_10UU + internal.initial_EGFR_10CU + internal.initial_EGFR_10LU + 1 * (internal.initial_EGFR_01UU + internal.initial_EGFR_01UG + internal.initial_EGFR_01UL) + 2 * (internal.initial_EGFR_11UU + internal.initial_EGFR_11CU + internal.initial_EGFR_11LU + internal.initial_EGFR_11UG + internal.initial_EGFR_11UL + internal.initial_EGFR_11CG + internal.initial_EGFR_11CC + internal.initial_EGFR_11LG) + 2 * (internal.initial_EGFR_02UU + internal.initial_EGFR_02UG + internal.initial_EGFR_02UL) + 3 * (internal.initial_EGFR_12UU + internal.initial_EGFR_12CU + internal.initial_EGFR_12LU + internal.initial_EGFR_12UG + internal.initial_EGFR_12UL + internal.initial_EGFR_12CG + internal.initial_EGFR_12CC + internal.initial_EGFR_12LG);
-    var TyrNorm_init = internal.initial_Tyr / internal.PYMax;
-    var Ub_init = internal.initial_EGFR_11CC + internal.initial_EGFR_12CC + internal.initial_EGFR_10CU + internal.initial_EGFR_11CU + internal.initial_EGFR_12CU + internal.initial_EGFR_10LU + internal.initial_EGFR_11LU + internal.initial_EGFR_12LU + internal.initial_EGFR_11CG + internal.initial_EGFR_12CG + internal.initial_EGFR_11LG + internal.initial_EGFR_12LG;
-    var UbNorm_init = internal.initial_Ub / (internal.UbMax * internal.CblFactor);
-    internal.initial_Tyr = Tyr_init;
-    internal.initial_TyrNorm = TyrNorm_init;
-    internal.initial_Ub = Ub_init;
-    internal.initial_UbNorm = UbNorm_init;
     var state = Array(33).fill(0);
     state[0] = internal.initial_Cbl;
     state[1] = internal.initial_Grb2;
@@ -53,14 +45,14 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Cbl_init", "CblFactor", "CblT", "CblWT", "CG_init", "EGFR_00UU_init", "EGFR_01UG_init", "EGFR_01UL_init", "EGFR_01UU_init", "EGFR_02UG_init", "EGFR_02UL_init", "EGFR_02UU_init", "EGFR_10CU_init", "EGFR_10LU_init", "EGFR_10UU_init", "EGFR_11CC_init", "EGFR_11CG_init", "EGFR_11CU_init", "EGFR_11LG_init", "EGFR_11LU_init", "EGFR_11UG_init", "EGFR_11UL_init", "EGFR_11UU_init", "EGFR_12CC_init", "EGFR_12CG_init", "EGFR_12CU_init", "EGFR_12LG_init", "EGFR_12LU_init", "EGFR_12UG_init", "EGFR_12UL_init", "EGFR_12UU_init", "floc", "Grb2_init", "Grb2T", "K45", "Kcg", "kkinbase", "kptp", "ku45", "kucg", "Ltot", "nH", "PYMax", "RT", "UbMax", "xT"], unusedUserAction);
+    this.base.user.checkUser(user, ["Cbl_init", "CblFactor", "CblT", "CblWT", "CG_init", "EGFR_00UU_init", "EGFR_01UG_init", "EGFR_01UL_init", "EGFR_01UU_init", "EGFR_02UG_init", "EGFR_02UL_init", "EGFR_02UU_init", "EGFR_10CU_init", "EGFR_10LU_init", "EGFR_10UU_init", "EGFR_11CC_init", "EGFR_11CG_init", "EGFR_11CU_init", "EGFR_11LG_init", "EGFR_11LU_init", "EGFR_11UG_init", "EGFR_11UL_init", "EGFR_11UU_init", "EGFR_12CC_init", "EGFR_12CG_init", "EGFR_12CU_init", "EGFR_12LG_init", "EGFR_12LU_init", "EGFR_12UG_init", "EGFR_12UL_init", "EGFR_12UU_init", "floc", "Grb2_init", "Grb2T", "K45", "Kcg", "kkinbase", "kptp", "ku45", "kucg", "Ltot", "nH", "PYMax", "RT", "Tyr_init", "TyrNorm_init", "Ub_init", "UbMax", "UbNorm_init", "xT"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "Cbl_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Cbl_init", internal, 2.8097533281423698e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CblFactor", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CblT", internal, 0.01464, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CblWT", internal, 0.01464, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CG_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "EGFR_00UU_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CG_init", internal, 0.014611902466718601, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "EGFR_00UU_init", internal, 0.83299999999999996, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EGFR_01UG_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EGFR_01UL_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EGFR_01UU_init", internal, 0, -Infinity, Infinity, false);
@@ -87,7 +79,7 @@ export class model {
     this.base.user.setUserScalar(user, "EGFR_12UL_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EGFR_12UU_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "floc", internal, 20000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Grb2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Grb2_init", internal, 3.3053880975332799, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Grb2T", internal, 3.3199999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K45", internal, 0.20136100000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kcg", internal, 0.0063559999999999997, -Infinity, Infinity, false);
@@ -99,7 +91,11 @@ export class model {
     this.base.user.setUserScalar(user, "nH", internal, 1.1299999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PYMax", internal, 2.2794932229999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RT", internal, 0.83299999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tyr_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TyrNorm_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ub_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "UbMax", internal, 0.014305999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "UbNorm_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "xT", internal, 4.5918099999999997, -Infinity, Infinity, false);
     internal.initial_Cbl = internal.Cbl_init;
     internal.initial_CG = internal.CG_init;
@@ -130,6 +126,10 @@ export class model {
     internal.initial_EGFR_12UL = internal.EGFR_12UL_init;
     internal.initial_EGFR_12UU = internal.EGFR_12UU_init;
     internal.initial_Grb2 = internal.Grb2_init;
+    internal.initial_Tyr = internal.Tyr_init;
+    internal.initial_TyrNorm = internal.TyrNorm_init;
+    internal.initial_Ub = internal.Ub_init;
+    internal.initial_UbNorm = internal.UbNorm_init;
     internal.K45P = internal.K45 / internal.floc;
     internal.kb45 = internal.ku45 / internal.K45;
     internal.kbcg = internal.kucg / internal.Kcg;
@@ -181,10 +181,10 @@ export class model {
     const EGFR_12CG = state[30];
     const EGFR_12CC = state[31];
     const EGFR_12LG = state[32];
-    dstatedt[3] = 0 + 0;
-    dstatedt[5] = 0 + 0;
-    dstatedt[4] = 0 + 0;
-    dstatedt[6] = 0 + 0;
+    dstatedt[3] = 0;
+    dstatedt[5] = 0;
+    dstatedt[4] = 0;
+    dstatedt[6] = 0;
     dstatedt[0] = 0 - 1 * internal.kbcg * Cbl * Grb2 + 1 * internal.kucg * CG - 1 * internal.kb45 * Cbl * EGFR_10UU + 1 * internal.ku45 * EGFR_10CU - 1 * internal.kbcg * Cbl * EGFR_01UG + 1 * internal.kucg * EGFR_01UL - 1 * internal.kb45 * Cbl * EGFR_11UU + 1 * internal.ku45 * EGFR_11CU - 1 * internal.kb45 * Cbl * EGFR_11UG + 1 * internal.ku45 * EGFR_11CG - 1 * internal.kbcg * Cbl * EGFR_11UG + 1 * internal.kucg * EGFR_11UL - 1 * internal.kbcg * Cbl * EGFR_02UG + 1 * internal.kucg * EGFR_02UL - 1 * internal.kb45 * Cbl * EGFR_12UU + 1 * internal.ku45 * EGFR_12CU - 1 * internal.kb45 * Cbl * EGFR_12UG + 1 * internal.ku45 * EGFR_12CG - 1 * internal.kbcg * Cbl * EGFR_12UG + 1 * internal.kucg * EGFR_12UL;
     dstatedt[2] = 0 + 1 * internal.kbcg * Cbl * Grb2 - 1 * internal.kucg * CG - 1 * internal.kb45 * CG * EGFR_10UU + 1 * internal.ku45 * EGFR_10LU - 1 * internal.kb68 * CG * EGFR_01UU + 1 * internal.ku68 * EGFR_01UL - 1 * internal.kb45 * CG * EGFR_11UU + 1 * internal.ku45 * EGFR_11LU - 1 * internal.kb68 * CG * EGFR_11UU + 1 * internal.ku68 * EGFR_11UL - 1 * internal.kb45 * CG * EGFR_11UG + 1 * internal.ku45 * EGFR_11LG - 1 * 2 * internal.kb68 * CG * EGFR_02UU + 1 * internal.ku68 * EGFR_02UL - 1 * internal.kb45 * CG * EGFR_12UU + 1 * internal.ku45 * EGFR_12LU - 1 * 2 * internal.kb68 * CG * EGFR_12UU + 1 * internal.ku68 * EGFR_12UL - 1 * internal.kb45 * CG * EGFR_12UG + 1 * internal.ku45 * EGFR_12LG;
     dstatedt[7] = 0 + 1 * internal.kptp * EGFR_10UU + 1 * internal.kptp68 * EGFR_01UU - 1 * internal.kkin * EGFR_00UU - 1 * 2 * internal.kkin68 * EGFR_00UU;
@@ -222,7 +222,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "Cbl", "Grb2", "CG", "Tyr", "Ub", "TyrNorm", "UbNorm", "EGFR_00UU", "EGFR_10UU", "EGFR_10CU", "EGFR_10LU", "EGFR_01UU", "EGFR_01UG", "EGFR_01UL", "EGFR_11UU", "EGFR_11CU", "EGFR_11LU", "EGFR_11UG", "EGFR_11UL", "EGFR_11CG", "EGFR_11CC", "EGFR_11LG", "EGFR_02UU", "EGFR_02UG", "EGFR_02UL", "EGFR_12UU", "EGFR_12CU", "EGFR_12LU", "EGFR_12UG", "EGFR_12UL", "EGFR_12CG", "EGFR_12CC", "EGFR_12LG"];
-    this.metadata.internalOrder = {Cbl_init: null, CblFactor: null, CblT: null, CblWT: null, cell: null, CG_init: null, EGFR_00UU_init: null, EGFR_01UG_init: null, EGFR_01UL_init: null, EGFR_01UU_init: null, EGFR_02UG_init: null, EGFR_02UL_init: null, EGFR_02UU_init: null, EGFR_10CU_init: null, EGFR_10LU_init: null, EGFR_10UU_init: null, EGFR_11CC_init: null, EGFR_11CG_init: null, EGFR_11CU_init: null, EGFR_11LG_init: null, EGFR_11LU_init: null, EGFR_11UG_init: null, EGFR_11UL_init: null, EGFR_11UU_init: null, EGFR_12CC_init: null, EGFR_12CG_init: null, EGFR_12CU_init: null, EGFR_12LG_init: null, EGFR_12LU_init: null, EGFR_12UG_init: null, EGFR_12UL_init: null, EGFR_12UU_init: null, floc: null, Grb2_init: null, Grb2T: null, initial_Cbl: null, initial_CG: null, initial_EGFR_00UU: null, initial_EGFR_01UG: null, initial_EGFR_01UL: null, initial_EGFR_01UU: null, initial_EGFR_02UG: null, initial_EGFR_02UL: null, initial_EGFR_02UU: null, initial_EGFR_10CU: null, initial_EGFR_10LU: null, initial_EGFR_10UU: null, initial_EGFR_11CC: null, initial_EGFR_11CG: null, initial_EGFR_11CU: null, initial_EGFR_11LG: null, initial_EGFR_11LU: null, initial_EGFR_11UG: null, initial_EGFR_11UL: null, initial_EGFR_11UU: null, initial_EGFR_12CC: null, initial_EGFR_12CG: null, initial_EGFR_12CU: null, initial_EGFR_12LG: null, initial_EGFR_12LU: null, initial_EGFR_12UG: null, initial_EGFR_12UL: null, initial_EGFR_12UU: null, initial_Grb2: null, initial_Tyr: null, initial_TyrNorm: null, initial_Ub: null, initial_UbNorm: null, K45: null, K45P: null, kb45: null, kb45P: null, kb68: null, kb68P: null, kbcg: null, kbcgP: null, Kcg: null, KcgP: null, kkin: null, kkin68: null, kkinbase: null, kptp: null, kptp68: null, ku45: null, ku45M: null, ku68: null, ku68M: null, kucg: null, kucgM: null, Ltot: null, nH: null, PYMax: null, RT: null, UbMax: null, xT: null};
+    this.metadata.internalOrder = {Cbl_init: null, CblFactor: null, CblT: null, CblWT: null, cell: null, CG_init: null, EGFR_00UU_init: null, EGFR_01UG_init: null, EGFR_01UL_init: null, EGFR_01UU_init: null, EGFR_02UG_init: null, EGFR_02UL_init: null, EGFR_02UU_init: null, EGFR_10CU_init: null, EGFR_10LU_init: null, EGFR_10UU_init: null, EGFR_11CC_init: null, EGFR_11CG_init: null, EGFR_11CU_init: null, EGFR_11LG_init: null, EGFR_11LU_init: null, EGFR_11UG_init: null, EGFR_11UL_init: null, EGFR_11UU_init: null, EGFR_12CC_init: null, EGFR_12CG_init: null, EGFR_12CU_init: null, EGFR_12LG_init: null, EGFR_12LU_init: null, EGFR_12UG_init: null, EGFR_12UL_init: null, EGFR_12UU_init: null, floc: null, Grb2_init: null, Grb2T: null, initial_Cbl: null, initial_CG: null, initial_EGFR_00UU: null, initial_EGFR_01UG: null, initial_EGFR_01UL: null, initial_EGFR_01UU: null, initial_EGFR_02UG: null, initial_EGFR_02UL: null, initial_EGFR_02UU: null, initial_EGFR_10CU: null, initial_EGFR_10LU: null, initial_EGFR_10UU: null, initial_EGFR_11CC: null, initial_EGFR_11CG: null, initial_EGFR_11CU: null, initial_EGFR_11LG: null, initial_EGFR_11LU: null, initial_EGFR_11UG: null, initial_EGFR_11UL: null, initial_EGFR_11UU: null, initial_EGFR_12CC: null, initial_EGFR_12CG: null, initial_EGFR_12CU: null, initial_EGFR_12LG: null, initial_EGFR_12LU: null, initial_EGFR_12UG: null, initial_EGFR_12UL: null, initial_EGFR_12UU: null, initial_Grb2: null, initial_Tyr: null, initial_TyrNorm: null, initial_Ub: null, initial_UbNorm: null, K45: null, K45P: null, kb45: null, kb45P: null, kb68: null, kb68P: null, kbcg: null, kbcgP: null, Kcg: null, KcgP: null, kkin: null, kkin68: null, kkinbase: null, kptp: null, kptp68: null, ku45: null, ku45M: null, ku68: null, ku68M: null, kucg: null, kucgM: null, Ltot: null, nH: null, PYMax: null, RT: null, Tyr_init: null, TyrNorm_init: null, Ub_init: null, UbMax: null, UbNorm_init: null, xT: null};
     this.metadata.variableOrder = {Cbl: null, Grb2: null, CG: null, Tyr: null, Ub: null, TyrNorm: null, UbNorm: null, EGFR_00UU: null, EGFR_10UU: null, EGFR_10CU: null, EGFR_10LU: null, EGFR_01UU: null, EGFR_01UG: null, EGFR_01UL: null, EGFR_11UU: null, EGFR_11CU: null, EGFR_11LU: null, EGFR_11UG: null, EGFR_11UL: null, EGFR_11CG: null, EGFR_11CC: null, EGFR_11LG: null, EGFR_02UU: null, EGFR_02UG: null, EGFR_02UL: null, EGFR_12UU: null, EGFR_12CU: null, EGFR_12LU: null, EGFR_12UG: null, EGFR_12UL: null, EGFR_12CG: null, EGFR_12CC: null, EGFR_12LG: null};
     this.metadata.outputOrder = null;
   }

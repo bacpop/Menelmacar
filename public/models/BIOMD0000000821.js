@@ -22,11 +22,11 @@ export class model {
     this.base.user.setUserScalar(user, "concentration_of_administrated_inhibitor_x_3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d", internal, 0.0087299999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "e", internal, 0.66000000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "endothelial_volume_x_2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "endothelial_volume_x_2_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lambda_1", internal, 0.192, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lambda_2", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lambda_3", internal, 1.3, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "tumor_volume_x_1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "tumor_volume_x_1_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "u", internal, 0, -Infinity, Infinity, false);
     internal.initial_concentration_of_administrated_inhibitor_x_3 = internal.concentration_of_administrated_inhibitor_x_3_init;
     internal.initial_endothelial_volume_x_2 = internal.endothelial_volume_x_2_init;

@@ -58,13 +58,13 @@ export class model {
     this.base.user.setUserScalar(user, "phi", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "u", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "v_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "xi", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "y_0_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "y_1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_a_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_i_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_a_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_i_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     internal.initial_L = internal.L_init;
     internal.initial_m_0 = internal.m_0_init;
     internal.initial_m_1 = internal.m_1_init;

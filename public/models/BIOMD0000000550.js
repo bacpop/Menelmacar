@@ -21,8 +21,8 @@ export class model {
     this.base.user.setUserScalar(user, "parameter_3", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "parameter_4", internal, 3.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "parameter_5", internal, 1.25, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "species_1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "species_2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_1_init", internal, 0.00577667577789773, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_2_init", internal, 0.020329826471240701, -Infinity, Infinity, false);
     internal.initial_species_1 = internal.species_1_init;
     internal.initial_species_2 = internal.species_2_init;
     this.updateMetadata();
@@ -34,8 +34,8 @@ export class model {
     var internal = this.internal;
     const species_1 = state[0];
     const species_2 = state[1];
-    dstatedt[0] = 0 + - species_1 + internal.parameter_4 * (Math.pow((species_2), (2)) / (Math.pow((internal.parameter_3), (2)) + Math.pow((species_2), (2))));
-    dstatedt[1] = 0 + - internal.parameter_5 * species_2 + 1 / (1 + Math.pow((species_1), (2))) * (internal.parameter_1 + internal.parameter_2 * (Math.pow((species_2), (2)) / (1 + Math.pow((species_2), (2)))));
+    dstatedt[0] = - species_1 + internal.parameter_4 * (Math.pow((species_2), (2)) / (Math.pow((internal.parameter_3), (2)) + Math.pow((species_2), (2))));
+    dstatedt[1] = - internal.parameter_5 * species_2 + 1 / (1 + Math.pow((species_1), (2))) * (internal.parameter_1 + internal.parameter_2 * (Math.pow((species_2), (2)) / (1 + Math.pow((species_2), (2)))));
   }
   names() {
     return this.metadata.ynames.slice(1);

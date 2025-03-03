@@ -25,9 +25,9 @@ export class model {
     this.base.user.setUserScalar(user, "mu_x", internal, 4, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu_z_star", internal, 0.40000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 0.20000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_init", internal, 4, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_init", internal, 0.20000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_init", internal, 0.40000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "zeta", internal, 0.5, -Infinity, Infinity, false);
     internal.initial_x = internal.x_init;
     internal.initial_y = internal.y_init;
@@ -39,14 +39,14 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const mu_z = state[3];
     const x = state[0];
     const y = state[1];
     const z = state[2];
+    const mu_z = state[3];
     dstatedt[3] = internal.epsilon * (y - internal.kxk * (mu_z - internal.mu_z_star));
-    dstatedt[0] = 0 + - internal.r * x * y + internal.zeta * internal.mu_x - internal.zeta * x;
-    dstatedt[1] = 0 + internal.r * x * y - internal.b * y * z - internal.zeta * y;
-    dstatedt[2] = 0 + - internal.b * y * z + internal.zeta * mu_z - internal.zeta * z;
+    dstatedt[0] = - internal.r * x * y + internal.zeta * internal.mu_x - internal.zeta * x;
+    dstatedt[1] = internal.r * x * y - internal.b * y * z - internal.zeta * y;
+    dstatedt[2] = - internal.b * y * z + internal.zeta * mu_z - internal.zeta * z;
   }
   names() {
     return this.metadata.ynames.slice(1);

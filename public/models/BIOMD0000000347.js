@@ -57,13 +57,13 @@ export class model {
     this.base.user.setUserScalar(user, "CISRNAEqc", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CISRNATurn", internal, 1000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CISTurn", internal, 0.0083984200000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Epo_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Epo_init", internal, 1.2499699999999999e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "epo_level", internal, 1.2499699999999999e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EpoRActJAK2", internal, 0.26730799999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EpoRCISInh", internal, 1000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EpoRCISRemove", internal, 5.4293199999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EpoRJAK2_CIS_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "EpoRJAK2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "EpoRJAK2_init", internal, 3.9762200000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "EpoRpJAK2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "init_EpoRJAK2", internal, 3.9762200000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "init_SHP1", internal, 26.725100000000001, -Infinity, Infinity, false);
@@ -75,7 +75,7 @@ export class model {
     this.base.user.setUserScalar(user, "p1EpoRpJAK2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p2EpoRpJAK2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pSTAT5_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SHP1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SHP1_init", internal, 26.725100000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SHP1Act_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SHP1ActEpoR", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SHP1Dea", internal, 0.0081639099999999999, -Infinity, Infinity, false);
@@ -94,7 +94,7 @@ export class model {
     this.base.user.setUserScalar(user, "SOCS3RNAEqc", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SOCS3RNATurn", internal, 0.0083084400000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SOCS3Turn", internal, 10000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "STAT5_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "STAT5_init", internal, 79.753500000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "STAT5ActEpoR", internal, 38.975700000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "STAT5ActJAK2", internal, 0.078096499999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "STAT5Exp", internal, 0.074515499999999998, -Infinity, Infinity, false);

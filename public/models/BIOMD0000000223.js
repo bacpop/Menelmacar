@@ -9,8 +9,6 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var phosphorylated_Akt_init = internal.initial_pAkt + internal.initial_ppAkt;
-    internal.initial_phosphorylated_Akt = phosphorylated_Akt_init;
     var state = Array(86).fill(0);
     state[0] = internal.initial_EGF;
     state[1] = internal.initial_I;
@@ -101,10 +99,10 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["aaRaf_init", "Akt_init", "alpha40", "alpha43", "alpha50", "alpha67", "alpha77", "amTOR_init", "aPX_GS_init", "aPX_init", "aRaf_init", "aSrc_init", "beta67", "bRasGAP_init", "dRas_init", "EGF_init", "Erk_init", "GAB_init", "GABp_GS_init", "GABp_init", "GABp_PI3K_init", "GABp_pSHP2_GS_init", "GABp_pSHP2_init", "GABp_RasGAP_init", "GABp_SHP2_init", "GS_init", "I_init", "iGS_init", "imGAB_init", "imGABp_init", "imIRS_init", "iPX_init", "IR_init", "IRi_init", "IRL_init", "IRp_init", "IRp_IRS_init", "IRp_IRSp_init", "IRp_PI3K_init", "IRp_RasGAP_init", "IRS_init", "IRSp_GS_init", "IRSp_init", "IRSp_PI3K_init", "IRSp_SHP2_init", "iSrc_init", "k_64", "k_77", "k_78", "k_79", "k_80", "k_81", "k1", "k10", "k111", "k118", "k12", "k13", "k17", "k2", "k24", "k25", "k26", "k27", "k28", "k29", "k3", "k30", "k4", "k42", "k45", "k46", "k47", "k48", "k49", "k5", "k52", "k53", "k54", "k55", "k56", "k59", "k6", "k60", "k61", "k64", "k7", "k74", "k83", "k85", "k9", "kcat40", "kcat43", "kcat50", "kcat57", "kcat62", "kcat63", "kcat65", "kcat66", "kcat67", "kcat68", "kcat70", "kcat71", "kcat75", "kcat77", "kcat78", "kcat79", "kcat80", "kcat81", "Kd1", "Kd10", "Kd12", "Kd13", "Kd2", "Kd24", "Kd26", "Kd27", "Kd28", "Kd30", "Kd4", "Kd42", "Kd45", "Kd46", "Kd47", "Kd49", "Kd5", "Kd52", "Kd53", "Kd54", "Kd55", "Kd59", "Kd7", "Kd74", "Kd9", "Km31", "Km40", "Km41", "Km43", "Km50", "Km51", "Km57", "Km58", "Km62", "Km63", "Km65", "Km66", "Km67", "Km68", "Km69", "Km70", "Km71", "Km72", "Km73", "Km75", "Km76", "Km77", "Km78", "Km79", "Km8", "Km80", "Km81", "Km82", "Km84", "Mek_init", "mGAB_init", "mGABp_GS_init", "mGABp_init", "mGABp_PI3K_init", "mGABp_pSHP2_GS_init", "mGABp_pSHP2_init", "mGABp_RasGAP_init", "mGABp_SHP2_init", "mIRS_init", "mIRSp_GS_init", "mIRSp_init", "mIRSp_PI3K_init", "mIRSp_SHP2_init", "mPDK1_init", "mTOR_init", "Null_init", "pAkt_init", "PDK1_init", "pErk_init", "PI3K_init", "PIP3_init", "PKA_init", "ppAkt_init", "ppErk_init", "ppMek_init", "pShc_GS_init", "pShc_init", "R_init", "Raf_init", "RasGAP_init", "Rd_init", "RE_init", "Ri_init", "Rp_GS_init", "Rp_init", "Rp_PI3K_init", "Rp_pShc_GS_init", "Rp_pShc_init", "Rp_RasGAP_init", "Rp_Shc_init", "Shc_init", "SHP2_init", "tRas_init", "tRas_PI3K_init", "V_82", "V_84", "V31", "V41", "V51", "V58", "V69", "V72", "V73", "V76", "V8"], unusedUserAction);
+    this.base.user.checkUser(user, ["aaRaf_init", "Akt_init", "alpha40", "alpha43", "alpha50", "alpha67", "alpha77", "amTOR_init", "aPX_GS_init", "aPX_init", "aRaf_init", "aSrc_init", "beta67", "bRasGAP_init", "dRas_init", "EGF_init", "Erk_init", "GAB_init", "GABp_GS_init", "GABp_init", "GABp_PI3K_init", "GABp_pSHP2_GS_init", "GABp_pSHP2_init", "GABp_RasGAP_init", "GABp_SHP2_init", "GS_init", "I_init", "iGS_init", "imGAB_init", "imGABp_init", "imIRS_init", "iPX_init", "IR_init", "IRi_init", "IRL_init", "IRp_init", "IRp_IRS_init", "IRp_IRSp_init", "IRp_PI3K_init", "IRp_RasGAP_init", "IRS_init", "IRSp_GS_init", "IRSp_init", "IRSp_PI3K_init", "IRSp_SHP2_init", "iSrc_init", "k_64", "k_77", "k_78", "k_79", "k_80", "k_81", "k1", "k10", "k111", "k118", "k12", "k13", "k17", "k2", "k24", "k25", "k26", "k27", "k28", "k29", "k3", "k30", "k4", "k42", "k45", "k46", "k47", "k48", "k49", "k5", "k52", "k53", "k54", "k55", "k56", "k59", "k6", "k60", "k61", "k64", "k7", "k74", "k83", "k85", "k9", "kcat40", "kcat43", "kcat50", "kcat57", "kcat62", "kcat63", "kcat65", "kcat66", "kcat67", "kcat68", "kcat70", "kcat71", "kcat75", "kcat77", "kcat78", "kcat79", "kcat80", "kcat81", "Kd1", "Kd10", "Kd12", "Kd13", "Kd2", "Kd24", "Kd26", "Kd27", "Kd28", "Kd30", "Kd4", "Kd42", "Kd45", "Kd46", "Kd47", "Kd49", "Kd5", "Kd52", "Kd53", "Kd54", "Kd55", "Kd59", "Kd7", "Kd74", "Kd9", "Km31", "Km40", "Km41", "Km43", "Km50", "Km51", "Km57", "Km58", "Km62", "Km63", "Km65", "Km66", "Km67", "Km68", "Km69", "Km70", "Km71", "Km72", "Km73", "Km75", "Km76", "Km77", "Km78", "Km79", "Km8", "Km80", "Km81", "Km82", "Km84", "Mek_init", "mGAB_init", "mGABp_GS_init", "mGABp_init", "mGABp_PI3K_init", "mGABp_pSHP2_GS_init", "mGABp_pSHP2_init", "mGABp_RasGAP_init", "mGABp_SHP2_init", "mIRS_init", "mIRSp_GS_init", "mIRSp_init", "mIRSp_PI3K_init", "mIRSp_SHP2_init", "mPDK1_init", "mTOR_init", "Null_init", "pAkt_init", "PDK1_init", "pErk_init", "phosphorylated_Akt_init", "PI3K_init", "PIP3_init", "PKA_init", "ppAkt_init", "ppErk_init", "ppMek_init", "pShc_GS_init", "pShc_init", "R_init", "Raf_init", "RasGAP_init", "Rd_init", "RE_init", "Ri_init", "Rp_GS_init", "Rp_init", "Rp_PI3K_init", "Rp_pShc_GS_init", "Rp_pShc_init", "Rp_RasGAP_init", "Rp_Shc_init", "Shc_init", "SHP2_init", "tRas_init", "tRas_PI3K_init", "V_82", "V_84", "V31", "V41", "V51", "V58", "V69", "V72", "V73", "V76", "V8"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "aaRaf_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Akt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Akt_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha40", internal, 0.00025000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha43", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha50", internal, 0.0001, -Infinity, Infinity, false);
@@ -116,11 +114,11 @@ export class model {
     this.base.user.setUserScalar(user, "aRaf_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "aSrc_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta67", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "bRasGAP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "dRas_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "EGF_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Erk_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "GAB_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "bRasGAP_init", internal, 1.0000000000000001e-05, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "dRas_init", internal, 150, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "EGF_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Erk_init", internal, 400, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "GAB_init", internal, 225, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GABp_GS_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GABp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GABp_PI3K_init", internal, 0, -Infinity, Infinity, false);
@@ -128,14 +126,14 @@ export class model {
     this.base.user.setUserScalar(user, "GABp_pSHP2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GABp_RasGAP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GABp_SHP2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "GS_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "GS_init", internal, 200, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "iGS_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "imGAB_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "imGABp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "imIRS_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "iPX_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IR_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "iPX_init", internal, 200, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IR_init", internal, 150, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRi_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRL_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRp_init", internal, 0, -Infinity, Infinity, false);
@@ -143,12 +141,12 @@ export class model {
     this.base.user.setUserScalar(user, "IRp_IRSp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRp_PI3K_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRp_RasGAP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IRS_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IRS_init", internal, 300, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRSp_GS_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRSp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRSp_PI3K_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IRSp_SHP2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "iSrc_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "iSrc_init", internal, 518, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_64", internal, 2.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_77", internal, 0.66600000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_78", internal, 0.66600000000000004, -Infinity, Infinity, false);
@@ -266,7 +264,7 @@ export class model {
     this.base.user.setUserScalar(user, "Km81", internal, 300, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Km82", internal, 50, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Km84", internal, 266, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Mek_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Mek_init", internal, 200, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mGAB_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mGABp_GS_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mGABp_init", internal, 0, -Infinity, Infinity, false);
@@ -281,22 +279,23 @@ export class model {
     this.base.user.setUserScalar(user, "mIRSp_PI3K_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mIRSp_SHP2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mPDK1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "mTOR_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "mTOR_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Null_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pAkt_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PDK1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PDK1_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pErk_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PI3K_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "phosphorylated_Akt_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PI3K_init", internal, 200, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PIP3_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PKA_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PKA_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ppAkt_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ppErk_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ppMek_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pShc_GS_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pShc_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "R_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Raf_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "RasGAP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R_init", internal, 100, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Raf_init", internal, 100, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "RasGAP_init", internal, 50, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Rd_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "RE_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ri_init", internal, 0, -Infinity, Infinity, false);
@@ -307,8 +306,8 @@ export class model {
     this.base.user.setUserScalar(user, "Rp_pShc_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Rp_RasGAP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Rp_Shc_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Shc_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "SHP2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Shc_init", internal, 270, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "SHP2_init", internal, 300, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tRas_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tRas_PI3K_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V_82", internal, 133, -Infinity, Infinity, false);
@@ -382,6 +381,7 @@ export class model {
     internal.initial_pAkt = internal.pAkt_init;
     internal.initial_PDK1 = internal.PDK1_init;
     internal.initial_pErk = internal.pErk_init;
+    internal.initial_phosphorylated_Akt = internal.phosphorylated_Akt_init;
     internal.initial_PI3K = internal.PI3K_init;
     internal.initial_PIP3 = internal.PIP3_init;
     internal.initial_PKA = internal.PKA_init;
@@ -526,7 +526,7 @@ export class model {
     dstatedt[72] = 0;
     dstatedt[84] = 0;
     dstatedt[70] = 0;
-    dstatedt[85] = 0 + 0;
+    dstatedt[85] = 0;
     dstatedt[51] = 0;
     dstatedt[50] = 0 + 1 * internal.kcat66 * aSrc * aRaf / (internal.Km66 + aRaf) * internal.cell - 1 * (internal.kcat67 * aaRaf * (PKA / (internal.Km67 + aaRaf)) + internal.alpha67 * aaRaf * (pAkt + internal.beta67 * ppAkt)) * internal.cell;
     dstatedt[46] = 0 - 1 * internal.kcat75 * mPDK1 * Akt / (internal.Km75 + Akt) * internal.cell + 1 * internal.V76 * pAkt / (internal.Km76 + pAkt) * internal.cell;
@@ -616,7 +616,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "EGF", "I", "RE", "Rd", "Rp", "GS", "Rp_GS", "Shc", "Rp_Shc", "Rp_pShc", "pShc", "Rp_pShc_GS", "PI3K", "Rp_PI3K", "RasGAP", "Rp_RasGAP", "IRL", "IRp", "IRp_PI3K", "IRp_RasGAP", "IRS", "IRp_IRS", "IRp_IRSp", "IRSp", "iSrc", "mIRS", "mIRSp", "mIRSp_GS", "mIRSp_PI3K", "SHP2", "mIRSp_SHP2", "GAB", "mGAB", "mGABp", "mGABp_GS", "mGABp_PI3K", "mGABp_SHP2", "mGABp_pSHP2", "PIP3", "dRas", "Raf", "aRaf", "Mek", "Erk", "pErk", "PDK1", "Akt", "pAkt", "mTOR", "Null", "aaRaf", "PKA", "pShc_GS", "ppMek", "mGABp_pSHP2_GS", "R", "ppErk", "IR", "mPDK1", "tRas", "tRas_PI3K", "ppAkt", "mGABp_RasGAP", "amTOR", "iGS", "imGAB", "imIRS", "aSrc", "Ri", "IRi", "iPX", "aPX", "aPX_GS", "IRSp_PI3K", "IRSp_GS", "IRSp_SHP2", "GABp", "GABp_PI3K", "GABp_GS", "GABp_RasGAP", "GABp_SHP2", "GABp_pSHP2", "GABp_pSHP2_GS", "imGABp", "bRasGAP", "phosphorylated_Akt"];
-    this.metadata.internalOrder = {aaRaf_init: null, Akt_init: null, alpha40: null, alpha43: null, alpha50: null, alpha67: null, alpha77: null, amTOR_init: null, aPX_GS_init: null, aPX_init: null, aRaf_init: null, aSrc_init: null, beta67: null, bRasGAP_init: null, cell: null, dRas_init: null, EGF_init: null, Erk_init: null, extra: null, GAB_init: null, GABp_GS_init: null, GABp_init: null, GABp_PI3K_init: null, GABp_pSHP2_GS_init: null, GABp_pSHP2_init: null, GABp_RasGAP_init: null, GABp_SHP2_init: null, GS_init: null, I_init: null, iGS_init: null, imGAB_init: null, imGABp_init: null, imIRS_init: null, initial_aaRaf: null, initial_Akt: null, initial_amTOR: null, initial_aPX: null, initial_aPX_GS: null, initial_aRaf: null, initial_aSrc: null, initial_bRasGAP: null, initial_dRas: null, initial_EGF: null, initial_Erk: null, initial_GAB: null, initial_GABp: null, initial_GABp_GS: null, initial_GABp_PI3K: null, initial_GABp_pSHP2: null, initial_GABp_pSHP2_GS: null, initial_GABp_RasGAP: null, initial_GABp_SHP2: null, initial_GS: null, initial_I: null, initial_iGS: null, initial_imGAB: null, initial_imGABp: null, initial_imIRS: null, initial_iPX: null, initial_IR: null, initial_IRi: null, initial_IRL: null, initial_IRp: null, initial_IRp_IRS: null, initial_IRp_IRSp: null, initial_IRp_PI3K: null, initial_IRp_RasGAP: null, initial_IRS: null, initial_IRSp: null, initial_IRSp_GS: null, initial_IRSp_PI3K: null, initial_IRSp_SHP2: null, initial_iSrc: null, initial_Mek: null, initial_mGAB: null, initial_mGABp: null, initial_mGABp_GS: null, initial_mGABp_PI3K: null, initial_mGABp_pSHP2: null, initial_mGABp_pSHP2_GS: null, initial_mGABp_RasGAP: null, initial_mGABp_SHP2: null, initial_mIRS: null, initial_mIRSp: null, initial_mIRSp_GS: null, initial_mIRSp_PI3K: null, initial_mIRSp_SHP2: null, initial_mPDK1: null, initial_mTOR: null, initial_Null: null, initial_pAkt: null, initial_PDK1: null, initial_pErk: null, initial_phosphorylated_Akt: null, initial_PI3K: null, initial_PIP3: null, initial_PKA: null, initial_ppAkt: null, initial_ppErk: null, initial_ppMek: null, initial_pShc: null, initial_pShc_GS: null, initial_R: null, initial_Raf: null, initial_RasGAP: null, initial_Rd: null, initial_RE: null, initial_Ri: null, initial_Rp: null, initial_Rp_GS: null, initial_Rp_PI3K: null, initial_Rp_pShc: null, initial_Rp_pShc_GS: null, initial_Rp_RasGAP: null, initial_Rp_Shc: null, initial_Shc: null, initial_SHP2: null, initial_tRas: null, initial_tRas_PI3K: null, iPX_init: null, IR_init: null, IRi_init: null, IRL_init: null, IRp_init: null, IRp_IRS_init: null, IRp_IRSp_init: null, IRp_PI3K_init: null, IRp_RasGAP_init: null, IRS_init: null, IRSp_GS_init: null, IRSp_init: null, IRSp_PI3K_init: null, IRSp_SHP2_init: null, iSrc_init: null, k_1: null, k_10: null, k_11: null, k_12: null, k_13: null, k_2: null, k_24: null, k_26: null, k_27: null, k_28: null, k_30: null, k_4: null, k_42: null, k_45: null, k_46: null, k_47: null, k_49: null, k_5: null, k_52: null, k_53: null, k_54: null, k_55: null, k_59: null, k_64: null, k_7: null, k_74: null, k_77: null, k_78: null, k_79: null, k_80: null, k_81: null, k_9: null, k1: null, k10: null, k11: null, k111: null, k118: null, k12: null, k13: null, k17: null, k2: null, k24: null, k25: null, k26: null, k27: null, k28: null, k29: null, k3: null, k30: null, k4: null, k42: null, k45: null, k46: null, k47: null, k48: null, k49: null, k5: null, k52: null, k53: null, k54: null, k55: null, k56: null, k59: null, k6: null, k60: null, k61: null, k64: null, k7: null, k74: null, k83: null, k85: null, k9: null, kcat40: null, kcat43: null, kcat50: null, kcat57: null, kcat62: null, kcat63: null, kcat65: null, kcat66: null, kcat67: null, kcat68: null, kcat70: null, kcat71: null, kcat75: null, kcat77: null, kcat78: null, kcat79: null, kcat80: null, kcat81: null, Kd1: null, Kd10: null, Kd12: null, Kd13: null, Kd2: null, Kd24: null, Kd26: null, Kd27: null, Kd28: null, Kd30: null, Kd4: null, Kd42: null, Kd45: null, Kd46: null, Kd47: null, Kd49: null, Kd5: null, Kd52: null, Kd53: null, Kd54: null, Kd55: null, Kd59: null, Kd7: null, Kd74: null, Kd9: null, Km31: null, Km40: null, Km41: null, Km43: null, Km50: null, Km51: null, Km57: null, Km58: null, Km62: null, Km63: null, Km65: null, Km66: null, Km67: null, Km68: null, Km69: null, Km70: null, Km71: null, Km72: null, Km73: null, Km75: null, Km76: null, Km77: null, Km78: null, Km79: null, Km8: null, Km80: null, Km81: null, Km82: null, Km84: null, Mek_init: null, mGAB_init: null, mGABp_GS_init: null, mGABp_init: null, mGABp_PI3K_init: null, mGABp_pSHP2_GS_init: null, mGABp_pSHP2_init: null, mGABp_RasGAP_init: null, mGABp_SHP2_init: null, mIRS_init: null, mIRSp_GS_init: null, mIRSp_init: null, mIRSp_PI3K_init: null, mIRSp_SHP2_init: null, mPDK1_init: null, mTOR_init: null, Null_init: null, pAkt_init: null, PDK1_init: null, pErk_init: null, PI3K_init: null, PIP3_init: null, PKA_init: null, ppAkt_init: null, ppErk_init: null, ppMek_init: null, pShc_GS_init: null, pShc_init: null, R_init: null, Raf_init: null, RasGAP_init: null, Rd_init: null, RE_init: null, Ri_init: null, Rp_GS_init: null, Rp_init: null, Rp_PI3K_init: null, Rp_pShc_GS_init: null, Rp_pShc_init: null, Rp_RasGAP_init: null, Rp_Shc_init: null, Shc_init: null, SHP2_init: null, tRas_init: null, tRas_PI3K_init: null, V_82: null, V_84: null, V31: null, V41: null, V51: null, V58: null, V69: null, V72: null, V73: null, V76: null, V8: null};
+    this.metadata.internalOrder = {aaRaf_init: null, Akt_init: null, alpha40: null, alpha43: null, alpha50: null, alpha67: null, alpha77: null, amTOR_init: null, aPX_GS_init: null, aPX_init: null, aRaf_init: null, aSrc_init: null, beta67: null, bRasGAP_init: null, cell: null, dRas_init: null, EGF_init: null, Erk_init: null, extra: null, GAB_init: null, GABp_GS_init: null, GABp_init: null, GABp_PI3K_init: null, GABp_pSHP2_GS_init: null, GABp_pSHP2_init: null, GABp_RasGAP_init: null, GABp_SHP2_init: null, GS_init: null, I_init: null, iGS_init: null, imGAB_init: null, imGABp_init: null, imIRS_init: null, initial_aaRaf: null, initial_Akt: null, initial_amTOR: null, initial_aPX: null, initial_aPX_GS: null, initial_aRaf: null, initial_aSrc: null, initial_bRasGAP: null, initial_dRas: null, initial_EGF: null, initial_Erk: null, initial_GAB: null, initial_GABp: null, initial_GABp_GS: null, initial_GABp_PI3K: null, initial_GABp_pSHP2: null, initial_GABp_pSHP2_GS: null, initial_GABp_RasGAP: null, initial_GABp_SHP2: null, initial_GS: null, initial_I: null, initial_iGS: null, initial_imGAB: null, initial_imGABp: null, initial_imIRS: null, initial_iPX: null, initial_IR: null, initial_IRi: null, initial_IRL: null, initial_IRp: null, initial_IRp_IRS: null, initial_IRp_IRSp: null, initial_IRp_PI3K: null, initial_IRp_RasGAP: null, initial_IRS: null, initial_IRSp: null, initial_IRSp_GS: null, initial_IRSp_PI3K: null, initial_IRSp_SHP2: null, initial_iSrc: null, initial_Mek: null, initial_mGAB: null, initial_mGABp: null, initial_mGABp_GS: null, initial_mGABp_PI3K: null, initial_mGABp_pSHP2: null, initial_mGABp_pSHP2_GS: null, initial_mGABp_RasGAP: null, initial_mGABp_SHP2: null, initial_mIRS: null, initial_mIRSp: null, initial_mIRSp_GS: null, initial_mIRSp_PI3K: null, initial_mIRSp_SHP2: null, initial_mPDK1: null, initial_mTOR: null, initial_Null: null, initial_pAkt: null, initial_PDK1: null, initial_pErk: null, initial_phosphorylated_Akt: null, initial_PI3K: null, initial_PIP3: null, initial_PKA: null, initial_ppAkt: null, initial_ppErk: null, initial_ppMek: null, initial_pShc: null, initial_pShc_GS: null, initial_R: null, initial_Raf: null, initial_RasGAP: null, initial_Rd: null, initial_RE: null, initial_Ri: null, initial_Rp: null, initial_Rp_GS: null, initial_Rp_PI3K: null, initial_Rp_pShc: null, initial_Rp_pShc_GS: null, initial_Rp_RasGAP: null, initial_Rp_Shc: null, initial_Shc: null, initial_SHP2: null, initial_tRas: null, initial_tRas_PI3K: null, iPX_init: null, IR_init: null, IRi_init: null, IRL_init: null, IRp_init: null, IRp_IRS_init: null, IRp_IRSp_init: null, IRp_PI3K_init: null, IRp_RasGAP_init: null, IRS_init: null, IRSp_GS_init: null, IRSp_init: null, IRSp_PI3K_init: null, IRSp_SHP2_init: null, iSrc_init: null, k_1: null, k_10: null, k_11: null, k_12: null, k_13: null, k_2: null, k_24: null, k_26: null, k_27: null, k_28: null, k_30: null, k_4: null, k_42: null, k_45: null, k_46: null, k_47: null, k_49: null, k_5: null, k_52: null, k_53: null, k_54: null, k_55: null, k_59: null, k_64: null, k_7: null, k_74: null, k_77: null, k_78: null, k_79: null, k_80: null, k_81: null, k_9: null, k1: null, k10: null, k11: null, k111: null, k118: null, k12: null, k13: null, k17: null, k2: null, k24: null, k25: null, k26: null, k27: null, k28: null, k29: null, k3: null, k30: null, k4: null, k42: null, k45: null, k46: null, k47: null, k48: null, k49: null, k5: null, k52: null, k53: null, k54: null, k55: null, k56: null, k59: null, k6: null, k60: null, k61: null, k64: null, k7: null, k74: null, k83: null, k85: null, k9: null, kcat40: null, kcat43: null, kcat50: null, kcat57: null, kcat62: null, kcat63: null, kcat65: null, kcat66: null, kcat67: null, kcat68: null, kcat70: null, kcat71: null, kcat75: null, kcat77: null, kcat78: null, kcat79: null, kcat80: null, kcat81: null, Kd1: null, Kd10: null, Kd12: null, Kd13: null, Kd2: null, Kd24: null, Kd26: null, Kd27: null, Kd28: null, Kd30: null, Kd4: null, Kd42: null, Kd45: null, Kd46: null, Kd47: null, Kd49: null, Kd5: null, Kd52: null, Kd53: null, Kd54: null, Kd55: null, Kd59: null, Kd7: null, Kd74: null, Kd9: null, Km31: null, Km40: null, Km41: null, Km43: null, Km50: null, Km51: null, Km57: null, Km58: null, Km62: null, Km63: null, Km65: null, Km66: null, Km67: null, Km68: null, Km69: null, Km70: null, Km71: null, Km72: null, Km73: null, Km75: null, Km76: null, Km77: null, Km78: null, Km79: null, Km8: null, Km80: null, Km81: null, Km82: null, Km84: null, Mek_init: null, mGAB_init: null, mGABp_GS_init: null, mGABp_init: null, mGABp_PI3K_init: null, mGABp_pSHP2_GS_init: null, mGABp_pSHP2_init: null, mGABp_RasGAP_init: null, mGABp_SHP2_init: null, mIRS_init: null, mIRSp_GS_init: null, mIRSp_init: null, mIRSp_PI3K_init: null, mIRSp_SHP2_init: null, mPDK1_init: null, mTOR_init: null, Null_init: null, pAkt_init: null, PDK1_init: null, pErk_init: null, phosphorylated_Akt_init: null, PI3K_init: null, PIP3_init: null, PKA_init: null, ppAkt_init: null, ppErk_init: null, ppMek_init: null, pShc_GS_init: null, pShc_init: null, R_init: null, Raf_init: null, RasGAP_init: null, Rd_init: null, RE_init: null, Ri_init: null, Rp_GS_init: null, Rp_init: null, Rp_PI3K_init: null, Rp_pShc_GS_init: null, Rp_pShc_init: null, Rp_RasGAP_init: null, Rp_Shc_init: null, Shc_init: null, SHP2_init: null, tRas_init: null, tRas_PI3K_init: null, V_82: null, V_84: null, V31: null, V41: null, V51: null, V58: null, V69: null, V72: null, V73: null, V76: null, V8: null};
     this.metadata.variableOrder = {EGF: null, I: null, RE: null, Rd: null, Rp: null, GS: null, Rp_GS: null, Shc: null, Rp_Shc: null, Rp_pShc: null, pShc: null, Rp_pShc_GS: null, PI3K: null, Rp_PI3K: null, RasGAP: null, Rp_RasGAP: null, IRL: null, IRp: null, IRp_PI3K: null, IRp_RasGAP: null, IRS: null, IRp_IRS: null, IRp_IRSp: null, IRSp: null, iSrc: null, mIRS: null, mIRSp: null, mIRSp_GS: null, mIRSp_PI3K: null, SHP2: null, mIRSp_SHP2: null, GAB: null, mGAB: null, mGABp: null, mGABp_GS: null, mGABp_PI3K: null, mGABp_SHP2: null, mGABp_pSHP2: null, PIP3: null, dRas: null, Raf: null, aRaf: null, Mek: null, Erk: null, pErk: null, PDK1: null, Akt: null, pAkt: null, mTOR: null, Null: null, aaRaf: null, PKA: null, pShc_GS: null, ppMek: null, mGABp_pSHP2_GS: null, R: null, ppErk: null, IR: null, mPDK1: null, tRas: null, tRas_PI3K: null, ppAkt: null, mGABp_RasGAP: null, amTOR: null, iGS: null, imGAB: null, imIRS: null, aSrc: null, Ri: null, IRi: null, iPX: null, aPX: null, aPX_GS: null, IRSp_PI3K: null, IRSp_GS: null, IRSp_SHP2: null, GABp: null, GABp_PI3K: null, GABp_GS: null, GABp_RasGAP: null, GABp_SHP2: null, GABp_pSHP2: null, GABp_pSHP2_GS: null, imGABp: null, bRasGAP: null, phosphorylated_Akt: null};
     this.metadata.outputOrder = null;
   }

@@ -29,8 +29,8 @@ export class model {
     this.base.user.setUserScalar(user, "m", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu", internal, 47, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 0.029999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_Tumor_Cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_CD4_T_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_Tumor_Cells_init", internal, 0.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_CD4_T_Cells_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "z_Cytokine_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_x_Tumor_Cells = internal.x_Tumor_Cells_init;
     internal.initial_y_CD4_T_Cells = internal.y_CD4_T_Cells_init;

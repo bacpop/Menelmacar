@@ -18,7 +18,7 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["C_init", "epislon", "jxj", "Kc", "kd", "Kd", "kj", "M_init", "V2", "V4", "vd", "vi", "VM1", "VM3", "X_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "C_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C_init", internal, 0.29999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "epislon", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "jxj", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kc", internal, 0.5, -Infinity, Infinity, false);

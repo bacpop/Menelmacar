@@ -21,9 +21,9 @@ export class model {
     this.base.user.setUserScalar(user, "beta1", internal, 2.9900000000000002e-06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta2", internal, 1.1891, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma", internal, 0.93140000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Normal_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Normal_cells_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 0.43120000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tumor_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tumor_cells_init", internal, 1, -Infinity, Infinity, false);
     internal.initial_Normal_cells = internal.Normal_cells_init;
     internal.initial_Tumor_cells = internal.Tumor_cells_init;
     this.updateMetadata();

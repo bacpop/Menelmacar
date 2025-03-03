@@ -48,7 +48,7 @@ export class model {
     this.base.user.setUserScalar(user, "S_L", internal, 8.8900000000000006, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "S_R", internal, 30.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tau", internal, 0.02, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "TV_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TV_init", internal, 15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "TVd_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "TVmax", internal, 2500, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "U_init", internal, 0, -Infinity, Infinity, false);

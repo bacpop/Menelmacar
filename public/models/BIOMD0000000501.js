@@ -49,7 +49,7 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["DNA0000_init", "DNA0001_init", "DNA001_1_init", "DNA0010_init", "DNA0011_init", "DNA01_1_1_init", "DNA01_10_init", "DNA01_11_init", "DNA0100_init", "DNA0101_init", "DNA011_1_init", "DNA0110_init", "DNA0111_init", "DNA1_1_1_1_init", "DNA1_1_10_init", "DNA1_1_11_init", "DNA1_100_init", "DNA1_101_init", "DNA1_11_1_init", "DNA1_110_init", "DNA1_111_init", "DNA1000_init", "DNA1001_init", "DNA101_1_init", "DNA1010_init", "DNA1011_init", "DNA11_1_1_init", "DNA11_10_init", "DNA11_11_init", "DNA1100_init", "DNA1101_init", "DNA111_1_init", "DNA1110_init", "DNA1111_init", "Koff_G1", "Koff_NG1", "Koff_P1", "Kon_G1", "Kon_NG1", "Kon_P1", "S1_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "DNA0000_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "DNA0000_init", internal, 1e-10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DNA0001_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DNA001_1_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DNA0010_init", internal, 0, -Infinity, Infinity, false);
@@ -89,7 +89,7 @@ export class model {
     this.base.user.setUserScalar(user, "Kon_G1", internal, 20000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kon_NG1", internal, 20000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kon_P1", internal, 60000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "S1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "S1_init", internal, 1.09648e-11, -Infinity, Infinity, false);
     internal.initial_DNA0000 = internal.DNA0000_init;
     internal.initial_DNA0001 = internal.DNA0001_init;
     internal.initial_DNA001_1 = internal.DNA001_1_init;

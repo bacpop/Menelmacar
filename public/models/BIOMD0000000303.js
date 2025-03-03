@@ -4,8 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.k1_4 = 0.00034226599999999998;
-    internal.k2 = 0;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -56,26 +54,26 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["C1_init", "C2_init", "C2a_init", "C2b_init", "C3_init", "C3a_init", "C3b_init", "C4_init", "C4a_init", "C4b_C2a_C4BP_init", "C4b_C2a_init", "C4b_init", "C4BP_C4b_init", "C4BP_GlcNac_LF_CRP_init", "C4BP_init", "C4BP_PC_CRP_init", "C4BP_PC_CRP_LF_init", "CRP_init", "dC3b_init", "dC4b_C2a_C4BP_init", "dC4b_C2a_init", "GlcNac_HF_init", "GlcNac_HF_MASP_init", "GlcNac_init", "GlcNac_LF_C1_MASP_init", "GlcNac_LF_CRP_C1_init", "GlcNac_LF_CRP_init", "GlcNac_LF_CRP_MASP_init", "GlcNac_LF_init", "GlcNac_LF_MASP_init", "HF_init", "iC4b_C2a_init", "ka01_1", "ka01_2", "ka02_1", "ka02_2", "ka03_1", "ka03_2", "ka04_1", "ka04_2", "kb01_1", "kb01_2", "kb02_1", "kb02_2", "kb03_1", "kb03_2", "kb04_1", "kb04_2", "kc01_1", "kc01_2", "kc02", "kc03_1", "kc03_2", "kc04_1", "kc04_2", "kd01_1", "kd01_2", "kd02_1", "kd02_2", "kd03_1", "kd03_2", "kd04_1", "kd04_2", "kd05_1", "kd05_2", "kd06_1", "kd06_2", "kd07_1", "kd07_2", "kd08_1", "kd08_2", "kd09_1", "kd09_2", "kd10_1", "kd10_2", "kd11_1", "kd11_2", "ke01_1", "ke01_2", "ke02_1", "ke02_2", "ke03_1", "ke03_2", "ke04_1", "ke04_2", "ke05_1", "ke05_2", "ke06_1", "ke06_2", "ke07_1", "ke07_2", "kf01_1", "kf01_2", "kf02_1", "kf02_2", "kf03", "kf04_1", "kf04_2", "kf05", "kf06_1", "kf06_2", "kf07_1", "kf07_2", "kg01_1", "kg01_2", "kg02_1", "kg02_2", "kg03_1", "kg03_2", "kg04_1", "kg04_2", "kt01", "kt02", "kt03", "kt04_1", "kt04_2", "LF_init", "MASP_init", "PC_CRP_C1_init", "PC_CRP_init", "PC_CRP_LF_C1_init", "PC_CRP_LF_C1_MASP_init", "PC_CRP_LF_init", "PC_CRP_LF_MASP_init", "PC_init", "X_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["C1_init", "C2_init", "C2a_init", "C2b_init", "C3_init", "C3a_init", "C3b_init", "C4_init", "C4a_init", "C4b_C2a_C4BP_init", "C4b_C2a_init", "C4b_init", "C4BP_C4b_init", "C4BP_GlcNac_LF_CRP_init", "C4BP_init", "C4BP_PC_CRP_init", "C4BP_PC_CRP_LF_init", "CRP_init", "dC3b_init", "dC4b_C2a_C4BP_init", "dC4b_C2a_init", "GlcNac_HF_init", "GlcNac_HF_MASP_init", "GlcNac_init", "GlcNac_LF_C1_MASP_init", "GlcNac_LF_CRP_C1_init", "GlcNac_LF_CRP_init", "GlcNac_LF_CRP_MASP_init", "GlcNac_LF_init", "GlcNac_LF_MASP_init", "HF_init", "iC4b_C2a_init", "k1_4", "k2", "ka01_1", "ka01_2", "ka02_1", "ka02_2", "ka03_1", "ka03_2", "ka04_1", "ka04_2", "kb01_1", "kb01_2", "kb02_1", "kb02_2", "kb03_1", "kb03_2", "kb04_1", "kb04_2", "kc01_1", "kc01_2", "kc02", "kc03_1", "kc03_2", "kc04_1", "kc04_2", "kd01_1", "kd01_2", "kd02_1", "kd02_2", "kd03_1", "kd03_2", "kd04_1", "kd04_2", "kd05_1", "kd05_2", "kd06_1", "kd06_2", "kd07_1", "kd07_2", "kd08_1", "kd08_2", "kd09_1", "kd09_2", "kd10_1", "kd10_2", "kd11_1", "kd11_2", "ke01_1", "ke01_2", "ke02_1", "ke02_2", "ke03_1", "ke03_2", "ke04_1", "ke04_2", "ke05_1", "ke05_2", "ke06_1", "ke06_2", "ke07_1", "ke07_2", "kf01_1", "kf01_2", "kf02_1", "kf02_2", "kf03", "kf04_1", "kf04_2", "kf05", "kf06_1", "kf06_2", "kf07_1", "kf07_2", "kg01_1", "kg01_2", "kg02_1", "kg02_2", "kg03_1", "kg03_2", "kg04_1", "kg04_2", "kt01", "kt02", "kt03", "kt04_1", "kt04_2", "LF_init", "MASP_init", "PC_CRP_C1_init", "PC_CRP_init", "PC_CRP_LF_C1_init", "PC_CRP_LF_C1_MASP_init", "PC_CRP_LF_init", "PC_CRP_LF_MASP_init", "PC_init", "X_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "C1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C1_init", internal, 2470, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C2_init", internal, 310, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C2a_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C2b_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C3_init", internal, 4650, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C3a_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C3b_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C4_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C4_init", internal, 770, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C4a_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C4b_C2a_C4BP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C4b_C2a_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C4b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C4BP_C4b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C4BP_GlcNac_LF_CRP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C4BP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C4BP_init", internal, 260, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C4BP_PC_CRP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C4BP_PC_CRP_LF_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CRP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CRP_init", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dC3b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dC4b_C2a_C4BP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dC4b_C2a_init", internal, 0, -Infinity, Infinity, false);
@@ -90,6 +88,8 @@ export class model {
     this.base.user.setUserScalar(user, "GlcNac_LF_MASP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "HF_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "iC4b_C2a_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k1_4", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k2", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ka01_1", internal, 0.0275999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ka01_2", internal, 0.0109, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ka02_1", internal, 0.00073999999999999999, -Infinity, Infinity, false);
@@ -174,16 +174,16 @@ export class model {
     this.base.user.setUserScalar(user, "kt03", internal, 0.047091099999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kt04_1", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kt04_2", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "LF_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "MASP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "LF_init", internal, 20, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MASP_init", internal, 6.7999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PC_CRP_C1_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PC_CRP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PC_CRP_LF_C1_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PC_CRP_LF_C1_MASP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PC_CRP_LF_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PC_CRP_LF_MASP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PC_init", internal, 0.032779599999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_init", internal, 0.00050000000000000001, -Infinity, Infinity, false);
     internal.initial_C1 = internal.C1_init;
     internal.initial_C2 = internal.C2_init;
     internal.initial_C2a = internal.C2a_init;
@@ -281,9 +281,9 @@ export class model {
     dstatedt[3] = 0 - 1 * internal.compartment * (internal.ka03_1 * PC_CRP_C1 * C4 / (internal.ka03_2 + C4)) - 1 * internal.compartment * (internal.kd03_1 * PC_CRP_LF_MASP * C4 / (internal.kd03_2 + C4)) - 1 * internal.compartment * (internal.kb03_1 * GlcNac_LF_MASP * C4 / (internal.kb03_2 + C4)) - 1 * internal.compartment * (internal.ke03_1 * GlcNac_LF_CRP_C1 * C4 / (internal.ke03_2 + C4)) - 1 * internal.compartment * (internal.kd06_1 * PC_CRP_LF_C1 * C4 / (internal.kd06_2 + C4)) - 1 * internal.compartment * (internal.ke06_1 * GlcNac_LF_CRP_MASP * C4 / (internal.ke06_2 + C4)) - 1 * internal.compartment * (internal.kd10_1 * PC_CRP_LF_C1_MASP * C4 / (internal.kd10_2 + C4)) - 1 * internal.compartment * (internal.kg03_1 * GlcNac_HF_MASP * C4 / (internal.kg03_2 + C4));
     dstatedt[4] = 0 + 1 * internal.compartment * (internal.ka03_1 * PC_CRP_C1 * C4 / (internal.ka03_2 + C4)) + 1 * internal.compartment * (internal.kd03_1 * PC_CRP_LF_MASP * C4 / (internal.kd03_2 + C4)) + 1 * internal.compartment * (internal.kb03_1 * GlcNac_LF_MASP * C4 / (internal.kb03_2 + C4)) + 1 * internal.compartment * (internal.ke03_1 * GlcNac_LF_CRP_C1 * C4 / (internal.ke03_2 + C4)) + 1 * internal.compartment * (internal.kd06_1 * PC_CRP_LF_C1 * C4 / (internal.kd06_2 + C4)) + 1 * internal.compartment * (internal.ke06_1 * GlcNac_LF_CRP_MASP * C4 / (internal.ke06_2 + C4)) + 1 * internal.compartment * (internal.kd10_1 * PC_CRP_LF_C1_MASP * C4 / (internal.kd10_2 + C4)) + 1 * internal.compartment * (internal.kg03_1 * GlcNac_HF_MASP * C4 / (internal.kg03_2 + C4));
     dstatedt[5] = 0 + 1 * internal.compartment * (internal.ka03_1 * PC_CRP_C1 * C4 / (internal.ka03_2 + C4)) - 1 * internal.compartment * (internal.kc01_1 * C4b * C2a - internal.kc01_2 * C4b_C2a) + 1 * internal.compartment * (internal.kd03_1 * PC_CRP_LF_MASP * C4 / (internal.kd03_2 + C4)) + 1 * internal.compartment * (internal.kb03_1 * GlcNac_LF_MASP * C4 / (internal.kb03_2 + C4)) + 1 * internal.compartment * (internal.ke03_1 * GlcNac_LF_CRP_C1 * C4 / (internal.ke03_2 + C4)) - 1 * internal.compartment * (internal.kf04_1 * C4BP * C4b - internal.kf04_2 * C4BP_C4b) + 1 * internal.compartment * internal.kf05 * C4b_C2a * C4BP + 1 * internal.compartment * (internal.kd06_1 * PC_CRP_LF_C1 * C4 / (internal.kd06_2 + C4)) + 1 * internal.compartment * (internal.ke06_1 * GlcNac_LF_CRP_MASP * C4 / (internal.ke06_2 + C4)) + 1 * internal.compartment * (internal.kd10_1 * PC_CRP_LF_C1_MASP * C4 / (internal.kd10_2 + C4)) + 1 * internal.compartment * (internal.kg03_1 * GlcNac_HF_MASP * C4 / (internal.kg03_2 + C4));
-    dstatedt[11] = 0 + 1 * internal.compartment * (internal.kc01_1 * C4b * C2a - internal.kc01_2 * C4b_C2a) + 1 * internal.compartment * internal.kc02 * C4b_C2a * C3 - 1 * internal.compartment * internal.kc02 * C4b_C2a * C3 - 1 * internal.compartment * (internal.kc04_1 * C4b_C2a - internal.kc04_2 * dC4b_C2a) - 1 * internal.compartment * internal.kf03 * C4b_C2a * C4BP - 1 * internal.compartment * internal.kf05 * C4b_C2a * C4BP - 1 * internal.compartment * (internal.kf06_1 * C4b_C2a * C4BP - internal.kf06_2 * C4b_C2a_C4BP) - 1 * internal.compartment * internal.k1_4 * C4b_C2a;
+    dstatedt[11] = 0 + 1 * internal.compartment * (internal.kc01_1 * C4b * C2a - internal.kc01_2 * C4b_C2a) - 1 * internal.compartment * internal.kc02 * C4b_C2a * C3 + 1 * internal.compartment * internal.kc02 * C4b_C2a * C3 - 1 * internal.compartment * (internal.kc04_1 * C4b_C2a - internal.kc04_2 * dC4b_C2a) - 1 * internal.compartment * internal.kf03 * C4b_C2a * C4BP - 1 * internal.compartment * internal.kf05 * C4b_C2a * C4BP - 1 * internal.compartment * (internal.kf06_1 * C4b_C2a * C4BP - internal.kf06_2 * C4b_C2a_C4BP) - 1 * internal.compartment * internal.k1_4 * C4b_C2a;
     dstatedt[31] = 0 + 1 * internal.compartment * (internal.kf06_1 * C4b_C2a * C4BP - internal.kf06_2 * C4b_C2a_C4BP);
-    dstatedt[26] = 0 - 1 * internal.compartment * (internal.kf01_1 * C4BP * PC_CRP - internal.kf01_2 * C4BP_PC_CRP) - 1 * internal.compartment * (internal.kf02_1 * C4BP * GlcNac_LF_CRP - internal.kf02_2 * C4BP_GlcNac_LF_CRP) + 1 * internal.compartment * internal.kf03 * C4b_C2a * C4BP - 1 * internal.compartment * internal.kf03 * C4b_C2a * C4BP - 1 * internal.compartment * (internal.kf04_1 * C4BP * C4b - internal.kf04_2 * C4BP_C4b) + 1 * internal.compartment * internal.kf05 * C4b_C2a * C4BP - 1 * internal.compartment * internal.kf05 * C4b_C2a * C4BP - 1 * internal.compartment * (internal.kf06_1 * C4b_C2a * C4BP - internal.kf06_2 * C4b_C2a_C4BP) - 1 * internal.compartment * (internal.kf07_1 * dC4b_C2a * C4BP - internal.kf07_2 * dC4b_C2a_C4BP) - 1 * internal.compartment * internal.k1_4 * C4BP - 1 * internal.compartment * (internal.k1_4 * C4BP * PC_CRP_LF - internal.k2 * C4BP_PC_CRP_LF);
+    dstatedt[26] = 0 - 1 * internal.compartment * (internal.kf01_1 * C4BP * PC_CRP - internal.kf01_2 * C4BP_PC_CRP) - 1 * internal.compartment * (internal.kf02_1 * C4BP * GlcNac_LF_CRP - internal.kf02_2 * C4BP_GlcNac_LF_CRP) - 1 * internal.compartment * internal.kf03 * C4b_C2a * C4BP + 1 * internal.compartment * internal.kf03 * C4b_C2a * C4BP - 1 * internal.compartment * (internal.kf04_1 * C4BP * C4b - internal.kf04_2 * C4BP_C4b) - 1 * internal.compartment * internal.kf05 * C4b_C2a * C4BP + 1 * internal.compartment * internal.kf05 * C4b_C2a * C4BP - 1 * internal.compartment * (internal.kf06_1 * C4b_C2a * C4BP - internal.kf06_2 * C4b_C2a_C4BP) - 1 * internal.compartment * (internal.kf07_1 * dC4b_C2a * C4BP - internal.kf07_2 * dC4b_C2a_C4BP) - 1 * internal.compartment * internal.k1_4 * C4BP - 1 * internal.compartment * (internal.k1_4 * C4BP * PC_CRP_LF - internal.k2 * C4BP_PC_CRP_LF);
     dstatedt[30] = 0 + 1 * internal.compartment * (internal.kf04_1 * C4BP * C4b - internal.kf04_2 * C4BP_C4b);
     dstatedt[28] = 0 + 1 * internal.compartment * (internal.kf02_1 * C4BP * GlcNac_LF_CRP - internal.kf02_2 * C4BP_GlcNac_LF_CRP);
     dstatedt[27] = 0 + 1 * internal.compartment * (internal.kf01_1 * C4BP * PC_CRP - internal.kf01_2 * C4BP_PC_CRP);

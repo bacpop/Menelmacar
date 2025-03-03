@@ -5,17 +5,6 @@ export class model {
     var internal = this.internal;
     internal.Cytosol = 1;
     internal.Endoplasmic_Reticulum = 1;
-    internal.K1 = 5;
-    internal.K2 = 0.80000000000000004;
-    internal.K3 = 5;
-    internal.Kch = 4100;
-    internal.Kin = 300;
-    internal.Kleak = 0.050000000000000003;
-    internal.Km = 0.0062500000000000003;
-    internal.Kminus = 0.01;
-    internal.Kout = 125;
-    internal.Kplus = 0.10000000000000001;
-    internal.Kpump = 20;
     internal.Mitochondria = 1;
     this.setUser(user, unusedUserAction);
   }
@@ -30,13 +19,24 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Ca_cyt_init", "CaER_init", "CaM_init", "CaPr_init", "Pr_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Ca_cyt_init", "CaER_init", "CaM_init", "CaPr_init", "K1", "K2", "K3", "Kch", "Kin", "Kleak", "Km", "Kminus", "Kout", "Kplus", "Kpump", "Pr_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "Ca_cyt_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CaER_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CaM_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CaPr_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Pr_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ca_cyt_init", internal, 0.34999999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CaER_init", internal, 0.76000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CaM_init", internal, 0.28999999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CaPr_init", internal, 85.450000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K1", internal, 5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K2", internal, 0.80000000000000004, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K3", internal, 5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kch", internal, 4100, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kin", internal, 300, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kleak", internal, 0.050000000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km", internal, 0.0062500000000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kminus", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kout", internal, 125, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kplus", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Kpump", internal, 20, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Pr_init", internal, 34.549999999999997, -Infinity, Infinity, false);
     internal.initial_Ca_cyt = internal.Ca_cyt_init;
     internal.initial_CaER = internal.CaER_init;
     internal.initial_CaM = internal.CaM_init;

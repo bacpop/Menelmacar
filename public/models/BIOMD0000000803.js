@@ -23,13 +23,13 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["gamma_c_init", "IL15_init", "IL15Rb_init", "IL15Rbeta_init", "IL15Ru_init", "IL7_init", "IL7Ra_init", "IL7Rb_init", "IL7Ru_init", "k_f_1", "k_f_2", "k_f_3", "k_f_4", "k_r_1", "k_r_2", "k_r_3", "k_r_4", "rho"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "gamma_c_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IL15_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "gamma_c_init", internal, 100000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL15_init", internal, 602.21400000000006, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL15Rb_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IL15Rbeta_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL15Rbeta_init", internal, 1000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL15Ru_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IL7_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IL7Ra_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL7_init", internal, 6022.1400000000003, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL7Ra_init", internal, 1000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL7Rb_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL7Ru_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_f_1", internal, 0.00016605400000000001, -Infinity, Infinity, false);

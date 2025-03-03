@@ -4,7 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.v = 0.10000000000000001;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -19,7 +18,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["b_1", "b_2", "beta_1", "beta_2", "beta_3", "beta_4", "beta_5", "D_0", "delta_1", "k_2", "k_3", "k_4", "k_5", "kxk", "m_1", "m_3", "m_4", "mu_2", "mu_3", "mu_4", "mu_5", "mu_6", "p", "r_1", "r_2", "r_3", "r_4", "R_siRNA_init", "v_TSC_init", "w_TPC_init", "x_PCC_init", "y_PSC_init", "z_Effector_Cells_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["b_1", "b_2", "beta_1", "beta_2", "beta_3", "beta_4", "beta_5", "D_0", "delta_1", "k_2", "k_3", "k_4", "k_5", "kxk", "m_1", "m_3", "m_4", "mu_2", "mu_3", "mu_4", "mu_5", "mu_6", "p", "r_1", "r_2", "r_3", "r_4", "R_siRNA_init", "v", "v_TSC_init", "w_TPC_init", "x_PCC_init", "y_PSC_init", "z_Effector_Cells_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "b_1", internal, 1.0199999999999999e-11, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b_2", internal, 1.7856999999999999e-09, -Infinity, Infinity, false);
@@ -48,12 +47,13 @@ export class model {
     this.base.user.setUserScalar(user, "r_2", internal, 0.0019499999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_3", internal, 3500, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_4", internal, 12500, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "R_siRNA_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "v_TSC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "w_TPC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_PCC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_PSC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_Effector_Cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R_siRNA_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v_TSC_init", internal, 9.4000000000000004, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "w_TPC_init", internal, 50000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_PCC_init", internal, 1000000000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_PSC_init", internal, 5600000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_Effector_Cells_init", internal, 190000000, -Infinity, Infinity, false);
     internal.initial_R_siRNA = internal.R_siRNA_init;
     internal.initial_v_TSC = internal.v_TSC_init;
     internal.initial_w_TPC = internal.w_TPC_init;

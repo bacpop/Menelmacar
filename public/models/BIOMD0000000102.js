@@ -27,15 +27,15 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["A_init", "AC9_init", "AC9_star_init", "AC9_starX_init", "AC9X_init", "C3_init", "C3_star_init", "C3_starX_init", "C9_init", "C9_star_init", "C9_starX_init", "C9X_init", "k1", "k10", "k10b", "k11", "k11b", "k12", "k12b", "k13", "k13b", "k14", "k14b", "k15", "k15b", "k16", "k16prod", "k17", "k17prod", "k18", "k18prod", "k19", "k2", "k20", "k21", "k22", "k22prod", "k23", "k24", "k25", "k26", "k27", "k28", "k3", "k4", "k5", "k6", "k7", "k8", "k8b", "k9", "k9b", "kb1", "X_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "A_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "A_init", internal, 20, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AC9_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AC9_star_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AC9_starX_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AC9X_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C3_init", internal, 200, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C3_star_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C3_starX_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "C9_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C9_init", internal, 20, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C9_star_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C9_starX_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C9X_init", internal, 0, -Infinity, Infinity, false);
@@ -80,7 +80,7 @@ export class model {
     this.base.user.setUserScalar(user, "k9", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k9b", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kb1", internal, 0.10000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_init", internal, 40, -Infinity, Infinity, false);
     internal.initial_A = internal.A_init;
     internal.initial_AC9 = internal.AC9_init;
     internal.initial_AC9_star = internal.AC9_star_init;
@@ -115,15 +115,15 @@ export class model {
     const AC9_star = state[11];
     const AC9_starX = state[12];
     dstatedt[0] = 0 - 1 * internal.cytosol * (internal.k1 * A * C9 - internal.kb1 * AC9) - 1 * internal.cytosol * (internal.k13 * C9X * A - internal.k13b * AC9X) - 1 * internal.cytosol * (internal.k8 * C9_star * A - internal.k8b * AC9_star) - 1 * internal.cytosol * (internal.k14 * C9_starX * A - internal.k14b * AC9_starX) + 1 * internal.cytosol * (internal.k16prod - internal.k16 * A);
-    dstatedt[5] = 0 + 1 * internal.cytosol * (internal.k1 * A * C9 - internal.kb1 * AC9) + 1 * internal.cytosol * internal.k3 * C3 * AC9 - 1 * internal.cytosol * internal.k3 * C3 * AC9 - 1 * internal.cytosol * (internal.k10 * AC9 * X - internal.k10b * AC9X) - 1 * internal.cytosol * internal.k5 * AC9 * C3_star - 1 * internal.cytosol * internal.k21 * AC9;
-    dstatedt[11] = 0 + 1 * internal.cytosol * internal.k5 * AC9 * C3_star + 1 * internal.cytosol * (internal.k8 * C9_star * A - internal.k8b * AC9_star) - 1 * internal.cytosol * (internal.k12 * AC9_star * X - internal.k12b * AC9_starX) + 1 * internal.cytosol * internal.k7 * C3 * AC9_star - 1 * internal.cytosol * internal.k7 * C3 * AC9_star - 1 * internal.cytosol * internal.k27 * AC9_star;
+    dstatedt[5] = 0 + 1 * internal.cytosol * (internal.k1 * A * C9 - internal.kb1 * AC9) - 1 * internal.cytosol * internal.k3 * C3 * AC9 + 1 * internal.cytosol * internal.k3 * C3 * AC9 - 1 * internal.cytosol * (internal.k10 * AC9 * X - internal.k10b * AC9X) - 1 * internal.cytosol * internal.k5 * AC9 * C3_star - 1 * internal.cytosol * internal.k21 * AC9;
+    dstatedt[11] = 0 + 1 * internal.cytosol * internal.k5 * AC9 * C3_star + 1 * internal.cytosol * (internal.k8 * C9_star * A - internal.k8b * AC9_star) - 1 * internal.cytosol * (internal.k12 * AC9_star * X - internal.k12b * AC9_starX) - 1 * internal.cytosol * internal.k7 * C3 * AC9_star + 1 * internal.cytosol * internal.k7 * C3 * AC9_star - 1 * internal.cytosol * internal.k27 * AC9_star;
     dstatedt[12] = 0 + 1 * internal.cytosol * (internal.k12 * AC9_star * X - internal.k12b * AC9_starX) + 1 * internal.cytosol * (internal.k14 * C9_starX * A - internal.k14b * AC9_starX) - 1 * internal.cytosol * internal.k28 * AC9_starX;
     dstatedt[4] = 0 + 1 * internal.cytosol * (internal.k10 * AC9 * X - internal.k10b * AC9X) + 1 * internal.cytosol * (internal.k13 * C9X * A - internal.k13b * AC9X) - 1 * internal.cytosol * internal.k20 * AC9X;
     dstatedt[6] = 0 - 1 * internal.cytosol * internal.k2 * C3 * C9 - 1 * internal.cytosol * internal.k3 * C3 * AC9 - 1 * internal.cytosol * internal.k6 * C3 * C9_star - 1 * internal.cytosol * internal.k7 * C3 * AC9_star + 1 * internal.cytosol * (internal.k22prod - internal.k22 * C3);
-    dstatedt[7] = 0 + 1 * internal.cytosol * internal.k2 * C3 * C9 + 1 * internal.cytosol * internal.k3 * C3 * AC9 - 1 * internal.cytosol * (internal.k15 * C3_star * X - internal.k15b * C3_starX) + 1 * internal.cytosol * internal.k4 * C9 * C3_star - 1 * internal.cytosol * internal.k4 * C9 * C3_star + 1 * internal.cytosol * internal.k5 * AC9 * C3_star - 1 * internal.cytosol * internal.k5 * AC9 * C3_star + 1 * internal.cytosol * internal.k6 * C3 * C9_star + 1 * internal.cytosol * internal.k7 * C3 * AC9_star - 1 * internal.cytosol * internal.k23 * C3_star;
+    dstatedt[7] = 0 + 1 * internal.cytosol * internal.k2 * C3 * C9 + 1 * internal.cytosol * internal.k3 * C3 * AC9 - 1 * internal.cytosol * (internal.k15 * C3_star * X - internal.k15b * C3_starX) - 1 * internal.cytosol * internal.k4 * C9 * C3_star + 1 * internal.cytosol * internal.k4 * C9 * C3_star - 1 * internal.cytosol * internal.k5 * AC9 * C3_star + 1 * internal.cytosol * internal.k5 * AC9 * C3_star + 1 * internal.cytosol * internal.k6 * C3 * C9_star + 1 * internal.cytosol * internal.k7 * C3 * AC9_star - 1 * internal.cytosol * internal.k23 * C3_star;
     dstatedt[8] = 0 + 1 * internal.cytosol * (internal.k15 * C3_star * X - internal.k15b * C3_starX) - 1 * internal.cytosol * internal.k24 * C3_starX;
-    dstatedt[1] = 0 - 1 * internal.cytosol * (internal.k1 * A * C9 - internal.kb1 * AC9) + 1 * internal.cytosol * internal.k2 * C3 * C9 - 1 * internal.cytosol * internal.k2 * C3 * C9 - 1 * internal.cytosol * (internal.k9 * C9 * X - internal.k9b * C9X) - 1 * internal.cytosol * internal.k4 * C9 * C3_star + 1 * internal.cytosol * (internal.k17prod - internal.k17 * C9);
-    dstatedt[10] = 0 + 1 * internal.cytosol * internal.k4 * C9 * C3_star - 1 * internal.cytosol * (internal.k8 * C9_star * A - internal.k8b * AC9_star) - 1 * internal.cytosol * (internal.k11 * C9_star * X - internal.k11b * C9_starX) + 1 * internal.cytosol * internal.k6 * C3 * C9_star - 1 * internal.cytosol * internal.k6 * C3 * C9_star - 1 * internal.cytosol * internal.k26 * C9_star;
+    dstatedt[1] = 0 - 1 * internal.cytosol * (internal.k1 * A * C9 - internal.kb1 * AC9) - 1 * internal.cytosol * internal.k2 * C3 * C9 + 1 * internal.cytosol * internal.k2 * C3 * C9 - 1 * internal.cytosol * (internal.k9 * C9 * X - internal.k9b * C9X) - 1 * internal.cytosol * internal.k4 * C9 * C3_star + 1 * internal.cytosol * (internal.k17prod - internal.k17 * C9);
+    dstatedt[10] = 0 + 1 * internal.cytosol * internal.k4 * C9 * C3_star - 1 * internal.cytosol * (internal.k8 * C9_star * A - internal.k8b * AC9_star) - 1 * internal.cytosol * (internal.k11 * C9_star * X - internal.k11b * C9_starX) - 1 * internal.cytosol * internal.k6 * C3 * C9_star + 1 * internal.cytosol * internal.k6 * C3 * C9_star - 1 * internal.cytosol * internal.k26 * C9_star;
     dstatedt[9] = 0 + 1 * internal.cytosol * (internal.k11 * C9_star * X - internal.k11b * C9_starX) - 1 * internal.cytosol * (internal.k14 * C9_starX * A - internal.k14b * AC9_starX) - 1 * internal.cytosol * internal.k25 * C9_starX;
     dstatedt[2] = 0 + 1 * internal.cytosol * (internal.k9 * C9 * X - internal.k9b * C9X) - 1 * internal.cytosol * (internal.k13 * C9X * A - internal.k13b * AC9X) - 1 * internal.cytosol * internal.k19 * C9X;
     dstatedt[3] = 0 - 1 * internal.cytosol * (internal.k9 * C9 * X - internal.k9b * C9X) - 1 * internal.cytosol * (internal.k10 * AC9 * X - internal.k10b * AC9X) - 1 * internal.cytosol * (internal.k15 * C3_star * X - internal.k15b * C3_starX) - 1 * internal.cytosol * (internal.k11 * C9_star * X - internal.k11b * C9_starX) - 1 * internal.cytosol * (internal.k12 * AC9_star * X - internal.k12b * AC9_starX) + 1 * internal.cytosol * (internal.k18prod - internal.k18 * X);

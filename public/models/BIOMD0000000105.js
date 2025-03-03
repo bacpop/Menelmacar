@@ -3,12 +3,16 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
+    internal.ADP = 1000;
+    internal.AMP = 1000;
+    internal.ATP = 10000;
     internal.cytosol = 1;
+    internal.Source = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(39).fill(0);
+    var state = Array(35).fill(0);
     state[0] = internal.initial_NatP;
     state[1] = internal.initial_MisP;
     state[2] = internal.initial_Ub;
@@ -34,30 +38,23 @@ export class model {
     state[22] = internal.initial_MisP_Ub6_Proteasome;
     state[23] = internal.initial_MisP_Ub7_Proteasome;
     state[24] = internal.initial_MisP_Ub8_Proteasome;
-    state[25] = internal.initial_ATP;
-    state[26] = internal.initial_ADP;
-    state[27] = internal.initial_AMP;
-    state[28] = internal.initial_Source;
-    state[29] = internal.initial_degUb4;
-    state[30] = internal.initial_degUb5;
-    state[31] = internal.initial_degUb6;
-    state[32] = internal.initial_degUb7;
-    state[33] = internal.initial_degUb8;
-    state[34] = internal.initial_totMisP;
-    state[35] = internal.initial_refNatP;
-    state[36] = internal.initial_AggP;
-    state[37] = internal.initial_SeqAggP;
-    state[38] = internal.initial_AggP_Proteasome;
+    state[25] = internal.initial_degUb4;
+    state[26] = internal.initial_degUb5;
+    state[27] = internal.initial_degUb6;
+    state[28] = internal.initial_degUb7;
+    state[29] = internal.initial_degUb8;
+    state[30] = internal.initial_totMisP;
+    state[31] = internal.initial_refNatP;
+    state[32] = internal.initial_AggP;
+    state[33] = internal.initial_SeqAggP;
+    state[34] = internal.initial_AggP_Proteasome;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["ADP_init", "AggP_init", "AggP_Proteasome_init", "AMP_init", "ATP_init", "degUb4_init", "degUb5_init", "degUb6_init", "degUb7_init", "degUb8_init", "DUB_init", "E1_init", "E1_Ub_init", "E2_init", "E2_Ub_init", "E3_init", "E3_MisP_init", "k1", "k2", "k3", "k61", "k61r", "k62", "k63", "k64", "k65", "k66", "k67", "k68", "k69", "k71", "k72", "k73", "k74", "MisP_init", "MisP_Ub_init", "MisP_Ub2_init", "MisP_Ub3_init", "MisP_Ub4_init", "MisP_Ub4_Proteasome_init", "MisP_Ub5_init", "MisP_Ub5_Proteasome_init", "MisP_Ub6_init", "MisP_Ub6_Proteasome_init", "MisP_Ub7_init", "MisP_Ub7_Proteasome_init", "MisP_Ub8_init", "MisP_Ub8_Proteasome_init", "NatP_init", "Proteasome_init", "refNatP_init", "ROS_init", "SeqAggP_init", "Source_init", "totMisP_init", "Ub_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["AggP_init", "AggP_Proteasome_init", "degUb4_init", "degUb5_init", "degUb6_init", "degUb7_init", "degUb8_init", "DUB_init", "E1_init", "E1_Ub_init", "E2_init", "E2_Ub_init", "E3_init", "E3_MisP_init", "k1", "k2", "k3", "k61", "k61r", "k62", "k63", "k64", "k65", "k66", "k67", "k68", "k69", "k71", "k72", "k73", "k74", "MisP_init", "MisP_Ub_init", "MisP_Ub2_init", "MisP_Ub3_init", "MisP_Ub4_init", "MisP_Ub4_Proteasome_init", "MisP_Ub5_init", "MisP_Ub5_Proteasome_init", "MisP_Ub6_init", "MisP_Ub6_Proteasome_init", "MisP_Ub7_init", "MisP_Ub7_Proteasome_init", "MisP_Ub8_init", "MisP_Ub8_Proteasome_init", "NatP_init", "Proteasome_init", "refNatP_init", "ROS_init", "SeqAggP_init", "totMisP_init", "Ub_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "ADP_init", internal, 1000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AggP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "AggP_Proteasome_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "AMP_init", internal, 1000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ATP_init", internal, 10000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "degUb4_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "degUb5_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "degUb6_init", internal, 0, -Infinity, Infinity, false);
@@ -106,14 +103,10 @@ export class model {
     this.base.user.setUserScalar(user, "refNatP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ROS_init", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "SeqAggP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Source_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "totMisP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ub_init", internal, 500, -Infinity, Infinity, false);
-    internal.initial_ADP = internal.ADP_init;
     internal.initial_AggP = internal.AggP_init;
     internal.initial_AggP_Proteasome = internal.AggP_Proteasome_init;
-    internal.initial_AMP = internal.AMP_init;
-    internal.initial_ATP = internal.ATP_init;
     internal.initial_degUb4 = internal.degUb4_init;
     internal.initial_degUb5 = internal.degUb5_init;
     internal.initial_degUb6 = internal.degUb6_init;
@@ -145,7 +138,6 @@ export class model {
     internal.initial_refNatP = internal.refNatP_init;
     internal.initial_ROS = internal.ROS_init;
     internal.initial_SeqAggP = internal.SeqAggP_init;
-    internal.initial_Source = internal.Source_init;
     internal.initial_totMisP = internal.totMisP_init;
     internal.initial_Ub = internal.Ub_init;
     this.updateMetadata();
@@ -180,23 +172,17 @@ export class model {
     const MisP_Ub6_Proteasome = state[22];
     const MisP_Ub7_Proteasome = state[23];
     const MisP_Ub8_Proteasome = state[24];
-    const ATP = state[25];
-    const Source = state[28];
-    const AggP = state[36];
-    dstatedt[26] = 0;
-    dstatedt[27] = 0;
-    dstatedt[25] = 0;
-    dstatedt[28] = 0;
-    dstatedt[36] = 0 + 1 * internal.k71 * MisP * (MisP - 1) * 0.5 + 2 * internal.k71 * MisP * AggP - 1 * internal.k71 * MisP * AggP + 1 * internal.k72 * MisP_Ub * (MisP_Ub - 1) * 0.5 + 1 * internal.k72 * MisP_Ub2 * (MisP_Ub2 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub3 * (MisP_Ub3 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub4 * (MisP_Ub4 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub5 * (MisP_Ub5 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub6 * (MisP_Ub6 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub7 * (MisP_Ub7 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub8 * (MisP_Ub8 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub * MisP + 1 * internal.k72 * MisP_Ub2 * MisP + 1 * internal.k72 * MisP_Ub3 * MisP + 1 * internal.k72 * MisP_Ub4 * MisP + 1 * internal.k72 * MisP_Ub5 * MisP + 1 * internal.k72 * MisP_Ub6 * MisP + 1 * internal.k72 * MisP_Ub7 * MisP + 1 * internal.k72 * MisP_Ub8 * MisP + 2 * internal.k72 * MisP_Ub * AggP - 1 * internal.k72 * MisP_Ub * AggP + 2 * internal.k72 * MisP_Ub2 * AggP - 1 * internal.k72 * MisP_Ub2 * AggP + 2 * internal.k72 * MisP_Ub3 * AggP - 1 * internal.k72 * MisP_Ub3 * AggP + 2 * internal.k72 * MisP_Ub4 * AggP - 1 * internal.k72 * MisP_Ub4 * AggP + 2 * internal.k72 * MisP_Ub5 * AggP - 1 * internal.k72 * MisP_Ub5 * AggP + 2 * internal.k72 * MisP_Ub6 * AggP - 1 * internal.k72 * MisP_Ub6 * AggP + 2 * internal.k72 * MisP_Ub7 * AggP - 1 * internal.k72 * MisP_Ub7 * AggP + 2 * internal.k72 * MisP_Ub8 * AggP - 1 * internal.k72 * MisP_Ub8 * AggP + 1 * internal.k72 * MisP_Ub * MisP_Ub2 + 1 * internal.k72 * MisP_Ub * MisP_Ub3 + 1 * internal.k72 * MisP_Ub * MisP_Ub4 + 1 * internal.k72 * MisP_Ub * MisP_Ub5 + 1 * internal.k72 * MisP_Ub * MisP_Ub6 + 1 * internal.k72 * MisP_Ub * MisP_Ub7 + 1 * internal.k72 * MisP_Ub * MisP_Ub8 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub3 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub4 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub5 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub6 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub4 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub5 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub6 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub4 * MisP_Ub5 + 1 * internal.k72 * MisP_Ub4 * MisP_Ub6 + 1 * internal.k72 * MisP_Ub4 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub4 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub5 * MisP_Ub6 + 1 * internal.k72 * MisP_Ub5 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub5 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub6 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub6 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub7 * MisP_Ub8 - 1 * internal.k73 * AggP - 1 * internal.k74 * AggP * Proteasome;
-    dstatedt[38] = 0 + 1 * internal.k74 * AggP * Proteasome;
-    dstatedt[29] = 0 + 1 * internal.k69 * MisP_Ub4_Proteasome * ATP / (5000 + ATP);
-    dstatedt[30] = 0 + 1 * internal.k69 * MisP_Ub5_Proteasome * ATP / (5000 + ATP);
-    dstatedt[31] = 0 + 1 * internal.k69 * MisP_Ub6_Proteasome * ATP / (5000 + ATP);
-    dstatedt[32] = 0 + 1 * internal.k69 * MisP_Ub7_Proteasome * ATP / (5000 + ATP);
-    dstatedt[33] = 0 + 1 * internal.k69 * MisP_Ub8_Proteasome * ATP / (5000 + ATP);
-    dstatedt[6] = 0 + 1 * internal.k66 * MisP_Ub8 * DUB - 1 * internal.k66 * MisP_Ub8 * DUB + 1 * internal.k66 * MisP_Ub7 * DUB - 1 * internal.k66 * MisP_Ub7 * DUB + 1 * internal.k66 * MisP_Ub6 * DUB - 1 * internal.k66 * MisP_Ub6 * DUB + 1 * internal.k66 * MisP_Ub5 * DUB - 1 * internal.k66 * MisP_Ub5 * DUB + 1 * internal.k66 * MisP_Ub4 * DUB - 1 * internal.k66 * MisP_Ub4 * DUB + 1 * internal.k66 * MisP_Ub3 * DUB - 1 * internal.k66 * MisP_Ub3 * DUB + 1 * internal.k66 * MisP_Ub2 * DUB - 1 * internal.k66 * MisP_Ub2 * DUB + 1 * internal.k66 * MisP_Ub * DUB - 1 * internal.k66 * MisP_Ub * DUB + 1 * internal.k68 * MisP_Ub8_Proteasome * DUB - 1 * internal.k68 * MisP_Ub8_Proteasome * DUB + 1 * internal.k68 * MisP_Ub7_Proteasome * DUB - 1 * internal.k68 * MisP_Ub7_Proteasome * DUB + 1 * internal.k68 * MisP_Ub6_Proteasome * DUB - 1 * internal.k68 * MisP_Ub6_Proteasome * DUB + 1 * internal.k68 * MisP_Ub5_Proteasome * DUB - 1 * internal.k68 * MisP_Ub5_Proteasome * DUB + 1 * internal.k68 * MisP_Ub4_Proteasome * DUB - 1 * internal.k68 * MisP_Ub4_Proteasome * DUB;
-    dstatedt[3] = 0 - 1 * internal.k62 * E1 * Ub * ATP / (5000 + ATP) + 1 * internal.k63 * E2 * E1_Ub;
-    dstatedt[9] = 0 + 1 * internal.k62 * E1 * Ub * ATP / (5000 + ATP) - 1 * internal.k63 * E2 * E1_Ub;
+    const AggP = state[32];
+    dstatedt[32] = 0 + 1 * internal.k71 * MisP * (MisP - 1) * 0.5 - 1 * internal.k71 * MisP * AggP + 2 * internal.k71 * MisP * AggP + 1 * internal.k72 * MisP_Ub * (MisP_Ub - 1) * 0.5 + 1 * internal.k72 * MisP_Ub2 * (MisP_Ub2 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub3 * (MisP_Ub3 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub4 * (MisP_Ub4 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub5 * (MisP_Ub5 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub6 * (MisP_Ub6 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub7 * (MisP_Ub7 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub8 * (MisP_Ub8 - 1) * 0.5 + 1 * internal.k72 * MisP_Ub * MisP + 1 * internal.k72 * MisP_Ub2 * MisP + 1 * internal.k72 * MisP_Ub3 * MisP + 1 * internal.k72 * MisP_Ub4 * MisP + 1 * internal.k72 * MisP_Ub5 * MisP + 1 * internal.k72 * MisP_Ub6 * MisP + 1 * internal.k72 * MisP_Ub7 * MisP + 1 * internal.k72 * MisP_Ub8 * MisP - 1 * internal.k72 * MisP_Ub * AggP + 2 * internal.k72 * MisP_Ub * AggP - 1 * internal.k72 * MisP_Ub2 * AggP + 2 * internal.k72 * MisP_Ub2 * AggP - 1 * internal.k72 * MisP_Ub3 * AggP + 2 * internal.k72 * MisP_Ub3 * AggP - 1 * internal.k72 * MisP_Ub4 * AggP + 2 * internal.k72 * MisP_Ub4 * AggP - 1 * internal.k72 * MisP_Ub5 * AggP + 2 * internal.k72 * MisP_Ub5 * AggP - 1 * internal.k72 * MisP_Ub6 * AggP + 2 * internal.k72 * MisP_Ub6 * AggP - 1 * internal.k72 * MisP_Ub7 * AggP + 2 * internal.k72 * MisP_Ub7 * AggP - 1 * internal.k72 * MisP_Ub8 * AggP + 2 * internal.k72 * MisP_Ub8 * AggP + 1 * internal.k72 * MisP_Ub * MisP_Ub2 + 1 * internal.k72 * MisP_Ub * MisP_Ub3 + 1 * internal.k72 * MisP_Ub * MisP_Ub4 + 1 * internal.k72 * MisP_Ub * MisP_Ub5 + 1 * internal.k72 * MisP_Ub * MisP_Ub6 + 1 * internal.k72 * MisP_Ub * MisP_Ub7 + 1 * internal.k72 * MisP_Ub * MisP_Ub8 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub3 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub4 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub5 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub6 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub2 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub4 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub5 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub6 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub3 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub4 * MisP_Ub5 + 1 * internal.k72 * MisP_Ub4 * MisP_Ub6 + 1 * internal.k72 * MisP_Ub4 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub4 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub5 * MisP_Ub6 + 1 * internal.k72 * MisP_Ub5 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub5 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub6 * MisP_Ub7 + 1 * internal.k72 * MisP_Ub6 * MisP_Ub8 + 1 * internal.k72 * MisP_Ub7 * MisP_Ub8 - 1 * internal.k73 * AggP - 1 * internal.k74 * AggP * Proteasome;
+    dstatedt[34] = 0 + 1 * internal.k74 * AggP * Proteasome;
+    dstatedt[25] = 0 + 1 * internal.k69 * MisP_Ub4_Proteasome * internal.ATP / (5000 + internal.ATP);
+    dstatedt[26] = 0 + 1 * internal.k69 * MisP_Ub5_Proteasome * internal.ATP / (5000 + internal.ATP);
+    dstatedt[27] = 0 + 1 * internal.k69 * MisP_Ub6_Proteasome * internal.ATP / (5000 + internal.ATP);
+    dstatedt[28] = 0 + 1 * internal.k69 * MisP_Ub7_Proteasome * internal.ATP / (5000 + internal.ATP);
+    dstatedt[29] = 0 + 1 * internal.k69 * MisP_Ub8_Proteasome * internal.ATP / (5000 + internal.ATP);
+    dstatedt[6] = 0 - 1 * internal.k66 * MisP_Ub8 * DUB + 1 * internal.k66 * MisP_Ub8 * DUB - 1 * internal.k66 * MisP_Ub7 * DUB + 1 * internal.k66 * MisP_Ub7 * DUB - 1 * internal.k66 * MisP_Ub6 * DUB + 1 * internal.k66 * MisP_Ub6 * DUB - 1 * internal.k66 * MisP_Ub5 * DUB + 1 * internal.k66 * MisP_Ub5 * DUB - 1 * internal.k66 * MisP_Ub4 * DUB + 1 * internal.k66 * MisP_Ub4 * DUB - 1 * internal.k66 * MisP_Ub3 * DUB + 1 * internal.k66 * MisP_Ub3 * DUB - 1 * internal.k66 * MisP_Ub2 * DUB + 1 * internal.k66 * MisP_Ub2 * DUB - 1 * internal.k66 * MisP_Ub * DUB + 1 * internal.k66 * MisP_Ub * DUB - 1 * internal.k68 * MisP_Ub8_Proteasome * DUB + 1 * internal.k68 * MisP_Ub8_Proteasome * DUB - 1 * internal.k68 * MisP_Ub7_Proteasome * DUB + 1 * internal.k68 * MisP_Ub7_Proteasome * DUB - 1 * internal.k68 * MisP_Ub6_Proteasome * DUB + 1 * internal.k68 * MisP_Ub6_Proteasome * DUB - 1 * internal.k68 * MisP_Ub5_Proteasome * DUB + 1 * internal.k68 * MisP_Ub5_Proteasome * DUB - 1 * internal.k68 * MisP_Ub4_Proteasome * DUB + 1 * internal.k68 * MisP_Ub4_Proteasome * DUB;
+    dstatedt[3] = 0 - 1 * internal.k62 * E1 * Ub * internal.ATP / (5000 + internal.ATP) + 1 * internal.k63 * E2 * E1_Ub;
+    dstatedt[9] = 0 + 1 * internal.k62 * E1 * Ub * internal.ATP / (5000 + internal.ATP) - 1 * internal.k63 * E2 * E1_Ub;
     dstatedt[4] = 0 - 1 * internal.k63 * E2 * E1_Ub + 1 * internal.k64 * E2_Ub * E3_MisP + 1 * internal.k65 * MisP_Ub * E2_Ub + 1 * internal.k65 * MisP_Ub2 * E2_Ub + 1 * internal.k65 * MisP_Ub3 * E2_Ub + 1 * internal.k65 * MisP_Ub4 * E2_Ub + 1 * internal.k65 * MisP_Ub5 * E2_Ub + 1 * internal.k65 * MisP_Ub6 * E2_Ub + 1 * internal.k65 * MisP_Ub7 * E2_Ub;
     dstatedt[10] = 0 + 1 * internal.k63 * E2 * E1_Ub - 1 * internal.k64 * E2_Ub * E3_MisP - 1 * internal.k65 * MisP_Ub * E2_Ub - 1 * internal.k65 * MisP_Ub2 * E2_Ub - 1 * internal.k65 * MisP_Ub3 * E2_Ub - 1 * internal.k65 * MisP_Ub4 * E2_Ub - 1 * internal.k65 * MisP_Ub5 * E2_Ub - 1 * internal.k65 * MisP_Ub6 * E2_Ub - 1 * internal.k65 * MisP_Ub7 * E2_Ub;
     dstatedt[5] = 0 - 1 * internal.k61 * MisP * E3 + 1 * internal.k61r * E3_MisP + 1 * internal.k64 * E2_Ub * E3_MisP;
@@ -206,22 +192,22 @@ export class model {
     dstatedt[13] = 0 + 1 * internal.k65 * MisP_Ub * E2_Ub - 1 * internal.k65 * MisP_Ub2 * E2_Ub + 1 * internal.k66 * MisP_Ub3 * DUB - 1 * internal.k66 * MisP_Ub2 * DUB - 2 * internal.k72 * MisP_Ub2 * (MisP_Ub2 - 1) * 0.5 - 1 * internal.k72 * MisP_Ub2 * MisP - 1 * internal.k72 * MisP_Ub2 * AggP - 1 * internal.k72 * MisP_Ub * MisP_Ub2 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub3 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub4 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub5 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub6 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub8;
     dstatedt[14] = 0 + 1 * internal.k65 * MisP_Ub2 * E2_Ub - 1 * internal.k65 * MisP_Ub3 * E2_Ub + 1 * internal.k66 * MisP_Ub4 * DUB - 1 * internal.k66 * MisP_Ub3 * DUB + 1 * internal.k68 * MisP_Ub4_Proteasome * DUB - 2 * internal.k72 * MisP_Ub3 * (MisP_Ub3 - 1) * 0.5 - 1 * internal.k72 * MisP_Ub3 * MisP - 1 * internal.k72 * MisP_Ub3 * AggP - 1 * internal.k72 * MisP_Ub * MisP_Ub3 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub3 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub4 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub5 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub6 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub8;
     dstatedt[15] = 0 + 1 * internal.k65 * MisP_Ub3 * E2_Ub - 1 * internal.k65 * MisP_Ub4 * E2_Ub + 1 * internal.k66 * MisP_Ub5 * DUB - 1 * internal.k66 * MisP_Ub4 * DUB - 1 * internal.k67 * MisP_Ub4 * Proteasome - 2 * internal.k72 * MisP_Ub4 * (MisP_Ub4 - 1) * 0.5 - 1 * internal.k72 * MisP_Ub4 * MisP - 1 * internal.k72 * MisP_Ub4 * AggP - 1 * internal.k72 * MisP_Ub * MisP_Ub4 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub4 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub4 - 1 * internal.k72 * MisP_Ub4 * MisP_Ub5 - 1 * internal.k72 * MisP_Ub4 * MisP_Ub6 - 1 * internal.k72 * MisP_Ub4 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub4 * MisP_Ub8;
-    dstatedt[20] = 0 + 1 * internal.k67 * MisP_Ub4 * Proteasome + 1 * internal.k68 * MisP_Ub5_Proteasome * DUB - 1 * internal.k68 * MisP_Ub4_Proteasome * DUB - 1 * internal.k69 * MisP_Ub4_Proteasome * ATP / (5000 + ATP);
+    dstatedt[20] = 0 + 1 * internal.k67 * MisP_Ub4 * Proteasome + 1 * internal.k68 * MisP_Ub5_Proteasome * DUB - 1 * internal.k68 * MisP_Ub4_Proteasome * DUB - 1 * internal.k69 * MisP_Ub4_Proteasome * internal.ATP / (5000 + internal.ATP);
     dstatedt[16] = 0 + 1 * internal.k65 * MisP_Ub4 * E2_Ub - 1 * internal.k65 * MisP_Ub5 * E2_Ub + 1 * internal.k66 * MisP_Ub6 * DUB - 1 * internal.k66 * MisP_Ub5 * DUB - 1 * internal.k67 * MisP_Ub5 * Proteasome - 2 * internal.k72 * MisP_Ub5 * (MisP_Ub5 - 1) * 0.5 - 1 * internal.k72 * MisP_Ub5 * MisP - 1 * internal.k72 * MisP_Ub5 * AggP - 1 * internal.k72 * MisP_Ub * MisP_Ub5 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub5 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub5 - 1 * internal.k72 * MisP_Ub4 * MisP_Ub5 - 1 * internal.k72 * MisP_Ub5 * MisP_Ub6 - 1 * internal.k72 * MisP_Ub5 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub5 * MisP_Ub8;
-    dstatedt[21] = 0 + 1 * internal.k67 * MisP_Ub5 * Proteasome + 1 * internal.k68 * MisP_Ub6_Proteasome * DUB - 1 * internal.k68 * MisP_Ub5_Proteasome * DUB - 1 * internal.k69 * MisP_Ub5_Proteasome * ATP / (5000 + ATP);
+    dstatedt[21] = 0 + 1 * internal.k67 * MisP_Ub5 * Proteasome + 1 * internal.k68 * MisP_Ub6_Proteasome * DUB - 1 * internal.k68 * MisP_Ub5_Proteasome * DUB - 1 * internal.k69 * MisP_Ub5_Proteasome * internal.ATP / (5000 + internal.ATP);
     dstatedt[17] = 0 + 1 * internal.k65 * MisP_Ub5 * E2_Ub - 1 * internal.k65 * MisP_Ub6 * E2_Ub + 1 * internal.k66 * MisP_Ub7 * DUB - 1 * internal.k66 * MisP_Ub6 * DUB - 1 * internal.k67 * MisP_Ub6 * Proteasome - 2 * internal.k72 * MisP_Ub6 * (MisP_Ub6 - 1) * 0.5 - 1 * internal.k72 * MisP_Ub6 * MisP - 1 * internal.k72 * MisP_Ub6 * AggP - 1 * internal.k72 * MisP_Ub * MisP_Ub6 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub6 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub6 - 1 * internal.k72 * MisP_Ub4 * MisP_Ub6 - 1 * internal.k72 * MisP_Ub5 * MisP_Ub6 - 1 * internal.k72 * MisP_Ub6 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub6 * MisP_Ub8;
-    dstatedt[22] = 0 + 1 * internal.k67 * MisP_Ub6 * Proteasome + 1 * internal.k68 * MisP_Ub7_Proteasome * DUB - 1 * internal.k68 * MisP_Ub6_Proteasome * DUB - 1 * internal.k69 * MisP_Ub6_Proteasome * ATP / (5000 + ATP);
+    dstatedt[22] = 0 + 1 * internal.k67 * MisP_Ub6 * Proteasome + 1 * internal.k68 * MisP_Ub7_Proteasome * DUB - 1 * internal.k68 * MisP_Ub6_Proteasome * DUB - 1 * internal.k69 * MisP_Ub6_Proteasome * internal.ATP / (5000 + internal.ATP);
     dstatedt[18] = 0 + 1 * internal.k65 * MisP_Ub6 * E2_Ub - 1 * internal.k65 * MisP_Ub7 * E2_Ub + 1 * internal.k66 * MisP_Ub8 * DUB - 1 * internal.k66 * MisP_Ub7 * DUB - 1 * internal.k67 * MisP_Ub7 * Proteasome - 2 * internal.k72 * MisP_Ub7 * (MisP_Ub7 - 1) * 0.5 - 1 * internal.k72 * MisP_Ub7 * MisP - 1 * internal.k72 * MisP_Ub7 * AggP - 1 * internal.k72 * MisP_Ub * MisP_Ub7 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub4 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub5 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub6 * MisP_Ub7 - 1 * internal.k72 * MisP_Ub7 * MisP_Ub8;
-    dstatedt[23] = 0 + 1 * internal.k67 * MisP_Ub7 * Proteasome + 1 * internal.k68 * MisP_Ub8_Proteasome * DUB - 1 * internal.k68 * MisP_Ub7_Proteasome * DUB - 1 * internal.k69 * MisP_Ub7_Proteasome * ATP / (5000 + ATP);
+    dstatedt[23] = 0 + 1 * internal.k67 * MisP_Ub7 * Proteasome + 1 * internal.k68 * MisP_Ub8_Proteasome * DUB - 1 * internal.k68 * MisP_Ub7_Proteasome * DUB - 1 * internal.k69 * MisP_Ub7_Proteasome * internal.ATP / (5000 + internal.ATP);
     dstatedt[19] = 0 + 1 * internal.k65 * MisP_Ub7 * E2_Ub - 1 * internal.k66 * MisP_Ub8 * DUB - 1 * internal.k67 * MisP_Ub8 * Proteasome - 2 * internal.k72 * MisP_Ub8 * (MisP_Ub8 - 1) * 0.5 - 1 * internal.k72 * MisP_Ub8 * MisP - 1 * internal.k72 * MisP_Ub8 * AggP - 1 * internal.k72 * MisP_Ub * MisP_Ub8 - 1 * internal.k72 * MisP_Ub2 * MisP_Ub8 - 1 * internal.k72 * MisP_Ub3 * MisP_Ub8 - 1 * internal.k72 * MisP_Ub4 * MisP_Ub8 - 1 * internal.k72 * MisP_Ub5 * MisP_Ub8 - 1 * internal.k72 * MisP_Ub6 * MisP_Ub8 - 1 * internal.k72 * MisP_Ub7 * MisP_Ub8;
-    dstatedt[24] = 0 + 1 * internal.k67 * MisP_Ub8 * Proteasome - 1 * internal.k68 * MisP_Ub8_Proteasome * DUB - 1 * internal.k69 * MisP_Ub8_Proteasome * ATP / (5000 + ATP);
-    dstatedt[0] = 0 + 1 * internal.k1 * Source - 1 * internal.k2 * NatP * ROS + 1 * internal.k3 * MisP;
-    dstatedt[7] = 0 - 1 * internal.k67 * MisP_Ub4 * Proteasome - 1 * internal.k67 * MisP_Ub5 * Proteasome - 1 * internal.k67 * MisP_Ub6 * Proteasome - 1 * internal.k67 * MisP_Ub7 * Proteasome - 1 * internal.k67 * MisP_Ub8 * Proteasome + 1 * internal.k68 * MisP_Ub4_Proteasome * DUB + 1 * internal.k69 * MisP_Ub4_Proteasome * ATP / (5000 + ATP) + 1 * internal.k69 * MisP_Ub5_Proteasome * ATP / (5000 + ATP) + 1 * internal.k69 * MisP_Ub6_Proteasome * ATP / (5000 + ATP) + 1 * internal.k69 * MisP_Ub7_Proteasome * ATP / (5000 + ATP) + 1 * internal.k69 * MisP_Ub8_Proteasome * ATP / (5000 + ATP) - 1 * internal.k74 * AggP * Proteasome;
-    dstatedt[35] = 0 + 1 * internal.k3 * MisP;
-    dstatedt[8] = 0 + 1 * internal.k2 * NatP * ROS - 1 * internal.k2 * NatP * ROS;
-    dstatedt[37] = 0 + 1 * internal.k73 * AggP;
-    dstatedt[34] = 0 + 1 * internal.k2 * NatP * ROS;
-    dstatedt[2] = 0 - 1 * internal.k62 * E1 * Ub * ATP / (5000 + ATP) + 1 * internal.k66 * MisP_Ub8 * DUB + 1 * internal.k66 * MisP_Ub7 * DUB + 1 * internal.k66 * MisP_Ub6 * DUB + 1 * internal.k66 * MisP_Ub5 * DUB + 1 * internal.k66 * MisP_Ub4 * DUB + 1 * internal.k66 * MisP_Ub3 * DUB + 1 * internal.k66 * MisP_Ub2 * DUB + 1 * internal.k66 * MisP_Ub * DUB + 1 * internal.k68 * MisP_Ub8_Proteasome * DUB + 1 * internal.k68 * MisP_Ub7_Proteasome * DUB + 1 * internal.k68 * MisP_Ub6_Proteasome * DUB + 1 * internal.k68 * MisP_Ub5_Proteasome * DUB + 1 * internal.k68 * MisP_Ub4_Proteasome * DUB + 4 * internal.k69 * MisP_Ub4_Proteasome * ATP / (5000 + ATP) + 5 * internal.k69 * MisP_Ub5_Proteasome * ATP / (5000 + ATP) + 6 * internal.k69 * MisP_Ub6_Proteasome * ATP / (5000 + ATP) + 7 * internal.k69 * MisP_Ub7_Proteasome * ATP / (5000 + ATP) + 8 * internal.k69 * MisP_Ub8_Proteasome * ATP / (5000 + ATP);
+    dstatedt[24] = 0 + 1 * internal.k67 * MisP_Ub8 * Proteasome - 1 * internal.k68 * MisP_Ub8_Proteasome * DUB - 1 * internal.k69 * MisP_Ub8_Proteasome * internal.ATP / (5000 + internal.ATP);
+    dstatedt[0] = 0 + 1 * internal.k1 * internal.Source - 1 * internal.k2 * NatP * ROS + 1 * internal.k3 * MisP;
+    dstatedt[7] = 0 - 1 * internal.k67 * MisP_Ub4 * Proteasome - 1 * internal.k67 * MisP_Ub5 * Proteasome - 1 * internal.k67 * MisP_Ub6 * Proteasome - 1 * internal.k67 * MisP_Ub7 * Proteasome - 1 * internal.k67 * MisP_Ub8 * Proteasome + 1 * internal.k68 * MisP_Ub4_Proteasome * DUB + 1 * internal.k69 * MisP_Ub4_Proteasome * internal.ATP / (5000 + internal.ATP) + 1 * internal.k69 * MisP_Ub5_Proteasome * internal.ATP / (5000 + internal.ATP) + 1 * internal.k69 * MisP_Ub6_Proteasome * internal.ATP / (5000 + internal.ATP) + 1 * internal.k69 * MisP_Ub7_Proteasome * internal.ATP / (5000 + internal.ATP) + 1 * internal.k69 * MisP_Ub8_Proteasome * internal.ATP / (5000 + internal.ATP) - 1 * internal.k74 * AggP * Proteasome;
+    dstatedt[31] = 0 + 1 * internal.k3 * MisP;
+    dstatedt[8] = 0 - 1 * internal.k2 * NatP * ROS + 1 * internal.k2 * NatP * ROS;
+    dstatedt[33] = 0 + 1 * internal.k73 * AggP;
+    dstatedt[30] = 0 + 1 * internal.k2 * NatP * ROS;
+    dstatedt[2] = 0 - 1 * internal.k62 * E1 * Ub * internal.ATP / (5000 + internal.ATP) + 1 * internal.k66 * MisP_Ub8 * DUB + 1 * internal.k66 * MisP_Ub7 * DUB + 1 * internal.k66 * MisP_Ub6 * DUB + 1 * internal.k66 * MisP_Ub5 * DUB + 1 * internal.k66 * MisP_Ub4 * DUB + 1 * internal.k66 * MisP_Ub3 * DUB + 1 * internal.k66 * MisP_Ub2 * DUB + 1 * internal.k66 * MisP_Ub * DUB + 1 * internal.k68 * MisP_Ub8_Proteasome * DUB + 1 * internal.k68 * MisP_Ub7_Proteasome * DUB + 1 * internal.k68 * MisP_Ub6_Proteasome * DUB + 1 * internal.k68 * MisP_Ub5_Proteasome * DUB + 1 * internal.k68 * MisP_Ub4_Proteasome * DUB + 4 * internal.k69 * MisP_Ub4_Proteasome * internal.ATP / (5000 + internal.ATP) + 5 * internal.k69 * MisP_Ub5_Proteasome * internal.ATP / (5000 + internal.ATP) + 6 * internal.k69 * MisP_Ub6_Proteasome * internal.ATP / (5000 + internal.ATP) + 7 * internal.k69 * MisP_Ub7_Proteasome * internal.ATP / (5000 + internal.ATP) + 8 * internal.k69 * MisP_Ub8_Proteasome * internal.ATP / (5000 + internal.ATP);
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -229,9 +215,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "NatP", "MisP", "Ub", "E1", "E2", "E3", "DUB", "Proteasome", "ROS", "E1_Ub", "E2_Ub", "E3_MisP", "MisP_Ub", "MisP_Ub2", "MisP_Ub3", "MisP_Ub4", "MisP_Ub5", "MisP_Ub6", "MisP_Ub7", "MisP_Ub8", "MisP_Ub4_Proteasome", "MisP_Ub5_Proteasome", "MisP_Ub6_Proteasome", "MisP_Ub7_Proteasome", "MisP_Ub8_Proteasome", "ATP", "ADP", "AMP", "Source", "degUb4", "degUb5", "degUb6", "degUb7", "degUb8", "totMisP", "refNatP", "AggP", "SeqAggP", "AggP_Proteasome"];
-    this.metadata.internalOrder = {ADP_init: null, AggP_init: null, AggP_Proteasome_init: null, AMP_init: null, ATP_init: null, cytosol: null, degUb4_init: null, degUb5_init: null, degUb6_init: null, degUb7_init: null, degUb8_init: null, DUB_init: null, E1_init: null, E1_Ub_init: null, E2_init: null, E2_Ub_init: null, E3_init: null, E3_MisP_init: null, initial_ADP: null, initial_AggP: null, initial_AggP_Proteasome: null, initial_AMP: null, initial_ATP: null, initial_degUb4: null, initial_degUb5: null, initial_degUb6: null, initial_degUb7: null, initial_degUb8: null, initial_DUB: null, initial_E1: null, initial_E1_Ub: null, initial_E2: null, initial_E2_Ub: null, initial_E3: null, initial_E3_MisP: null, initial_MisP: null, initial_MisP_Ub: null, initial_MisP_Ub2: null, initial_MisP_Ub3: null, initial_MisP_Ub4: null, initial_MisP_Ub4_Proteasome: null, initial_MisP_Ub5: null, initial_MisP_Ub5_Proteasome: null, initial_MisP_Ub6: null, initial_MisP_Ub6_Proteasome: null, initial_MisP_Ub7: null, initial_MisP_Ub7_Proteasome: null, initial_MisP_Ub8: null, initial_MisP_Ub8_Proteasome: null, initial_NatP: null, initial_Proteasome: null, initial_refNatP: null, initial_ROS: null, initial_SeqAggP: null, initial_Source: null, initial_totMisP: null, initial_Ub: null, k1: null, k2: null, k3: null, k61: null, k61r: null, k62: null, k63: null, k64: null, k65: null, k66: null, k67: null, k68: null, k69: null, k71: null, k72: null, k73: null, k74: null, MisP_init: null, MisP_Ub_init: null, MisP_Ub2_init: null, MisP_Ub3_init: null, MisP_Ub4_init: null, MisP_Ub4_Proteasome_init: null, MisP_Ub5_init: null, MisP_Ub5_Proteasome_init: null, MisP_Ub6_init: null, MisP_Ub6_Proteasome_init: null, MisP_Ub7_init: null, MisP_Ub7_Proteasome_init: null, MisP_Ub8_init: null, MisP_Ub8_Proteasome_init: null, NatP_init: null, Proteasome_init: null, refNatP_init: null, ROS_init: null, SeqAggP_init: null, Source_init: null, totMisP_init: null, Ub_init: null};
-    this.metadata.variableOrder = {NatP: null, MisP: null, Ub: null, E1: null, E2: null, E3: null, DUB: null, Proteasome: null, ROS: null, E1_Ub: null, E2_Ub: null, E3_MisP: null, MisP_Ub: null, MisP_Ub2: null, MisP_Ub3: null, MisP_Ub4: null, MisP_Ub5: null, MisP_Ub6: null, MisP_Ub7: null, MisP_Ub8: null, MisP_Ub4_Proteasome: null, MisP_Ub5_Proteasome: null, MisP_Ub6_Proteasome: null, MisP_Ub7_Proteasome: null, MisP_Ub8_Proteasome: null, ATP: null, ADP: null, AMP: null, Source: null, degUb4: null, degUb5: null, degUb6: null, degUb7: null, degUb8: null, totMisP: null, refNatP: null, AggP: null, SeqAggP: null, AggP_Proteasome: null};
+    this.metadata.ynames = ["t", "NatP", "MisP", "Ub", "E1", "E2", "E3", "DUB", "Proteasome", "ROS", "E1_Ub", "E2_Ub", "E3_MisP", "MisP_Ub", "MisP_Ub2", "MisP_Ub3", "MisP_Ub4", "MisP_Ub5", "MisP_Ub6", "MisP_Ub7", "MisP_Ub8", "MisP_Ub4_Proteasome", "MisP_Ub5_Proteasome", "MisP_Ub6_Proteasome", "MisP_Ub7_Proteasome", "MisP_Ub8_Proteasome", "degUb4", "degUb5", "degUb6", "degUb7", "degUb8", "totMisP", "refNatP", "AggP", "SeqAggP", "AggP_Proteasome"];
+    this.metadata.internalOrder = {ADP: null, AggP_init: null, AggP_Proteasome_init: null, AMP: null, ATP: null, cytosol: null, degUb4_init: null, degUb5_init: null, degUb6_init: null, degUb7_init: null, degUb8_init: null, DUB_init: null, E1_init: null, E1_Ub_init: null, E2_init: null, E2_Ub_init: null, E3_init: null, E3_MisP_init: null, initial_AggP: null, initial_AggP_Proteasome: null, initial_degUb4: null, initial_degUb5: null, initial_degUb6: null, initial_degUb7: null, initial_degUb8: null, initial_DUB: null, initial_E1: null, initial_E1_Ub: null, initial_E2: null, initial_E2_Ub: null, initial_E3: null, initial_E3_MisP: null, initial_MisP: null, initial_MisP_Ub: null, initial_MisP_Ub2: null, initial_MisP_Ub3: null, initial_MisP_Ub4: null, initial_MisP_Ub4_Proteasome: null, initial_MisP_Ub5: null, initial_MisP_Ub5_Proteasome: null, initial_MisP_Ub6: null, initial_MisP_Ub6_Proteasome: null, initial_MisP_Ub7: null, initial_MisP_Ub7_Proteasome: null, initial_MisP_Ub8: null, initial_MisP_Ub8_Proteasome: null, initial_NatP: null, initial_Proteasome: null, initial_refNatP: null, initial_ROS: null, initial_SeqAggP: null, initial_totMisP: null, initial_Ub: null, k1: null, k2: null, k3: null, k61: null, k61r: null, k62: null, k63: null, k64: null, k65: null, k66: null, k67: null, k68: null, k69: null, k71: null, k72: null, k73: null, k74: null, MisP_init: null, MisP_Ub_init: null, MisP_Ub2_init: null, MisP_Ub3_init: null, MisP_Ub4_init: null, MisP_Ub4_Proteasome_init: null, MisP_Ub5_init: null, MisP_Ub5_Proteasome_init: null, MisP_Ub6_init: null, MisP_Ub6_Proteasome_init: null, MisP_Ub7_init: null, MisP_Ub7_Proteasome_init: null, MisP_Ub8_init: null, MisP_Ub8_Proteasome_init: null, NatP_init: null, Proteasome_init: null, refNatP_init: null, ROS_init: null, SeqAggP_init: null, Source: null, totMisP_init: null, Ub_init: null};
+    this.metadata.variableOrder = {NatP: null, MisP: null, Ub: null, E1: null, E2: null, E3: null, DUB: null, Proteasome: null, ROS: null, E1_Ub: null, E2_Ub: null, E3_MisP: null, MisP_Ub: null, MisP_Ub2: null, MisP_Ub3: null, MisP_Ub4: null, MisP_Ub5: null, MisP_Ub6: null, MisP_Ub7: null, MisP_Ub8: null, MisP_Ub4_Proteasome: null, MisP_Ub5_Proteasome: null, MisP_Ub6_Proteasome: null, MisP_Ub7_Proteasome: null, MisP_Ub8_Proteasome: null, degUb4: null, degUb5: null, degUb6: null, degUb7: null, degUb8: null, totMisP: null, refNatP: null, AggP: null, SeqAggP: null, AggP_Proteasome: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

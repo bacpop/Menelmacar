@@ -19,7 +19,7 @@ export class model {
     this.base.user.setUserScalar(user, "p1_star", internal, 0.056000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p2", internal, 0.0053, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "qj_star", internal, 0.16, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "VENUS_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "VENUS_init", internal, 1, -Infinity, Infinity, false);
     internal.initial_VENUS = internal.VENUS_init;
     this.updateMetadata();
   }

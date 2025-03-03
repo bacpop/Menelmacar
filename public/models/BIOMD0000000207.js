@@ -20,7 +20,7 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["C1_init", "C2_init", "H1", "H2", "H3", "H4", "K_d1", "K_d2", "K1", "K2", "K3", "K4", "Kc1", "Kc2", "kd1", "kd2", "Kim1", "Kim2", "M1_init", "M2_init", "U_M1", "U_M3", "U2", "U4", "V_M1", "V_M3", "V2", "V4", "vd1", "vd2", "vi1", "vi2", "X1_init", "X2_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "C1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C1_init", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "H1", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "H2", internal, 0.01, -Infinity, Infinity, false);
@@ -73,16 +73,12 @@ export class model {
     const C2 = state[3];
     const M2 = state[4];
     const X2 = state[5];
+    dstatedt[1] = 0;
+    dstatedt[4] = 0;
+    dstatedt[2] = 0;
+    dstatedt[5] = 0;
     dstatedt[0] = 0 + 1 * internal.compartment * internal.vi1 * internal.Kim1 / (internal.Kim1 + M2) - 1 * internal.compartment * internal.vd1 * X1 * C1 / (internal.K_d1 + C1) - 1 * internal.compartment * internal.kd1 * C1;
     dstatedt[3] = 0 + 1 * internal.compartment * internal.vi2 * internal.Kim2 / (internal.Kim2 + M1) - 1 * internal.compartment * internal.vd2 * X2 * C2 / (internal.K_d2 + C2) - 1 * internal.compartment * internal.kd2 * C2;
-    var U1 = C2 / (internal.Kc2 + C2) * internal.U_M1;
-    var U3 = M2 * internal.U_M3;
-    var V1 = C1 / (internal.Kc1 + C1) * internal.V_M1;
-    var V3 = M1 * internal.V_M3;
-    dstatedt[1] = 0 + V1 * (1 - M1) / (internal.K1 + (1 - M1)) - internal.V2 * M1 / (internal.K2 + M1);
-    dstatedt[4] = 0 + U1 * (1 - M2) / (internal.H1 + (1 - M2)) - internal.U2 * M2 / (internal.H2 + M2);
-    dstatedt[2] = 0 + V3 * (1 - X1) / (internal.K3 + (1 - X1)) - internal.V4 * X1 / (internal.K4 + X1);
-    dstatedt[5] = 0 + U3 * (1 - X2) / (internal.H3 + (1 - X2)) - internal.U4 * X2 / (internal.H4 + X2);
   }
   names() {
     return this.metadata.ynames.slice(1);

@@ -18,10 +18,10 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["Ac_init", "alpha1", "alpha100", "Ap_init", "beta1", "kin", "koff", "Pc_init", "Pp_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "Ac_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ac_init", internal, 0.94999999999999996, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha1", internal, 0.014, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha100", internal, 0.023, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ap_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ap_init", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta1", internal, 2.2000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kin", internal, 0.55000000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "koff", internal, 0.34999999999999998, -Infinity, Infinity, false);

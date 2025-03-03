@@ -24,15 +24,15 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["HSE_HSF_3_init", "HSE_init", "HSE_tot", "HSF_3_init", "HSF_init", "HSF_tot", "HSP_HSF_init", "HSP_init", "HSP_S_init", "I_7_37", "I_7_41", "I_7_42", "I_7_43", "I_7_44", "I_7_45", "I1", "I2", "I3", "k_8_max", "k1", "k10", "k2", "k3", "k4", "k5", "k6", "k7", "k9", "ModelValue_13", "ModelValue_19", "ModelValue_20", "ModelValue_21", "ModelValue_23", "ModelValue_27", "mRNA_init", "n_V", "P_init", "P_tot", "R_k_8", "S_init", "T", "T_0", "T_05", "T_k_8"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "HSE_HSF_3_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "HSE_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HSE_HSF_3_init", internal, 4.4839999999999998e-09, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HSE_init", internal, 3.9960000000000004e-06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "HSE_tot", internal, 3.9999999999999998e-06, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "HSF_3_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "HSF_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HSF_3_init", internal, 9.0820000000000005e-06, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HSF_init", internal, 0.0013630000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "HSF_tot", internal, 0.015679999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "HSP_HSF_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "HSP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "HSP_S_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HSP_HSF_init", internal, 0.014290000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HSP_init", internal, 52.060000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "HSP_S_init", internal, 0.00052680000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I_7_37", internal, 47.68, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I_7_41", internal, 1.2330000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I_7_42", internal, 0.66279999999999994, -Infinity, Infinity, false);
@@ -58,12 +58,12 @@ export class model {
     this.base.user.setUserScalar(user, "ModelValue_21", internal, 42.890000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_23", internal, 0.098129999999999995, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_27", internal, 6.5220000000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "mRNA_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "mRNA_init", internal, 0.00049459999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n_V", internal, 6.5220000000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P_init", internal, 1297, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P_tot", internal, 1297, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R_k_8", internal, 15.93, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "S_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "S_init", internal, 8.1219999999999995e-08, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T", internal, 42, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T_0", internal, 35.810000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T_05", internal, 47.130000000000003, -Infinity, Infinity, false);

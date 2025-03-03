@@ -30,9 +30,9 @@ export class model {
     this.base.user.setUserScalar(user, "k1", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k3", internal, 0.025000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "z_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x_init", internal, 2, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "z_init", internal, 0.14999999999999999, -Infinity, Infinity, false);
     internal.initial_x = internal.x_init;
     internal.initial_y = internal.y_init;
     internal.initial_z = internal.z_init;
@@ -43,12 +43,9 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const x = state[0];
-    const y = state[1];
-    const z = state[2];
-    dstatedt[0] = 0 + internal.a1 / (internal.k1 + y) - internal.b1 * x;
-    dstatedt[1] = 0 + internal.epsilon * ((internal.a2 + internal.a3 * x) * y * z / (internal.k2 + Math.pow((x), (2))) - internal.b2 * y);
-    dstatedt[2] = 0 + internal.epsilon * internal.delta * (internal.a4 * x - (internal.b3 * z + internal.a5 * x * z / (internal.k3 + x)));
+    dstatedt[0] = 0;
+    dstatedt[1] = 0;
+    dstatedt[2] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

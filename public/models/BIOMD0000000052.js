@@ -4,17 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.K1 = 0.01;
-    internal.K10 = 0.00014999999999999999;
-    internal.K11 = 0.12514;
-    internal.K2 = 0.0050899999999999999;
-    internal.K3 = 0.00046999999999999999;
-    internal.K4 = 0.0011000000000000001;
-    internal.K5 = 0.0071199999999999996;
-    internal.K6 = 0.0043899999999999998;
-    internal.K7 = 0.00018000000000000001;
-    internal.K8 = 0.11133999999999999;
-    internal.K9 = 0.14359;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -34,7 +23,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Acetic_acid_init", "Amadori_init", "AMP_init", "C5_init", "Cn_init", "Formic_acid_init", "Fru_init", "Glu_init", "lys_R_init", "Melanoidin_init", "Triose_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Acetic_acid_init", "Amadori_init", "AMP_init", "C5_init", "Cn_init", "Formic_acid_init", "Fru_init", "Glu_init", "K1", "K10", "K11", "K2", "K3", "K4", "K5", "K6", "K7", "K8", "K9", "lys_R_init", "Melanoidin_init", "Triose_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "Acetic_acid_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Amadori_init", internal, 0, -Infinity, Infinity, false);
@@ -43,8 +32,19 @@ export class model {
     this.base.user.setUserScalar(user, "Cn_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Formic_acid_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Fru_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Glu_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "lys_R_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Glu_init", internal, 160, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K1", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K10", internal, 0.00014999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K11", internal, 0.12514, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K2", internal, 0.0050899999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K3", internal, 0.00046999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K4", internal, 0.0011000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K5", internal, 0.0071199999999999996, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K6", internal, 0.0043899999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K7", internal, 0.00018000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K8", internal, 0.11133999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K9", internal, 0.14359, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "lys_R_init", internal, 15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Melanoidin_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Triose_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_Acetic_acid = internal.Acetic_acid_init;

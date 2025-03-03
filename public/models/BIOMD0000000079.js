@@ -3,16 +3,7 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.a = 0.10000000000000001;
     internal.body = 1;
-    internal.K1 = 0.01;
-    internal.K2 = 0.01;
-    internal.k3 = 0.01;
-    internal.Km = 0.20000000000000001;
-    internal.V = 0.10000000000000001;
-    internal.V1 = 1;
-    internal.V2 = 1.5;
-    internal.V3 = 6;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -24,11 +15,20 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["P_init", "Q_init", "R_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["a", "K1", "K2", "k3", "Km", "P_init", "Q_init", "R_init", "V", "V1", "V2", "V3"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "P_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Q_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "R_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "a", internal, 0.10000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K1", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K2", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k3", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Km", internal, 0.01, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P_init", internal, 0.42999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Q_init", internal, 0.80000000000000004, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "R_init", internal, 0.55000000000000004, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V", internal, 2.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V1", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V2", internal, 1.5, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V3", internal, 6, -Infinity, Infinity, false);
     internal.initial_P = internal.P_init;
     internal.initial_Q = internal.Q_init;
     internal.initial_R = internal.R_init;

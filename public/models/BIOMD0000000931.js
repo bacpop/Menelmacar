@@ -18,7 +18,7 @@ export class model {
     this.base.user.checkUser(user, ["d_D", "D_init", "d_N", "d_v", "I_0", "k_D", "K_D", "k_D0", "k_N", "K_N", "k_N0", "K_v1", "K_v2", "n_1", "n_2", "n_3", "n_4", "N_init", "p_v", "v_0", "v_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "d_D", internal, 0.25, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "D_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "D_init", internal, 2.3479999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d_N", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d_v", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I_0", internal, 0.20000000000000001, -Infinity, Infinity, false);
@@ -34,10 +34,10 @@ export class model {
     this.base.user.setUserScalar(user, "n_2", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n_3", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n_4", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "N_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "N_init", internal, 0.077640000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p_v", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v_0", internal, 30000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "v_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v_init", internal, 300, -Infinity, Infinity, false);
     internal.initial_D = internal.D_init;
     internal.initial_N = internal.N_init;
     internal.initial_v = internal.v_init;

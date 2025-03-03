@@ -21,11 +21,11 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["ACA_init", "CAR1_init", "ERK2_init", "excAMP_init", "incAMP_init", "k1", "k10", "k11", "k12", "k13", "k14", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "PKA_init", "REGA_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "ACA_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CAR1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ERK2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "excAMP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "incAMP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ACA_init", internal, 3.3900000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CAR1_init", internal, 2.4500000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ERK2_init", internal, 1.1299999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "excAMP_init", internal, 0.47999999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "incAMP_init", internal, 1.2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k10", internal, 0.80000000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k11", internal, 0.69999999999999996, -Infinity, Infinity, false);
@@ -40,8 +40,8 @@ export class model {
     this.base.user.setUserScalar(user, "k7", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k8", internal, 1.3, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k9", internal, 0.29999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "PKA_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "REGA_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PKA_init", internal, 1.6000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "REGA_init", internal, 0.90000000000000002, -Infinity, Infinity, false);
     internal.initial_ACA = internal.ACA_init;
     internal.initial_CAR1 = internal.CAR1_init;
     internal.initial_ERK2 = internal.ERK2_init;

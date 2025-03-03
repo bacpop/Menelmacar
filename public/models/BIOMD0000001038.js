@@ -26,10 +26,10 @@ export class model {
     this.base.user.setUserScalar(user, "gamma", internal, 0.98170000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.89759999999999995, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 0.96109999999999995, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Normal_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Normal_cells_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 0.43120000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Tumor_cells_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Vitamins_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Tumor_cells_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Vitamins_init", internal, 5, -Infinity, Infinity, false);
     internal.initial_Normal_cells = internal.Normal_cells_init;
     internal.initial_Tumor_cells = internal.Tumor_cells_init;
     internal.initial_Vitamins = internal.Vitamins_init;

@@ -16,9 +16,9 @@ export class model {
     var state = Array(5).fill(0);
     state[0] = internal.initial_zzs;
     state[1] = internal.initial_bbs;
-    state[2] = internal.initial_hhs;
-    state[3] = internal.initial_V;
-    state[4] = internal.initial_nns;
+    state[2] = internal.initial_nns;
+    state[3] = internal.initial_hhs;
+    state[4] = internal.initial_V;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -65,13 +65,13 @@ export class model {
     var internal = this.internal;
     const zzs = state[0];
     const bbs = state[1];
-    const hhs = state[2];
-    const V = state[3];
-    const nns = state[4];
+    const nns = state[2];
+    const hhs = state[3];
+    const V = state[4];
     var Ainfs = (1 / (1 + Math.exp(- (V - internal.thetaa) / internal.sigmaa)));
     dstatedt[1] = ((1 / (1 + Math.exp(- (V - internal.thetab) / internal.sigmab))) - bbs) / internal.tauBs;
-    dstatedt[2] = internal.phi * ((1 / (1 + Math.exp(- (V - internal.thetah) / internal.sigmah))) - hhs) / (1 + 7.5 * (1 / (1 + Math.exp(- (V - internal.t_tauh) / - 6))));
-    dstatedt[4] = internal.phi * ((1 / (1 + Math.exp(- (V - internal.thetan) / internal.sigman))) - nns) / (1 + 5 * (1 / (1 + Math.exp(- (V - internal.t_taun) / - 15))));
+    dstatedt[3] = internal.phi * ((1 / (1 + Math.exp(- (V - internal.thetah) / internal.sigmah))) - hhs) / (1 + 7.5 * (1 / (1 + Math.exp(- (V - internal.t_tauh) / - 6))));
+    dstatedt[2] = internal.phi * ((1 / (1 + Math.exp(- (V - internal.thetan) / internal.sigman))) - nns) / (1 + 5 * (1 / (1 + Math.exp(- (V - internal.t_taun) / - 15))));
     dstatedt[0] = ((1 / (1 + Math.exp(- (V - internal.thetaz) / internal.sigmaz))) - zzs) / internal.tauZs;
     var IKdr = internal.gKdr * Math.pow((nns), (internal.pns)) * (V - internal.VK);
     var Iz = internal.gZ * zzs * (V - internal.VK);
@@ -80,7 +80,7 @@ export class model {
     var IA = internal.gA * Math.pow((Ainfs), (3)) * bbs * (V - internal.VK);
     var INa = internal.gNa * Math.pow((Minfs), (internal.pms)) * hhs * (V - internal.VNa);
     var INaP = internal.gNaP * Pinfs * (V - internal.VNa);
-    dstatedt[3] = (- internal.gL * (V - internal.VL) - INa - INaP - IKdr - IA - Iz + internal.Iapp) / internal.Cm;
+    dstatedt[4] = (- internal.gL * (V - internal.VL) - INa - INaP - IKdr - IA - Iz + internal.Iapp) / internal.Cm;
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -88,9 +88,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "zzs", "bbs", "hhs", "V", "nns"];
+    this.metadata.ynames = ["t", "zzs", "bbs", "nns", "hhs", "V"];
     this.metadata.internalOrder = {Cm: null, compartment_0000001: null, gA: null, gKdr: null, gL: null, gNa: null, gNaP: null, gZ: null, Iapp: null, initial_bbs: null, initial_hhs: null, initial_nns: null, initial_V: null, initial_zzs: null, phi: null, pms: null, pns: null, sigmaa: null, sigmab: null, sigmah: null, sigmam: null, sigman: null, sigmap: null, sigmaz: null, t_tauh: null, t_taun: null, tauBs: null, tauZs: null, thetaa: null, thetab: null, thetah: null, thetam: null, thetan: null, thetap: null, thetaz: null, VK: null, VL: null, VNa: null};
-    this.metadata.variableOrder = {zzs: null, bbs: null, hhs: null, V: null, nns: null};
+    this.metadata.variableOrder = {zzs: null, bbs: null, nns: null, hhs: null, V: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

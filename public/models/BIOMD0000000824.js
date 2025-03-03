@@ -8,11 +8,8 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var myu_init = internal.myu_0 + internal.myu_1 * Math.pow((internal.initial_N), (2)) / (Math.pow((internal.initial_N), (2)) + Math.pow((internal.K), (2)));
-    internal.initial_myu = myu_init;
-    var state = Array(2).fill(0);
-    state[0] = internal.initial_myu;
-    state[1] = internal.initial_N;
+    var state = Array(1).fill(0);
+    state[0] = internal.initial_N;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -23,7 +20,7 @@ export class model {
     this.base.user.setUserScalar(user, "K", internal, 10000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "myu_0", internal, 0.17999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "myu_1", internal, 0.040000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "N_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "N_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p", internal, 0.17000000000000001, -Infinity, Infinity, false);
     internal.initial_N = internal.N_init;
     this.updateMetadata();
@@ -33,11 +30,10 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const myu = state[0];
-    const N = state[1];
-    dstatedt[0] = 0 + 0;
+    const N = state[0];
     var gamma = internal.gamma_0 * Math.exp(- internal.a * t);
-    dstatedt[1] = 0 + 1 * internal.compartment * (gamma) + 1 * internal.compartment * (internal.p * N) - 1 * internal.compartment * (myu * N);
+    var myu = internal.myu_0 + internal.myu_1 * Math.pow((N), (2)) / (Math.pow((N), (2)) + Math.pow((internal.K), (2)));
+    dstatedt[0] = 0 + 1 * internal.compartment * (gamma) + 1 * internal.compartment * (internal.p * N) - 1 * internal.compartment * (myu * N);
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -45,9 +41,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "myu", "N"];
-    this.metadata.internalOrder = {a: null, compartment: null, gamma_0: null, initial_myu: null, initial_N: null, K: null, myu_0: null, myu_1: null, N_init: null, p: null};
-    this.metadata.variableOrder = {myu: null, N: null};
+    this.metadata.ynames = ["t", "N"];
+    this.metadata.internalOrder = {a: null, compartment: null, gamma_0: null, initial_N: null, K: null, myu_0: null, myu_1: null, N_init: null, p: null};
+    this.metadata.variableOrder = {N: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

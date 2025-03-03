@@ -39,14 +39,14 @@ export class model {
     this.base.user.setUserScalar(user, "v_4", internal, 1.0841000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v_6", internal, 4.6645000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v_8", internal, 3.5215999999999998, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V1_init", internal, 2.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "vc", internal, 6.7923999999999998, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X1_init", internal, 4.25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "X2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Y1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Y1_init", internal, 3.25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Y2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Z1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Z1_init", internal, 2.25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Z2_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_V1 = internal.V1_init;
     internal.initial_V2 = internal.V2_init;

@@ -9,10 +9,6 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var DG_init = internal.initial_IP3;
-    var PLC_init = internal.Cplc_total - internal.initial_APLC;
-    internal.initial_DG = DG_init;
-    internal.initial_PLC = PLC_init;
     var state = Array(7).fill(0);
     state[0] = internal.initial_Galpha_GTP;
     state[1] = internal.initial_APLC;
@@ -24,14 +20,15 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["APLC_init", "Ca_Cyt_init", "Ca_ER_init", "Cplc_total", "Galpha_GTP_init", "IP3_init", "k0", "k1", "k10", "k11", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "Kc1", "Kc2", "Kd", "Ker", "Kg", "Kp", "Kr", "Ks", "m", "n", "w"], unusedUserAction);
+    this.base.user.checkUser(user, ["APLC_init", "Ca_Cyt_init", "Ca_ER_init", "Cplc_total", "DG_init", "Galpha_GTP_init", "IP3_init", "k0", "k1", "k10", "k11", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "Kc1", "Kc2", "Kd", "Ker", "Kg", "Kp", "Kr", "Ks", "m", "n", "PLC_init", "w"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "APLC_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ca_Cyt_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Ca_ER_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "APLC_init", internal, 9, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ca_Cyt_init", internal, 200, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Ca_ER_init", internal, 1000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cplc_total", internal, 10, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Galpha_GTP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "IP3_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "DG_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Galpha_GTP_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IP3_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k0", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 3.3999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k10", internal, 3000, -Infinity, Infinity, false);
@@ -54,12 +51,15 @@ export class model {
     this.base.user.setUserScalar(user, "Ks", internal, 25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "m", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n", internal, 4, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "PLC_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "w", internal, 3, -Infinity, Infinity, false);
     internal.initial_APLC = internal.APLC_init;
     internal.initial_Ca_Cyt = internal.Ca_Cyt_init;
     internal.initial_Ca_ER = internal.Ca_ER_init;
+    internal.initial_DG = internal.DG_init;
     internal.initial_Galpha_GTP = internal.Galpha_GTP_init;
     internal.initial_IP3 = internal.IP3_init;
+    internal.initial_PLC = internal.PLC_init;
     this.updateMetadata();
   }
   getInternal() {
@@ -74,8 +74,8 @@ export class model {
     const Ca_Cyt = state[4];
     const PLC = state[5];
     const DG = state[6];
-    dstatedt[6] = 0 + 0;
-    dstatedt[5] = 0 + 0;
+    dstatedt[6] = 0;
+    dstatedt[5] = 0;
     dstatedt[2] = 0 + 1 * internal.Cytosol * internal.k6 * APLC - 1 * internal.Cytosol * internal.k7 * IP3;
     var Raplc = APLC / (internal.Kp + APLC);
     var Rcyt1 = Ca_Cyt / (internal.Kc1 + Ca_Cyt);
@@ -97,7 +97,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "Galpha_GTP", "APLC", "IP3", "Ca_ER", "Ca_Cyt", "PLC", "DG"];
-    this.metadata.internalOrder = {APLC_init: null, Ca_Cyt_init: null, Ca_ER_init: null, Cplc_total: null, Cytosol: null, ER: null, Galpha_GTP_init: null, initial_APLC: null, initial_Ca_Cyt: null, initial_Ca_ER: null, initial_DG: null, initial_Galpha_GTP: null, initial_IP3: null, initial_PLC: null, IP3_init: null, k0: null, k1: null, k10: null, k11: null, k2: null, k3: null, k4: null, k5: null, k6: null, k7: null, k8: null, k9: null, Kc1: null, Kc2: null, Kd: null, Ker: null, Kg: null, Kp: null, Kr: null, Ks: null, m: null, n: null, w: null};
+    this.metadata.internalOrder = {APLC_init: null, Ca_Cyt_init: null, Ca_ER_init: null, Cplc_total: null, Cytosol: null, DG_init: null, ER: null, Galpha_GTP_init: null, initial_APLC: null, initial_Ca_Cyt: null, initial_Ca_ER: null, initial_DG: null, initial_Galpha_GTP: null, initial_IP3: null, initial_PLC: null, IP3_init: null, k0: null, k1: null, k10: null, k11: null, k2: null, k3: null, k4: null, k5: null, k6: null, k7: null, k8: null, k9: null, Kc1: null, Kc2: null, Kd: null, Ker: null, Kg: null, Kp: null, Kr: null, Ks: null, m: null, n: null, PLC_init: null, w: null};
     this.metadata.variableOrder = {Galpha_GTP: null, APLC: null, IP3: null, Ca_ER: null, Ca_Cyt: null, PLC: null, DG: null};
     this.metadata.outputOrder = null;
   }

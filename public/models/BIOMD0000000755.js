@@ -4,7 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.k1 = 121.267;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
@@ -22,15 +21,16 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["II_init", "IIa_ATIII_init", "IIa_init", "mIIa_ATIII_init", "mIIa_init", "TF_init", "X_init", "Xa_Va_II_init", "Xa_Va_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["II_init", "IIa_ATIII_init", "IIa_init", "k1", "mIIa_ATIII_init", "mIIa_init", "TF_init", "X_init", "Xa_Va_II_init", "Xa_Va_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "II_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "II_init", internal, 1.3999999999999999e-06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IIa_ATIII_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IIa_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "k1", internal, 0.0201671, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mIIa_ATIII_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mIIa_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "TF_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "X_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "TF_init", internal, 1.0000000000000001e-09, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "X_init", internal, 1.6e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xa_Va_II_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xa_Va_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_II = internal.II_init;
@@ -61,9 +61,9 @@ export class model {
     dstatedt[8] = 0 + 1 * internal.compartment * internal.k1 * IIa;
     dstatedt[6] = 0 + 1 * internal.compartment * internal.k1 * Xa_Va_II - 1 * internal.compartment * internal.k1 * Xa_Va * mIIa - 1 * internal.compartment * internal.k1 * mIIa;
     dstatedt[7] = 0 + 1 * internal.compartment * internal.k1 * mIIa;
-    dstatedt[0] = 0 - 1 * internal.compartment * internal.k1 * TF * X + 1 * internal.compartment * internal.k1 * TF * X * II - 1 * internal.compartment * internal.k1 * TF * X * II;
-    dstatedt[1] = 0 - 1 * internal.compartment * internal.k1 * TF * X + 1 * internal.compartment * internal.k1 * TF * X * II - 1 * internal.compartment * internal.k1 * TF * X * II;
-    dstatedt[2] = 0 + 1 * internal.compartment * internal.k1 * TF * X - 1 * internal.compartment * internal.k1 * Xa_Va * II + 1 * internal.compartment * internal.k1 * Xa_Va_II + 1 * internal.compartment * internal.k1 * Xa_Va * mIIa - 1 * internal.compartment * internal.k1 * Xa_Va * mIIa;
+    dstatedt[0] = 0 - 1 * internal.compartment * internal.k1 * TF * X - 1 * internal.compartment * internal.k1 * TF * X * II + 1 * internal.compartment * internal.k1 * TF * X * II;
+    dstatedt[1] = 0 - 1 * internal.compartment * internal.k1 * TF * X - 1 * internal.compartment * internal.k1 * TF * X * II + 1 * internal.compartment * internal.k1 * TF * X * II;
+    dstatedt[2] = 0 + 1 * internal.compartment * internal.k1 * TF * X - 1 * internal.compartment * internal.k1 * Xa_Va * II + 1 * internal.compartment * internal.k1 * Xa_Va_II - 1 * internal.compartment * internal.k1 * Xa_Va * mIIa + 1 * internal.compartment * internal.k1 * Xa_Va * mIIa;
     dstatedt[5] = 0 + 1 * internal.compartment * internal.k1 * Xa_Va * II - 1 * internal.compartment * internal.k1 * Xa_Va_II;
   }
   names() {

@@ -33,13 +33,13 @@ export class model {
     this.base.user.setUserScalar(user, "H_bh", internal, 120000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "H_v", internal, 850, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I_a_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "I_b_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "I_b_init", internal, 36485, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ModelValue_1", internal, 171977, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "phi", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "q", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "S_b_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "S_h_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "S_b_init", internal, 244956, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "S_h_init", internal, 171977, -Infinity, Infinity, false);
     internal.initial_I_a = internal.I_a_init;
     internal.initial_I_b = internal.I_b_init;
     internal.initial_S_b = internal.S_b_init;

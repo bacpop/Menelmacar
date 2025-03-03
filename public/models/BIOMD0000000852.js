@@ -20,7 +20,7 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["a_init", "ax", "Ax", "cxx", "dx0", "dx1", "ea", "es", "inflammation", "ModelValue_1", "ModelValue_15", "ModelValue_16", "ModelValue_2", "ModelValue_3", "ModelValue_4", "ModelValue_5", "ModelValue_6", "rm", "rs", "rx", "ry", "s_init", "x0_init", "x1_init", "y0_init", "y1_init"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "a_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "a_init", internal, 699, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ax", internal, 1.1e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ax", internal, 47000000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cxx", internal, 7.4999999999999993e-05, -Infinity, Infinity, false);
@@ -41,9 +41,9 @@ export class model {
     this.base.user.setUserScalar(user, "rs", internal, 0.00029999999999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rx", internal, 0.00087000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ry", internal, 0.0012999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "s_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x0_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "x1_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "s_init", internal, 3.6099999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x0_init", internal, 10100, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "x1_init", internal, 38400000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "y0_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "y1_init", internal, 0, -Infinity, Infinity, false);
     internal.ay = internal.ModelValue_1;

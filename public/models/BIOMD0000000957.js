@@ -20,11 +20,11 @@ export class model {
     var internal = this.internal;
     this.base.user.setUserScalar(user, "beta", internal, 2.0900000000000001e-07, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Confirmed_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Infected_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Infected_init", internal, 60, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Recovered_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho", internal, 0.90900000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Susceptible_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Susceptible_init", internal, 5999755, -Infinity, Infinity, false);
     internal.initial_Confirmed = internal.Confirmed_init;
     internal.initial_Infected = internal.Infected_init;
     internal.initial_Recovered = internal.Recovered_init;

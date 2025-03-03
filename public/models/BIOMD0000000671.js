@@ -35,13 +35,13 @@ export class model {
     this.base.user.setUserScalar(user, "b_mend", internal, 0.78500000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b_surf", internal, 708, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c_gomp", internal, 10700, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_bert_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_exp_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_gomp_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_lin_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_log_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_mend_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_surf_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_bert_init", internal, 220, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_exp_init", internal, 220, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_gomp_init", internal, 220, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_lin_init", internal, 220, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_log_init", internal, 220, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_mend_init", internal, 220, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_surf_init", internal, 220, -Infinity, Infinity, false);
     internal.initial_V_bert = internal.V_bert_init;
     internal.initial_V_exp = internal.V_exp_init;
     internal.initial_V_gomp = internal.V_gomp_init;
@@ -63,13 +63,13 @@ export class model {
     const V_surf = state[4];
     const V_gomp = state[5];
     const V_bert = state[6];
-    dstatedt[6] = 0 + internal.a_bert * Math.pow((V_bert), (2 / 3)) - internal.b_bert * V_bert;
-    dstatedt[0] = 0 + internal.a_exp * V_exp;
-    dstatedt[5] = 0 + internal.a_gomp * V_gomp * Math.log(internal.b_gomp / (V_gomp + internal.c_gomp));
-    dstatedt[3] = 0 + internal.a_lin * V_lin / (V_lin + internal.b_lin);
-    dstatedt[2] = 0 + internal.a_log * V_log * (1 - V_log / internal.b_log);
-    dstatedt[1] = 0 + internal.a_mend * Math.pow((V_mend), (internal.b_mend));
-    dstatedt[4] = 0 + internal.a_surf * V_surf / Math.pow((V_surf + internal.b_surf), (1 / 3));
+    dstatedt[6] = internal.a_bert * Math.pow((V_bert), (2 / 3)) - internal.b_bert * V_bert;
+    dstatedt[0] = internal.a_exp * V_exp;
+    dstatedt[5] = internal.a_gomp * V_gomp * Math.log(internal.b_gomp / (V_gomp + internal.c_gomp));
+    dstatedt[3] = internal.a_lin * V_lin / (V_lin + internal.b_lin);
+    dstatedt[2] = internal.a_log * V_log * (1 - V_log / internal.b_log);
+    dstatedt[1] = internal.a_mend * Math.pow((V_mend), (internal.b_mend));
+    dstatedt[4] = internal.a_surf * V_surf / Math.pow((V_surf + internal.b_surf), (1 / 3));
   }
   names() {
     return this.metadata.ynames.slice(1);

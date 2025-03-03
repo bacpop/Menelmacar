@@ -27,8 +27,8 @@ export class model {
     this.base.user.setUserScalar(user, "dEpoi_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Epo_EpoR_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Epo_EpoRi_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Epo_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "EpoR_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Epo_init", internal, 2030.1900000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "EpoR_init", internal, 516, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kde", internal, 0.016404200000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kdi", internal, 0.00317871, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ke", internal, 0.074826699999999996, -Infinity, Infinity, false);

@@ -25,9 +25,9 @@ export class model {
     this.base.user.setUserScalar(user, "omega", internal, 0.29999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 0.20621339999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho", internal, 0.60799999999999998, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "v_Virus_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "v_Virus_init", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "x_Infected_Cell_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "y_Tumor_Cell_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "y_Tumor_Cell_init", internal, 126.23699999999999, -Infinity, Infinity, false);
     internal.initial_v_Virus = internal.v_Virus_init;
     internal.initial_x_Infected_Cell = internal.x_Infected_Cell_init;
     internal.initial_y_Tumor_Cell = internal.y_Tumor_Cell_init;

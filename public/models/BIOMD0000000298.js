@@ -24,8 +24,8 @@ export class model {
   setUser(user, unusedUserAction) {
     this.base.user.checkUser(user, ["C_init", "CN_init", "k1", "K1P", "K1T", "k2", "K2P", "K2T", "k3", "K3P", "K3T", "k4", "K4P", "K4T", "kd", "kdC", "kdN", "KdP", "KdT", "KIP", "KIT", "KmP", "KmT", "ksP", "ksT", "MP_init", "MT_init", "n", "P0_init", "P1_init", "P2_init", "T0_init", "T1_init", "T2_init", "V1P", "V1T", "V2P", "V2T", "V3P", "V3T", "V4P", "V4T", "vdP", "vdT", "vmP", "vmT", "vsP", "vsT"], unusedUserAction);
     var internal = this.internal;
-    this.base.user.setUserScalar(user, "C_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CN_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "C_init", internal, 0.20761399999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CN_init", internal, 1.34728, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.80000000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K1P", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "K1T", internal, 2, -Infinity, Infinity, false);
@@ -49,15 +49,15 @@ export class model {
     this.base.user.setUserScalar(user, "KmT", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ksP", internal, 0.90000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ksT", internal, 0.90000000000000002, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "MP_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "MT_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MP_init", internal, 0.0614368, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "MT_init", internal, 0.086034200000000005, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n", internal, 4, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P0_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P2_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T0_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T1_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "T2_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P0_init", internal, 0.016992799999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P1_init", internal, 0.0141356, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P2_init", internal, 0.0614368, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T0_init", internal, 0.021726100000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T1_init", internal, 0.0213384, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "T2_init", internal, 0.0145428, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V1P", internal, 8, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V1T", internal, 8, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V2P", internal, 1, -Infinity, Infinity, false);
@@ -89,26 +89,16 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    const MP = state[0];
-    const CN = state[1];
-    const C = state[2];
-    const T2 = state[3];
-    const T1 = state[4];
-    const T0 = state[5];
-    const MT = state[6];
-    const P0 = state[7];
-    const P1 = state[8];
-    const P2 = state[9];
-    dstatedt[2] = 0 + internal.k3 * P2 * T2 + internal.k2 * CN - (internal.k4 * C + internal.k1 * C + internal.kdC * C);
-    dstatedt[1] = 0 + internal.k1 * C - (internal.k2 * CN + internal.kdN * CN);
-    dstatedt[0] = 0 + internal.vsP * (Math.pow((internal.KIP), (internal.n)) / (Math.pow((internal.KIP), (internal.n)) + Math.pow((CN), (internal.n)))) - (internal.vmP * (MP / (internal.KmP + MP)) + internal.kd * MP);
-    dstatedt[6] = 0 + internal.vsT * (Math.pow((internal.KIT), (internal.n)) / (Math.pow((internal.KIT), (internal.n)) + Math.pow((CN), (internal.n)))) - (internal.vmT * (MT / (internal.KmT + MT)) + internal.kd * MT);
-    dstatedt[7] = 0 + internal.ksP * MP + internal.V2P * (P1 / (internal.K2P + P1)) - (internal.V1P * (P0 / (internal.K1P + P0)) + internal.kd * P0);
-    dstatedt[8] = 0 + internal.V1P * (P0 / (internal.K1P + P0)) + internal.V4P * (P2 / (internal.K4P + P2)) - (internal.V2P * (P1 / (internal.K2P + P1)) + internal.V3P * (P1 / (internal.K3P + P1)) + internal.kd * P1);
-    dstatedt[9] = 0 + internal.V3P * (P1 / (internal.K3P + P1)) + internal.k4 * C - (internal.V4P * (P2 / (internal.K4P + P2)) + internal.k3 * P2 * T2 + internal.vdP * (P2 / (internal.KdP + P2)) + internal.kd * P2);
-    dstatedt[5] = 0 + internal.ksT * MT + internal.V2T * (T1 / (internal.K2T + T1)) - (internal.V1T * (T0 / (internal.K1T + T0)) + internal.kd * T0);
-    dstatedt[4] = 0 + internal.V1T * (T0 / (internal.K1T + T0)) + internal.V4T * (T2 / (internal.K4T + T2)) - (internal.V2T * (T1 / (internal.K2T + T1)) + internal.V3T * (T1 / (internal.K3T + T1)) + internal.kd * T1);
-    dstatedt[3] = 0 + internal.V3T * (T1 / (internal.K3T + T1)) + internal.k4 * C - (internal.V4T * (T2 / (internal.K4T + T2)) + internal.k3 * P2 * T2 + internal.vdT * (T2 / (internal.KdT + T2)) + internal.kd * T2);
+    dstatedt[2] = 0;
+    dstatedt[1] = 0;
+    dstatedt[0] = 0;
+    dstatedt[6] = 0;
+    dstatedt[7] = 0;
+    dstatedt[8] = 0;
+    dstatedt[9] = 0;
+    dstatedt[5] = 0;
+    dstatedt[4] = 0;
+    dstatedt[3] = 0;
   }
   names() {
     return this.metadata.ynames.slice(1);

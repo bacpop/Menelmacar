@@ -4,7 +4,6 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.cell = 1;
-    internal.K = 1;
     internal.pi = 3.1415929999999999;
     this.setUser(user, unusedUserAction);
   }
@@ -33,7 +32,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Bc_init", "Bcp_init", "Bn_init", "Bnp_init", "Cc_init", "Ccp_init", "h", "In_init", "k1", "k10", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "KAC", "KAP", "KAR", "Kd", "kdmb", "kdmc", "kdmp", "kdmr", "kdn", "kdnC", "Kdp", "KmB", "KmC", "KmP", "kmR", "Kp", "ksB", "ksC", "ksP", "ksR", "m", "Mb_init", "Mc_init", "Mp_init", "Mr_init", "n", "Pc_init", "PCc_init", "PCcp_init", "PCn_init", "PCnp_init", "Pcp_init", "Rc_init", "Rn_init", "V1B", "V1C", "V1P", "V1PC", "V2B", "V2C", "V2P", "V2PC", "V3B", "V3PC", "V4B", "V4PC", "vdBC", "vdBN", "vdCC", "vdIN", "VdPC", "vdPCC", "vdPCN", "vdRC", "vdRN", "vmB", "vmC", "vmP", "vmR", "vsB", "vsC", "vsR"], unusedUserAction);
+    this.base.user.checkUser(user, ["Bc_init", "Bcp_init", "Bn_init", "Bnp_init", "Cc_init", "Ccp_init", "h", "In_init", "K", "k1", "k10", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "KAC", "KAP", "KAR", "Kd", "kdmb", "kdmc", "kdmp", "kdmr", "kdn", "kdnC", "Kdp", "KmB", "KmC", "KmP", "kmR", "Kp", "ksB", "ksC", "ksP", "ksR", "m", "Mb_init", "Mc_init", "Mp_init", "Mr_init", "n", "Pc_init", "PCc_init", "PCcp_init", "PCn_init", "PCnp_init", "Pcp_init", "Rc_init", "Rn_init", "V1B", "V1C", "V1P", "V1PC", "V2B", "V2C", "V2P", "V2PC", "V3B", "V3PC", "V4B", "V4PC", "vdBC", "vdBN", "vdCC", "vdIN", "VdPC", "vdPCC", "vdPCN", "vdRC", "vdRN", "vmB", "vmC", "vmP", "vmR", "vsB", "vsC", "vsR"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "Bc_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Bcp_init", internal, 0, -Infinity, Infinity, false);
@@ -43,6 +42,7 @@ export class model {
     this.base.user.setUserScalar(user, "Ccp_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "h", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "In_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "K", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.80000000000000004, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k10", internal, 0.40000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 0.40000000000000002, -Infinity, Infinity, false);

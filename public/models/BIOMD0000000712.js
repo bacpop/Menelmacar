@@ -8,13 +8,10 @@ export class model {
   }
   initial(t) {
     var internal = this.internal;
-    var S_init = internal.initial_P + internal.initial_I;
-    internal.initial_S = S_init;
-    var state = Array(4).fill(0);
+    var state = Array(3).fill(0);
     state[0] = internal.initial_P;
     state[1] = internal.initial_D;
     state[2] = internal.initial_I;
-    state[3] = internal.initial_S;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -29,7 +26,7 @@ export class model {
     this.base.user.setUserScalar(user, "I_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_p", internal, 3.23, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "omega", internal, 0.13, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "P_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "P_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho", internal, 1.8200000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "theta", internal, 0.01, -Infinity, Infinity, false);
     internal.initial_D = internal.D_init;
@@ -45,7 +42,6 @@ export class model {
     const P = state[0];
     const D = state[1];
     const I = state[2];
-    dstatedt[3] = 0 + 0;
     dstatedt[1] = 0 + 1 * internal.compartment * (internal.gamma * P) - 1 * internal.compartment * internal.theta * D;
     dstatedt[0] = 0 + 1 * internal.compartment * (internal.alpha * P * (1 - P / internal.k_p)) - 1 * internal.compartment * (internal.beta * D * (P / (P + 0.01)));
     var f_D = 1 + Math.tanh((D - internal.delta) / internal.omega);
@@ -57,9 +53,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "P", "D", "I", "S"];
-    this.metadata.internalOrder = {alpha: null, beta: null, compartment: null, D_init: null, delta: null, epsilon: null, gamma: null, I_init: null, initial_D: null, initial_I: null, initial_P: null, initial_S: null, k_p: null, omega: null, P_init: null, rho: null, theta: null};
-    this.metadata.variableOrder = {P: null, D: null, I: null, S: null};
+    this.metadata.ynames = ["t", "P", "D", "I"];
+    this.metadata.internalOrder = {alpha: null, beta: null, compartment: null, D_init: null, delta: null, epsilon: null, gamma: null, I_init: null, initial_D: null, initial_I: null, initial_P: null, k_p: null, omega: null, P_init: null, rho: null, theta: null};
+    this.metadata.variableOrder = {P: null, D: null, I: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {
