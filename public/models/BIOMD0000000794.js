@@ -29,7 +29,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a1", "a2", "A20_init", "A20_mRNA_init", "a3", "b_TrCP_init", "c1", "c1a", "c1c", "c3", "c3a", "c3c", "c4", "c4a", "c5", "c5a", "c6a", "cgen_mRNA_init", "e1a", "e2a", "i1", "i1a", "IkB_init", "IkB_mRNA_init", "IkB_NFKB_init", "IkB_NFKB_nuc_init", "IkB_nuc_init", "IKK_active_init", "IKK_inact_init", "IKK_neutral_init", "IKKactive_IkB_init", "IKKactive_IkB_NFKB_init", "k1", "k2", "k3", "Kdeg", "Kprod", "Kv", "ModelValue_1", "NFKB_init", "NFKB_nuc_init", "t1", "t2"], unusedUserAction);
+    this.base.user.checkUser(user, ["a1", "a2", "A20_init", "A20_mRNA_init", "a3", "b_TrCP_init", "c1", "c1a", "c1c", "c3", "c3a", "c3c", "c4", "c4a", "c5", "c5a", "c6a", "cgen_mRNA_init", "e1a", "e2a", "i1", "i1a", "IkB_init", "IkB_mRNA_init", "IkB_NFKB_init", "IkB_NFKB_nuc_init", "IkB_nuc_init", "IKK_active_init", "IKK_inact_init", "IKK_neutral_init", "IKKactive_IkB_init", "IKKactive_IkB_NFKB_init", "k1", "k2", "k3", "Kdeg", "Kprod", "Kv", "NFKB_init", "NFKB_nuc_init", "t1", "t2"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a1", internal, 0.029999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "a2", internal, 0.012, -Infinity, Infinity, false);
@@ -69,7 +69,6 @@ export class model {
     this.base.user.setUserScalar(user, "Kdeg", internal, 0.0074999999999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kprod", internal, 1.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kv", internal, 5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_1", internal, 5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "NFKB_init", internal, 0.31550547924598998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "NFKB_nuc_init", internal, 2.2957667766439398, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "t1", internal, 6, -Infinity, Infinity, false);
@@ -90,6 +89,7 @@ export class model {
     internal.initial_IKKactive_IkB_NFKB = internal.IKKactive_IkB_NFKB_init;
     internal.initial_NFKB = internal.NFKB_init;
     internal.initial_NFKB_nuc = internal.NFKB_nuc_init;
+    internal.ModelValue_1 = internal.Kv;
     this.updateMetadata();
   }
   getInternal() {

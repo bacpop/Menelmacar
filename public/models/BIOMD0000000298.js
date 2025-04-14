@@ -89,16 +89,26 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[2] = 0;
-    dstatedt[1] = 0;
-    dstatedt[0] = 0;
-    dstatedt[6] = 0;
-    dstatedt[7] = 0;
-    dstatedt[8] = 0;
-    dstatedt[9] = 0;
-    dstatedt[5] = 0;
-    dstatedt[4] = 0;
-    dstatedt[3] = 0;
+    const MP = state[0];
+    const CN = state[1];
+    const C = state[2];
+    const T2 = state[3];
+    const T1 = state[4];
+    const T0 = state[5];
+    const MT = state[6];
+    const P0 = state[7];
+    const P1 = state[8];
+    const P2 = state[9];
+    dstatedt[2] = 0 + internal.k3 * P2 * T2 + internal.k2 * CN - (internal.k4 * C + internal.k1 * C + internal.kdC * C);
+    dstatedt[1] = 0 + internal.k1 * C - (internal.k2 * CN + internal.kdN * CN);
+    dstatedt[0] = 0 + internal.vsP * (Math.pow((internal.KIP), (internal.n)) / (Math.pow((internal.KIP), (internal.n)) + Math.pow((CN), (internal.n)))) - (internal.vmP * (MP / (internal.KmP + MP)) + internal.kd * MP);
+    dstatedt[6] = 0 + internal.vsT * (Math.pow((internal.KIT), (internal.n)) / (Math.pow((internal.KIT), (internal.n)) + Math.pow((CN), (internal.n)))) - (internal.vmT * (MT / (internal.KmT + MT)) + internal.kd * MT);
+    dstatedt[7] = 0 + internal.ksP * MP + internal.V2P * (P1 / (internal.K2P + P1)) - (internal.V1P * (P0 / (internal.K1P + P0)) + internal.kd * P0);
+    dstatedt[8] = 0 + internal.V1P * (P0 / (internal.K1P + P0)) + internal.V4P * (P2 / (internal.K4P + P2)) - (internal.V2P * (P1 / (internal.K2P + P1)) + internal.V3P * (P1 / (internal.K3P + P1)) + internal.kd * P1);
+    dstatedt[9] = 0 + internal.V3P * (P1 / (internal.K3P + P1)) + internal.k4 * C - (internal.V4P * (P2 / (internal.K4P + P2)) + internal.k3 * P2 * T2 + internal.vdP * (P2 / (internal.KdP + P2)) + internal.kd * P2);
+    dstatedt[5] = 0 + internal.ksT * MT + internal.V2T * (T1 / (internal.K2T + T1)) - (internal.V1T * (T0 / (internal.K1T + T0)) + internal.kd * T0);
+    dstatedt[4] = 0 + internal.V1T * (T0 / (internal.K1T + T0)) + internal.V4T * (T2 / (internal.K4T + T2)) - (internal.V2T * (T1 / (internal.K2T + T1)) + internal.V3T * (T1 / (internal.K3T + T1)) + internal.kd * T1);
+    dstatedt[3] = 0 + internal.V3T * (T1 / (internal.K3T + T1)) + internal.k4 * C - (internal.V4T * (T2 / (internal.K4T + T2)) + internal.k3 * P2 * T2 + internal.vdT * (T2 / (internal.KdT + T2)) + internal.kd * T2);
   }
   names() {
     return this.metadata.ynames.slice(1);

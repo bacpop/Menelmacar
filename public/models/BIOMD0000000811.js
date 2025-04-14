@@ -18,7 +18,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a", "a_c", "a_e", "a_h", "a_n", "a_p", "a_r", "b_c", "b_e", "b_h", "b_n", "b_r", "beta_1_tau_2", "beta_2_tau_2", "beta_3_tau_2", "c_e", "c_n", "C_PCC_init", "d_c", "delta_e", "delta_h", "delta_n", "delta_r", "E_CD8_init", "f_e", "f_h", "f_n", "f_p", "g_e", "g_h", "g_n", "g_r", "gamma_2_tau_3", "h_e", "h_h", "h_n", "H_T_Helper_init", "k_c", "k_R", "lambda_p", "ModelValue_0", "ModelValue_2", "ModelValue_8", "mu_p", "N_Killer_init", "p_e", "p_h", "p_n", "P_PSC_init", "p_r", "r", "r_1", "r_2", "r_e", "R_T_Regulatory_init", "tau_1_alpha_1"], unusedUserAction);
+    this.base.user.checkUser(user, ["a", "a_c", "a_e", "a_h", "a_n", "a_p", "a_r", "b_c", "b_e", "b_h", "b_n", "b_r", "beta_1_tau_2", "beta_2_tau_2", "beta_3_tau_2", "c_e", "c_n", "C_PCC_init", "d_c", "delta_e", "delta_h", "delta_n", "delta_r", "E_CD8_init", "f_e", "f_h", "f_n", "f_p", "g_e", "g_h", "g_n", "g_r", "gamma_2_tau_3", "h_e", "h_h", "h_n", "H_T_Helper_init", "k_c", "k_R", "lambda_p", "mu_p", "N_Killer_init", "p_e", "p_h", "p_n", "P_PSC_init", "p_r", "r", "r_1", "r_2", "r_e", "R_T_Regulatory_init", "tau_1_alpha_1"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a", internal, 560000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "a_c", internal, 1.0199999999999999e-11, -Infinity, Infinity, false);
@@ -60,9 +60,6 @@ export class model {
     this.base.user.setUserScalar(user, "k_c", internal, 0.0195, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_R", internal, 1.5e-11, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lambda_p", internal, 0.014999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_0", internal, 0.0195, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_2", internal, 1.0199999999999999e-11, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_8", internal, 1.7856999999999999e-09, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu_p", internal, 56000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "N_Killer_init", internal, 481600000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p_e", internal, 0.125, -Infinity, Infinity, false);
@@ -82,6 +79,9 @@ export class model {
     internal.initial_N_Killer = internal.N_Killer_init;
     internal.initial_P_PSC = internal.P_PSC_init;
     internal.initial_R_T_Regulatory = internal.R_T_Regulatory_init;
+    internal.ModelValue_0 = internal.k_c;
+    internal.ModelValue_2 = internal.a_c;
+    internal.ModelValue_8 = internal.a_p;
     internal.k_p = 0.10000000000000001 * internal.ModelValue_0;
     internal.mu_c = 0.10000000000000001 * internal.ModelValue_2 * internal.ModelValue_8;
     this.updateMetadata();

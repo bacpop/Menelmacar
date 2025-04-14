@@ -18,7 +18,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Beta", "c", "Delta", "f", "IFN_init", "Infected_cells_antiviral_init", "Infected_cells_init", "kxk", "Metabolite_0", "p", "Phi", "Pi", "Refractory_cells_init", "Rho", "Target_cells_init", "Virions_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Beta", "c", "Delta", "f", "IFN_init", "Infected_cells_antiviral_init", "Infected_cells_init", "kxk", "p", "Phi", "Pi", "Refractory_cells_init", "Rho", "Target_cells_init", "Virions_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "Beta", internal, 5.0000000000000003e-10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "c", internal, 14, -Infinity, Infinity, false);
@@ -28,7 +28,6 @@ export class model {
     this.base.user.setUserScalar(user, "Infected_cells_antiviral_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Infected_cells_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 2, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Metabolite_0", internal, 400000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p", internal, 2400, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Phi", internal, 5.0000000000000003e-10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Pi", internal, 1, -Infinity, Infinity, false);
@@ -69,7 +68,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "Target_cells", "Infected_cells", "Infected_cells_antiviral", "Refractory_cells", "Virions", "IFN"];
-    this.metadata.internalOrder = {Beta: null, c: null, Delta: null, f: null, IFN_init: null, Infected_cells_antiviral_init: null, Infected_cells_init: null, initial_IFN: null, initial_Infected_cells: null, initial_Infected_cells_antiviral: null, initial_Refractory_cells: null, initial_Target_cells: null, initial_Virions: null, kxk: null, Metabolite_0: null, p: null, Phi: null, Pi: null, Refractory_cells_init: null, Rho: null, Target_cells_init: null, Virions_init: null, whole_organism: null};
+    this.metadata.internalOrder = {Beta: null, c: null, Delta: null, f: null, IFN_init: null, Infected_cells_antiviral_init: null, Infected_cells_init: null, initial_IFN: null, initial_Infected_cells: null, initial_Infected_cells_antiviral: null, initial_Refractory_cells: null, initial_Target_cells: null, initial_Virions: null, kxk: null, p: null, Phi: null, Pi: null, Refractory_cells_init: null, Rho: null, Target_cells_init: null, Virions_init: null, whole_organism: null};
     this.metadata.variableOrder = {Target_cells: null, Infected_cells: null, Infected_cells_antiviral: null, Refractory_cells: null, Virions: null, IFN: null};
     this.metadata.outputOrder = null;
   }

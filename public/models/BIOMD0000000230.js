@@ -4,13 +4,11 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.sink = 0;
-    internal.source = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(24).fill(0);
+    var state = Array(26).fill(0);
     state[0] = internal.initial_NFkB;
     state[1] = internal.initial_IKKIkBa;
     state[2] = internal.initial_IKKIkBaNFkB;
@@ -35,10 +33,12 @@ export class model {
     state[21] = internal.initial_IkBen;
     state[22] = internal.initial_IkBenNFkBn;
     state[23] = internal.initial_IkBet;
+    state[24] = internal.initial_source;
+    state[25] = internal.initial_sink;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["IkBa_init", "IkBan_init", "IkBaNFkB_init", "IkBanNFkBn_init", "IkBat_init", "IkBb_init", "IkBbn_init", "IkBbNFkB_init", "IkBbnNFkBn_init", "IkBbt_init", "IkBe_init", "IkBen_init", "IkBeNFkB_init", "IkBenNFkBn_init", "IkBet_init", "IKK_init", "IKKIkBa_init", "IKKIkBaNFkB_init", "IKKIkBb_init", "IKKIkBbNFkB_init", "IKKIkBe_init", "IKKIkBeNFkB_init", "k1", "k10", "k11", "k12", "k13", "k14", "k15", "k16", "k17", "k18", "k19", "k2", "k20", "k21", "k22", "k23", "k24", "k25", "k26", "k27", "k28", "k29", "k3", "k30", "k31", "k32", "k33", "k34", "k35", "k36", "k37", "k38", "k39", "k4", "k40", "k41", "k42", "k43", "k44", "k45", "k46", "k47", "k48", "k49", "k5", "k50", "k51", "k52", "k53", "k54", "k55", "k56", "k57", "k58", "k59", "k6", "k60", "k61", "k62", "k63", "k64", "k7", "k8", "k9", "NFkB_init", "NFkBn_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["IkBa_init", "IkBan_init", "IkBaNFkB_init", "IkBanNFkBn_init", "IkBat_init", "IkBb_init", "IkBbn_init", "IkBbNFkB_init", "IkBbnNFkBn_init", "IkBbt_init", "IkBe_init", "IkBen_init", "IkBeNFkB_init", "IkBenNFkBn_init", "IkBet_init", "IKK_init", "IKKIkBa_init", "IKKIkBaNFkB_init", "IKKIkBb_init", "IKKIkBbNFkB_init", "IKKIkBe_init", "IKKIkBeNFkB_init", "k1", "k10", "k11", "k12", "k13", "k14", "k15", "k16", "k17", "k18", "k19", "k2", "k20", "k21", "k22", "k23", "k24", "k25", "k26", "k27", "k28", "k29", "k3", "k30", "k31", "k32", "k33", "k34", "k35", "k36", "k37", "k38", "k39", "k4", "k40", "k41", "k42", "k43", "k44", "k45", "k46", "k47", "k48", "k49", "k5", "k50", "k51", "k52", "k53", "k54", "k55", "k56", "k57", "k58", "k59", "k6", "k60", "k61", "k62", "k63", "k64", "k7", "k8", "k9", "NFkB_init", "NFkBn_init", "sink_init", "source_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "IkBa_init", internal, 0.19028, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IkBan_init", internal, 0.19325999999999999, -Infinity, Infinity, false);
@@ -128,6 +128,8 @@ export class model {
     this.base.user.setUserScalar(user, "k9", internal, 0.020400000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "NFkB_init", internal, 0.00025081000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "NFkBn_init", internal, 0.00020366000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "sink_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "source_init", internal, 1, -Infinity, Infinity, false);
     internal.initial_IkBa = internal.IkBa_init;
     internal.initial_IkBan = internal.IkBan_init;
     internal.initial_IkBaNFkB = internal.IkBaNFkB_init;
@@ -152,6 +154,8 @@ export class model {
     internal.initial_IKKIkBeNFkB = internal.IKKIkBeNFkB_init;
     internal.initial_NFkB = internal.NFkB_init;
     internal.initial_NFkBn = internal.NFkBn_init;
+    internal.initial_sink = internal.sink_init;
+    internal.initial_source = internal.source_init;
     this.updateMetadata();
   }
   getInternal() {
@@ -183,21 +187,24 @@ export class model {
     const IkBen = state[21];
     const IkBenNFkBn = state[22];
     const IkBet = state[23];
+    const source = state[24];
+    dstatedt[25] = 0;
+    dstatedt[24] = 0;
     dstatedt[4] = 0 - 1 * internal.k34 * IKK * IkBa + 1 * internal.k35 * IKKIkBa - 1 * internal.k1 * IkBa * NFkB + 1 * internal.k2 * IkBaNFkB + 1 * internal.k39 * IkBan - 1 * internal.k38 * IkBa + 1 * internal.k36 * IkBat - 1 * internal.k37 * IkBa;
     dstatedt[16] = 0 - 1 * internal.k21 * IkBan * NFkBn + 1 * internal.k22 * IkBanNFkBn - 1 * internal.k39 * IkBan + 1 * internal.k38 * IkBa;
     dstatedt[11] = 0 - 1 * internal.k52 * IKK * IkBaNFkB + 1 * internal.k53 * IKKIkBaNFkB + 1 * internal.k1 * IkBa * NFkB - 1 * internal.k2 * IkBaNFkB + 1 * internal.k54 * IkBanNFkBn - 1 * internal.k16 * IkBaNFkB;
     dstatedt[17] = 0 + 1 * internal.k21 * IkBan * NFkBn - 1 * internal.k22 * IkBanNFkBn - 1 * internal.k54 * IkBanNFkBn;
-    dstatedt[14] = 0 + 1 * internal.k28 * NFkBn * NFkBn - 1 * internal.k29 * IkBat + 1 * internal.k27 * internal.source;
+    dstatedt[14] = 0 + 1 * internal.k28 * NFkBn * NFkBn - 1 * internal.k29 * IkBat + 1 * internal.k27 * source;
     dstatedt[7] = 0 - 1 * internal.k40 * IKK * IkBb + 1 * internal.k41 * IKKIkBb - 1 * internal.k3 * IkBb * NFkB + 1 * internal.k4 * IkBbNFkB + 1 * internal.k45 * IkBbn - 1 * internal.k44 * IkBb + 1 * internal.k42 * IkBbt - 1 * internal.k43 * IkBb;
     dstatedt[18] = 0 - 1 * internal.k23 * IkBbn * NFkBn + 1 * internal.k24 * IkBbnNFkBn - 1 * internal.k45 * IkBbn + 1 * internal.k44 * IkBb;
     dstatedt[12] = 0 - 1 * internal.k55 * IKK * IkBbNFkB + 1 * internal.k56 * IKKIkBbNFkB + 1 * internal.k3 * IkBb * NFkB - 1 * internal.k4 * IkBbNFkB + 1 * internal.k57 * IkBbnNFkBn - 1 * internal.k17 * IkBbNFkB;
     dstatedt[19] = 0 + 1 * internal.k23 * IkBbn * NFkBn - 1 * internal.k24 * IkBbnNFkBn - 1 * internal.k57 * IkBbnNFkBn;
-    dstatedt[20] = 0 - 1 * internal.k31 * IkBbt + 1 * internal.k30 * internal.source;
+    dstatedt[20] = 0 - 1 * internal.k31 * IkBbt + 1 * internal.k30 * source;
     dstatedt[10] = 0 - 1 * internal.k46 * IKK * IkBe + 1 * internal.k47 * IKKIkBe - 1 * internal.k5 * IkBe * NFkB + 1 * internal.k6 * IkBeNFkB + 1 * internal.k51 * IkBen - 1 * internal.k50 * IkBe + 1 * internal.k48 * IkBet - 1 * internal.k49 * IkBe;
     dstatedt[21] = 0 - 1 * internal.k25 * IkBen * NFkBn + 1 * internal.k26 * IkBenNFkBn - 1 * internal.k51 * IkBen + 1 * internal.k50 * IkBe;
     dstatedt[13] = 0 - 1 * internal.k58 * IKK * IkBeNFkB + 1 * internal.k59 * IKKIkBeNFkB + 1 * internal.k5 * IkBe * NFkB - 1 * internal.k6 * IkBeNFkB + 1 * internal.k60 * IkBenNFkBn - 1 * internal.k18 * IkBeNFkB;
     dstatedt[22] = 0 + 1 * internal.k25 * IkBen * NFkBn - 1 * internal.k26 * IkBenNFkBn - 1 * internal.k60 * IkBenNFkBn;
-    dstatedt[23] = 0 - 1 * internal.k33 * IkBet + 1 * internal.k32 * internal.source;
+    dstatedt[23] = 0 - 1 * internal.k33 * IkBet + 1 * internal.k32 * source;
     dstatedt[3] = 0 + 1 * internal.k9 * IKKIkBaNFkB - 1 * internal.k34 * IKK * IkBa + 1 * internal.k62 * IKKIkBa + 1 * internal.k35 * IKKIkBa + 1 * internal.k12 * IKKIkBbNFkB - 1 * internal.k40 * IKK * IkBb + 1 * internal.k63 * IKKIkBb + 1 * internal.k41 * IKKIkBb + 1 * internal.k15 * IKKIkBeNFkB - 1 * internal.k46 * IKK * IkBe + 1 * internal.k64 * IKKIkBe + 1 * internal.k47 * IKKIkBe - 1 * internal.k52 * IKK * IkBaNFkB + 1 * internal.k53 * IKKIkBaNFkB - 1 * internal.k55 * IKK * IkBbNFkB + 1 * internal.k56 * IKKIkBbNFkB - 1 * internal.k58 * IKK * IkBeNFkB + 1 * internal.k59 * IKKIkBeNFkB - 1 * internal.k61 * IKK;
     dstatedt[1] = 0 - 1 * internal.k7 * IKKIkBa * NFkB + 1 * internal.k8 * IKKIkBaNFkB + 1 * internal.k34 * IKK * IkBa - 1 * internal.k62 * IKKIkBa - 1 * internal.k35 * IKKIkBa;
     dstatedt[2] = 0 + 1 * internal.k7 * IKKIkBa * NFkB - 1 * internal.k9 * IKKIkBaNFkB - 1 * internal.k8 * IKKIkBaNFkB + 1 * internal.k52 * IKK * IkBaNFkB - 1 * internal.k53 * IKKIkBaNFkB;
@@ -214,9 +221,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "NFkB", "IKKIkBa", "IKKIkBaNFkB", "IKK", "IkBa", "IKKIkBb", "IKKIkBbNFkB", "IkBb", "IKKIkBe", "IKKIkBeNFkB", "IkBe", "IkBaNFkB", "IkBbNFkB", "IkBeNFkB", "IkBat", "NFkBn", "IkBan", "IkBanNFkBn", "IkBbn", "IkBbnNFkBn", "IkBbt", "IkBen", "IkBenNFkBn", "IkBet"];
-    this.metadata.internalOrder = {compartment: null, IkBa_init: null, IkBan_init: null, IkBaNFkB_init: null, IkBanNFkBn_init: null, IkBat_init: null, IkBb_init: null, IkBbn_init: null, IkBbNFkB_init: null, IkBbnNFkBn_init: null, IkBbt_init: null, IkBe_init: null, IkBen_init: null, IkBeNFkB_init: null, IkBenNFkBn_init: null, IkBet_init: null, IKK_init: null, IKKIkBa_init: null, IKKIkBaNFkB_init: null, IKKIkBb_init: null, IKKIkBbNFkB_init: null, IKKIkBe_init: null, IKKIkBeNFkB_init: null, initial_IkBa: null, initial_IkBan: null, initial_IkBaNFkB: null, initial_IkBanNFkBn: null, initial_IkBat: null, initial_IkBb: null, initial_IkBbn: null, initial_IkBbNFkB: null, initial_IkBbnNFkBn: null, initial_IkBbt: null, initial_IkBe: null, initial_IkBen: null, initial_IkBeNFkB: null, initial_IkBenNFkBn: null, initial_IkBet: null, initial_IKK: null, initial_IKKIkBa: null, initial_IKKIkBaNFkB: null, initial_IKKIkBb: null, initial_IKKIkBbNFkB: null, initial_IKKIkBe: null, initial_IKKIkBeNFkB: null, initial_NFkB: null, initial_NFkBn: null, k1: null, k10: null, k11: null, k12: null, k13: null, k14: null, k15: null, k16: null, k17: null, k18: null, k19: null, k2: null, k20: null, k21: null, k22: null, k23: null, k24: null, k25: null, k26: null, k27: null, k28: null, k29: null, k3: null, k30: null, k31: null, k32: null, k33: null, k34: null, k35: null, k36: null, k37: null, k38: null, k39: null, k4: null, k40: null, k41: null, k42: null, k43: null, k44: null, k45: null, k46: null, k47: null, k48: null, k49: null, k5: null, k50: null, k51: null, k52: null, k53: null, k54: null, k55: null, k56: null, k57: null, k58: null, k59: null, k6: null, k60: null, k61: null, k62: null, k63: null, k64: null, k7: null, k8: null, k9: null, NFkB_init: null, NFkBn_init: null, sink: null, source: null};
-    this.metadata.variableOrder = {NFkB: null, IKKIkBa: null, IKKIkBaNFkB: null, IKK: null, IkBa: null, IKKIkBb: null, IKKIkBbNFkB: null, IkBb: null, IKKIkBe: null, IKKIkBeNFkB: null, IkBe: null, IkBaNFkB: null, IkBbNFkB: null, IkBeNFkB: null, IkBat: null, NFkBn: null, IkBan: null, IkBanNFkBn: null, IkBbn: null, IkBbnNFkBn: null, IkBbt: null, IkBen: null, IkBenNFkBn: null, IkBet: null};
+    this.metadata.ynames = ["t", "NFkB", "IKKIkBa", "IKKIkBaNFkB", "IKK", "IkBa", "IKKIkBb", "IKKIkBbNFkB", "IkBb", "IKKIkBe", "IKKIkBeNFkB", "IkBe", "IkBaNFkB", "IkBbNFkB", "IkBeNFkB", "IkBat", "NFkBn", "IkBan", "IkBanNFkBn", "IkBbn", "IkBbnNFkBn", "IkBbt", "IkBen", "IkBenNFkBn", "IkBet", "source", "sink"];
+    this.metadata.internalOrder = {compartment: null, IkBa_init: null, IkBan_init: null, IkBaNFkB_init: null, IkBanNFkBn_init: null, IkBat_init: null, IkBb_init: null, IkBbn_init: null, IkBbNFkB_init: null, IkBbnNFkBn_init: null, IkBbt_init: null, IkBe_init: null, IkBen_init: null, IkBeNFkB_init: null, IkBenNFkBn_init: null, IkBet_init: null, IKK_init: null, IKKIkBa_init: null, IKKIkBaNFkB_init: null, IKKIkBb_init: null, IKKIkBbNFkB_init: null, IKKIkBe_init: null, IKKIkBeNFkB_init: null, initial_IkBa: null, initial_IkBan: null, initial_IkBaNFkB: null, initial_IkBanNFkBn: null, initial_IkBat: null, initial_IkBb: null, initial_IkBbn: null, initial_IkBbNFkB: null, initial_IkBbnNFkBn: null, initial_IkBbt: null, initial_IkBe: null, initial_IkBen: null, initial_IkBeNFkB: null, initial_IkBenNFkBn: null, initial_IkBet: null, initial_IKK: null, initial_IKKIkBa: null, initial_IKKIkBaNFkB: null, initial_IKKIkBb: null, initial_IKKIkBbNFkB: null, initial_IKKIkBe: null, initial_IKKIkBeNFkB: null, initial_NFkB: null, initial_NFkBn: null, initial_sink: null, initial_source: null, k1: null, k10: null, k11: null, k12: null, k13: null, k14: null, k15: null, k16: null, k17: null, k18: null, k19: null, k2: null, k20: null, k21: null, k22: null, k23: null, k24: null, k25: null, k26: null, k27: null, k28: null, k29: null, k3: null, k30: null, k31: null, k32: null, k33: null, k34: null, k35: null, k36: null, k37: null, k38: null, k39: null, k4: null, k40: null, k41: null, k42: null, k43: null, k44: null, k45: null, k46: null, k47: null, k48: null, k49: null, k5: null, k50: null, k51: null, k52: null, k53: null, k54: null, k55: null, k56: null, k57: null, k58: null, k59: null, k6: null, k60: null, k61: null, k62: null, k63: null, k64: null, k7: null, k8: null, k9: null, NFkB_init: null, NFkBn_init: null, sink_init: null, source_init: null};
+    this.metadata.variableOrder = {NFkB: null, IKKIkBa: null, IKKIkBaNFkB: null, IKK: null, IkBa: null, IKKIkBb: null, IKKIkBbNFkB: null, IkBb: null, IKKIkBe: null, IKKIkBeNFkB: null, IkBe: null, IkBaNFkB: null, IkBbNFkB: null, IkBeNFkB: null, IkBat: null, NFkBn: null, IkBan: null, IkBanNFkBn: null, IkBbn: null, IkBbnNFkBn: null, IkBbt: null, IkBen: null, IkBenNFkBn: null, IkBet: null, source: null, sink: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

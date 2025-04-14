@@ -5,12 +5,11 @@ export class model {
     var internal = this.internal;
     internal.compartment = 1;
     internal.Extracellular = 1;
-    internal.p = 0;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(36).fill(0);
+    var state = Array(37).fill(0);
     state[0] = internal.initial_alpha;
     state[1] = internal.initial_Ste2;
     state[2] = internal.initial_Ste2a;
@@ -47,10 +46,11 @@ export class model {
     state[33] = internal.initial_complexN;
     state[34] = internal.initial_Cdc28;
     state[35] = internal.initial_Sst2;
+    state[36] = internal.initial_p;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["alpha_init", "Bar1_init", "Bar1a_init", "Bar1aex_init", "Cdc28_init", "complexA_init", "complexB_init", "complexC_init", "complexD_init", "complexE_init", "complexF_init", "complexG_init", "complexH_init", "complexI_init", "complexK_init", "complexL_init", "complexM_init", "complexN_init", "Far1_init", "Far1PP_init", "Far1U_init", "Fus3_init", "Fus3PP_init", "Gabc_init", "GaGDP_init", "GaGTP_init", "Gbc_init", "k1", "k10", "k11", "k12", "k13", "k14", "k15", "k16", "k17", "k18", "k19", "k2", "k20", "k21", "k22", "k23", "k24", "k25", "k26", "k27", "k28", "k29", "k3", "k30", "k31", "k32", "k33", "k34", "k35", "k36", "k37", "k38", "k39", "k4", "k40", "k41", "k42", "k43", "k44", "k45", "k46", "k47", "k5", "k6", "k7", "k8", "k9", "Sst2_init", "Ste11_init", "Ste12_init", "Ste12a_init", "Ste2_init", "Ste20_init", "Ste2a_init", "Ste5_init", "Ste7_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["alpha_init", "Bar1_init", "Bar1a_init", "Bar1aex_init", "Cdc28_init", "complexA_init", "complexB_init", "complexC_init", "complexD_init", "complexE_init", "complexF_init", "complexG_init", "complexH_init", "complexI_init", "complexK_init", "complexL_init", "complexM_init", "complexN_init", "Far1_init", "Far1PP_init", "Far1U_init", "Fus3_init", "Fus3PP_init", "Gabc_init", "GaGDP_init", "GaGTP_init", "Gbc_init", "k1", "k10", "k11", "k12", "k13", "k14", "k15", "k16", "k17", "k18", "k19", "k2", "k20", "k21", "k22", "k23", "k24", "k25", "k26", "k27", "k28", "k29", "k3", "k30", "k31", "k32", "k33", "k34", "k35", "k36", "k37", "k38", "k39", "k4", "k40", "k41", "k42", "k43", "k44", "k45", "k46", "k47", "k5", "k6", "k7", "k8", "k9", "p_init", "Sst2_init", "Ste11_init", "Ste12_init", "Ste12a_init", "Ste2_init", "Ste20_init", "Ste2a_init", "Ste5_init", "Ste7_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Bar1_init", internal, 200, -Infinity, Infinity, false);
@@ -126,6 +126,7 @@ export class model {
     this.base.user.setUserScalar(user, "k7", internal, 0.23999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k8", internal, 0.033000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k9", internal, 2000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "p_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Sst2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ste11_init", internal, 158.33176608789, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ste12_init", internal, 200, -Infinity, Infinity, false);
@@ -162,6 +163,7 @@ export class model {
     internal.initial_GaGDP = internal.GaGDP_init;
     internal.initial_GaGTP = internal.GaGTP_init;
     internal.initial_Gbc = internal.Gbc_init;
+    internal.initial_p = internal.p_init;
     internal.initial_Sst2 = internal.Sst2_init;
     internal.initial_Ste11 = internal.Ste11_init;
     internal.initial_Ste12 = internal.Ste12_init;
@@ -213,6 +215,7 @@ export class model {
     const complexN = state[33];
     const Cdc28 = state[34];
     const Sst2 = state[35];
+    dstatedt[36] = 0;
     dstatedt[0] = 0 - 1 * internal.Extracellular * alpha * Bar1aex * internal.k1;
     dstatedt[26] = 0 - 1 * internal.compartment * Ste12a * Bar1 * internal.k36 + 1 * internal.compartment * Bar1a * internal.k37;
     dstatedt[27] = 0 + 1 * internal.compartment * Ste12a * Bar1 * internal.k36 - 1 * internal.compartment * Bar1a * internal.k37 - 1 * internal.compartment * Bar1a * internal.k38;
@@ -256,9 +259,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "alpha", "Ste2", "Ste2a", "Gabc", "GaGTP", "Gbc", "GaGDP", "complexC", "complexD", "Ste5", "Ste11", "complexA", "Ste7", "Fus3", "complexB", "Ste20", "complexE", "complexF", "complexG", "complexH", "complexI", "complexL", "Fus3PP", "complexK", "Ste12", "Ste12a", "Bar1", "Bar1a", "Bar1aex", "Far1", "Far1PP", "Far1U", "complexM", "complexN", "Cdc28", "Sst2"];
-    this.metadata.internalOrder = {alpha_init: null, Bar1_init: null, Bar1a_init: null, Bar1aex_init: null, Cdc28_init: null, compartment: null, complexA_init: null, complexB_init: null, complexC_init: null, complexD_init: null, complexE_init: null, complexF_init: null, complexG_init: null, complexH_init: null, complexI_init: null, complexK_init: null, complexL_init: null, complexM_init: null, complexN_init: null, Extracellular: null, Far1_init: null, Far1PP_init: null, Far1U_init: null, Fus3_init: null, Fus3PP_init: null, Gabc_init: null, GaGDP_init: null, GaGTP_init: null, Gbc_init: null, initial_alpha: null, initial_Bar1: null, initial_Bar1a: null, initial_Bar1aex: null, initial_Cdc28: null, initial_complexA: null, initial_complexB: null, initial_complexC: null, initial_complexD: null, initial_complexE: null, initial_complexF: null, initial_complexG: null, initial_complexH: null, initial_complexI: null, initial_complexK: null, initial_complexL: null, initial_complexM: null, initial_complexN: null, initial_Far1: null, initial_Far1PP: null, initial_Far1U: null, initial_Fus3: null, initial_Fus3PP: null, initial_Gabc: null, initial_GaGDP: null, initial_GaGTP: null, initial_Gbc: null, initial_Sst2: null, initial_Ste11: null, initial_Ste12: null, initial_Ste12a: null, initial_Ste2: null, initial_Ste20: null, initial_Ste2a: null, initial_Ste5: null, initial_Ste7: null, k1: null, k10: null, k11: null, k12: null, k13: null, k14: null, k15: null, k16: null, k17: null, k18: null, k19: null, k2: null, k20: null, k21: null, k22: null, k23: null, k24: null, k25: null, k26: null, k27: null, k28: null, k29: null, k3: null, k30: null, k31: null, k32: null, k33: null, k34: null, k35: null, k36: null, k37: null, k38: null, k39: null, k4: null, k40: null, k41: null, k42: null, k43: null, k44: null, k45: null, k46: null, k47: null, k5: null, k6: null, k7: null, k8: null, k9: null, p: null, Sst2_init: null, Ste11_init: null, Ste12_init: null, Ste12a_init: null, Ste2_init: null, Ste20_init: null, Ste2a_init: null, Ste5_init: null, Ste7_init: null};
-    this.metadata.variableOrder = {alpha: null, Ste2: null, Ste2a: null, Gabc: null, GaGTP: null, Gbc: null, GaGDP: null, complexC: null, complexD: null, Ste5: null, Ste11: null, complexA: null, Ste7: null, Fus3: null, complexB: null, Ste20: null, complexE: null, complexF: null, complexG: null, complexH: null, complexI: null, complexL: null, Fus3PP: null, complexK: null, Ste12: null, Ste12a: null, Bar1: null, Bar1a: null, Bar1aex: null, Far1: null, Far1PP: null, Far1U: null, complexM: null, complexN: null, Cdc28: null, Sst2: null};
+    this.metadata.ynames = ["t", "alpha", "Ste2", "Ste2a", "Gabc", "GaGTP", "Gbc", "GaGDP", "complexC", "complexD", "Ste5", "Ste11", "complexA", "Ste7", "Fus3", "complexB", "Ste20", "complexE", "complexF", "complexG", "complexH", "complexI", "complexL", "Fus3PP", "complexK", "Ste12", "Ste12a", "Bar1", "Bar1a", "Bar1aex", "Far1", "Far1PP", "Far1U", "complexM", "complexN", "Cdc28", "Sst2", "p"];
+    this.metadata.internalOrder = {alpha_init: null, Bar1_init: null, Bar1a_init: null, Bar1aex_init: null, Cdc28_init: null, compartment: null, complexA_init: null, complexB_init: null, complexC_init: null, complexD_init: null, complexE_init: null, complexF_init: null, complexG_init: null, complexH_init: null, complexI_init: null, complexK_init: null, complexL_init: null, complexM_init: null, complexN_init: null, Extracellular: null, Far1_init: null, Far1PP_init: null, Far1U_init: null, Fus3_init: null, Fus3PP_init: null, Gabc_init: null, GaGDP_init: null, GaGTP_init: null, Gbc_init: null, initial_alpha: null, initial_Bar1: null, initial_Bar1a: null, initial_Bar1aex: null, initial_Cdc28: null, initial_complexA: null, initial_complexB: null, initial_complexC: null, initial_complexD: null, initial_complexE: null, initial_complexF: null, initial_complexG: null, initial_complexH: null, initial_complexI: null, initial_complexK: null, initial_complexL: null, initial_complexM: null, initial_complexN: null, initial_Far1: null, initial_Far1PP: null, initial_Far1U: null, initial_Fus3: null, initial_Fus3PP: null, initial_Gabc: null, initial_GaGDP: null, initial_GaGTP: null, initial_Gbc: null, initial_p: null, initial_Sst2: null, initial_Ste11: null, initial_Ste12: null, initial_Ste12a: null, initial_Ste2: null, initial_Ste20: null, initial_Ste2a: null, initial_Ste5: null, initial_Ste7: null, k1: null, k10: null, k11: null, k12: null, k13: null, k14: null, k15: null, k16: null, k17: null, k18: null, k19: null, k2: null, k20: null, k21: null, k22: null, k23: null, k24: null, k25: null, k26: null, k27: null, k28: null, k29: null, k3: null, k30: null, k31: null, k32: null, k33: null, k34: null, k35: null, k36: null, k37: null, k38: null, k39: null, k4: null, k40: null, k41: null, k42: null, k43: null, k44: null, k45: null, k46: null, k47: null, k5: null, k6: null, k7: null, k8: null, k9: null, p_init: null, Sst2_init: null, Ste11_init: null, Ste12_init: null, Ste12a_init: null, Ste2_init: null, Ste20_init: null, Ste2a_init: null, Ste5_init: null, Ste7_init: null};
+    this.metadata.variableOrder = {alpha: null, Ste2: null, Ste2a: null, Gabc: null, GaGTP: null, Gbc: null, GaGDP: null, complexC: null, complexD: null, Ste5: null, Ste11: null, complexA: null, Ste7: null, Fus3: null, complexB: null, Ste20: null, complexE: null, complexF: null, complexG: null, complexH: null, complexI: null, complexL: null, Fus3PP: null, complexK: null, Ste12: null, Ste12a: null, Bar1: null, Bar1a: null, Bar1aex: null, Far1: null, Far1PP: null, Far1U: null, complexM: null, complexN: null, Cdc28: null, Sst2: null, p: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

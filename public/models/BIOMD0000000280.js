@@ -3,16 +3,14 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.initial_N = 0;
     internal.initial_V = - 50;
     internal.musclefiber = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(2).fill(0);
+    var state = Array(1).fill(0);
     state[0] = internal.initial_V;
-    state[1] = internal.initial_N;
     return state;
   }
   setUser(user, unusedUserAction) {
@@ -39,11 +37,8 @@ export class model {
   rhs(t, state, dstatedt) {
     var internal = this.internal;
     const V = state[0];
-    const N = state[1];
-    var lambdaN = internal.lambdaN_bar * Math.cosh((V - internal.V3) / (2 * internal.V4));
     var Minf = (1 + Math.tanh((V - internal.V1) / internal.V2)) / 2;
-    var Ninf = (1 + Math.tanh((V - internal.V3) / internal.V4)) / 2;
-    dstatedt[1] = lambdaN * (Ninf - N);
+    var N = (1 + Math.tanh((V - internal.V3) / internal.V4)) / 2;
     dstatedt[0] = (internal.Iapp - internal.gL * (V - internal.VL) - internal.gCa * Minf * (V - internal.VCa) - internal.gK * N * (V - internal.VK)) / internal.C;
   }
   names() {
@@ -52,9 +47,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "V", "N"];
-    this.metadata.internalOrder = {C: null, gCa: null, gK: null, gL: null, Iapp: null, initial_N: null, initial_V: null, lambdaN_bar: null, musclefiber: null, V1: null, V2: null, V3: null, V4: null, VCa: null, VK: null, VL: null};
-    this.metadata.variableOrder = {V: null, N: null};
+    this.metadata.ynames = ["t", "V"];
+    this.metadata.internalOrder = {C: null, gCa: null, gK: null, gL: null, Iapp: null, initial_V: null, lambdaN_bar: null, musclefiber: null, V1: null, V2: null, V3: null, V4: null, VCa: null, VK: null, VL: null};
+    this.metadata.variableOrder = {V: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

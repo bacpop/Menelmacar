@@ -21,7 +21,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["BAS_init", "ED_init", "EP1_init", "EP2_init", "kact", "kactbas", "kb1", "kb2", "kb3", "kb4", "kdeact", "kdeg1", "kdeg2", "kdeg2bas", "kdeg3", "kf1", "kf1bas_value", "kf2", "kf3", "kf4", "kf5", "ksyn1", "ksyn1bas", "ksyn2", "ksyn2bas", "ksyn3", "ksyn3bas", "LAC", "LP_init", "ModelValue_27", "ModelValue_28", "NP_init", "PP_init", "PSI", "STAB_init", "tstimdur", "UPS_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["BAS_init", "ED_init", "EP1_init", "EP2_init", "kact", "kactbas", "kb1", "kb2", "kb3", "kb4", "kdeact", "kdeg1", "kdeg2", "kdeg2bas", "kdeg3", "kf1", "kf1bas_value", "kf2", "kf3", "kf4", "kf5", "ksyn1", "ksyn1bas", "ksyn2", "ksyn2bas", "ksyn3", "ksyn3bas", "LAC", "LP_init", "NP_init", "PP_init", "PSI", "STAB_init", "tstimdur", "UPS_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "BAS_init", internal, 0.95999999999999996, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ED_init", internal, 0.01, -Infinity, Infinity, false);
@@ -52,8 +52,6 @@ export class model {
     this.base.user.setUserScalar(user, "ksyn3bas", internal, 0.0080000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LAC", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LP_init", internal, 0.01, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_27", internal, 20, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_28", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "NP_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PP_init", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PSI", internal, 0, -Infinity, Infinity, false);
@@ -69,6 +67,8 @@ export class model {
     internal.initial_PP = internal.PP_init;
     internal.initial_STAB = internal.STAB_init;
     internal.initial_UPS = internal.UPS_init;
+    internal.ModelValue_27 = internal.tstimdur;
+    internal.ModelValue_28 = internal.kf1bas_value;
     this.updateMetadata();
   }
   getInternal() {

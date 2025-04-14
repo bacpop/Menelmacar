@@ -25,13 +25,13 @@ export class model {
     this.base.user.setUserScalar(user, "C_ast", internal, 1000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "d_0", internal, 0.001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "e", internal, 0.001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "F_CTL_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "I_Infected_CD4_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "F_CTL_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "I_Infected_CD4_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kxk", internal, 23, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lambda", internal, 0.01, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "N", internal, 2000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V_Virus_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "V_Virus_init", internal, 200, -Infinity, Infinity, false);
     internal.C_Uninfected_CD4_init = internal.C_ast;
     internal.initial_F_CTL = internal.F_CTL_init;
     internal.initial_I_Infected_CD4 = internal.I_Infected_CD4_init;

@@ -41,7 +41,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["B_C_init", "B_CP_init", "B_N_init", "B_NP_init", "beta_IP3", "C_C_init", "C_CP_init", "C_T", "Ca_ex_init", "Ca_in_init", "Ca_store_init", "CB_init", "Cl_ex_init", "Cl_o_init", "Cm", "E_ex", "E_K_0", "E_L_0", "E_Na_0", "Faraday", "g_inhib", "g_K_0", "g_Na", "GABA_o_init", "I_N_init", "K_1_CB", "K_2", "K_2_CB", "K_A", "K_AP", "k_b", "K_C", "K_Ca", "K_Cl1", "K_Cl2", "K_D", "K_dp", "k_dVIP", "K_ex_init", "K_ex1", "K_ex2", "k_f", "K_GABA", "K_gk", "K_IB", "K_KCa", "K_kk", "K_mB", "K_mC", "k_MK", "K_mP", "K_p", "K_PK", "k_q", "K_R", "K_R_Ca", "K_sC", "K_VIP", "K_vo", "k1", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "Kd", "kd_mB", "kd_mC", "kd_mP", "kd_n", "kd_nc", "ks_C", "ks_P", "ksB", "M_B_init", "m_BN", "M_C_init", "M_P_init", "n_BN", "n_Ca", "n_Cl", "n_dVIP", "n_ex1", "n_ex2", "n_kCa", "n_KCa", "n_kk", "n_M2", "n_M3", "n_PK", "n_VIP", "n_vo", "Na_ex_init", "p_A", "P_C_init", "P_Ca", "P_Cl", "P_CP_init", "P_Na", "PC_C_init", "PC_CP_init", "PC_N_init", "PC_NP_init", "PK_o", "R_g", "T", "T_abs", "T_room", "V_b", "v_Ca", "v_Cl1", "v_Cl2", "v_dCC", "v_dPC", "V_ex1", "V_ex2", "v_GABA", "v_gk", "v_kk", "V_M1", "V_M2", "V_M3", "v_mB", "v_mC", "V_MK", "v_mP", "V_phos", "v_PK", "V_R", "v_sB", "v_sC", "v_sP0", "V_theta", "v_VIP", "v_vo", "V1_B", "V1_C", "V1_P", "V1_PC", "V2_B", "V2_C", "V2_P", "V2_PC", "V3_B", "V3_PC", "V4_B", "V4_PC", "vd_BC", "vd_BN", "vd_IN", "vd_PCC", "vd_PCN", "VIP_init", "VK_Ca", "vP", "WT"], unusedUserAction);
+    this.base.user.checkUser(user, ["B_C_init", "B_CP_init", "B_N_init", "B_NP_init", "beta_IP3", "C_C_init", "C_CP_init", "C_T", "Ca_ex_init", "Ca_in_init", "Ca_store_init", "CB_init", "Cl_ex_init", "Cl_o_init", "Cm", "E_ex", "E_K_0", "E_L_0", "E_Na_0", "Faraday", "g_inhib", "g_K_0", "g_Na", "GABA_o_init", "I_N_init", "K_1_CB", "K_2", "K_2_CB", "K_A", "K_AP", "k_b", "K_C", "K_Ca", "K_Cl1", "K_Cl2", "K_D", "K_dp", "k_dVIP", "K_ex_init", "K_ex1", "K_ex2", "k_f", "K_GABA", "K_gk", "K_IB", "K_KCa", "K_kk", "K_mB", "K_mC", "k_MK", "K_mP", "K_p", "K_PK", "k_q", "K_R", "K_R_Ca", "K_sC", "K_VIP", "K_vo", "k1", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "Kd", "kd_mB", "kd_mC", "kd_mP", "kd_n", "kd_nc", "ks_C", "ks_P", "ksB", "M_B_init", "m_BN", "M_C_init", "M_P_init", "n_BN", "n_Ca", "n_Cl", "n_dVIP", "n_ex1", "n_ex2", "n_kCa", "n_KCa", "n_kk", "n_M2", "n_M3", "n_PK", "n_VIP", "n_vo", "Na_ex_init", "p_A", "P_C_init", "P_Ca", "P_Cl", "P_CP_init", "P_Na", "PC_C_init", "PC_CP_init", "PC_N_init", "PC_NP_init", "PK_o", "R_g", "T", "T_abs", "T_room", "V_b", "v_Ca", "v_Cl1", "v_Cl2", "v_dCC", "v_dPC", "V_ex1", "V_ex2", "v_GABA", "v_gk", "v_kk", "V_M1", "V_M2", "V_M3", "v_mB", "v_mC", "V_MK", "v_mP", "V_phos", "v_PK", "V_R", "v_sB", "v_sC", "v_sP0", "V_theta", "v_VIP", "v_vo", "V1_B", "V1_C", "V2_B", "V2_C", "V2_P", "V2_PC", "V3_B", "V4_B", "V4_PC", "vd_BC", "vd_BN", "vd_IN", "vd_PCC", "vd_PCN", "VIP_init", "VK_Ca", "vP", "WT"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "B_C_init", internal, 2.4100000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "B_CP_init", internal, 0.47999999999999998, -Infinity, Infinity, false);
@@ -182,14 +182,11 @@ export class model {
     this.base.user.setUserScalar(user, "v_vo", internal, 0.089999999999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V1_B", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V1_C", internal, 0.59999999999999998, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V1_P", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V1_PC", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V2_B", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V2_C", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V2_P", internal, 0.29999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V2_PC", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V3_B", internal, 0.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "V3_PC", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V4_B", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V4_PC", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "vd_BC", internal, 0.5, -Infinity, Infinity, false);
@@ -230,6 +227,9 @@ export class model {
     internal.initial_PC_N = internal.PC_N_init;
     internal.initial_PC_NP = internal.PC_NP_init;
     internal.initial_VIP = internal.VIP_init;
+    internal.V1_P = internal.V_phos;
+    internal.V1_PC = internal.V_phos;
+    internal.V3_PC = internal.V_phos;
     internal.theta_K = Math.exp(internal.E_K / (internal.k_q * (internal.T + internal.T_abs) * 1000));
     internal.theta_Na = Math.exp(internal.E_Na / (internal.k_q * (internal.T + internal.T_abs) * 1000));
     this.updateMetadata();
@@ -284,12 +284,6 @@ export class model {
     dstatedt[5] = 0 + 1 * internal.cytoplasm * (internal.v_sB * Math.pow((internal.K_IB), (internal.m_BN)) / (Math.pow((internal.K_IB), (internal.m_BN)) + Math.pow((B_N), (internal.m_BN)))) - 1 * internal.cytoplasm * (internal.v_mB * M_B / (internal.K_mB + M_B) + internal.kd_mB * M_B);
     dstatedt[4] = 0 + 1 * internal.cytoplasm * internal.v_sC * Math.pow((B_N), (internal.n_BN)) / (Math.pow((internal.K_sC), (internal.n_BN)) + Math.pow((B_N), (internal.n_BN))) - 1 * internal.cytoplasm * (internal.v_mC * M_C / (internal.K_mC + M_C) + internal.kd_mC * M_C);
     dstatedt[3] = 0 + 1 * internal.cytoplasm * (internal.v_sP0 + internal.C_T * CB / (internal.K_C + CB)) * Math.pow((B_N), (internal.n_BN)) / (Math.pow((internal.K_AP), (internal.n_BN)) + Math.pow((B_N), (internal.n_BN))) - 1 * internal.cytoplasm * (internal.v_mP * M_P / (internal.K_mP + M_P) + internal.kd_mP * M_P);
-    dstatedt[6] = 0 + 1 * internal.cytoplasm * internal.ks_P * M_P - 1 * internal.cytoplasm * internal.kd_n * P_C - 1 * internal.cytoplasm * (internal.V1_P * P_C / (internal.K_p + P_C) - internal.V2_P * P_CP / (internal.K_dp + P_CP)) - 1 * internal.cytoplasm * (internal.k3 * P_C * C_C - internal.k4 * PC_C);
-    dstatedt[8] = 0 + 1 * internal.cytoplasm * (internal.V1_P * P_C / (internal.K_p + P_C) - internal.V2_P * P_CP / (internal.K_dp + P_CP)) - 1 * internal.cytoplasm * (internal.v_dPC * P_CP / (internal.Kd + P_CP) + internal.kd_n * P_CP);
-    dstatedt[10] = 0 + 1 * internal.cytoplasm * (internal.k3 * P_C * C_C - internal.k4 * PC_C) - 1 * internal.cytoplasm * internal.k1 * PC_C - internal.nucleus * internal.k2 * PC_N - 1 * internal.cytoplasm * (internal.V1_PC * PC_C / (internal.K_p + PC_C) - internal.V2_PC * PC_CP / (internal.K_dp + PC_CP)) - 1 * internal.cytoplasm * internal.kd_n * PC_C;
-    dstatedt[12] = 0 + 1 * internal.cytoplasm * (internal.V1_PC * PC_C / (internal.K_p + PC_C) - internal.V2_PC * PC_CP / (internal.K_dp + PC_CP)) - 1 * internal.cytoplasm * (internal.vd_PCC * PC_CP / (internal.Kd + PC_CP) + internal.kd_n * PC_CP);
-    dstatedt[11] = 0 + 1 * internal.cytoplasm * internal.k1 * PC_C - internal.nucleus * internal.k2 * PC_N - 1 * internal.nucleus * (internal.V3_PC * PC_N / (internal.K_p + PC_N) - internal.V4_PC * PC_NP / (internal.K_dp + PC_NP)) - 1 * internal.nucleus * internal.kd_n * PC_N - 1 * internal.cytoplasm * (internal.k7 * B_N * PC_N - internal.k8 * I_N);
-    dstatedt[13] = 0 + 1 * internal.nucleus * (internal.V3_PC * PC_N / (internal.K_p + PC_N) - internal.V4_PC * PC_NP / (internal.K_dp + PC_NP)) - 1 * internal.nucleus * (internal.vd_PCN * PC_NP / (internal.Kd + PC_NP) + internal.kd_n * PC_NP);
     var E_Ca = internal.k_q * (internal.T + internal.T_abs) / 2 * Math.log(Ca_ex / Ca_in) * 1000;
     var g_Ca = internal.v_Ca * (Math.pow((M_P), (internal.n_Ca)) / (internal.K_Ca + Math.pow((M_P), (internal.n_Ca))));
     var g_K = internal.g_K_0 + M_P / (internal.K_gk + M_P) * internal.v_gk;
@@ -297,6 +291,12 @@ export class model {
     var gK_Ca = internal.VK_Ca * (Math.pow((C_C), (internal.n_KCa)) / (internal.K_KCa + Math.pow((C_C), (internal.n_KCa))));
     var P_K = internal.v_PK * Math.pow((B_C), (internal.n_PK)) / (internal.K_PK + Math.pow((B_C), (internal.n_PK)));
     var Cl_in = Cl_o + M_P / (internal.K_Cl1 + M_P) * internal.v_Cl1 + Math.pow((GABA), (internal.n_Cl)) / (internal.K_Cl2 + Math.pow((GABA), (internal.n_Cl))) * internal.v_Cl2;
+    dstatedt[6] = 0 + 1 * internal.cytoplasm * internal.ks_P * M_P - 1 * internal.cytoplasm * internal.kd_n * P_C - 1 * internal.cytoplasm * (internal.V1_P * P_C / (internal.K_p + P_C) - internal.V2_P * P_CP / (internal.K_dp + P_CP)) - 1 * internal.cytoplasm * (internal.k3 * P_C * C_C - internal.k4 * PC_C);
+    dstatedt[8] = 0 + 1 * internal.cytoplasm * (internal.V1_P * P_C / (internal.K_p + P_C) - internal.V2_P * P_CP / (internal.K_dp + P_CP)) - 1 * internal.cytoplasm * (internal.v_dPC * P_CP / (internal.Kd + P_CP) + internal.kd_n * P_CP);
+    dstatedt[10] = 0 + 1 * internal.cytoplasm * (internal.k3 * P_C * C_C - internal.k4 * PC_C) - 1 * internal.cytoplasm * internal.k1 * PC_C - internal.nucleus * internal.k2 * PC_N - 1 * internal.cytoplasm * (internal.V1_PC * PC_C / (internal.K_p + PC_C) - internal.V2_PC * PC_CP / (internal.K_dp + PC_CP)) - 1 * internal.cytoplasm * internal.kd_n * PC_C;
+    dstatedt[12] = 0 + 1 * internal.cytoplasm * (internal.V1_PC * PC_C / (internal.K_p + PC_C) - internal.V2_PC * PC_CP / (internal.K_dp + PC_CP)) - 1 * internal.cytoplasm * (internal.vd_PCC * PC_CP / (internal.Kd + PC_CP) + internal.kd_n * PC_CP);
+    dstatedt[11] = 0 + 1 * internal.cytoplasm * internal.k1 * PC_C - internal.nucleus * internal.k2 * PC_N - 1 * internal.nucleus * (internal.V3_PC * PC_N / (internal.K_p + PC_N) - internal.V4_PC * PC_NP / (internal.K_dp + PC_NP)) - 1 * internal.nucleus * internal.kd_n * PC_N - 1 * internal.cytoplasm * (internal.k7 * B_N * PC_N - internal.k8 * I_N);
+    dstatedt[13] = 0 + 1 * internal.nucleus * (internal.V3_PC * PC_N / (internal.K_p + PC_N) - internal.V4_PC * PC_NP / (internal.K_dp + PC_NP)) - 1 * internal.nucleus * (internal.vd_PCN * PC_NP / (internal.Kd + PC_NP) + internal.kd_n * PC_NP);
     var v_K = internal.V_MK * Ca_in / (internal.k_MK + Ca_in) + internal.V_b * beta / (internal.k_b + beta);
     var c = - (4 * internal.P_Ca * Ca_ex * Math.pow((10), (- 3)) + P_K * K_ex + internal.P_Na * Na_ex + internal.P_Cl * Cl_in);
     dstatedt[19] = 0 + 1 * internal.cytoplasm * (v_K * (1 - CB) / (internal.K_1_CB + 1 - CB) - internal.vP * CB / (internal.K_2_CB + CB)) / internal.WT;

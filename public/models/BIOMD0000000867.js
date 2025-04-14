@@ -22,7 +22,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a1", "a11", "a2", "a3", "a5", "a7", "a8", "a9", "alpha1", "alpha2", "D", "d1", "d10", "d2", "d3", "d4", "d5", "d6", "d7", "d9", "delta", "K_O2", "k1", "k10", "k11", "k12", "k13", "k14", "k15", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "kalpha", "kS", "Metabolite_0", "Metabolite_3", "Metabolite_5", "Metabolite_9", "n2", "phi", "R", "rho3", "rho4", "rho6", "S3", "xi10", "xi28", "xi4", "xi44", "y1_IL_15_init", "y10_HIF_1a_aOH_init", "y2_Akt_init", "y3_mTOR_init", "y4_HIF_1a_init", "y5_HIF_1b_init", "y6_HIF_1_Complex_init", "y7_NF_KB_init", "y8_STAT3_init", "y9_HIF_1a_mRNA_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["a1", "a11", "a2", "a3", "a5", "a7", "a8", "a9", "alpha1", "alpha2", "D", "d1", "d10", "d2", "d3", "d4", "d5", "d6", "d7", "d9", "delta", "K_O2", "k1", "k10", "k11", "k12", "k13", "k14", "k15", "k2", "k3", "k4", "k5", "k6", "k7", "k8", "k9", "kalpha", "kS", "n2", "phi", "R", "rho3", "rho4", "rho6", "S3", "xi10", "xi28", "xi4", "xi44", "y1_IL_15_init", "y10_HIF_1a_aOH_init", "y2_Akt_init", "y3_mTOR_init", "y4_HIF_1a_init", "y5_HIF_1b_init", "y6_HIF_1_Complex_init", "y7_NF_KB_init", "y8_STAT3_init", "y9_HIF_1a_mRNA_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a1", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "a11", internal, 4.1699999999999999, -Infinity, Infinity, false);
@@ -63,10 +63,6 @@ export class model {
     this.base.user.setUserScalar(user, "k9", internal, 0.753, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kalpha", internal, 1.034, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kS", internal, 0.00089999999999999998, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Metabolite_0", internal, 1, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Metabolite_3", internal, 0.050000000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Metabolite_5", internal, 0.050000000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Metabolite_9", internal, 0.90000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n2", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "phi", internal, 0.82899999999999996, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "R", internal, 0, -Infinity, Infinity, false);
@@ -134,7 +130,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "y1_IL_15", "y2_Akt", "y3_mTOR", "y4_HIF_1a", "y5_HIF_1b", "y6_HIF_1_Complex", "y7_NF_KB", "y8_STAT3", "y9_HIF_1a_mRNA", "y10_HIF_1a_aOH"];
-    this.metadata.internalOrder = {a1: null, a11: null, a2: null, a3: null, a5: null, a7: null, a8: null, a9: null, alpha1: null, alpha2: null, compartment: null, D: null, d1: null, d10: null, d2: null, d3: null, d4: null, d5: null, d6: null, d7: null, d8: null, d9: null, delta: null, initial_y1_IL_15: null, initial_y10_HIF_1a_aOH: null, initial_y2_Akt: null, initial_y3_mTOR: null, initial_y4_HIF_1a: null, initial_y5_HIF_1b: null, initial_y6_HIF_1_Complex: null, initial_y7_NF_KB: null, initial_y8_STAT3: null, initial_y9_HIF_1a_mRNA: null, K_O2: null, k1: null, k10: null, k11: null, k12: null, k13: null, k14: null, k15: null, k2: null, k3: null, k4: null, k5: null, k6: null, k7: null, k8: null, k9: null, kalpha: null, kS: null, Metabolite_0: null, Metabolite_3: null, Metabolite_5: null, Metabolite_9: null, n2: null, phi: null, R: null, rho3: null, rho4: null, rho6: null, S3: null, xi10: null, xi28: null, xi4: null, xi44: null, y1_IL_15_init: null, y10_HIF_1a_aOH_init: null, y2_Akt_init: null, y3_mTOR_init: null, y4_HIF_1a_init: null, y5_HIF_1b_init: null, y6_HIF_1_Complex_init: null, y7_NF_KB_init: null, y8_STAT3_init: null, y9_HIF_1a_mRNA_init: null};
+    this.metadata.internalOrder = {a1: null, a11: null, a2: null, a3: null, a5: null, a7: null, a8: null, a9: null, alpha1: null, alpha2: null, compartment: null, D: null, d1: null, d10: null, d2: null, d3: null, d4: null, d5: null, d6: null, d7: null, d8: null, d9: null, delta: null, initial_y1_IL_15: null, initial_y10_HIF_1a_aOH: null, initial_y2_Akt: null, initial_y3_mTOR: null, initial_y4_HIF_1a: null, initial_y5_HIF_1b: null, initial_y6_HIF_1_Complex: null, initial_y7_NF_KB: null, initial_y8_STAT3: null, initial_y9_HIF_1a_mRNA: null, K_O2: null, k1: null, k10: null, k11: null, k12: null, k13: null, k14: null, k15: null, k2: null, k3: null, k4: null, k5: null, k6: null, k7: null, k8: null, k9: null, kalpha: null, kS: null, n2: null, phi: null, R: null, rho3: null, rho4: null, rho6: null, S3: null, xi10: null, xi28: null, xi4: null, xi44: null, y1_IL_15_init: null, y10_HIF_1a_aOH_init: null, y2_Akt_init: null, y3_mTOR_init: null, y4_HIF_1a_init: null, y5_HIF_1b_init: null, y6_HIF_1_Complex_init: null, y7_NF_KB_init: null, y8_STAT3_init: null, y9_HIF_1a_mRNA_init: null};
     this.metadata.variableOrder = {y1_IL_15: null, y2_Akt: null, y3_mTOR: null, y4_HIF_1a: null, y5_HIF_1b: null, y6_HIF_1_Complex: null, y7_NF_KB: null, y8_STAT3: null, y9_HIF_1a_mRNA: null, y10_HIF_1a_aOH: null};
     this.metadata.outputOrder = null;
   }

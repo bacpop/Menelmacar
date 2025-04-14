@@ -52,11 +52,34 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[4] = 0;
-    dstatedt[1] = 0;
-    dstatedt[3] = 0;
-    dstatedt[0] = 0;
-    dstatedt[2] = 0;
+    const V_membrane = state[0];
+    const h1 = state[1];
+    const x1 = state[2];
+    const n1 = state[3];
+    const c = state[4];
+    dstatedt[4] = 0 + internal.f * (internal.K_c * x1 * (internal.V_Ca - V_membrane) - c);
+    var i_Ca = internal.g_T * x1 * (internal.V_I - V_membrane);
+    var i_K = internal.g_K * Math.pow((n1), (4)) * (internal.V_K - V_membrane);
+    var i_K_Ca = internal.g_K_Ca * c / (internal.K_p + c) * (internal.V_K - V_membrane);
+    var i_L = internal.g_L * (internal.V_L - V_membrane);
+    var Vs = internal.a * V_membrane + internal.b;
+    var x_infinity = 1 / (Math.exp(0.14999999999999999 * (- V_membrane - 50)) + 1);
+    var alpha_h = 0.070000000000000007 * Math.exp((25 - Vs) / 20);
+    var alpha_m = 0.10000000000000001 * (50 - Vs) / (Math.exp((50 - Vs) / 10) - 1);
+    var alpha_n = 0.01 * (55 - Vs) / (Math.exp((55 - Vs) / 10) - 1);
+    var beta_h = 1 / (Math.exp((55 - Vs) / 10) + 1);
+    var beta_m = 4 * Math.exp((25 - Vs) / 18);
+    var beta_n = 0.125 * Math.exp((45 - Vs) / 80);
+    dstatedt[2] = 0 + (x_infinity - x1) / internal.tau_x;
+    var h_infinity = alpha_h / (alpha_h + beta_h);
+    var m_infinity = alpha_m / (alpha_m + beta_m);
+    var n_infinity = alpha_n / (alpha_n + beta_n);
+    var tau_h = 12.5 / (alpha_h + beta_h);
+    var tau_n = 12.5 / (alpha_n + beta_n);
+    dstatedt[1] = 0 + (h_infinity - h1) / tau_h;
+    dstatedt[3] = 0 + (n_infinity - n1) / tau_n;
+    var i_Na = internal.g_I * Math.pow((m_infinity), (3)) * h1 * (internal.V_I - V_membrane);
+    dstatedt[0] = 0 + i_Na + i_Ca + i_K + i_K_Ca + i_L;
   }
   names() {
     return this.metadata.ynames.slice(1);

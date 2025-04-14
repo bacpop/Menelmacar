@@ -59,11 +59,16 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[2] = 0;
-    dstatedt[3] = 0;
-    dstatedt[4] = 0;
-    dstatedt[0] = 0;
-    dstatedt[1] = 0;
+    const G_alpha = state[0];
+    const PLC = state[1];
+    const Ca_cyt = state[2];
+    const Ca_ER = state[3];
+    const Ca_mit = state[4];
+    dstatedt[2] = 0 + (Ca_ER - Ca_cyt) * internal.k10 * Ca_cyt * Math.pow((PLC), (4)) / (Math.pow((PLC), (4)) + Math.pow((internal.K11), (4))) + internal.k12 * PLC + internal.k13 * G_alpha - internal.k14 * Ca_cyt / (Ca_cyt + internal.K15) - internal.k16 * Ca_cyt / (Ca_cyt + internal.K17) - internal.k18 * Math.pow((Ca_cyt), (8)) / (Math.pow((internal.K19), (8)) + Math.pow((Ca_cyt), (8))) + (Ca_mit - Ca_cyt) * internal.k20 * Ca_cyt / (Ca_cyt + internal.K21);
+    dstatedt[3] = 0 + - (Ca_ER - Ca_cyt) * internal.k10 * Ca_cyt * Math.pow((PLC), (4)) / (Math.pow((PLC), (4)) + Math.pow((internal.K11), (4))) + internal.k16 * Ca_cyt / (Ca_cyt + internal.K17);
+    dstatedt[4] = 0 + internal.k18 * Math.pow((Ca_cyt), (8)) / (Math.pow((internal.K19), (8)) + Math.pow((Ca_cyt), (8))) - (Ca_mit - Ca_cyt) * internal.k20 * Ca_cyt / (Ca_cyt + internal.K21);
+    dstatedt[0] = 0 + internal.k1 + internal.k2 * G_alpha - internal.k3 * G_alpha * PLC / (G_alpha + internal.K4) - internal.k5 * G_alpha * Ca_cyt / (G_alpha + internal.K6);
+    dstatedt[1] = 0 + internal.k7 * G_alpha - internal.k8 * PLC / (PLC + internal.K9);
   }
   names() {
     return this.metadata.ynames.slice(1);

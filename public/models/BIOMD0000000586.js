@@ -22,7 +22,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["A_init", "A2_init", "AI_init", "beta", "delta_m", "delta_p", "epsilon", "epsilon_1", "f", "G0_init", "G1_init", "G2_init", "G3_init", "gamma", "I_init", "ModelValue_0", "ModelValue_1", "ModelValue_17", "ModelValue_18", "ModelValue_2", "ModelValue_3", "p_3sites", "rA_init", "rho_f", "rI_init", "Theta"], unusedUserAction);
+    this.base.user.checkUser(user, ["A_init", "A2_init", "AI_init", "beta", "delta_m", "delta_p", "epsilon", "epsilon_1", "f", "G0_init", "G1_init", "G2_init", "G3_init", "gamma", "I_init", "p_3sites", "rA_init", "rho_f", "rI_init", "Theta"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "A_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "A2_init", internal, 0, -Infinity, Infinity, false);
@@ -39,21 +39,11 @@ export class model {
     this.base.user.setUserScalar(user, "G3_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma", internal, 0.025000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_0", internal, 0.02, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_1", internal, 0.00024920255183413098, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_17", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_18", internal, 30, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_2", internal, 0.17810000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_3", internal, 5.343, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p_3sites", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rA_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho_f", internal, 0.17810000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rI_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Theta", internal, 0.02, -Infinity, Infinity, false);
-    internal.a_01 = ((internal.ModelValue_17 == 1 ? 3 * internal.ModelValue_1 : internal.ModelValue_1));
-    internal.a_12 = ((internal.ModelValue_17 == 1 ? 2 * internal.ModelValue_1 : 0));
-    internal.a_23 = ((internal.ModelValue_17 == 1 ? 1 * internal.ModelValue_1 : 0));
-    internal.Alpha = internal.ModelValue_0 / (24 * 3.3439999999999999);
     internal.initial_A = internal.A_init;
     internal.initial_A2 = internal.A2_init;
     internal.initial_AI = internal.AI_init;
@@ -64,11 +54,21 @@ export class model {
     internal.initial_I = internal.I_init;
     internal.initial_rA = internal.rA_init;
     internal.initial_rI = internal.rI_init;
-    internal.rho_0 = Math.sqrt(internal.ModelValue_3 * internal.ModelValue_2);
+    internal.ModelValue_0 = internal.Theta;
+    internal.ModelValue_17 = internal.p_3sites;
+    internal.ModelValue_18 = internal.f;
+    internal.ModelValue_2 = internal.rho_f;
+    internal.Alpha = internal.ModelValue_0 / (24 * 3.3439999999999999);
     internal.rho_b = internal.ModelValue_2 * internal.ModelValue_18;
     internal.t_10 = internal.ModelValue_0;
     internal.t_21 = ((internal.ModelValue_17 == 1 ? 2 * internal.ModelValue_0 : 0));
     internal.t_32 = ((internal.ModelValue_17 == 1 ? 3 * internal.ModelValue_0 : 0));
+    internal.ModelValue_1 = internal.Alpha;
+    internal.ModelValue_3 = internal.rho_b;
+    internal.a_01 = ((internal.ModelValue_17 == 1 ? 3 * internal.ModelValue_1 : internal.ModelValue_1));
+    internal.a_12 = ((internal.ModelValue_17 == 1 ? 2 * internal.ModelValue_1 : 0));
+    internal.a_23 = ((internal.ModelValue_17 == 1 ? 1 * internal.ModelValue_1 : 0));
+    internal.rho_0 = Math.sqrt(internal.ModelValue_3 * internal.ModelValue_2);
     this.updateMetadata();
   }
   getInternal() {
@@ -89,13 +89,13 @@ export class model {
     dstatedt[5] = 0 + 1 * internal.yeast * internal.beta * rA - 1 * internal.yeast * internal.delta_p * A - 1 * internal.yeast * internal.gamma * A * I - 2 * internal.yeast * internal.gamma * Math.pow((A), (2)) + 2 * internal.yeast * internal.epsilon_1 * A2 + 1 * internal.yeast * internal.epsilon * AI;
     dstatedt[6] = 0 + 1 * internal.yeast * internal.gamma * A * I - 1 * internal.yeast * internal.epsilon * AI - 1 * internal.yeast * internal.delta_p * AI;
     dstatedt[3] = 0 - 1 * internal.yeast * internal.delta_p * I + 1 * internal.yeast * internal.beta * rI - 1 * internal.yeast * internal.gamma * A * I + 1 * internal.yeast * internal.epsilon * AI;
+    dstatedt[4] = 0 + 1 * internal.yeast * internal.rho_f * G0 + 1 * internal.yeast * internal.rho_b * G1 - 1 * internal.yeast * internal.delta_m * rI - 1 * internal.yeast * internal.beta * rI + 1 * internal.yeast * internal.beta * rI + 1 * internal.yeast * internal.rho_b * G2 + 1 * internal.yeast * internal.rho_b * G3;
     dstatedt[7] = 0 + 1 * internal.yeast * internal.t_10 * G1 - 1 * internal.yeast * internal.a_01 * G0 * A2 + 1 * internal.yeast * internal.gamma * Math.pow((A), (2)) - 1 * internal.yeast * internal.epsilon_1 * A2 - 1 * internal.yeast * internal.delta_p * A2 - 1 * internal.yeast * internal.a_12 * G1 * A2 + 1 * internal.yeast * internal.t_21 * G2 - 1 * internal.yeast * internal.a_23 * G2 * A2 + 1 * internal.yeast * internal.t_32 * G3;
     dstatedt[0] = 0 + 1 * internal.yeast * internal.t_10 * G1 - 1 * internal.yeast * internal.a_01 * G0 * A2 - 1 * internal.yeast * internal.rho_f * G0 + 1 * internal.yeast * internal.rho_f * G0;
     dstatedt[1] = 0 - 1 * internal.yeast * internal.t_10 * G1 + 1 * internal.yeast * internal.a_01 * G0 * A2 - 1 * internal.yeast * internal.rho_b * G1 + 1 * internal.yeast * internal.rho_b * G1 - 1 * internal.yeast * internal.a_12 * G1 * A2 + 1 * internal.yeast * internal.t_21 * G2;
     dstatedt[8] = 0 + 1 * internal.yeast * internal.a_12 * G1 * A2 - 1 * internal.yeast * internal.t_21 * G2 - 1 * internal.yeast * internal.rho_b * G2 + 1 * internal.yeast * internal.rho_b * G2 - 1 * internal.yeast * internal.a_23 * G2 * A2 + 1 * internal.yeast * internal.t_32 * G3;
     dstatedt[9] = 0 + 1 * internal.yeast * internal.a_23 * G2 * A2 - 1 * internal.yeast * internal.t_32 * G3 - 1 * internal.yeast * internal.rho_b * G3 + 1 * internal.yeast * internal.rho_b * G3;
     dstatedt[2] = 0 - 1 * internal.yeast * internal.delta_m * rA + 1 * internal.yeast * (internal.rho_0) - 1 * internal.yeast * internal.beta * rA + 1 * internal.yeast * internal.beta * rA;
-    dstatedt[4] = 0 + 1 * internal.yeast * internal.rho_f * G0 + 1 * internal.yeast * internal.rho_b * G1 - 1 * internal.yeast * internal.delta_m * rI - 1 * internal.yeast * internal.beta * rI + 1 * internal.yeast * internal.beta * rI + 1 * internal.yeast * internal.rho_b * G2 + 1 * internal.yeast * internal.rho_b * G3;
   }
   names() {
     return this.metadata.ynames.slice(1);

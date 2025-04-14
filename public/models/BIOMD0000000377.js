@@ -54,10 +54,24 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[1] = 0;
-    dstatedt[2] = 0;
-    dstatedt[3] = 0;
-    dstatedt[0] = 0;
+    const V = state[0];
+    const n = state[1];
+    const s1 = state[2];
+    const s2 = state[3];
+    var IK = internal.gK * n * (V - internal.VK);
+    var Il = internal.gl * (V - internal.Vl);
+    var Is1 = internal.gs1 * s1 * (V - internal.VK);
+    var Is2 = internal.gs2 * s2 * (V - internal.VK);
+    var minf = 1 / (1 + Math.exp((internal.Vm - V) / internal.sm));
+    var ninf = 1 / (1 + Math.exp((internal.Vn - V) / internal.sn));
+    var s1inf = 1 / (1 + Math.exp((internal.Vs1 - V) / internal.ss1));
+    var s2inf = 1 / (1 + Math.exp((internal.Vs2 - V) / internal.ss2));
+    var taun = internal.tnbar / (1 + Math.exp((V - internal.Vn) / internal.sn));
+    dstatedt[1] = 0 + (ninf - n) / taun;
+    dstatedt[2] = 0 + (s1inf - s1) / internal.taus1;
+    dstatedt[3] = 0 + (s2inf - s2) / internal.taus2;
+    var ICa = internal.gCa * minf * (V - internal.VCa);
+    dstatedt[0] = 0 + - (ICa + IK + Il + Is1 + Is2) / internal.Cm;
   }
   names() {
     return this.metadata.ynames.slice(1);

@@ -22,7 +22,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Cdc14_init", "Cdh1_init", "ClbMt_init", "ClbSt_init", "Cln_init", "jcdc14", "Jcdh1", "Jclbm", "Jmbf", "jsbf", "Jsic1", "kacdc14", "kacdh1", "kacdh1_0", "kasbf", "kasbf_0", "kass", "kdclbm", "kdclbm_0", "kdclbs", "kdclbs_0", "kdcln", "kdiss", "Kdiss", "kdnrm1", "kdpolo", "kdpolo_0", "kdsic", "kdsic_0", "kicdc14", "kicdh1", "kicdh1_0", "kisbf", "ksclbm", "ksclbm_0", "ksclbs", "kscln", "ksnrm1", "kspolo", "kssic", "MBF_init", "MBFtot", "ModelValue_14", "ModelValue_31", "ModelValue_37", "n", "ndClbM", "Nrm1t_init", "Polo_init", "SBF_init", "Sic1t_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Cdc14_init", "Cdh1_init", "ClbMt_init", "ClbSt_init", "Cln_init", "jcdc14", "Jcdh1", "Jclbm", "Jmbf", "jsbf", "Jsic1", "kacdc14", "kacdh1", "kacdh1_0", "kasbf", "kasbf_0", "kass", "kdclbm", "kdclbm_0", "kdclbs", "kdclbs_0", "kdcln", "kdiss", "Kdiss", "kdnrm1", "kdpolo", "kdpolo_0", "kdsic", "kdsic_0", "kicdc14", "kicdh1", "kicdh1_0", "kisbf", "ksclbm", "ksclbm_0", "ksclbs", "kscln", "ksnrm1", "kspolo", "kssic", "MBF_init", "MBFtot", "n", "ndClbM", "Nrm1t_init", "Polo_init", "SBF_init", "Sic1t_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "Cdc14_init", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdh1_init", internal, 0, -Infinity, Infinity, false);
@@ -66,9 +66,6 @@ export class model {
     this.base.user.setUserScalar(user, "kssic", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MBF_init", internal, 0.050000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MBFtot", internal, 0.5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_14", internal, 0.01, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_31", internal, 0.050000000000000003, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_37", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n", internal, 2, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ndClbM", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Nrm1t_init", internal, 0.50900000000000001, -Infinity, Infinity, false);
@@ -85,6 +82,9 @@ export class model {
     internal.initial_Polo = internal.Polo_init;
     internal.initial_SBF = internal.SBF_init;
     internal.initial_Sic1t = internal.Sic1t_init;
+    internal.ModelValue_14 = internal.Jmbf;
+    internal.ModelValue_31 = internal.Kdiss;
+    internal.ModelValue_37 = internal.ndClbM;
     this.updateMetadata();
   }
   getInternal() {
@@ -102,10 +102,10 @@ export class model {
     const SBF = state[7];
     const Cdh1 = state[8];
     const Cdc14 = state[9];
-    var Clbt = ClbSt + ClbMt + internal.ModelValue_37;
     dstatedt[9] = 0 + 1 * internal.compartment * (internal.kacdc14 * Polo * (1 - Cdc14) / (internal.jcdc14 + 1 - Cdc14)) - 1 * internal.compartment * (internal.kicdc14 * Cdc14 / (internal.jcdc14 + Cdc14));
     dstatedt[0] = 0 + 1 * internal.compartment * (internal.kscln * SBF) - 1 * internal.compartment * internal.kdcln * Cln;
     dstatedt[2] = 0 + 1 * internal.compartment * (internal.kdiss * (internal.MBFtot - MBF)) - 1 * internal.compartment * (internal.kass * MBF * (Nrm1t - (internal.MBFtot - MBF)));
+    var Clbt = ClbSt + ClbMt + internal.ModelValue_37;
     var MBFa = MBF * Cln / (internal.ModelValue_14 + Cln);
     var BB = Sic1t + Clbt + internal.ModelValue_31;
     dstatedt[1] = 0 + 1 * internal.compartment * (internal.ksclbs * MBFa) - 1 * internal.compartment * ((internal.kdclbs + internal.kdclbs_0 * Cdh1) * ClbSt);

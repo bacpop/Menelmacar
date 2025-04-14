@@ -3,24 +3,13 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.ATP = 2980;
     internal.cell = 1;
-    internal.dUMP = 20.760000000000002;
-    internal.EMTX = 0;
     internal.ext = 1;
-    internal.formate = 500;
-    internal.GAR = 689.60000000000002;
-    internal.glutamine = 7170;
-    internal.glycine = 1600;
-    internal.homocysteine = 10;
-    internal.NADP = 6.7300000000000004;
-    internal.NADPH = 294;
-    internal.serine = 123.3;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(20).fill(0);
+    var state = Array(31).fill(0);
     state[0] = internal.initial_FH2f;
     state[1] = internal.initial_DHFRf;
     state[2] = internal.initial_FH4;
@@ -41,22 +30,41 @@ export class model {
     state[17] = internal.initial_MTX3b;
     state[18] = internal.initial_MTX4b;
     state[19] = internal.initial_MTX5b;
+    state[20] = internal.initial_EMTX;
+    state[21] = internal.initial_dUMP;
+    state[22] = internal.initial_GAR;
+    state[23] = internal.initial_serine;
+    state[24] = internal.initial_formate;
+    state[25] = internal.initial_ATP;
+    state[26] = internal.initial_glutamine;
+    state[27] = internal.initial_glycine;
+    state[28] = internal.initial_NADP;
+    state[29] = internal.initial_NADPH;
+    state[30] = internal.initial_homocysteine;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["AICAR_init", "CH2FH4_init", "CH3FH4_init", "CHOFH4_init", "DHFRf_init", "FFH2_init", "FGAR_init", "FH2f_init", "FH4_init", "HCHO_init", "hl", "hp", "k0", "k1", "Keq", "Ki1", "Ki1f", "Ki21", "Ki22", "Ki23", "Ki24", "Ki25", "Km", "Km1", "Km2", "Km3", "kter", "MTX1_init", "MTX1b_init", "MTX2_init", "MTX2b_init", "MTX3_init", "MTX3b_init", "MTX4_init", "MTX4b_init", "MTX5_init", "MTX5b_init", "Vm"], unusedUserAction);
+    this.base.user.checkUser(user, ["AICAR_init", "ATP_init", "CH2FH4_init", "CH3FH4_init", "CHOFH4_init", "DHFRf_init", "dUMP_init", "EMTX_init", "FFH2_init", "FGAR_init", "FH2f_init", "FH4_init", "formate_init", "GAR_init", "glutamine_init", "glycine_init", "HCHO_init", "hl", "homocysteine_init", "hp", "k0", "k1", "Keq", "Ki1", "Ki1f", "Ki21", "Ki22", "Ki23", "Ki24", "Ki25", "Km", "Km1", "Km2", "Km3", "kter", "MTX1_init", "MTX1b_init", "MTX2_init", "MTX2b_init", "MTX3_init", "MTX3b_init", "MTX4_init", "MTX4b_init", "MTX5_init", "MTX5b_init", "NADP_init", "NADPH_init", "serine_init", "Vm"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "AICAR_init", internal, 3.6949999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ATP_init", internal, 2980, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CH2FH4_init", internal, 0.26000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CH3FH4_init", internal, 1.6299999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CHOFH4_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "DHFRf_init", internal, 0.64000000000000001, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "dUMP_init", internal, 20.760000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "EMTX_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "FFH2_init", internal, 0.00033199999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "FGAR_init", internal, 16.489999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "FH2f_init", internal, 0.0011999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "FH4_init", internal, 0.46000000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "formate_init", internal, 500, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "GAR_init", internal, 689.60000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "glutamine_init", internal, 7170, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "glycine_init", internal, 1600, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "HCHO_init", internal, 0.0074000000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "hl", internal, 0.29999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "homocysteine_init", internal, 10, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "hp", internal, 23.199999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k0", internal, 0.019199999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.044159999999999998, -Infinity, Infinity, false);
@@ -83,17 +91,28 @@ export class model {
     this.base.user.setUserScalar(user, "MTX4b_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MTX5_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MTX5b_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "NADP_init", internal, 6.7300000000000004, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "NADPH_init", internal, 294, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "serine_init", internal, 123.3, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Vm", internal, 0.029999999999999999, -Infinity, Infinity, false);
     internal.initial_AICAR = internal.AICAR_init;
+    internal.initial_ATP = internal.ATP_init;
     internal.initial_CH2FH4 = internal.CH2FH4_init;
     internal.initial_CH3FH4 = internal.CH3FH4_init;
     internal.initial_CHOFH4 = internal.CHOFH4_init;
     internal.initial_DHFRf = internal.DHFRf_init;
+    internal.initial_dUMP = internal.dUMP_init;
+    internal.initial_EMTX = internal.EMTX_init;
     internal.initial_FFH2 = internal.FFH2_init;
     internal.initial_FGAR = internal.FGAR_init;
     internal.initial_FH2f = internal.FH2f_init;
     internal.initial_FH4 = internal.FH4_init;
+    internal.initial_formate = internal.formate_init;
+    internal.initial_GAR = internal.GAR_init;
+    internal.initial_glutamine = internal.glutamine_init;
+    internal.initial_glycine = internal.glycine_init;
     internal.initial_HCHO = internal.HCHO_init;
+    internal.initial_homocysteine = internal.homocysteine_init;
     internal.initial_MTX1 = internal.MTX1_init;
     internal.initial_MTX1b = internal.MTX1b_init;
     internal.initial_MTX2 = internal.MTX2_init;
@@ -104,6 +123,9 @@ export class model {
     internal.initial_MTX4b = internal.MTX4b_init;
     internal.initial_MTX5 = internal.MTX5_init;
     internal.initial_MTX5b = internal.MTX5b_init;
+    internal.initial_NADP = internal.NADP_init;
+    internal.initial_NADPH = internal.NADPH_init;
+    internal.initial_serine = internal.serine_init;
     this.updateMetadata();
   }
   getInternal() {
@@ -131,14 +153,36 @@ export class model {
     const MTX3b = state[17];
     const MTX4b = state[18];
     const MTX5b = state[19];
-    dstatedt[9] = 0 - 1 * internal.cell * (internal.Vm * CHOFH4 * AICAR / (AICAR * CHOFH4 + CHOFH4 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) - 1 * internal.cell * (internal.Vm * FFH2 * AICAR / (AICAR * FFH2 + FFH2 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * internal.Vm * (internal.glutamine / internal.Km1 / (1 + internal.glutamine / internal.Km1)) * (FGAR / internal.Km2 / (1 + FGAR / internal.Km2));
-    dstatedt[3] = 0 + 1 * internal.cell * (internal.Vm * (internal.serine / internal.Km2 / (1 + internal.serine / internal.Km2)) * (FH4 / internal.Km1) / (1 + FH4 / internal.Km1)) - 1 * internal.cell * (internal.Vm * (internal.glycine / internal.Km2 / (1 + internal.glycine / internal.Km2)) * (CH2FH4 / internal.Km1) / (1 + CH2FH4 / internal.Km1)) + 1 * internal.cell * internal.hp * FH4 * HCHO - 1 * internal.cell * internal.hl * CH2FH4 - 1 * internal.cell * (internal.Vm * CH2FH4 * internal.NADPH / (internal.NADPH * CH2FH4 + CH2FH4 * internal.Km2 + (internal.NADPH + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1))) - 1 * internal.cell * internal.Vm * (CH2FH4 / internal.Km1 / (1 + CH2FH4 / internal.Km1)) * (internal.NADP / internal.Km2 / (1 + internal.NADP / internal.Km2)) - 1 * internal.cell * (internal.Vm * CH2FH4 * internal.dUMP / (internal.dUMP * CH2FH4 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1) + internal.Km1 * internal.dUMP * (FFH2 / internal.Ki1f * (MTX1 / internal.Ki21) + (1 + FFH2 / internal.Ki1f) * (1 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1)) + internal.Km1 * internal.Km2 * (1 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1)));
-    dstatedt[4] = 0 + 1 * internal.cell * (internal.Vm * CH2FH4 * internal.NADPH / (internal.NADPH * CH2FH4 + CH2FH4 * internal.Km2 + (internal.NADPH + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1))) - 1 * internal.cell * (internal.Vm * (internal.homocysteine / internal.Km2 / (1 + internal.homocysteine / internal.Km2)) * (CH3FH4 / internal.Km1) / (1 + CH3FH4 / internal.Km1));
-    dstatedt[5] = 0 + 1 * internal.cell * (internal.Vm / ((1 + internal.Km1 / FH4) * (1 + internal.Km2 / internal.ATP) * (1 + internal.Km3 / internal.formate))) - 1 * internal.cell * (internal.Vm * CHOFH4 * internal.GAR / (internal.GAR * CHOFH4 + CHOFH4 * internal.Km2 + (internal.GAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) - 1 * internal.cell * (internal.Vm * CHOFH4 * AICAR / (AICAR * CHOFH4 + CHOFH4 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * internal.Vm * (CH2FH4 / internal.Km1 / (1 + CH2FH4 / internal.Km1)) * (internal.NADP / internal.Km2 / (1 + internal.NADP / internal.Km2));
+    const EMTX = state[20];
+    const dUMP = state[21];
+    const GAR = state[22];
+    const serine = state[23];
+    const formate = state[24];
+    const ATP = state[25];
+    const glutamine = state[26];
+    const glycine = state[27];
+    const NADP = state[28];
+    const NADPH = state[29];
+    const homocysteine = state[30];
+    dstatedt[25] = 0;
+    dstatedt[21] = 0;
+    dstatedt[20] = 0;
+    dstatedt[24] = 0;
+    dstatedt[22] = 0;
+    dstatedt[26] = 0;
+    dstatedt[27] = 0;
+    dstatedt[30] = 0;
+    dstatedt[28] = 0;
+    dstatedt[29] = 0;
+    dstatedt[23] = 0;
+    dstatedt[9] = 0 - 1 * internal.cell * (internal.Vm * CHOFH4 * AICAR / (AICAR * CHOFH4 + CHOFH4 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) - 1 * internal.cell * (internal.Vm * FFH2 * AICAR / (AICAR * FFH2 + FFH2 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * internal.Vm * (glutamine / internal.Km1 / (1 + glutamine / internal.Km1)) * (FGAR / internal.Km2 / (1 + FGAR / internal.Km2));
+    dstatedt[3] = 0 + 1 * internal.cell * (internal.Vm * (serine / internal.Km2 / (1 + serine / internal.Km2)) * (FH4 / internal.Km1) / (1 + FH4 / internal.Km1)) - 1 * internal.cell * (internal.Vm * (glycine / internal.Km2 / (1 + glycine / internal.Km2)) * (CH2FH4 / internal.Km1) / (1 + CH2FH4 / internal.Km1)) + 1 * internal.cell * internal.hp * FH4 * HCHO - 1 * internal.cell * internal.hl * CH2FH4 - 1 * internal.cell * (internal.Vm * CH2FH4 * NADPH / (NADPH * CH2FH4 + CH2FH4 * internal.Km2 + (NADPH + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1))) - 1 * internal.cell * internal.Vm * (CH2FH4 / internal.Km1 / (1 + CH2FH4 / internal.Km1)) * (NADP / internal.Km2 / (1 + NADP / internal.Km2)) - 1 * internal.cell * (internal.Vm * CH2FH4 * dUMP / (dUMP * CH2FH4 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1) + internal.Km1 * dUMP * (FFH2 / internal.Ki1f * (MTX1 / internal.Ki21) + (1 + FFH2 / internal.Ki1f) * (1 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1)) + internal.Km1 * internal.Km2 * (1 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1)));
+    dstatedt[4] = 0 + 1 * internal.cell * (internal.Vm * CH2FH4 * NADPH / (NADPH * CH2FH4 + CH2FH4 * internal.Km2 + (NADPH + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1))) - 1 * internal.cell * (internal.Vm * (homocysteine / internal.Km2 / (1 + homocysteine / internal.Km2)) * (CH3FH4 / internal.Km1) / (1 + CH3FH4 / internal.Km1));
+    dstatedt[5] = 0 + 1 * internal.cell * (internal.Vm / ((1 + internal.Km1 / FH4) * (1 + internal.Km2 / ATP) * (1 + internal.Km3 / formate))) - 1 * internal.cell * (internal.Vm * CHOFH4 * GAR / (GAR * CHOFH4 + CHOFH4 * internal.Km2 + (GAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) - 1 * internal.cell * (internal.Vm * CHOFH4 * AICAR / (AICAR * CHOFH4 + CHOFH4 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * internal.Vm * (CH2FH4 / internal.Km1 / (1 + CH2FH4 / internal.Km1)) * (NADP / internal.Km2 / (1 + NADP / internal.Km2));
     dstatedt[6] = 0 + 1 * internal.cell * internal.Vm * FH2f - 1 * internal.cell * (internal.Vm * FFH2 * AICAR / (AICAR * FFH2 + FFH2 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f)));
-    dstatedt[8] = 0 + 1 * internal.cell * (internal.Vm * CHOFH4 * internal.GAR / (internal.GAR * CHOFH4 + CHOFH4 * internal.Km2 + (internal.GAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) - 1 * internal.cell * internal.Vm * (internal.glutamine / internal.Km1 / (1 + internal.glutamine / internal.Km1)) * (FGAR / internal.Km2 / (1 + FGAR / internal.Km2));
+    dstatedt[8] = 0 + 1 * internal.cell * (internal.Vm * CHOFH4 * GAR / (GAR * CHOFH4 + CHOFH4 * internal.Km2 + (GAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) - 1 * internal.cell * internal.Vm * (glutamine / internal.Km1 / (1 + glutamine / internal.Km1)) * (FGAR / internal.Km2 / (1 + FGAR / internal.Km2));
     dstatedt[7] = 0 - 1 * internal.cell * internal.hp * FH4 * HCHO + 1 * internal.cell * internal.hl * CH2FH4;
-    dstatedt[10] = 0 - 1 * internal.cell * internal.Vm * MTX1 + 1 * internal.cell * internal.Vm * MTX2 + 1 * internal.ext * (internal.Vm * internal.EMTX / (internal.Km + internal.EMTX)) - 1 * internal.cell * internal.Vm * MTX1 - 1 * internal.cell * internal.Vm * DHFRf * MTX1 + 1 * internal.cell * internal.Vm * MTX1b + 1 * internal.cell * internal.Vm * MTX1b;
+    dstatedt[10] = 0 - 1 * internal.cell * internal.Vm * MTX1 + 1 * internal.cell * internal.Vm * MTX2 + 1 * internal.ext * (internal.Vm * EMTX / (internal.Km + EMTX)) - 1 * internal.cell * internal.Vm * MTX1 - 1 * internal.cell * internal.Vm * DHFRf * MTX1 + 1 * internal.cell * internal.Vm * MTX1b + 1 * internal.cell * internal.Vm * MTX1b;
     dstatedt[15] = 0 + 1 * internal.cell * internal.Vm * DHFRf * MTX1 - 1 * internal.cell * internal.Vm * MTX1b - 1 * internal.cell * internal.Vm * MTX1b;
     dstatedt[11] = 0 + 1 * internal.cell * internal.Vm * MTX1 - 1 * internal.cell * internal.Vm * MTX2 - 1 * internal.cell * internal.Vm * MTX2 + 1 * internal.cell * internal.Vm * MTX3 - 1 * internal.cell * internal.Vm * MTX2 - 1 * internal.cell * internal.Vm * DHFRf * MTX2 + 1 * internal.cell * internal.Vm * MTX2b + 1 * internal.cell * internal.Vm * MTX2b;
     dstatedt[16] = 0 + 1 * internal.cell * internal.Vm * DHFRf * MTX2 - 1 * internal.cell * internal.Vm * MTX2b - 1 * internal.cell * internal.Vm * MTX2b;
@@ -149,9 +193,9 @@ export class model {
     dstatedt[14] = 0 + 1 * internal.cell * internal.Vm * MTX4 - 1 * internal.cell * internal.Vm * MTX5 - 1 * internal.cell * internal.Vm * MTX5 - 1 * internal.cell * internal.Vm * DHFRf * MTX5 + 1 * internal.cell * internal.Vm * MTX5b + 1 * internal.cell * internal.Vm * MTX5b;
     dstatedt[19] = 0 + 1 * internal.cell * internal.Vm * DHFRf * MTX5 - 1 * internal.cell * internal.Vm * MTX5b - 1 * internal.cell * internal.Vm * MTX5b;
     var FH2b = FH2f * DHFRf / internal.Keq;
-    dstatedt[1] = 0 - 1 * internal.cell * internal.Vm * DHFRf * MTX1 - 1 * internal.cell * internal.Vm * DHFRf * MTX2 - 1 * internal.cell * internal.Vm * DHFRf * MTX3 - 1 * internal.cell * internal.Vm * DHFRf * MTX4 - 1 * internal.cell * internal.Vm * DHFRf * MTX5 + 1 * internal.cell * internal.Vm * MTX1b + 1 * internal.cell * internal.Vm * MTX2b + 1 * internal.cell * internal.Vm * MTX3b + 1 * internal.cell * internal.Vm * MTX4b + 1 * internal.cell * internal.Vm * MTX5b + 1 * internal.cell * (internal.k0 + internal.k1 * internal.EMTX) - 1 * internal.Vm * internal.cell * (DHFRf + FH2b);
-    dstatedt[0] = 0 + 1 * internal.cell * (internal.Vm * CH2FH4 * internal.dUMP / (internal.dUMP * CH2FH4 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1) + internal.Km1 * internal.dUMP * (FFH2 / internal.Ki1f * (MTX1 / internal.Ki21) + (1 + FFH2 / internal.Ki1f) * (1 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1)) + internal.Km1 * internal.Km2 * (1 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1))) - 1 * internal.cell * internal.kter * FH2b - 1 * internal.cell * internal.Vm * FH2f + 1 * internal.cell * (internal.Vm * FFH2 * AICAR / (AICAR * FFH2 + FFH2 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * internal.Vm * FH2b;
-    dstatedt[2] = 0 - 1 * internal.cell * (internal.Vm * (internal.serine / internal.Km2 / (1 + internal.serine / internal.Km2)) * (FH4 / internal.Km1) / (1 + FH4 / internal.Km1)) + 1 * internal.cell * (internal.Vm * (internal.glycine / internal.Km2 / (1 + internal.glycine / internal.Km2)) * (CH2FH4 / internal.Km1) / (1 + CH2FH4 / internal.Km1)) - 1 * internal.cell * internal.hp * FH4 * HCHO + 1 * internal.cell * internal.hl * CH2FH4 + 1 * internal.cell * (internal.Vm * (internal.homocysteine / internal.Km2 / (1 + internal.homocysteine / internal.Km2)) * (CH3FH4 / internal.Km1) / (1 + CH3FH4 / internal.Km1)) - 1 * internal.cell * (internal.Vm / ((1 + internal.Km1 / FH4) * (1 + internal.Km2 / internal.ATP) * (1 + internal.Km3 / internal.formate))) + 1 * internal.cell * (internal.Vm * CHOFH4 * internal.GAR / (internal.GAR * CHOFH4 + CHOFH4 * internal.Km2 + (internal.GAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * (internal.Vm * CHOFH4 * AICAR / (AICAR * CHOFH4 + CHOFH4 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * internal.kter * FH2b;
+    dstatedt[1] = 0 - 1 * internal.cell * internal.Vm * DHFRf * MTX1 - 1 * internal.cell * internal.Vm * DHFRf * MTX2 - 1 * internal.cell * internal.Vm * DHFRf * MTX3 - 1 * internal.cell * internal.Vm * DHFRf * MTX4 - 1 * internal.cell * internal.Vm * DHFRf * MTX5 + 1 * internal.cell * internal.Vm * MTX1b + 1 * internal.cell * internal.Vm * MTX2b + 1 * internal.cell * internal.Vm * MTX3b + 1 * internal.cell * internal.Vm * MTX4b + 1 * internal.cell * internal.Vm * MTX5b + 1 * internal.cell * (internal.k0 + internal.k1 * EMTX) - 1 * internal.Vm * internal.cell * (DHFRf + FH2b);
+    dstatedt[0] = 0 + 1 * internal.cell * (internal.Vm * CH2FH4 * dUMP / (dUMP * CH2FH4 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1) + internal.Km1 * dUMP * (FFH2 / internal.Ki1f * (MTX1 / internal.Ki21) + (1 + FFH2 / internal.Ki1f) * (1 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1)) + internal.Km1 * internal.Km2 * (1 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1))) - 1 * internal.cell * internal.kter * FH2b - 1 * internal.cell * internal.Vm * FH2f + 1 * internal.cell * (internal.Vm * FFH2 * AICAR / (AICAR * FFH2 + FFH2 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * internal.Vm * FH2b;
+    dstatedt[2] = 0 - 1 * internal.cell * (internal.Vm * (serine / internal.Km2 / (1 + serine / internal.Km2)) * (FH4 / internal.Km1) / (1 + FH4 / internal.Km1)) + 1 * internal.cell * (internal.Vm * (glycine / internal.Km2 / (1 + glycine / internal.Km2)) * (CH2FH4 / internal.Km1) / (1 + CH2FH4 / internal.Km1)) - 1 * internal.cell * internal.hp * FH4 * HCHO + 1 * internal.cell * internal.hl * CH2FH4 + 1 * internal.cell * (internal.Vm * (homocysteine / internal.Km2 / (1 + homocysteine / internal.Km2)) * (CH3FH4 / internal.Km1) / (1 + CH3FH4 / internal.Km1)) - 1 * internal.cell * (internal.Vm / ((1 + internal.Km1 / FH4) * (1 + internal.Km2 / ATP) * (1 + internal.Km3 / formate))) + 1 * internal.cell * (internal.Vm * CHOFH4 * GAR / (GAR * CHOFH4 + CHOFH4 * internal.Km2 + (GAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * (internal.Vm * CHOFH4 * AICAR / (AICAR * CHOFH4 + CHOFH4 * internal.Km2 + (AICAR + internal.Km2) * internal.Km1 * (1 + MTX1 / internal.Ki21 + MTX2 / internal.Ki22 + MTX3 / internal.Ki23 + MTX4 / internal.Ki24 + MTX5 / internal.Ki25 + FH2f / internal.Ki1 + FFH2 / internal.Ki1f))) + 1 * internal.cell * internal.kter * FH2b;
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -159,9 +203,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "FH2f", "DHFRf", "FH4", "CH2FH4", "CH3FH4", "CHOFH4", "FFH2", "HCHO", "FGAR", "AICAR", "MTX1", "MTX2", "MTX3", "MTX4", "MTX5", "MTX1b", "MTX2b", "MTX3b", "MTX4b", "MTX5b"];
-    this.metadata.internalOrder = {AICAR_init: null, ATP: null, cell: null, CH2FH4_init: null, CH3FH4_init: null, CHOFH4_init: null, DHFRf_init: null, dUMP: null, EMTX: null, ext: null, FFH2_init: null, FGAR_init: null, FH2f_init: null, FH4_init: null, formate: null, GAR: null, glutamine: null, glycine: null, HCHO_init: null, hl: null, homocysteine: null, hp: null, initial_AICAR: null, initial_CH2FH4: null, initial_CH3FH4: null, initial_CHOFH4: null, initial_DHFRf: null, initial_FFH2: null, initial_FGAR: null, initial_FH2f: null, initial_FH4: null, initial_HCHO: null, initial_MTX1: null, initial_MTX1b: null, initial_MTX2: null, initial_MTX2b: null, initial_MTX3: null, initial_MTX3b: null, initial_MTX4: null, initial_MTX4b: null, initial_MTX5: null, initial_MTX5b: null, k0: null, k1: null, Keq: null, Ki1: null, Ki1f: null, Ki21: null, Ki22: null, Ki23: null, Ki24: null, Ki25: null, Km: null, Km1: null, Km2: null, Km3: null, kter: null, MTX1_init: null, MTX1b_init: null, MTX2_init: null, MTX2b_init: null, MTX3_init: null, MTX3b_init: null, MTX4_init: null, MTX4b_init: null, MTX5_init: null, MTX5b_init: null, NADP: null, NADPH: null, serine: null, Vm: null};
-    this.metadata.variableOrder = {FH2f: null, DHFRf: null, FH4: null, CH2FH4: null, CH3FH4: null, CHOFH4: null, FFH2: null, HCHO: null, FGAR: null, AICAR: null, MTX1: null, MTX2: null, MTX3: null, MTX4: null, MTX5: null, MTX1b: null, MTX2b: null, MTX3b: null, MTX4b: null, MTX5b: null};
+    this.metadata.ynames = ["t", "FH2f", "DHFRf", "FH4", "CH2FH4", "CH3FH4", "CHOFH4", "FFH2", "HCHO", "FGAR", "AICAR", "MTX1", "MTX2", "MTX3", "MTX4", "MTX5", "MTX1b", "MTX2b", "MTX3b", "MTX4b", "MTX5b", "EMTX", "dUMP", "GAR", "serine", "formate", "ATP", "glutamine", "glycine", "NADP", "NADPH", "homocysteine"];
+    this.metadata.internalOrder = {AICAR_init: null, ATP_init: null, cell: null, CH2FH4_init: null, CH3FH4_init: null, CHOFH4_init: null, DHFRf_init: null, dUMP_init: null, EMTX_init: null, ext: null, FFH2_init: null, FGAR_init: null, FH2f_init: null, FH4_init: null, formate_init: null, GAR_init: null, glutamine_init: null, glycine_init: null, HCHO_init: null, hl: null, homocysteine_init: null, hp: null, initial_AICAR: null, initial_ATP: null, initial_CH2FH4: null, initial_CH3FH4: null, initial_CHOFH4: null, initial_DHFRf: null, initial_dUMP: null, initial_EMTX: null, initial_FFH2: null, initial_FGAR: null, initial_FH2f: null, initial_FH4: null, initial_formate: null, initial_GAR: null, initial_glutamine: null, initial_glycine: null, initial_HCHO: null, initial_homocysteine: null, initial_MTX1: null, initial_MTX1b: null, initial_MTX2: null, initial_MTX2b: null, initial_MTX3: null, initial_MTX3b: null, initial_MTX4: null, initial_MTX4b: null, initial_MTX5: null, initial_MTX5b: null, initial_NADP: null, initial_NADPH: null, initial_serine: null, k0: null, k1: null, Keq: null, Ki1: null, Ki1f: null, Ki21: null, Ki22: null, Ki23: null, Ki24: null, Ki25: null, Km: null, Km1: null, Km2: null, Km3: null, kter: null, MTX1_init: null, MTX1b_init: null, MTX2_init: null, MTX2b_init: null, MTX3_init: null, MTX3b_init: null, MTX4_init: null, MTX4b_init: null, MTX5_init: null, MTX5b_init: null, NADP_init: null, NADPH_init: null, serine_init: null, Vm: null};
+    this.metadata.variableOrder = {FH2f: null, DHFRf: null, FH4: null, CH2FH4: null, CH3FH4: null, CHOFH4: null, FFH2: null, HCHO: null, FGAR: null, AICAR: null, MTX1: null, MTX2: null, MTX3: null, MTX4: null, MTX5: null, MTX1b: null, MTX2b: null, MTX3b: null, MTX4b: null, MTX5b: null, EMTX: null, dUMP: null, GAR: null, serine: null, formate: null, ATP: null, glutamine: null, glycine: null, NADP: null, NADPH: null, homocysteine: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

@@ -52,10 +52,15 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[1] = 0;
-    dstatedt[0] = 0;
-    dstatedt[3] = 0;
-    dstatedt[2] = 0;
+    const C = state[0];
+    const B = state[1];
+    const Tumour = state[3];
+    dstatedt[1] = 0 + internal.alpha2 * Math.pow((C), (internal.g12 / (1 + internal.r12 * Tumour / internal.LT))) * Math.pow((B), (internal.g22 - internal.r22 * Tumour / internal.LT)) - internal.beta2 * B;
+    dstatedt[0] = 0 + internal.alpha1 * Math.pow((C), (internal.g11 * (1 + internal.r11 * Tumour / internal.LT))) * Math.pow((B), (internal.g21 * (1 + internal.r21 * Tumour / internal.LT))) - internal.beta1 * C;
+    dstatedt[3] = 0 + internal.gammaT * Tumour * Math.log(internal.LT / Tumour);
+    var y1 = ((C > internal.C_bar ? C - internal.C_bar : 0));
+    var y2 = ((B > internal.B_bar ? B - internal.B_bar : 0));
+    dstatedt[2] = 0 + internal.k2 * y2 - internal.k1 * y1;
   }
   names() {
     return this.metadata.ynames.slice(1);

@@ -26,7 +26,7 @@ export class model {
     this.base.user.setUserScalar(user, "b", internal, 92330, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "g", internal, 60100000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma_mel", internal, 0.04496, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "M_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "M_init", internal, 1000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu_a", internal, 0.23100000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mu_e", internal, 0.1777, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "nu_mel", internal, 0.1245, -Infinity, Infinity, false);
