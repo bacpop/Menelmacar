@@ -14,12 +14,11 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a", "alpha", "b", "ModelValue_1", "P_0"], unusedUserAction);
+    this.base.user.checkUser(user, ["a", "alpha", "b", "P_0"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a", internal, 37.240000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha", internal, 1449.027, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "b", internal, 0.32500000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_1", internal, 0.29999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P_0", internal, 144.90000000000001, -Infinity, Infinity, false);
     this.updateMetadata();
   }
@@ -31,7 +30,8 @@ export class model {
     const L_ce = state[0];
     var L = ((t < 2 ? 1 : 0.94999999999999996));
     var L_se = L - L_ce;
-    var P = internal.alpha * (L_se - internal.ModelValue_1);
+    var ModelValue_1 = L_se;
+    var P = internal.alpha * (L_se - ModelValue_1);
     var v_ce = internal.b * (P - internal.P_0) / (P + internal.a);
     dstatedt[0] = v_ce;
   }
@@ -42,7 +42,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "L_ce"];
-    this.metadata.internalOrder = {a: null, alpha: null, b: null, Compartment: null, initial_L_ce: null, ModelValue_1: null, P_0: null};
+    this.metadata.internalOrder = {a: null, alpha: null, b: null, Compartment: null, initial_L_ce: null, P_0: null};
     this.metadata.variableOrder = {L_ce: null};
     this.metadata.outputOrder = null;
   }

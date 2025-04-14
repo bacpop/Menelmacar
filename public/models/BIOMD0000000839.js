@@ -20,7 +20,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["BMAL1_init", "CRY_init", "DBP_init", "E4BP4_init", "gamma_bp", "gamma_c", "gamma_cp", "gamma_db", "gamma_E4", "gamma_p", "gamma_pc", "gamma_rev", "gamma_ror", "k_D", "k_D_r", "k_E", "k_E_r", "k_R", "k_R_r", "ModelValue_0", "ModelValue_1", "ModelValue_2", "ModelValue_3", "ModelValue_4", "ModelValue_5", "ModelValue_6", "ModelValue_8", "PER_init", "PERCRY_init", "REV_init", "ROR_init", "V_D", "V_E", "V_R"], unusedUserAction);
+    this.base.user.checkUser(user, ["BMAL1_init", "CRY_init", "DBP_init", "E4BP4_init", "gamma_bp", "gamma_c", "gamma_cp", "gamma_db", "gamma_E4", "gamma_p", "gamma_pc", "gamma_rev", "gamma_ror", "k_D", "k_D_r", "k_E", "k_E_r", "k_R", "k_R_r", "PER_init", "PERCRY_init", "REV_init", "ROR_init", "V_D", "V_E", "V_R"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "BMAL1_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CRY_init", internal, 1, -Infinity, Infinity, false);
@@ -41,14 +41,6 @@ export class model {
     this.base.user.setUserScalar(user, "k_E_r", internal, 1.24, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_R", internal, 3.54, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_R_r", internal, 80.099999999999994, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_0", internal, 44.399999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_1", internal, 3.54, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_2", internal, 80.099999999999994, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_3", internal, 30.300000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_4", internal, 214, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_5", internal, 1.24, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_6", internal, 202, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_8", internal, 94.700000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PER_init", internal, 25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PERCRY_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "REV_init", internal, 110, -Infinity, Infinity, false);
@@ -64,6 +56,14 @@ export class model {
     internal.initial_PERCRY = internal.PERCRY_init;
     internal.initial_REV = internal.REV_init;
     internal.initial_ROR = internal.ROR_init;
+    internal.ModelValue_0 = internal.V_R;
+    internal.ModelValue_1 = internal.k_R;
+    internal.ModelValue_2 = internal.k_R_r;
+    internal.ModelValue_3 = internal.V_E;
+    internal.ModelValue_4 = internal.k_E;
+    internal.ModelValue_5 = internal.k_E_r;
+    internal.ModelValue_6 = internal.V_D;
+    internal.ModelValue_8 = internal.k_D_r;
     this.updateMetadata();
   }
   getInternal() {
@@ -79,8 +79,8 @@ export class model {
     const CRY = state[5];
     const PER = state[6];
     const PERCRY = state[7];
-    var D_box = internal.ModelValue_6 * (DBP / (DBP + internal.k_D)) * (internal.ModelValue_8 / (internal.ModelValue_8 + E4BP4));
     dstatedt[7] = 0 + 1 * internal.compartment * internal.gamma_pc * PER * CRY - 1 * internal.compartment * internal.gamma_cp * PERCRY - 1 * internal.compartment * (internal.gamma_bp * BMAL1 * PERCRY);
+    var D_box = internal.ModelValue_6 * (DBP / (DBP + internal.k_D)) * (internal.ModelValue_8 / (internal.ModelValue_8 + E4BP4));
     var E_box = internal.ModelValue_3 * BMAL1 / (BMAL1 + internal.ModelValue_4 + internal.ModelValue_5 * BMAL1 * CRY);
     var R_box = internal.ModelValue_0 * (ROR / (ROR + internal.ModelValue_1)) * (Math.pow((internal.ModelValue_2), (2)) / (Math.pow((internal.ModelValue_2), (2)) + Math.pow((REV), (2))));
     dstatedt[0] = 0 + 1 * internal.compartment * (R_box) - 1 * internal.compartment * (internal.gamma_bp * BMAL1 * PERCRY);

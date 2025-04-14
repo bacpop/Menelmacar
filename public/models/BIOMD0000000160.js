@@ -3,13 +3,12 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.CYC = 1;
     internal.wholeCell = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(24).fill(0);
+    var state = Array(25).fill(0);
     state[0] = internal.initial_CC;
     state[1] = internal.initial_CCPT;
     state[2] = internal.initial_clkp;
@@ -34,10 +33,11 @@ export class model {
     state[21] = internal.initial_prvc;
     state[22] = internal.initial_prpc;
     state[23] = internal.initial_prct;
+    state[24] = internal.initial_CYC;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["bcc", "bccpdpp", "bccperp", "bccpt", "bcctimp", "bccvrip", "bpdpclkp", "bpt", "bvriclkp", "CC_init", "CCPT_init", "CLK_init", "clkm_init", "clkp_init", "dcc", "dccpt", "dclk", "dclkm", "dpdp", "dpdpm", "dper", "dperm", "dpt", "dtim", "dtimm", "dvri", "dvrim", "npdp", "npt", "nvri", "PDP_init", "pdpm_init", "pdpp_init", "PER_init", "perm_init", "perp_init", "prcpdp_init", "prcper_init", "prct_init", "prcv_init", "prpc_init", "prvc_init", "PT_init", "tcccpdpp", "tcccperp", "tccctimp", "tcccvrip", "tcclkp", "tcdvpmt", "tcpdpclkp", "tcvriclkp", "TIM_init", "timm_init", "timp_init", "tlclk", "tlpdp", "tlper", "tltim", "tlvri", "ubcc", "ubccpdpp", "ubccperp", "ubccpt", "ubcctimp", "ubccvrip", "ubpdpclkp", "ubpt", "ubvriclkp", "VRI_init", "vrim_init", "vrip_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["bcc", "bccpdpp", "bccperp", "bccpt", "bcctimp", "bccvrip", "bpdpclkp", "bpt", "bvriclkp", "CC_init", "CCPT_init", "CLK_init", "clkm_init", "clkp_init", "CYC_init", "dcc", "dccpt", "dclk", "dclkm", "dpdp", "dpdpm", "dper", "dperm", "dpt", "dtim", "dtimm", "dvri", "dvrim", "npdp", "npt", "nvri", "PDP_init", "pdpm_init", "pdpp_init", "PER_init", "perm_init", "perp_init", "prcpdp_init", "prcper_init", "prct_init", "prcv_init", "prpc_init", "prvc_init", "PT_init", "tcccpdpp", "tcccperp", "tccctimp", "tcccvrip", "tcclkp", "tcdvpmt", "tcpdpclkp", "tcvriclkp", "TIM_init", "timm_init", "timp_init", "tlclk", "tlpdp", "tlper", "tltim", "tlvri", "ubcc", "ubccpdpp", "ubccperp", "ubccpt", "ubcctimp", "ubccvrip", "ubpdpclkp", "ubpt", "ubvriclkp", "VRI_init", "vrim_init", "vrip_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "bcc", internal, 2.3490000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "bccpdpp", internal, 0.062, -Infinity, Infinity, false);
@@ -53,6 +53,7 @@ export class model {
     this.base.user.setUserScalar(user, "CLK_init", internal, 3.6627999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "clkm_init", internal, 0.25829999999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "clkp_init", internal, 0.0031849999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CYC_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dcc", internal, 0.184, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dccpt", internal, 15.06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "dclk", internal, 0.20000000000000001, -Infinity, Infinity, false);
@@ -115,6 +116,7 @@ export class model {
     internal.initial_CLK = internal.CLK_init;
     internal.initial_clkm = internal.clkm_init;
     internal.initial_clkp = internal.clkp_init;
+    internal.initial_CYC = internal.CYC_init;
     internal.initial_PDP = internal.PDP_init;
     internal.initial_pdpm = internal.pdpm_init;
     internal.initial_pdpp = internal.pdpp_init;
@@ -165,14 +167,16 @@ export class model {
     const prvc = state[21];
     const prpc = state[22];
     const prct = state[23];
+    const CYC = state[24];
     dstatedt[2] = 0;
+    dstatedt[24] = 0;
     dstatedt[10] = 0;
     dstatedt[3] = 0;
     dstatedt[15] = 0;
     dstatedt[7] = 0;
-    dstatedt[0] = 0 - 1 * internal.wholeCell * CC * PT * internal.bccpt - 1 * internal.wholeCell * CC * internal.dcc + 1 * internal.wholeCell * CLK * internal.bcc * internal.CYC - 1 * internal.wholeCell * CC * internal.ubcc + 1 * internal.wholeCell * CCPT * internal.ubccpt;
+    dstatedt[0] = 0 - 1 * internal.wholeCell * CC * PT * internal.bccpt - 1 * internal.wholeCell * CC * internal.dcc + 1 * internal.wholeCell * CLK * internal.bcc * CYC - 1 * internal.wholeCell * CC * internal.ubcc + 1 * internal.wholeCell * CCPT * internal.ubccpt;
     dstatedt[1] = 0 + 1 * internal.wholeCell * CC * PT * internal.bccpt - 1 * internal.wholeCell * CCPT * internal.dccpt - 1 * internal.wholeCell * CCPT * internal.ubccpt;
-    dstatedt[13] = 0 + 1 * internal.wholeCell * clkm * internal.tlclk - 1 * internal.wholeCell * CLK * internal.bcc * internal.CYC - 1 * internal.wholeCell * CLK * internal.dclk + 1 * internal.wholeCell * CC * internal.ubcc;
+    dstatedt[13] = 0 + 1 * internal.wholeCell * clkm * internal.tlclk - 1 * internal.wholeCell * CLK * internal.bcc * CYC - 1 * internal.wholeCell * CLK * internal.dclk + 1 * internal.wholeCell * CC * internal.ubcc;
     dstatedt[4] = 0 - 1 * internal.wholeCell * clkm * internal.dclkm + 1 * internal.wholeCell * (prvc * internal.tcvriclkp + prpc * internal.tcpdpclkp + (1 - prvc - prpc) * internal.tcclkp) * clkp;
     dstatedt[12] = 0 + 1 * internal.wholeCell * pdpm * internal.tlpdp - 1 * internal.wholeCell * PDP * internal.dpdp;
     dstatedt[11] = 0 + 1 * internal.wholeCell * ((1 - Math.pow((1 - prcpdp), (internal.npdp))) * internal.tcccpdpp + Math.pow((1 - prcpdp), (internal.npdp)) * internal.tcdvpmt) * pdpp - 1 * internal.wholeCell * pdpm * internal.dpdpm;
@@ -196,9 +200,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "CC", "CCPT", "clkp", "perp", "clkm", "perm", "PT", "vrip", "vrim", "VRI", "pdpp", "pdpm", "PDP", "CLK", "PER", "timp", "timm", "TIM", "prcper", "prcv", "prcpdp", "prvc", "prpc", "prct"];
-    this.metadata.internalOrder = {bcc: null, bccpdpp: null, bccperp: null, bccpt: null, bcctimp: null, bccvrip: null, bpdpclkp: null, bpt: null, bvriclkp: null, CC_init: null, CCPT_init: null, CLK_init: null, clkm_init: null, clkp_init: null, CYC: null, dcc: null, dccpt: null, dclk: null, dclkm: null, dpdp: null, dpdpm: null, dper: null, dperm: null, dpt: null, dtim: null, dtimm: null, dvri: null, dvrim: null, initial_CC: null, initial_CCPT: null, initial_CLK: null, initial_clkm: null, initial_clkp: null, initial_PDP: null, initial_pdpm: null, initial_pdpp: null, initial_PER: null, initial_perm: null, initial_perp: null, initial_prcpdp: null, initial_prcper: null, initial_prct: null, initial_prcv: null, initial_prpc: null, initial_prvc: null, initial_PT: null, initial_TIM: null, initial_timm: null, initial_timp: null, initial_VRI: null, initial_vrim: null, initial_vrip: null, npdp: null, npt: null, nvri: null, PDP_init: null, pdpm_init: null, pdpp_init: null, PER_init: null, perm_init: null, perp_init: null, prcpdp_init: null, prcper_init: null, prct_init: null, prcv_init: null, prpc_init: null, prvc_init: null, PT_init: null, tcccpdpp: null, tcccperp: null, tccctimp: null, tcccvrip: null, tcclkp: null, tcdvpmt: null, tcpdpclkp: null, tcvriclkp: null, TIM_init: null, timm_init: null, timp_init: null, tlclk: null, tlpdp: null, tlper: null, tltim: null, tlvri: null, ubcc: null, ubccpdpp: null, ubccperp: null, ubccpt: null, ubcctimp: null, ubccvrip: null, ubpdpclkp: null, ubpt: null, ubvriclkp: null, VRI_init: null, vrim_init: null, vrip_init: null, wholeCell: null};
-    this.metadata.variableOrder = {CC: null, CCPT: null, clkp: null, perp: null, clkm: null, perm: null, PT: null, vrip: null, vrim: null, VRI: null, pdpp: null, pdpm: null, PDP: null, CLK: null, PER: null, timp: null, timm: null, TIM: null, prcper: null, prcv: null, prcpdp: null, prvc: null, prpc: null, prct: null};
+    this.metadata.ynames = ["t", "CC", "CCPT", "clkp", "perp", "clkm", "perm", "PT", "vrip", "vrim", "VRI", "pdpp", "pdpm", "PDP", "CLK", "PER", "timp", "timm", "TIM", "prcper", "prcv", "prcpdp", "prvc", "prpc", "prct", "CYC"];
+    this.metadata.internalOrder = {bcc: null, bccpdpp: null, bccperp: null, bccpt: null, bcctimp: null, bccvrip: null, bpdpclkp: null, bpt: null, bvriclkp: null, CC_init: null, CCPT_init: null, CLK_init: null, clkm_init: null, clkp_init: null, CYC_init: null, dcc: null, dccpt: null, dclk: null, dclkm: null, dpdp: null, dpdpm: null, dper: null, dperm: null, dpt: null, dtim: null, dtimm: null, dvri: null, dvrim: null, initial_CC: null, initial_CCPT: null, initial_CLK: null, initial_clkm: null, initial_clkp: null, initial_CYC: null, initial_PDP: null, initial_pdpm: null, initial_pdpp: null, initial_PER: null, initial_perm: null, initial_perp: null, initial_prcpdp: null, initial_prcper: null, initial_prct: null, initial_prcv: null, initial_prpc: null, initial_prvc: null, initial_PT: null, initial_TIM: null, initial_timm: null, initial_timp: null, initial_VRI: null, initial_vrim: null, initial_vrip: null, npdp: null, npt: null, nvri: null, PDP_init: null, pdpm_init: null, pdpp_init: null, PER_init: null, perm_init: null, perp_init: null, prcpdp_init: null, prcper_init: null, prct_init: null, prcv_init: null, prpc_init: null, prvc_init: null, PT_init: null, tcccpdpp: null, tcccperp: null, tccctimp: null, tcccvrip: null, tcclkp: null, tcdvpmt: null, tcpdpclkp: null, tcvriclkp: null, TIM_init: null, timm_init: null, timp_init: null, tlclk: null, tlpdp: null, tlper: null, tltim: null, tlvri: null, ubcc: null, ubccpdpp: null, ubccperp: null, ubccpt: null, ubcctimp: null, ubccvrip: null, ubpdpclkp: null, ubpt: null, ubvriclkp: null, VRI_init: null, vrim_init: null, vrip_init: null, wholeCell: null};
+    this.metadata.variableOrder = {CC: null, CCPT: null, clkp: null, perp: null, clkm: null, perm: null, PT: null, vrip: null, vrim: null, VRI: null, pdpp: null, pdpm: null, PDP: null, CLK: null, PER: null, timp: null, timm: null, TIM: null, prcper: null, prcv: null, prcpdp: null, prvc: null, prpc: null, prct: null, CYC: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

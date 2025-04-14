@@ -22,7 +22,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["HSE_HSF_3_init", "HSE_init", "HSE_tot", "HSF_3_init", "HSF_init", "HSF_tot", "HSP_HSF_init", "HSP_init", "HSP_S_init", "I_7_37", "I_7_41", "I_7_42", "I_7_43", "I_7_44", "I_7_45", "I1", "I2", "I3", "k_8_max", "k1", "k10", "k2", "k3", "k4", "k5", "k6", "k7", "k9", "ModelValue_13", "ModelValue_19", "ModelValue_20", "ModelValue_21", "ModelValue_23", "ModelValue_27", "mRNA_init", "n_V", "P_init", "P_tot", "R_k_8", "S_init", "T", "T_0", "T_05", "T_k_8"], unusedUserAction);
+    this.base.user.checkUser(user, ["HSE_HSF_3_init", "HSE_init", "HSE_tot", "HSF_3_init", "HSF_init", "HSF_tot", "HSP_HSF_init", "HSP_init", "HSP_S_init", "I_7_37", "I_7_41", "I_7_42", "I_7_43", "I_7_44", "I_7_45", "I1", "I2", "I3", "k_8_max", "k1", "k10", "k2", "k3", "k4", "k5", "k6", "k7", "k9", "mRNA_init", "n_V", "P_init", "P_tot", "R_k_8", "S_init", "T", "T_0", "T_05", "T_k_8"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "HSE_HSF_3_init", internal, 4.4839999999999998e-09, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "HSE_init", internal, 3.9960000000000004e-06, -Infinity, Infinity, false);
@@ -52,12 +52,6 @@ export class model {
     this.base.user.setUserScalar(user, "k6", internal, 0.08899, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k7", internal, 5892, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k9", internal, 0.0018879999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_13", internal, 0.66279999999999994, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_19", internal, 96.069999999999993, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_20", internal, 15.93, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_21", internal, 42.890000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_23", internal, 0.098129999999999995, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_27", internal, 6.5220000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "mRNA_init", internal, 0.00049459999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "n_V", internal, 6.5220000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P_init", internal, 1297, -Infinity, Infinity, false);
@@ -68,7 +62,6 @@ export class model {
     this.base.user.setUserScalar(user, "T_0", internal, 35.810000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T_05", internal, 47.130000000000003, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "T_k_8", internal, 42.890000000000001, -Infinity, Infinity, false);
-    internal.I_7_T = internal.ModelValue_13;
     internal.initial_HSE = internal.HSE_init;
     internal.initial_HSE_HSF_3 = internal.HSE_HSF_3_init;
     internal.initial_HSF = internal.HSF_init;
@@ -79,6 +72,13 @@ export class model {
     internal.initial_mRNA = internal.mRNA_init;
     internal.initial_P = internal.P_init;
     internal.initial_S = internal.S_init;
+    internal.ModelValue_13 = internal.I_7_42;
+    internal.ModelValue_19 = internal.k_8_max;
+    internal.ModelValue_20 = internal.R_k_8;
+    internal.ModelValue_21 = internal.T_k_8;
+    internal.ModelValue_23 = internal.k10;
+    internal.ModelValue_27 = internal.n_V;
+    internal.I_7_T = internal.ModelValue_13;
     internal.k_8_T = internal.ModelValue_19 * (1 - 1 / (1 + Math.exp(- internal.ModelValue_20 * (internal.T - internal.ModelValue_21))));
     internal.V_den_T = 1 - Math.pow((1 + Math.pow(((internal.T - internal.T_0) / (internal.T_05 - internal.T_0)), (internal.ModelValue_27))), (- 1));
     internal.k_11_T = internal.ModelValue_23 * (internal.V_den_T / (1 - internal.V_den_T));

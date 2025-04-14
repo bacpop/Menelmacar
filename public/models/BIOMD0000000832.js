@@ -32,7 +32,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["aEGFR", "Akt_init", "aLATS1_init", "aMST2_init", "aMST2_max", "aMST2uRASSF1A_init", "aRaf1_init", "dMST2_init", "ERK_init", "iMST2_init", "ipRaf1_init", "iRaf1_init", "iRaf1uiMST2_init", "ka_21", "ka_22", "ka_41", "ka_71", "kc_11", "kc_112", "kc_12", "kc_121", "kc_131", "kc_21", "kc_81", "kc_82", "kc_91", "kc_92", "kd_21", "kd_31", "kd_41", "kd_71", "Km_101", "Km_102", "Km_11", "Km_111", "Km_112", "Km_12", "Km_121", "Km_122", "Km_13", "Km_131", "Km_132", "Km_21", "Km_22", "Km_23", "Km_51", "Km_81", "Km_82", "Km_83", "Km_91", "Km_92", "Km_93", "LATS1_init", "Metabolite_4", "Metabolite_5", "ModelValue_51", "ModelValue_53", "MST2_init", "MST2uRASSF1A_init", "pAkt_init", "pAkt_max", "ppERK_init", "ppERK_max", "Raf1_init", "RasGDP_init", "RasGTP_init", "RASSF1A_init", "V_101", "V_102", "V_11", "V_111", "V_121", "V_131", "V_21", "V_22", "V_51", "V_81", "V_91"], unusedUserAction);
+    this.base.user.checkUser(user, ["aEGFR", "Akt_init", "aLATS1_init", "aMST2_init", "aMST2_max", "aMST2uRASSF1A_init", "aRaf1_init", "dMST2_init", "ERK_init", "iMST2_init", "ipRaf1_init", "iRaf1_init", "iRaf1uiMST2_init", "ka_21", "ka_22", "ka_41", "ka_71", "kc_11", "kc_112", "kc_12", "kc_121", "kc_131", "kc_21", "kc_81", "kc_82", "kc_91", "kc_92", "kd_21", "kd_31", "kd_41", "kd_71", "Km_101", "Km_102", "Km_11", "Km_111", "Km_112", "Km_12", "Km_121", "Km_122", "Km_13", "Km_131", "Km_132", "Km_21", "Km_22", "Km_23", "Km_51", "Km_81", "Km_82", "Km_83", "Km_91", "Km_92", "Km_93", "LATS1_init", "MST2_init", "MST2uRASSF1A_init", "pAkt_init", "pAkt_max", "ppERK_init", "ppERK_max", "Raf1_init", "RasGDP_init", "RasGTP_init", "RASSF1A_init", "V_101", "V_102", "V_11", "V_111", "V_121", "V_131", "V_21", "V_22", "V_51", "V_81", "V_91"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "aEGFR", internal, 500, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Akt_init", internal, 200, -Infinity, Infinity, false);
@@ -87,10 +87,6 @@ export class model {
     this.base.user.setUserScalar(user, "Km_92", internal, 10.68, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Km_93", internal, 0.90149999999999997, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LATS1_init", internal, 7.7999999999999998, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Metabolite_4", internal, 185.59999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Metabolite_5", internal, 113.90000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_51", internal, 200, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_53", internal, 226.84, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MST2_init", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "MST2uRASSF1A_init", internal, 0.23000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "pAkt_init", internal, 0, -Infinity, Infinity, false);
@@ -132,6 +128,8 @@ export class model {
     internal.initial_RasGDP = internal.RasGDP_init;
     internal.initial_RasGTP = internal.RasGTP_init;
     internal.initial_RASSF1A = internal.RASSF1A_init;
+    internal.ModelValue_51 = internal.pAkt_max;
+    internal.ModelValue_53 = internal.ppERK_max;
     this.updateMetadata();
   }
   getInternal() {
@@ -187,7 +185,7 @@ export class model {
     this.metadata = {};
     var internal = this.internal;
     this.metadata.ynames = ["t", "Akt", "RASSF1A", "MST2", "dMST2", "aMST2", "aMST2uRASSF1A", "MST2uRASSF1A", "iMST2", "iRaf1uiMST2", "aLATS1", "LATS1", "iRaf1", "Raf1", "aRaf1", "ipRaf1", "RasGDP", "RasGTP", "ERK", "ppERK", "pAkt"];
-    this.metadata.internalOrder = {aEGFR: null, Akt_init: null, aLATS1_init: null, aMST2_init: null, aMST2_max: null, aMST2uRASSF1A_init: null, aRaf1_init: null, compartment: null, dMST2_init: null, ERK_init: null, iMST2_init: null, initial_Akt: null, initial_aLATS1: null, initial_aMST2: null, initial_aMST2uRASSF1A: null, initial_aRaf1: null, initial_dMST2: null, initial_ERK: null, initial_iMST2: null, initial_ipRaf1: null, initial_iRaf1: null, initial_iRaf1uiMST2: null, initial_LATS1: null, initial_MST2: null, initial_MST2uRASSF1A: null, initial_pAkt: null, initial_ppERK: null, initial_Raf1: null, initial_RasGDP: null, initial_RasGTP: null, initial_RASSF1A: null, ipRaf1_init: null, iRaf1_init: null, iRaf1uiMST2_init: null, ka_21: null, ka_22: null, ka_41: null, ka_71: null, kc_11: null, kc_112: null, kc_12: null, kc_121: null, kc_131: null, kc_21: null, kc_81: null, kc_82: null, kc_91: null, kc_92: null, kd_21: null, kd_31: null, kd_41: null, kd_71: null, Km_101: null, Km_102: null, Km_11: null, Km_111: null, Km_112: null, Km_12: null, Km_121: null, Km_122: null, Km_13: null, Km_131: null, Km_132: null, Km_21: null, Km_22: null, Km_23: null, Km_51: null, Km_81: null, Km_82: null, Km_83: null, Km_91: null, Km_92: null, Km_93: null, LATS1_init: null, Metabolite_4: null, Metabolite_5: null, ModelValue_51: null, ModelValue_53: null, MST2_init: null, MST2uRASSF1A_init: null, pAkt_init: null, pAkt_max: null, ppERK_init: null, ppERK_max: null, Raf1_init: null, RasGDP_init: null, RasGTP_init: null, RASSF1A_init: null, V_101: null, V_102: null, V_11: null, V_111: null, V_121: null, V_131: null, V_21: null, V_22: null, V_51: null, V_81: null, V_91: null};
+    this.metadata.internalOrder = {aEGFR: null, Akt_init: null, aLATS1_init: null, aMST2_init: null, aMST2_max: null, aMST2uRASSF1A_init: null, aRaf1_init: null, compartment: null, dMST2_init: null, ERK_init: null, iMST2_init: null, initial_Akt: null, initial_aLATS1: null, initial_aMST2: null, initial_aMST2uRASSF1A: null, initial_aRaf1: null, initial_dMST2: null, initial_ERK: null, initial_iMST2: null, initial_ipRaf1: null, initial_iRaf1: null, initial_iRaf1uiMST2: null, initial_LATS1: null, initial_MST2: null, initial_MST2uRASSF1A: null, initial_pAkt: null, initial_ppERK: null, initial_Raf1: null, initial_RasGDP: null, initial_RasGTP: null, initial_RASSF1A: null, ipRaf1_init: null, iRaf1_init: null, iRaf1uiMST2_init: null, ka_21: null, ka_22: null, ka_41: null, ka_71: null, kc_11: null, kc_112: null, kc_12: null, kc_121: null, kc_131: null, kc_21: null, kc_81: null, kc_82: null, kc_91: null, kc_92: null, kd_21: null, kd_31: null, kd_41: null, kd_71: null, Km_101: null, Km_102: null, Km_11: null, Km_111: null, Km_112: null, Km_12: null, Km_121: null, Km_122: null, Km_13: null, Km_131: null, Km_132: null, Km_21: null, Km_22: null, Km_23: null, Km_51: null, Km_81: null, Km_82: null, Km_83: null, Km_91: null, Km_92: null, Km_93: null, LATS1_init: null, ModelValue_51: null, ModelValue_53: null, MST2_init: null, MST2uRASSF1A_init: null, pAkt_init: null, pAkt_max: null, ppERK_init: null, ppERK_max: null, Raf1_init: null, RasGDP_init: null, RasGTP_init: null, RASSF1A_init: null, V_101: null, V_102: null, V_11: null, V_111: null, V_121: null, V_131: null, V_21: null, V_22: null, V_51: null, V_81: null, V_91: null};
     this.metadata.variableOrder = {Akt: null, RASSF1A: null, MST2: null, dMST2: null, aMST2: null, aMST2uRASSF1A: null, MST2uRASSF1A: null, iMST2: null, iRaf1uiMST2: null, aLATS1: null, LATS1: null, iRaf1: null, Raf1: null, aRaf1: null, ipRaf1: null, RasGDP: null, RasGTP: null, ERK: null, ppERK: null, pAkt: null};
     this.metadata.outputOrder = null;
   }

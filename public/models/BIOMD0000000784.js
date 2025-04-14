@@ -15,7 +15,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["a_12", "a_21", "a_31", "d", "d_3", "g", "h", "lambda", "ModelValue_1", "ModelValue_2", "ModelValue_3", "r_2", "s", "v", "x_Tumor_Cells_init", "y_Healthy_Cells_init", "z_Effector_Cells_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["a_12", "a_21", "a_31", "d", "d_3", "g", "h", "lambda", "r_2", "s", "v", "x_Tumor_Cells_init", "y_Healthy_Cells_init", "z_Effector_Cells_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "a_12", internal, 0.19500000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "a_21", internal, 0.95399999999999996, -Infinity, Infinity, false);
@@ -25,9 +25,6 @@ export class model {
     this.base.user.setUserScalar(user, "g", internal, 0.28999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "h", internal, 7.9499999999999997e-11, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lambda", internal, 0.20999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_1", internal, 5, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_2", internal, 0.20999999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_3", internal, 11.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_2", internal, 0.34999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "s", internal, 11.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "v", internal, 1, -Infinity, Infinity, false);
@@ -37,6 +34,9 @@ export class model {
     internal.initial_x_Tumor_Cells = internal.x_Tumor_Cells_init;
     internal.initial_y_Healthy_Cells = internal.y_Healthy_Cells_init;
     internal.initial_z_Effector_Cells = internal.z_Effector_Cells_init;
+    internal.ModelValue_1 = internal.d;
+    internal.ModelValue_2 = internal.lambda;
+    internal.ModelValue_3 = internal.s;
     this.updateMetadata();
   }
   getInternal() {

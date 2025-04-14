@@ -63,11 +63,39 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[3] = 0;
-    dstatedt[4] = 0;
-    dstatedt[2] = 0;
-    dstatedt[1] = 0;
-    dstatedt[0] = 0;
+    const V_membrane = state[0];
+    const n = state[1];
+    const jm = state[2];
+    const Ca_er_Ca_equations = state[3];
+    const Ca_i = state[4];
+    var a_infinity = 1 / (1 + internal.dact / Ca_i);
+    var h_infinity = 1 / (1 + Ca_i / internal.dinh);
+    var i_K = internal.g_K * n * (V_membrane + 70);
+    var i_K_ATP = internal.g_K_ATP * (V_membrane + 70);
+    var i_K_Ca = internal.g_K_Ca * Math.pow((Ca_i), (5)) / (Math.pow((Ca_i), (5)) + Math.pow((internal.kdkca), (5))) * (V_membrane + 70);
+    var i_leak = internal.g_leak * (V_membrane - internal.V_CRAC);
+    var J_er_leak = internal.perl * (Ca_er_Ca_equations - Ca_i);
+    var J_er_p = internal.verp * Math.pow((Ca_i), (2)) / (Math.pow((Ca_i), (2)) + Math.pow((internal.kerp), (2)));
+    var jm_infinity = 1 - 1 / (1 + Math.exp((53 + V_membrane) / 2));
+    var m_f_infinity = 1 / (1 + Math.exp((- 20 - V_membrane) / 7.5));
+    var m_s_infinity = 1 / (1 + Math.exp((- 16 - V_membrane) / 10));
+    var n_infinity = 1 / (1 + Math.exp((- 15 - V_membrane) / 6));
+    var r_infinity = 1 / (1 + Math.exp(1 * (Ca_er_Ca_equations - internal.Ca_er_bar)));
+    var tau_j = 50000 / (Math.exp((53 + V_membrane) / 4) + Math.exp((- 53 - V_membrane) / 4)) + 1500;
+    var tau_n = 9.0899999999999999 / (1 + Math.exp((15 + V_membrane) / 6));
+    dstatedt[2] = 0 + (jm_infinity - jm) / tau_j;
+    dstatedt[1] = 0 + internal.lambda_n * (n_infinity - n) / tau_n;
+    var i_Ca_f = internal.g_Ca_f * m_f_infinity * (V_membrane - internal.V_Ca);
+    var i_Ca_s = internal.g_Ca_s * m_s_infinity * (1 - jm) * (V_membrane - internal.V_Ca);
+    var i_CRAC = internal.g_CRAC * r_infinity * (V_membrane - internal.V_CRAC);
+    var O = Math.pow((a_infinity), (3)) * Math.pow((internal.b_infinity), (3)) * Math.pow((h_infinity), (3)) * 1;
+    var i_Ca = i_Ca_f + i_Ca_s;
+    var J_er_IP3 = O * (Ca_er_Ca_equations - Ca_i);
+    dstatedt[0] = 0 + - (i_Ca + i_K + i_K_ATP + i_K_Ca + i_CRAC + i_leak) / internal.Cm;
+    var J_er_tot = J_er_leak + J_er_IP3 - J_er_p;
+    var J_mem_tot = - internal.f * (internal.gamma * i_Ca + internal.k_Ca * Ca_i);
+    dstatedt[3] = 0 + - J_er_tot / (internal.lambda_er * internal.sigma_er);
+    dstatedt[4] = 0 + J_er_tot / internal.lambda_er + J_mem_tot;
   }
   names() {
     return this.metadata.ynames.slice(1);

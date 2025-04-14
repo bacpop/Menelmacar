@@ -3,6 +3,7 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
+    internal.kxk = 0.25;
     internal.Whole_organism_blood = 1;
     this.setUser(user, unusedUserAction);
   }
@@ -19,12 +20,12 @@ export class model {
     this.base.user.checkUser(user, ["alpha", "B_cells_healthy_init", "beta", "C_50", "CAR_T_cells_init", "I_0", "Leukaemic_B_cells_init", "rho_L", "tao_B", "tao_C", "tao_I"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha", internal, 4.5e-11, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "B_cells_healthy_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "B_cells_healthy_init", internal, 25000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C_50", internal, 1000000000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "CAR_T_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CAR_T_cells_init", internal, 10000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "I_0", internal, 10000000, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Leukaemic_B_cells_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Leukaemic_B_cells_init", internal, 50000000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho_L", internal, 0.033333333329999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tao_B", internal, 60, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "tao_C", internal, 14, -Infinity, Infinity, false);
@@ -35,7 +36,6 @@ export class model {
     internal.initial_Leukaemic_B_cells = internal.Leukaemic_B_cells_init;
     internal.rho_C = 0.25 * internal.alpha;
     internal.initial_B_cell_progenitors = internal.B_cell_progenitors_init;
-    internal.kxk = internal.rho_C / internal.alpha;
     this.updateMetadata();
   }
   getInternal() {

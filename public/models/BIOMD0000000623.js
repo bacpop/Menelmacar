@@ -4,17 +4,11 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment_0 = 1;
-    internal.species_25 = 10002000;
-    internal.species_26 = 120000;
-    internal.species_27 = 120000;
-    internal.species_28 = 120000;
-    internal.species_29 = 120000;
-    internal.species_30 = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(25).fill(0);
+    var state = Array(31).fill(0);
     state[0] = internal.initial_species_0;
     state[1] = internal.initial_species_1;
     state[2] = internal.initial_species_2;
@@ -40,10 +34,16 @@ export class model {
     state[22] = internal.initial_species_22;
     state[23] = internal.initial_species_23;
     state[24] = internal.initial_species_24;
+    state[25] = internal.initial_species_25;
+    state[26] = internal.initial_species_26;
+    state[27] = internal.initial_species_27;
+    state[28] = internal.initial_species_28;
+    state[29] = internal.initial_species_29;
+    state[30] = internal.initial_species_30;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["k1", "k2", "kcat", "Kcat", "km", "species_0_init", "species_1_init", "species_10_init", "species_11_init", "species_12_init", "species_13_init", "species_14_init", "species_15_init", "species_16_init", "species_17_init", "species_18_init", "species_19_init", "species_2_init", "species_20_init", "species_21_init", "species_22_init", "species_23_init", "species_24_init", "species_3_init", "species_4_init", "species_5_init", "species_6_init", "species_7_init", "species_8_init", "species_9_init", "v"], unusedUserAction);
+    this.base.user.checkUser(user, ["k1", "k2", "kcat", "Kcat", "km", "species_0_init", "species_1_init", "species_10_init", "species_11_init", "species_12_init", "species_13_init", "species_14_init", "species_15_init", "species_16_init", "species_17_init", "species_18_init", "species_19_init", "species_2_init", "species_20_init", "species_21_init", "species_22_init", "species_23_init", "species_24_init", "species_25_init", "species_26_init", "species_27_init", "species_28_init", "species_29_init", "species_3_init", "species_30_init", "species_4_init", "species_5_init", "species_6_init", "species_7_init", "species_8_init", "species_9_init", "v"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "k1", internal, 0.00125, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 0.121008, -Infinity, Infinity, false);
@@ -68,7 +68,13 @@ export class model {
     this.base.user.setUserScalar(user, "species_22_init", internal, 120000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "species_23_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "species_24_init", internal, 120000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_25_init", internal, 10002000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_26_init", internal, 120000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_27_init", internal, 120000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_28_init", internal, 120000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_29_init", internal, 120000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "species_3_init", internal, 120000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "species_30_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "species_4_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "species_5_init", internal, 120000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "species_6_init", internal, 0, -Infinity, Infinity, false);
@@ -94,7 +100,13 @@ export class model {
     internal.initial_species_22 = internal.species_22_init;
     internal.initial_species_23 = internal.species_23_init;
     internal.initial_species_24 = internal.species_24_init;
+    internal.initial_species_25 = internal.species_25_init;
+    internal.initial_species_26 = internal.species_26_init;
+    internal.initial_species_27 = internal.species_27_init;
+    internal.initial_species_28 = internal.species_28_init;
+    internal.initial_species_29 = internal.species_29_init;
     internal.initial_species_3 = internal.species_3_init;
+    internal.initial_species_30 = internal.species_30_init;
     internal.initial_species_4 = internal.species_4_init;
     internal.initial_species_5 = internal.species_5_init;
     internal.initial_species_6 = internal.species_6_init;
@@ -132,10 +144,21 @@ export class model {
     const species_22 = state[22];
     const species_23 = state[23];
     const species_24 = state[24];
-    dstatedt[0] = 0 + 1 * internal.compartment_0 * (internal.k1 * internal.species_25 * species_1 - internal.k2 * species_0) - 1 * internal.compartment_0 * internal.k1 * species_0;
-    dstatedt[1] = 0 - 1 * internal.compartment_0 * (internal.k1 * internal.species_25 * species_1 - internal.k2 * species_0) + 1 * internal.compartment_0 * (internal.v) - 1 * internal.compartment_0 * internal.k1 * species_1;
-    dstatedt[10] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_8 * species_11 / (internal.km + species_11)) - 1 * internal.compartment_0 * (internal.Kcat * internal.species_26 * species_10 / (internal.km + species_10));
-    dstatedt[11] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_8 * species_11 / (internal.km + species_11)) + 1 * internal.compartment_0 * (internal.Kcat * internal.species_26 * species_10 / (internal.km + species_10));
+    const species_25 = state[25];
+    const species_26 = state[26];
+    const species_27 = state[27];
+    const species_28 = state[28];
+    const species_29 = state[29];
+    dstatedt[25] = 0;
+    dstatedt[26] = 0;
+    dstatedt[27] = 0;
+    dstatedt[28] = 0;
+    dstatedt[29] = 0;
+    dstatedt[30] = 0;
+    dstatedt[0] = 0 + 1 * internal.compartment_0 * (internal.k1 * species_25 * species_1 - internal.k2 * species_0) - 1 * internal.compartment_0 * internal.k1 * species_0;
+    dstatedt[1] = 0 - 1 * internal.compartment_0 * (internal.k1 * species_25 * species_1 - internal.k2 * species_0) + 1 * internal.compartment_0 * (internal.v) - 1 * internal.compartment_0 * internal.k1 * species_1;
+    dstatedt[10] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_8 * species_11 / (internal.km + species_11)) - 1 * internal.compartment_0 * (internal.Kcat * species_26 * species_10 / (internal.km + species_10));
+    dstatedt[11] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_8 * species_11 / (internal.km + species_11)) + 1 * internal.compartment_0 * (internal.Kcat * species_26 * species_10 / (internal.km + species_10));
     dstatedt[12] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_10 * species_13 / (internal.km + species_13)) - 1 * internal.compartment_0 * internal.k1 * species_12;
     dstatedt[13] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_10 * species_13 / (internal.km + species_13)) + 1 * internal.compartment_0 * internal.k1 * species_12;
     dstatedt[14] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_0 * species_15 / (internal.km + species_15)) + 1 * internal.compartment_0 * (internal.Kcat * species_4 * species_15 / (internal.km + species_15)) - 1 * internal.compartment_0 * internal.k1 * species_14;
@@ -146,17 +169,17 @@ export class model {
     dstatedt[19] = 0 + 1 * internal.compartment_0 * (internal.kcat * species_0 * species_20 / (internal.km + species_20)) - 1 * internal.compartment_0 * internal.k1 * species_19;
     dstatedt[2] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_0 * species_3 / (internal.km + species_3)) - 1 * internal.compartment_0 * internal.k1 * species_2 - 1 * internal.compartment_0 * (internal.Kcat * species_12 * species_2 / (internal.km + species_2));
     dstatedt[20] = 0 - 1 * internal.compartment_0 * (internal.kcat * species_0 * species_20 / (internal.km + species_20)) + 1 * internal.compartment_0 * internal.k1 * species_19;
-    dstatedt[21] = 0 + 1 * internal.compartment_0 * (internal.kcat * species_19 * species_22 / (internal.km + species_22)) - 1 * internal.compartment_0 * (internal.kcat * internal.species_29 * species_21 / (internal.km + species_21));
-    dstatedt[22] = 0 - 1 * internal.compartment_0 * (internal.kcat * species_19 * species_22 / (internal.km + species_22)) + 1 * internal.compartment_0 * (internal.kcat * internal.species_29 * species_21 / (internal.km + species_21));
-    dstatedt[23] = 0 + 1 * internal.compartment_0 * (internal.kcat * species_21 * species_24 / (internal.km + species_24)) - 1 * internal.compartment_0 * (internal.kcat * internal.species_27 * species_23 / (internal.km + species_23)) + 1 * internal.compartment_0 * (internal.kcat * species_4 * species_24 / (internal.km + species_24));
-    dstatedt[24] = 0 - 1 * internal.compartment_0 * (internal.kcat * species_21 * species_24 / (internal.km + species_24)) + 1 * internal.compartment_0 * (internal.kcat * internal.species_27 * species_23 / (internal.km + species_23)) - 1 * internal.compartment_0 * (internal.kcat * species_4 * species_24 / (internal.km + species_24));
+    dstatedt[21] = 0 + 1 * internal.compartment_0 * (internal.kcat * species_19 * species_22 / (internal.km + species_22)) - 1 * internal.compartment_0 * (internal.kcat * species_29 * species_21 / (internal.km + species_21));
+    dstatedt[22] = 0 - 1 * internal.compartment_0 * (internal.kcat * species_19 * species_22 / (internal.km + species_22)) + 1 * internal.compartment_0 * (internal.kcat * species_29 * species_21 / (internal.km + species_21));
+    dstatedt[23] = 0 + 1 * internal.compartment_0 * (internal.kcat * species_21 * species_24 / (internal.km + species_24)) - 1 * internal.compartment_0 * (internal.kcat * species_27 * species_23 / (internal.km + species_23)) + 1 * internal.compartment_0 * (internal.kcat * species_4 * species_24 / (internal.km + species_24));
+    dstatedt[24] = 0 - 1 * internal.compartment_0 * (internal.kcat * species_21 * species_24 / (internal.km + species_24)) + 1 * internal.compartment_0 * (internal.kcat * species_27 * species_23 / (internal.km + species_23)) - 1 * internal.compartment_0 * (internal.kcat * species_4 * species_24 / (internal.km + species_24));
     dstatedt[3] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_0 * species_3 / (internal.km + species_3)) + 1 * internal.compartment_0 * internal.k1 * species_2 + 1 * internal.compartment_0 * (internal.Kcat * species_12 * species_2 / (internal.km + species_2));
-    dstatedt[4] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_2 * species_5 / (internal.km + species_5)) - 1 * internal.compartment_0 * (internal.Kcat * internal.species_28 * species_4 / (internal.km + species_4));
-    dstatedt[5] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_2 * species_5 / (internal.km + species_5)) + 1 * internal.compartment_0 * (internal.Kcat * internal.species_28 * species_4 / (internal.km + species_4));
-    dstatedt[6] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_4 * species_7 / (internal.km + species_7)) - 1 * internal.compartment_0 * (internal.Kcat * internal.species_27 * species_6 / (internal.km + species_6)) - 1 * internal.compartment_0 * (internal.Kcat * species_16 * species_6 / (internal.km + species_6));
-    dstatedt[7] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_4 * species_7 / (internal.km + species_7)) + 1 * internal.compartment_0 * (internal.Kcat * internal.species_27 * species_6 / (internal.km + species_6)) + 1 * internal.compartment_0 * (internal.Kcat * species_16 * species_6 / (internal.km + species_6));
-    dstatedt[8] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_6 * species_9 / (internal.km + species_9)) - 1 * internal.compartment_0 * (internal.Kcat * internal.species_26 * species_8 / (internal.km + species_8)) + 1 * internal.compartment_0 * (internal.kcat * species_23 * species_9 / (internal.km + species_9));
-    dstatedt[9] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_6 * species_9 / (internal.km + species_9)) + 1 * internal.compartment_0 * (internal.Kcat * internal.species_26 * species_8 / (internal.km + species_8)) - 1 * internal.compartment_0 * (internal.kcat * species_23 * species_9 / (internal.km + species_9));
+    dstatedt[4] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_2 * species_5 / (internal.km + species_5)) - 1 * internal.compartment_0 * (internal.Kcat * species_28 * species_4 / (internal.km + species_4));
+    dstatedt[5] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_2 * species_5 / (internal.km + species_5)) + 1 * internal.compartment_0 * (internal.Kcat * species_28 * species_4 / (internal.km + species_4));
+    dstatedt[6] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_4 * species_7 / (internal.km + species_7)) - 1 * internal.compartment_0 * (internal.Kcat * species_27 * species_6 / (internal.km + species_6)) - 1 * internal.compartment_0 * (internal.Kcat * species_16 * species_6 / (internal.km + species_6));
+    dstatedt[7] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_4 * species_7 / (internal.km + species_7)) + 1 * internal.compartment_0 * (internal.Kcat * species_27 * species_6 / (internal.km + species_6)) + 1 * internal.compartment_0 * (internal.Kcat * species_16 * species_6 / (internal.km + species_6));
+    dstatedt[8] = 0 + 1 * internal.compartment_0 * (internal.Kcat * species_6 * species_9 / (internal.km + species_9)) - 1 * internal.compartment_0 * (internal.Kcat * species_26 * species_8 / (internal.km + species_8)) + 1 * internal.compartment_0 * (internal.kcat * species_23 * species_9 / (internal.km + species_9));
+    dstatedt[9] = 0 - 1 * internal.compartment_0 * (internal.Kcat * species_6 * species_9 / (internal.km + species_9)) + 1 * internal.compartment_0 * (internal.Kcat * species_26 * species_8 / (internal.km + species_8)) - 1 * internal.compartment_0 * (internal.kcat * species_23 * species_9 / (internal.km + species_9));
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -164,9 +187,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "species_0", "species_1", "species_2", "species_3", "species_4", "species_5", "species_6", "species_7", "species_8", "species_9", "species_10", "species_11", "species_12", "species_13", "species_14", "species_15", "species_16", "species_17", "species_18", "species_19", "species_20", "species_21", "species_22", "species_23", "species_24"];
-    this.metadata.internalOrder = {compartment_0: null, initial_species_0: null, initial_species_1: null, initial_species_10: null, initial_species_11: null, initial_species_12: null, initial_species_13: null, initial_species_14: null, initial_species_15: null, initial_species_16: null, initial_species_17: null, initial_species_18: null, initial_species_19: null, initial_species_2: null, initial_species_20: null, initial_species_21: null, initial_species_22: null, initial_species_23: null, initial_species_24: null, initial_species_3: null, initial_species_4: null, initial_species_5: null, initial_species_6: null, initial_species_7: null, initial_species_8: null, initial_species_9: null, k1: null, k2: null, kcat: null, Kcat: null, km: null, species_0_init: null, species_1_init: null, species_10_init: null, species_11_init: null, species_12_init: null, species_13_init: null, species_14_init: null, species_15_init: null, species_16_init: null, species_17_init: null, species_18_init: null, species_19_init: null, species_2_init: null, species_20_init: null, species_21_init: null, species_22_init: null, species_23_init: null, species_24_init: null, species_25: null, species_26: null, species_27: null, species_28: null, species_29: null, species_3_init: null, species_30: null, species_4_init: null, species_5_init: null, species_6_init: null, species_7_init: null, species_8_init: null, species_9_init: null, v: null};
-    this.metadata.variableOrder = {species_0: null, species_1: null, species_2: null, species_3: null, species_4: null, species_5: null, species_6: null, species_7: null, species_8: null, species_9: null, species_10: null, species_11: null, species_12: null, species_13: null, species_14: null, species_15: null, species_16: null, species_17: null, species_18: null, species_19: null, species_20: null, species_21: null, species_22: null, species_23: null, species_24: null};
+    this.metadata.ynames = ["t", "species_0", "species_1", "species_2", "species_3", "species_4", "species_5", "species_6", "species_7", "species_8", "species_9", "species_10", "species_11", "species_12", "species_13", "species_14", "species_15", "species_16", "species_17", "species_18", "species_19", "species_20", "species_21", "species_22", "species_23", "species_24", "species_25", "species_26", "species_27", "species_28", "species_29", "species_30"];
+    this.metadata.internalOrder = {compartment_0: null, initial_species_0: null, initial_species_1: null, initial_species_10: null, initial_species_11: null, initial_species_12: null, initial_species_13: null, initial_species_14: null, initial_species_15: null, initial_species_16: null, initial_species_17: null, initial_species_18: null, initial_species_19: null, initial_species_2: null, initial_species_20: null, initial_species_21: null, initial_species_22: null, initial_species_23: null, initial_species_24: null, initial_species_25: null, initial_species_26: null, initial_species_27: null, initial_species_28: null, initial_species_29: null, initial_species_3: null, initial_species_30: null, initial_species_4: null, initial_species_5: null, initial_species_6: null, initial_species_7: null, initial_species_8: null, initial_species_9: null, k1: null, k2: null, kcat: null, Kcat: null, km: null, species_0_init: null, species_1_init: null, species_10_init: null, species_11_init: null, species_12_init: null, species_13_init: null, species_14_init: null, species_15_init: null, species_16_init: null, species_17_init: null, species_18_init: null, species_19_init: null, species_2_init: null, species_20_init: null, species_21_init: null, species_22_init: null, species_23_init: null, species_24_init: null, species_25_init: null, species_26_init: null, species_27_init: null, species_28_init: null, species_29_init: null, species_3_init: null, species_30_init: null, species_4_init: null, species_5_init: null, species_6_init: null, species_7_init: null, species_8_init: null, species_9_init: null, v: null};
+    this.metadata.variableOrder = {species_0: null, species_1: null, species_2: null, species_3: null, species_4: null, species_5: null, species_6: null, species_7: null, species_8: null, species_9: null, species_10: null, species_11: null, species_12: null, species_13: null, species_14: null, species_15: null, species_16: null, species_17: null, species_18: null, species_19: null, species_20: null, species_21: null, species_22: null, species_23: null, species_24: null, species_25: null, species_26: null, species_27: null, species_28: null, species_29: null, species_30: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

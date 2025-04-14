@@ -43,10 +43,15 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[0] = 0;
-    dstatedt[1] = 0;
-    dstatedt[2] = 0;
-    dstatedt[3] = 0;
+    const C = state[0];
+    const P = state[1];
+    const Q = state[2];
+    const Qp = state[3];
+    dstatedt[0] = 0 + - internal.KDE * C;
+    dstatedt[2] = 0 + internal.k_PQ - internal.gamma * C * internal.KDE * Q;
+    dstatedt[3] = 0 + internal.gamma * C * internal.KDE * Q - internal.k_Qp_P * Qp - internal.delta_QP * Qp;
+    var Pstar = P + Q + Qp;
+    dstatedt[1] = 0 + internal.lambda_P * P * (1 - Pstar / internal.K) + internal.k_Qp_P * Qp - internal.k_PQ * P - internal.gamma * C * internal.KDE * P;
   }
   names() {
     return this.metadata.ynames.slice(1);

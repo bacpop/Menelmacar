@@ -1,1 +1,0 @@
-[{"data": {"id": "Cell", "label": "Cell"}, "group": "nodes", "classes": "compartment"}, {"data": {"id": "alpha", "label": "alpha", "parent": "Cell", "sboTerm": -1}, "group": "nodes", "classes": "species"}]

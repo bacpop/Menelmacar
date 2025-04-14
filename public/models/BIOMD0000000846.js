@@ -31,7 +31,7 @@ export class model {
     this.base.user.setUserScalar(user, "phi_tilde", internal, 4.9999999999999997e-12, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r", internal, 0.33900000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "r_tilde", internal, 0.20000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "S_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "S_init", internal, 830000000, -Infinity, Infinity, false);
     internal.initial_C = internal.C_init;
     internal.initial_S = internal.S_init;
     this.updateMetadata();

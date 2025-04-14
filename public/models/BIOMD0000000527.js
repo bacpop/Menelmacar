@@ -40,7 +40,8 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[0] = 0;
+    const L = state[0];
+    dstatedt[0] = 0 + (((t >= 0 && t <= internal.t1) ? internal.mu1 + (internal.r1 - internal.c1) * L : (t > internal.t5 && t <= internal.t10)));
   }
   names() {
     return this.metadata.ynames.slice(1);

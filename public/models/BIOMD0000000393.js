@@ -3,23 +3,13 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.ATPc = 0.34999999999999998;
     internal.chloroplast = 1;
-    internal.CO2 = 0.0089999999999999993;
     internal.cytosol = 1;
-    internal.GLUc = 24;
-    internal.KGc = 0.40000000000000002;
-    internal.NAD = 0.40000000000000002;
-    internal.NADH = 0.46999999999999997;
-    internal.NADP = 0.28999999999999998;
-    internal.NADPH = 0.20999999999999999;
-    internal.O2 = 0.2646;
-    internal.UTPc = 0.75;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(28).fill(0);
+    var state = Array(38).fill(0);
     state[0] = internal.initial_PGA;
     state[1] = internal.initial_DPGA;
     state[2] = internal.initial_TP;
@@ -48,15 +38,27 @@ export class model {
     state[25] = internal.initial_UDPGc;
     state[26] = internal.initial_SucPc;
     state[27] = internal.initial_Succ;
+    state[28] = internal.initial_NADPH;
+    state[29] = internal.initial_CO2;
+    state[30] = internal.initial_O2;
+    state[31] = internal.initial_NADP;
+    state[32] = internal.initial_UTPc;
+    state[33] = internal.initial_NAD;
+    state[34] = internal.initial_NADH;
+    state[35] = internal.initial_GLUc;
+    state[36] = internal.initial_KGc;
+    state[37] = internal.initial_ATPc;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["ATP_init", "cA", "cAc", "cNc", "cP", "cPc", "cUc", "DPGA_init", "E", "E4P_init", "F26BPc_init", "FBP_init", "FBPc_init", "GCA_init", "GCAc_init", "GCEA_init", "GCEAc_init", "GLYc_init", "GOAc_init", "HeP_init", "HePc_init", "HPRc_init", "K", "K1", "K2", "KA", "KA1", "KA2", "KA3", "Ki", "Km", "Kp1", "Kp2", "Kr1", "KR1", "Kr2", "KR2", "Kr3", "KR3", "Kr4", "KR4", "Kr41", "Kr42", "Kr5", "KR5", "Ks1", "Ks2", "PeP_init", "PGA_init", "PGAc_init", "PGCA_init", "q", "RuBP_init", "S7P_init", "SBP_init", "SERc_init", "Succ_init", "SucPc_init", "TP_init", "TPc_init", "UDPGc_init", "V", "Vm"], unusedUserAction);
+    this.base.user.checkUser(user, ["ATP_init", "ATPc_init", "cA", "cAc", "cNc", "CO2_init", "cP", "cPc", "cUc", "DPGA_init", "E", "E4P_init", "F26BPc_init", "FBP_init", "FBPc_init", "GCA_init", "GCAc_init", "GCEA_init", "GCEAc_init", "GLUc_init", "GLYc_init", "GOAc_init", "HeP_init", "HePc_init", "HPRc_init", "K", "K1", "K2", "KA", "KA1", "KA2", "KA3", "KGc_init", "Ki", "Km", "Kp1", "Kp2", "Kr1", "KR1", "Kr2", "KR2", "Kr3", "KR3", "Kr4", "KR4", "Kr41", "Kr42", "Kr5", "KR5", "Ks1", "Ks2", "NAD_init", "NADH_init", "NADP_init", "NADPH_init", "O2_init", "PeP_init", "PGA_init", "PGAc_init", "PGCA_init", "q", "RuBP_init", "S7P_init", "SBP_init", "SERc_init", "Succ_init", "SucPc_init", "TP_init", "TPc_init", "UDPGc_init", "UTPc_init", "V", "Vm"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "ATP_init", internal, 0.68000000000000005, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ATPc_init", internal, 0.34999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cA", internal, 1.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cAc", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cNc", internal, 0.87, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "CO2_init", internal, 0.0089999999999999993, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cP", internal, 15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cPc", internal, 15, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cUc", internal, 1.5, -Infinity, Infinity, false);
@@ -70,6 +72,7 @@ export class model {
     this.base.user.setUserScalar(user, "GCAc_init", internal, 0.35999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GCEA_init", internal, 0.1812, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GCEAc_init", internal, 0.1812, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "GLUc_init", internal, 24, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GLYc_init", internal, 1.8, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "GOAc_init", internal, 0.028000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "HeP_init", internal, 2.2000000000000002, -Infinity, Infinity, false);
@@ -82,6 +85,7 @@ export class model {
     this.base.user.setUserScalar(user, "KA1", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "KA2", internal, 0.02, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "KA3", internal, 0.02, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "KGc_init", internal, 0.40000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ki", internal, 0.22, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Km", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Kp1", internal, 0.12, -Infinity, Infinity, false);
@@ -100,6 +104,11 @@ export class model {
     this.base.user.setUserScalar(user, "KR5", internal, 0.070000000000000007, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ks1", internal, 6, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ks2", internal, 0.14999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "NAD_init", internal, 0.40000000000000002, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "NADH_init", internal, 0.46999999999999997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "NADP_init", internal, 0.28999999999999998, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "NADPH_init", internal, 0.20999999999999999, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "O2_init", internal, 0.2646, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PeP_init", internal, 0.25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PGA_init", internal, 2.3999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PGAc_init", internal, 0, -Infinity, Infinity, false);
@@ -114,10 +123,12 @@ export class model {
     this.base.user.setUserScalar(user, "TP_init", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "TPc_init", internal, 2.2999999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "UDPGc_init", internal, 0.56999999999999995, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "UTPc_init", internal, 0.75, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "V", internal, 1.45611, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Vm", internal, 2.4947499999999998, -Infinity, Infinity, false);
-    internal.ADPc = internal.cAc - internal.ATPc;
     internal.initial_ATP = internal.ATP_init;
+    internal.initial_ATPc = internal.ATPc_init;
+    internal.initial_CO2 = internal.CO2_init;
     internal.initial_DPGA = internal.DPGA_init;
     internal.initial_E4P = internal.E4P_init;
     internal.initial_F26BPc = internal.F26BPc_init;
@@ -127,11 +138,18 @@ export class model {
     internal.initial_GCAc = internal.GCAc_init;
     internal.initial_GCEA = internal.GCEA_init;
     internal.initial_GCEAc = internal.GCEAc_init;
+    internal.initial_GLUc = internal.GLUc_init;
     internal.initial_GLYc = internal.GLYc_init;
     internal.initial_GOAc = internal.GOAc_init;
     internal.initial_HeP = internal.HeP_init;
     internal.initial_HePc = internal.HePc_init;
     internal.initial_HPRc = internal.HPRc_init;
+    internal.initial_KGc = internal.KGc_init;
+    internal.initial_NAD = internal.NAD_init;
+    internal.initial_NADH = internal.NADH_init;
+    internal.initial_NADP = internal.NADP_init;
+    internal.initial_NADPH = internal.NADPH_init;
+    internal.initial_O2 = internal.O2_init;
     internal.initial_PeP = internal.PeP_init;
     internal.initial_PGA = internal.PGA_init;
     internal.initial_PGAc = internal.PGAc_init;
@@ -145,6 +163,7 @@ export class model {
     internal.initial_TP = internal.TP_init;
     internal.initial_TPc = internal.TPc_init;
     internal.initial_UDPGc = internal.UDPGc_init;
+    internal.initial_UTPc = internal.UTPc_init;
     this.updateMetadata();
   }
   getInternal() {
@@ -180,12 +199,32 @@ export class model {
     const UDPGc = state[25];
     const SucPc = state[26];
     const Succ = state[27];
+    const NADPH = state[28];
+    const CO2 = state[29];
+    const O2 = state[30];
+    const UTPc = state[32];
+    const NAD = state[33];
+    const NADH = state[34];
+    const GLUc = state[35];
+    const KGc = state[36];
+    const ATPc = state[37];
+    dstatedt[37] = 0;
+    dstatedt[29] = 0;
+    dstatedt[35] = 0;
+    dstatedt[36] = 0;
+    dstatedt[33] = 0;
+    dstatedt[34] = 0;
+    dstatedt[31] = 0;
+    dstatedt[28] = 0;
+    dstatedt[30] = 0;
+    dstatedt[32] = 0;
     var ADP = internal.cA - ATP;
+    var ADPc = internal.cAc - ATPc;
     dstatedt[15] = 0 + 1 * (internal.V * GCA / (internal.Km + GCA + internal.Km * GCEA / internal.Ki)) - 1 * (internal.V * GCAc / (internal.Km + GCAc + internal.Km * GCEAc / internal.Ki)) - 1 * internal.cytosol * (internal.V * GCAc / (internal.Km + GCAc));
-    dstatedt[19] = 0 - 1 * (internal.V * GCEAc / (internal.Km + GCEAc + internal.Km * GCAc / internal.Ki)) + 1 * (internal.V * GCEA / (internal.Km + GCEA + internal.Km * GCA / internal.Ki)) + 1 * (internal.Vm * (HPRc * internal.NADH - GCEAc * internal.NAD / internal.q) / (HPRc + internal.Ks1 * (1 + HPRc / internal.Kr1)));
-    dstatedt[17] = 0 + 1 * (internal.Vm * (SERc * GOAc - HPRc * GLYc / internal.q) / ((SERc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) + 1 * internal.cytosol * (internal.Vm * (internal.GLUc * GOAc - internal.KGc * GLYc / internal.q) / ((internal.GLUc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) - 2 * internal.cytosol * (internal.Vm * GLYc / (GLYc + internal.Ks1 * (1 + SERc / internal.Kr1)));
-    dstatedt[16] = 0 + 1 * internal.cytosol * (internal.V * GCAc / (internal.Km + GCAc)) - 1 * (internal.Vm * (SERc * GOAc - HPRc * GLYc / internal.q) / ((SERc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) - 1 * internal.cytosol * (internal.Vm * (internal.GLUc * GOAc - internal.KGc * GLYc / internal.q) / ((internal.GLUc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2)));
-    dstatedt[14] = 0 + 1 * (internal.Vm * (SERc * GOAc - HPRc * GLYc / internal.q) / ((SERc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) - 1 * (internal.Vm * (HPRc * internal.NADH - GCEAc * internal.NAD / internal.q) / (HPRc + internal.Ks1 * (1 + HPRc / internal.Kr1)));
+    dstatedt[19] = 0 - 1 * (internal.V * GCEAc / (internal.Km + GCEAc + internal.Km * GCAc / internal.Ki)) + 1 * (internal.V * GCEA / (internal.Km + GCEA + internal.Km * GCA / internal.Ki)) + 1 * (internal.Vm * (HPRc * NADH - GCEAc * NAD / internal.q) / (HPRc + internal.Ks1 * (1 + HPRc / internal.Kr1)));
+    dstatedt[17] = 0 + 1 * (internal.Vm * (SERc * GOAc - HPRc * GLYc / internal.q) / ((SERc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) + 1 * internal.cytosol * (internal.Vm * (GLUc * GOAc - KGc * GLYc / internal.q) / ((GLUc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) - 2 * internal.cytosol * (internal.Vm * GLYc / (GLYc + internal.Ks1 * (1 + SERc / internal.Kr1)));
+    dstatedt[16] = 0 + 1 * internal.cytosol * (internal.V * GCAc / (internal.Km + GCAc)) - 1 * (internal.Vm * (SERc * GOAc - HPRc * GLYc / internal.q) / ((SERc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) - 1 * internal.cytosol * (internal.Vm * (GLUc * GOAc - KGc * GLYc / internal.q) / ((GLUc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2)));
+    dstatedt[14] = 0 + 1 * (internal.Vm * (SERc * GOAc - HPRc * GLYc / internal.q) / ((SERc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) - 1 * (internal.Vm * (HPRc * NADH - GCEAc * NAD / internal.q) / (HPRc + internal.Ks1 * (1 + HPRc / internal.Kr1)));
     dstatedt[18] = 0 - 1 * (internal.Vm * (SERc * GOAc - HPRc * GLYc / internal.q) / ((SERc + internal.Ks1 * (1 + GLYc / internal.Kr1)) * (GOAc + internal.Ks2))) + 1 * internal.cytosol * (internal.Vm * GLYc / (GLYc + internal.Ks1 * (1 + SERc / internal.Kr1)));
     var DHAP = TP / (1 + 0.050000000000000003);
     var DHAPc = TPc / (1 + 0.050000000000000003);
@@ -197,37 +236,37 @@ export class model {
     var GAPc = 0.050000000000000003 * TPc / (1 + 0.050000000000000003);
     var K52a = 0.0025000000000000001 * (1 + F26BPc / 6.9999999999999994e-05);
     var Pi = internal.cP - 2 * (RuBP + DPGA + FBP + SBP) - (PGA + TP + HeP + E4P + S7P + PeP + ATP + PGCA);
-    var PiTc = internal.cPc - 2 * (FBPc + F26BPc) - (PGAc + TPc + HePc + SucPc + internal.ATPc + internal.UTPc);
+    var PiTc = internal.cPc - 2 * (FBPc + F26BPc) - (PGAc + TPc + HePc + SucPc + ATPc + UTPc);
     var R5P = PeP / 0.40000000000000002 / (1 + 1 / 0.40000000000000002 + 1 / 0.67000000000000004);
     var Ru5P = PeP / (1 + 1 / 0.40000000000000002 + 1 / 0.67000000000000004);
-    var UDPc = internal.cUc - internal.UTPc - UDPGc;
-    var Wc_min = 2.9139309139999998 * internal.CO2 / (internal.CO2 + 0.0115 * (1 + internal.O2 / 0.222)) * ((1 + RuBP / internal.E - Math.abs(1 - RuBP / internal.E)) / 2);
-    var Wo_min = 0.23999999999999999 * 2.9139309139999998 * internal.O2 / (internal.O2 + 0.222 * (1 + internal.CO2 / 0.0115)) * ((1 + RuBP / internal.E - Math.abs(1 - RuBP / internal.E)) / 2);
+    var UDPc = internal.cUc - UTPc - UDPGc;
+    var Wc_min = 2.9139309139999998 * CO2 / (CO2 + 0.0115 * (1 + O2 / 0.222)) * ((1 + RuBP / internal.E - Math.abs(1 - RuBP / internal.E)) / 2);
+    var Wo_min = 0.23999999999999999 * 2.9139309139999998 * O2 / (O2 + 0.222 * (1 + CO2 / 0.0115)) * ((1 + RuBP / internal.E - Math.abs(1 - RuBP / internal.E)) / 2);
     var X5P = PeP / 0.67000000000000004 / (1 + 1 / 0.40000000000000002 + 1 / 0.67000000000000004);
     dstatedt[10] = 0 - 1 * internal.chloroplast * (internal.Vm * PGA * ATP / ((PGA + internal.Ks1) * (ATP + internal.Ks2 * (1 + ADP / internal.Kr1)))) - 1 * internal.chloroplast * (internal.Vm * (Ru5P * ATP - RuBP * ADP / internal.q) / ((Ru5P + internal.Ks1 * (1 + PGA / internal.Kr1 + RuBP / internal.Kr2 + Pi / internal.Kr3)) * (ATP * (1 + ADP / internal.Kr41) + internal.Ks2 * (1 + ADP / internal.Kr42)))) + 1 * internal.chloroplast * (internal.Vm * (ADP * Pi - ATP / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + ADP / internal.Ks1) * (1 + Pi / internal.Ks2) + ATP / internal.Kp1))) - 1 * internal.chloroplast * (internal.Vm * G1P * ATP / ((G1P + internal.K1) * (1 + ADP / internal.KR1) * (ATP + internal.K2 * (1 + internal.K2 * Pi / (internal.KA1 * PGA + internal.KA2 * F6P + internal.KA3 * FBP))))) - 1 * internal.chloroplast * (internal.Vm * (ATP * GCEA - PGA * ADP / internal.q) / ((ATP + internal.Ks1 * (1 + PGA / internal.Kr1)) * (GCEA + internal.Ks2)));
-    dstatedt[1] = 0 + 1 * internal.chloroplast * (internal.Vm * PGA * ATP / ((PGA + internal.Ks1) * (ATP + internal.Ks2 * (1 + ADP / internal.Kr1)))) - 1 * internal.chloroplast * (internal.Vm * DPGA * internal.NADPH / ((DPGA + internal.K1) * (internal.NADPH + internal.K2)));
+    dstatedt[1] = 0 + 1 * internal.chloroplast * (internal.Vm * PGA * ATP / ((PGA + internal.Ks1) * (ATP + internal.Ks2 * (1 + ADP / internal.Kr1)))) - 1 * internal.chloroplast * (internal.Vm * DPGA * NADPH / ((DPGA + internal.K1) * (NADPH + internal.K2)));
     dstatedt[5] = 0 + 1 * internal.chloroplast * (internal.Vm * (F6P * GAP - X5P * E4P / internal.q) / ((F6P + internal.Ks1 * (1 + X5P / internal.Kr1 + E4P / internal.Kr2)) * (GAP + internal.Ks2))) - 1 * internal.chloroplast * (internal.Vm * (DHAP * E4P - SBP / internal.q) / ((DHAP + internal.Ks1) * (E4P + internal.Ks2)));
     dstatedt[3] = 0 + 1 * internal.chloroplast * (internal.Vm * (GAP * DHAP - FBP / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + GAP / internal.Ks1) * (1 + DHAP / internal.Ks2) + FBP / internal.Kp1))) - 1 * internal.chloroplast * (internal.Vm * (FBP - F6P * Pi / internal.q) / (FBP + internal.Ks1 * (1 + F6P / internal.Kr1 + Pi / internal.Kr2)));
     dstatedt[12] = 0 - 1 * (internal.V * GCA / (internal.Km + GCA + internal.Km * GCEA / internal.Ki)) + 1 * (internal.V * GCAc / (internal.Km + GCAc + internal.Km * GCEAc / internal.Ki)) + 1 * internal.chloroplast * (internal.Vm * PGCA / (PGCA + internal.Ks1 * (1 + GCA / internal.Kr1) * (1 + Pi / internal.Kr2)));
     dstatedt[13] = 0 + 1 * (internal.V * GCEAc / (internal.Km + GCEAc + internal.Km * GCAc / internal.Ki)) - 1 * (internal.V * GCEA / (internal.Km + GCEA + internal.Km * GCA / internal.Ki)) - 1 * internal.chloroplast * (internal.Vm * (ATP * GCEA - PGA * ADP / internal.q) / ((ATP + internal.Ks1 * (1 + PGA / internal.Kr1)) * (GCEA + internal.Ks2)));
     dstatedt[4] = 0 + 1 * internal.chloroplast * (internal.Vm * (FBP - F6P * Pi / internal.q) / (FBP + internal.Ks1 * (1 + F6P / internal.Kr1 + Pi / internal.Kr2))) - 1 * internal.chloroplast * (internal.Vm * (F6P * GAP - X5P * E4P / internal.q) / ((F6P + internal.Ks1 * (1 + X5P / internal.Kr1 + E4P / internal.Kr2)) * (GAP + internal.Ks2))) - 1 * internal.chloroplast * (internal.Vm * G1P * ATP / ((G1P + internal.K1) * (1 + ADP / internal.KR1) * (ATP + internal.K2 * (1 + internal.K2 * Pi / (internal.KA1 * PGA + internal.KA2 * F6P + internal.KA3 * FBP)))));
     dstatedt[8] = 0 + 1 * internal.chloroplast * (internal.Vm * (F6P * GAP - X5P * E4P / internal.q) / ((F6P + internal.Ks1 * (1 + X5P / internal.Kr1 + E4P / internal.Kr2)) * (GAP + internal.Ks2))) + 2 * internal.chloroplast * (internal.Vm * (GAP * S7P - X5P * R5P / internal.q) / ((GAP + internal.Ks1 * (1 + X5P / internal.Kr1 + R5P / internal.Kr2)) * (S7P + internal.Ks2))) - 1 * internal.chloroplast * (internal.Vm * (Ru5P * ATP - RuBP * ADP / internal.q) / ((Ru5P + internal.Ks1 * (1 + PGA / internal.Kr1 + RuBP / internal.Kr2 + Pi / internal.Kr3)) * (ATP * (1 + ADP / internal.Kr41) + internal.Ks2 * (1 + ADP / internal.Kr42))));
-    dstatedt[11] = 0 + 1 * internal.chloroplast * (Wo_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + internal.NADPH / internal.KR5))) - 1 * internal.chloroplast * (internal.Vm * PGCA / (PGCA + internal.Ks1 * (1 + GCA / internal.Kr1) * (1 + Pi / internal.Kr2)));
-    dstatedt[9] = 0 - 1 * internal.chloroplast * (Wc_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + internal.NADPH / internal.KR5))) + 1 * internal.chloroplast * (internal.Vm * (Ru5P * ATP - RuBP * ADP / internal.q) / ((Ru5P + internal.Ks1 * (1 + PGA / internal.Kr1 + RuBP / internal.Kr2 + Pi / internal.Kr3)) * (ATP * (1 + ADP / internal.Kr41) + internal.Ks2 * (1 + ADP / internal.Kr42)))) - 1 * internal.chloroplast * (Wo_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + internal.NADPH / internal.KR5)));
+    dstatedt[11] = 0 + 1 * internal.chloroplast * (Wo_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + NADPH / internal.KR5))) - 1 * internal.chloroplast * (internal.Vm * PGCA / (PGCA + internal.Ks1 * (1 + GCA / internal.Kr1) * (1 + Pi / internal.Kr2)));
+    dstatedt[9] = 0 - 1 * internal.chloroplast * (Wc_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + NADPH / internal.KR5))) + 1 * internal.chloroplast * (internal.Vm * (Ru5P * ATP - RuBP * ADP / internal.q) / ((Ru5P + internal.Ks1 * (1 + PGA / internal.Kr1 + RuBP / internal.Kr2 + Pi / internal.Kr3)) * (ATP * (1 + ADP / internal.Kr41) + internal.Ks2 * (1 + ADP / internal.Kr42)))) - 1 * internal.chloroplast * (Wo_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + NADPH / internal.KR5)));
     dstatedt[7] = 0 + 1 * internal.chloroplast * (internal.Vm * (SBP - S7P * Pi / internal.q) / (SBP + internal.Ks1 * (1 + Pi / internal.Kr1))) - 1 * internal.chloroplast * (internal.Vm * (GAP * S7P - X5P * R5P / internal.q) / ((GAP + internal.Ks1 * (1 + X5P / internal.Kr1 + R5P / internal.Kr2)) * (S7P + internal.Ks2)));
     dstatedt[6] = 0 + 1 * internal.chloroplast * (internal.Vm * (DHAP * E4P - SBP / internal.q) / ((DHAP + internal.Ks1) * (E4P + internal.Ks2))) - 1 * internal.chloroplast * (internal.Vm * (SBP - S7P * Pi / internal.q) / (SBP + internal.Ks1 * (1 + Pi / internal.Kr1)));
     var Pic = 12000000 / 2 * (Math.sqrt(1 + 4 * PiTc / 12000000) - 1);
-    dstatedt[24] = 0 + 1 * internal.cytosol * (internal.Vm * (F6Pc * internal.ATPc - F26BPc * internal.ADPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + F26BPc / internal.Kr1) * (1 + DHAPc / internal.Kr2)) * (internal.ATPc + internal.Ks2 * (1 + internal.ADPc / internal.Kr3)))) - 1 * internal.cytosol * (internal.Vm * F26BPc / ((F26BPc + internal.Ks1) * (1 + Pic / internal.Kr1) * (1 + F6Pc / internal.Kr2)));
+    dstatedt[24] = 0 + 1 * internal.cytosol * (internal.Vm * (F6Pc * ATPc - F26BPc * ADPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + F26BPc / internal.Kr1) * (1 + DHAPc / internal.Kr2)) * (ATPc + internal.Ks2 * (1 + ADPc / internal.Kr3)))) - 1 * internal.cytosol * (internal.Vm * F26BPc / ((F26BPc + internal.Ks1) * (1 + Pic / internal.Kr1) * (1 + F6Pc / internal.Kr2)));
     dstatedt[22] = 0 + 1 * internal.cytosol * (internal.Vm * (GAPc * DHAPc - FBPc / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + GAPc / internal.Ks1) * (1 + DHAPc / internal.Ks2) + FBPc / internal.Kp1))) - 1 * internal.cytosol * (internal.Vm * (FBPc - F6Pc * Pic / internal.q) / (K52a * (FBPc / K52a + (1 + F6Pc / internal.Kp1) * (1 + Pic / internal.Kp2))));
-    dstatedt[0] = 0 + 2 * internal.chloroplast * (Wc_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + internal.NADPH / internal.KR5))) - 1 * internal.chloroplast * (internal.Vm * PGA * ATP / ((PGA + internal.Ks1) * (ATP + internal.Ks2 * (1 + ADP / internal.Kr1)))) - 1 * (internal.Vm * PGA / (PGA * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + GAP / internal.KR2 + DHAP / internal.KR3)))) + 1 * internal.chloroplast * (Wo_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + internal.NADPH / internal.KR5))) + 1 * internal.chloroplast * (internal.Vm * (ATP * GCEA - PGA * ADP / internal.q) / ((ATP + internal.Ks1 * (1 + PGA / internal.Kr1)) * (GCEA + internal.Ks2)));
+    dstatedt[0] = 0 + 2 * internal.chloroplast * (Wc_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + NADPH / internal.KR5))) - 1 * internal.chloroplast * (internal.Vm * PGA * ATP / ((PGA + internal.Ks1) * (ATP + internal.Ks2 * (1 + ADP / internal.Kr1)))) - 1 * (internal.Vm * PGA / (PGA * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + GAP / internal.KR2 + DHAP / internal.KR3)))) + 1 * internal.chloroplast * (Wo_min * RuBP / (RuBP + internal.K * (1 + PGA / internal.KR1 + FBP / internal.KR2 + SBP / internal.KR3 + Pi / internal.KR4 + NADPH / internal.KR5))) + 1 * internal.chloroplast * (internal.Vm * (ATP * GCEA - PGA * ADP / internal.q) / ((ATP + internal.Ks1 * (1 + PGA / internal.Kr1)) * (GCEA + internal.Ks2)));
     dstatedt[20] = 0 + 1 * (internal.Vm * PGA / (PGA * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + GAP / internal.KR2 + DHAP / internal.KR3)))) - 1 * internal.cytosol * (internal.V * PGAc / (internal.Km + PGAc));
     dstatedt[27] = 0 + 1 * internal.cytosol * (internal.Vm * (SucPc - Succ * Pic / internal.q) / (SucPc + internal.Ks1 * (1 + Succ / internal.Kr1))) - 1 * internal.cytosol * (internal.V * Succ / (internal.Km + Succ));
     dstatedt[26] = 0 + 1 * internal.cytosol * (internal.Vm * (F6Pc * UDPGc - SucPc * UDPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + FBPc / internal.Kr1)) * (UDPGc + internal.Ks2 * (1 + UDPc / internal.Kr2) * (1 + SucPc / internal.Kr3) * (1 + Succ / internal.Kr4) * (1 + Pic / internal.Kr5)))) - 1 * internal.cytosol * (internal.Vm * (SucPc - Succ * Pic / internal.q) / (SucPc + internal.Ks1 * (1 + Succ / internal.Kr1)));
-    dstatedt[2] = 0 + 1 * internal.chloroplast * (internal.Vm * DPGA * internal.NADPH / ((DPGA + internal.K1) * (internal.NADPH + internal.K2))) - 2 * internal.chloroplast * (internal.Vm * (GAP * DHAP - FBP / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + GAP / internal.Ks1) * (1 + DHAP / internal.Ks2) + FBP / internal.Kp1))) - 1 * internal.chloroplast * (internal.Vm * (F6P * GAP - X5P * E4P / internal.q) / ((F6P + internal.Ks1 * (1 + X5P / internal.Kr1 + E4P / internal.Kr2)) * (GAP + internal.Ks2))) - 1 * internal.chloroplast * (internal.Vm * (DHAP * E4P - SBP / internal.q) / ((DHAP + internal.Ks1) * (E4P + internal.Ks2))) - 1 * internal.chloroplast * (internal.Vm * (GAP * S7P - X5P * R5P / internal.q) / ((GAP + internal.Ks1 * (1 + X5P / internal.Kr1 + R5P / internal.Kr2)) * (S7P + internal.Ks2))) - 1 * (internal.Vm * GAP / (GAP * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + PGA / internal.KR2 + DHAP / internal.KR3)))) - 1 * (internal.Vm * DHAP / (DHAP * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + PGA / internal.KR2 + GAP / internal.KR3))));
+    dstatedt[2] = 0 + 1 * internal.chloroplast * (internal.Vm * DPGA * NADPH / ((DPGA + internal.K1) * (NADPH + internal.K2))) - 2 * internal.chloroplast * (internal.Vm * (GAP * DHAP - FBP / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + GAP / internal.Ks1) * (1 + DHAP / internal.Ks2) + FBP / internal.Kp1))) - 1 * internal.chloroplast * (internal.Vm * (F6P * GAP - X5P * E4P / internal.q) / ((F6P + internal.Ks1 * (1 + X5P / internal.Kr1 + E4P / internal.Kr2)) * (GAP + internal.Ks2))) - 1 * internal.chloroplast * (internal.Vm * (DHAP * E4P - SBP / internal.q) / ((DHAP + internal.Ks1) * (E4P + internal.Ks2))) - 1 * internal.chloroplast * (internal.Vm * (GAP * S7P - X5P * R5P / internal.q) / ((GAP + internal.Ks1 * (1 + X5P / internal.Kr1 + R5P / internal.Kr2)) * (S7P + internal.Ks2))) - 1 * (internal.Vm * GAP / (GAP * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + PGA / internal.KR2 + DHAP / internal.KR3)))) - 1 * (internal.Vm * DHAP / (DHAP * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + PGA / internal.KR2 + GAP / internal.KR3))));
     dstatedt[21] = 0 + 1 * (internal.Vm * GAP / (GAP * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + PGA / internal.KR2 + DHAP / internal.KR3)))) + 1 * (internal.Vm * DHAP / (DHAP * (1 + internal.KA / Pic) + internal.K * (1 + (1 + internal.KA / Pic) * (Pi / internal.KR1 + PGA / internal.KR2 + GAP / internal.KR3)))) - 2 * internal.cytosol * (internal.Vm * (GAPc * DHAPc - FBPc / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + GAPc / internal.Ks1) * (1 + DHAPc / internal.Ks2) + FBPc / internal.Kp1)));
     var PiPic = PiTc - Pic;
-    dstatedt[23] = 0 + 1 * internal.cytosol * (internal.Vm * (FBPc - F6Pc * Pic / internal.q) / (K52a * (FBPc / K52a + (1 + F6Pc / internal.Kp1) * (1 + Pic / internal.Kp2)))) - 1 * internal.cytosol * (internal.Vm * (G1Pc * internal.UTPc - UDPGc * PiPic / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + G1Pc / internal.Ks1) * (1 + internal.UTPc / internal.Ks2) + (1 + UDPGc / internal.Kp1) * (1 + PiPic / internal.Kp2) - 1))) - 1 * internal.cytosol * (internal.Vm * (F6Pc * UDPGc - SucPc * UDPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + FBPc / internal.Kr1)) * (UDPGc + internal.Ks2 * (1 + UDPc / internal.Kr2) * (1 + SucPc / internal.Kr3) * (1 + Succ / internal.Kr4) * (1 + Pic / internal.Kr5)))) - 1 * internal.cytosol * (internal.Vm * (F6Pc * internal.ATPc - F26BPc * internal.ADPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + F26BPc / internal.Kr1) * (1 + DHAPc / internal.Kr2)) * (internal.ATPc + internal.Ks2 * (1 + internal.ADPc / internal.Kr3)))) + 1 * internal.cytosol * (internal.Vm * F26BPc / ((F26BPc + internal.Ks1) * (1 + Pic / internal.Kr1) * (1 + F6Pc / internal.Kr2)));
-    dstatedt[25] = 0 + 1 * internal.cytosol * (internal.Vm * (G1Pc * internal.UTPc - UDPGc * PiPic / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + G1Pc / internal.Ks1) * (1 + internal.UTPc / internal.Ks2) + (1 + UDPGc / internal.Kp1) * (1 + PiPic / internal.Kp2) - 1))) - 1 * internal.cytosol * (internal.Vm * (F6Pc * UDPGc - SucPc * UDPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + FBPc / internal.Kr1)) * (UDPGc + internal.Ks2 * (1 + UDPc / internal.Kr2) * (1 + SucPc / internal.Kr3) * (1 + Succ / internal.Kr4) * (1 + Pic / internal.Kr5))));
+    dstatedt[23] = 0 + 1 * internal.cytosol * (internal.Vm * (FBPc - F6Pc * Pic / internal.q) / (K52a * (FBPc / K52a + (1 + F6Pc / internal.Kp1) * (1 + Pic / internal.Kp2)))) - 1 * internal.cytosol * (internal.Vm * (G1Pc * UTPc - UDPGc * PiPic / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + G1Pc / internal.Ks1) * (1 + UTPc / internal.Ks2) + (1 + UDPGc / internal.Kp1) * (1 + PiPic / internal.Kp2) - 1))) - 1 * internal.cytosol * (internal.Vm * (F6Pc * UDPGc - SucPc * UDPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + FBPc / internal.Kr1)) * (UDPGc + internal.Ks2 * (1 + UDPc / internal.Kr2) * (1 + SucPc / internal.Kr3) * (1 + Succ / internal.Kr4) * (1 + Pic / internal.Kr5)))) - 1 * internal.cytosol * (internal.Vm * (F6Pc * ATPc - F26BPc * ADPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + F26BPc / internal.Kr1) * (1 + DHAPc / internal.Kr2)) * (ATPc + internal.Ks2 * (1 + ADPc / internal.Kr3)))) + 1 * internal.cytosol * (internal.Vm * F26BPc / ((F26BPc + internal.Ks1) * (1 + Pic / internal.Kr1) * (1 + F6Pc / internal.Kr2)));
+    dstatedt[25] = 0 + 1 * internal.cytosol * (internal.Vm * (G1Pc * UTPc - UDPGc * PiPic / internal.q) / (internal.Ks1 * internal.Ks2 * ((1 + G1Pc / internal.Ks1) * (1 + UTPc / internal.Ks2) + (1 + UDPGc / internal.Kp1) * (1 + PiPic / internal.Kp2) - 1))) - 1 * internal.cytosol * (internal.Vm * (F6Pc * UDPGc - SucPc * UDPc / internal.q) / ((F6Pc + internal.Ks1 * (1 + FBPc / internal.Kr1)) * (UDPGc + internal.Ks2 * (1 + UDPc / internal.Kr2) * (1 + SucPc / internal.Kr3) * (1 + Succ / internal.Kr4) * (1 + Pic / internal.Kr5))));
   }
   names() {
     return this.metadata.ynames.slice(1);
@@ -235,9 +274,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "PGA", "DPGA", "TP", "FBP", "HeP", "E4P", "SBP", "S7P", "PeP", "RuBP", "ATP", "PGCA", "GCA", "GCEA", "HPRc", "GCAc", "GOAc", "GLYc", "SERc", "GCEAc", "PGAc", "TPc", "FBPc", "HePc", "F26BPc", "UDPGc", "SucPc", "Succ"];
-    this.metadata.internalOrder = {ADPc: null, ATP_init: null, ATPc: null, cA: null, cAc: null, chloroplast: null, cNc: null, CO2: null, cP: null, cPc: null, cUc: null, cytosol: null, DPGA_init: null, E: null, E4P_init: null, F26BPc_init: null, FBP_init: null, FBPc_init: null, GCA_init: null, GCAc_init: null, GCEA_init: null, GCEAc_init: null, GLUc: null, GLYc_init: null, GOAc_init: null, HeP_init: null, HePc_init: null, HPRc_init: null, initial_ATP: null, initial_DPGA: null, initial_E4P: null, initial_F26BPc: null, initial_FBP: null, initial_FBPc: null, initial_GCA: null, initial_GCAc: null, initial_GCEA: null, initial_GCEAc: null, initial_GLYc: null, initial_GOAc: null, initial_HeP: null, initial_HePc: null, initial_HPRc: null, initial_PeP: null, initial_PGA: null, initial_PGAc: null, initial_PGCA: null, initial_RuBP: null, initial_S7P: null, initial_SBP: null, initial_SERc: null, initial_Succ: null, initial_SucPc: null, initial_TP: null, initial_TPc: null, initial_UDPGc: null, K: null, K1: null, K2: null, KA: null, KA1: null, KA2: null, KA3: null, KGc: null, Ki: null, Km: null, Kp1: null, Kp2: null, Kr1: null, KR1: null, Kr2: null, KR2: null, Kr3: null, KR3: null, Kr4: null, KR4: null, Kr41: null, Kr42: null, Kr5: null, KR5: null, Ks1: null, Ks2: null, NAD: null, NADH: null, NADP: null, NADPH: null, O2: null, PeP_init: null, PGA_init: null, PGAc_init: null, PGCA_init: null, q: null, RuBP_init: null, S7P_init: null, SBP_init: null, SERc_init: null, Succ_init: null, SucPc_init: null, TP_init: null, TPc_init: null, UDPGc_init: null, UTPc: null, V: null, Vm: null};
-    this.metadata.variableOrder = {PGA: null, DPGA: null, TP: null, FBP: null, HeP: null, E4P: null, SBP: null, S7P: null, PeP: null, RuBP: null, ATP: null, PGCA: null, GCA: null, GCEA: null, HPRc: null, GCAc: null, GOAc: null, GLYc: null, SERc: null, GCEAc: null, PGAc: null, TPc: null, FBPc: null, HePc: null, F26BPc: null, UDPGc: null, SucPc: null, Succ: null};
+    this.metadata.ynames = ["t", "PGA", "DPGA", "TP", "FBP", "HeP", "E4P", "SBP", "S7P", "PeP", "RuBP", "ATP", "PGCA", "GCA", "GCEA", "HPRc", "GCAc", "GOAc", "GLYc", "SERc", "GCEAc", "PGAc", "TPc", "FBPc", "HePc", "F26BPc", "UDPGc", "SucPc", "Succ", "NADPH", "CO2", "O2", "NADP", "UTPc", "NAD", "NADH", "GLUc", "KGc", "ATPc"];
+    this.metadata.internalOrder = {ATP_init: null, ATPc_init: null, cA: null, cAc: null, chloroplast: null, cNc: null, CO2_init: null, cP: null, cPc: null, cUc: null, cytosol: null, DPGA_init: null, E: null, E4P_init: null, F26BPc_init: null, FBP_init: null, FBPc_init: null, GCA_init: null, GCAc_init: null, GCEA_init: null, GCEAc_init: null, GLUc_init: null, GLYc_init: null, GOAc_init: null, HeP_init: null, HePc_init: null, HPRc_init: null, initial_ATP: null, initial_ATPc: null, initial_CO2: null, initial_DPGA: null, initial_E4P: null, initial_F26BPc: null, initial_FBP: null, initial_FBPc: null, initial_GCA: null, initial_GCAc: null, initial_GCEA: null, initial_GCEAc: null, initial_GLUc: null, initial_GLYc: null, initial_GOAc: null, initial_HeP: null, initial_HePc: null, initial_HPRc: null, initial_KGc: null, initial_NAD: null, initial_NADH: null, initial_NADP: null, initial_NADPH: null, initial_O2: null, initial_PeP: null, initial_PGA: null, initial_PGAc: null, initial_PGCA: null, initial_RuBP: null, initial_S7P: null, initial_SBP: null, initial_SERc: null, initial_Succ: null, initial_SucPc: null, initial_TP: null, initial_TPc: null, initial_UDPGc: null, initial_UTPc: null, K: null, K1: null, K2: null, KA: null, KA1: null, KA2: null, KA3: null, KGc_init: null, Ki: null, Km: null, Kp1: null, Kp2: null, Kr1: null, KR1: null, Kr2: null, KR2: null, Kr3: null, KR3: null, Kr4: null, KR4: null, Kr41: null, Kr42: null, Kr5: null, KR5: null, Ks1: null, Ks2: null, NAD_init: null, NADH_init: null, NADP_init: null, NADPH_init: null, O2_init: null, PeP_init: null, PGA_init: null, PGAc_init: null, PGCA_init: null, q: null, RuBP_init: null, S7P_init: null, SBP_init: null, SERc_init: null, Succ_init: null, SucPc_init: null, TP_init: null, TPc_init: null, UDPGc_init: null, UTPc_init: null, V: null, Vm: null};
+    this.metadata.variableOrder = {PGA: null, DPGA: null, TP: null, FBP: null, HeP: null, E4P: null, SBP: null, S7P: null, PeP: null, RuBP: null, ATP: null, PGCA: null, GCA: null, GCEA: null, HPRc: null, GCAc: null, GOAc: null, GLYc: null, SERc: null, GCEAc: null, PGAc: null, TPc: null, FBPc: null, HePc: null, F26BPc: null, UDPGc: null, SucPc: null, Succ: null, NADPH: null, CO2: null, O2: null, NADP: null, UTPc: null, NAD: null, NADH: null, GLUc: null, KGc: null, ATPc: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

@@ -41,7 +41,7 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["CD28a_init", "CD28i_init", "CD3a_init", "CD3i_init", "CP1_init", "CP2_init", "GADS_init", "GADSa_init", "Ka_gads", "Ka_pi3k", "Ka_shp", "Ka_slp", "Ka_zap", "Kd_gads", "Kd_pi3k", "Kd_slp", "Kd_zap", "Kd1_shp", "Kd2_shp", "Kdp_cd28", "Kdp_cd3", "Kdp_cp2", "KMdp_cd28", "KMdp_cd3", "KMp_cd28", "KMp_cd3", "KMp_pd1", "Kp_cd28", "Kp_cd3", "Kp_lat", "Kp_pd1", "Kp_slp", "Kp1_zap", "Kp2_zap", "Kpa_i", "Kpa_yi", "Kpi_i", "Kpi_ya", "kxk", "LATa_init", "LATi_init", "LCK_switch", "LCKi_init", "LCKpi_init", "LCKya_init", "LCKyi_init", "LCKyiya_init", "ModelValue_0", "PD1_init", "PD1p1_init", "PD1p2_init", "PI3K_init", "PI3Kb_init", "SHP2_init", "SLP76_init", "SLP76a_init", "SLP76i_init", "ZAP70_init", "ZAP70a1_init", "ZAP70a2_init", "ZAP70i_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["CD28a_init", "CD28i_init", "CD3a_init", "CD3i_init", "CP1_init", "CP2_init", "GADS_init", "GADSa_init", "Ka_gads", "Ka_pi3k", "Ka_shp", "Ka_slp", "Ka_zap", "Kd_gads", "Kd_pi3k", "Kd_slp", "Kd_zap", "Kd1_shp", "Kd2_shp", "Kdp_cd28", "Kdp_cd3", "Kdp_cp2", "KMdp_cd28", "KMdp_cd3", "KMp_cd28", "KMp_cd3", "KMp_pd1", "Kp_cd28", "Kp_cd3", "Kp_lat", "Kp_pd1", "Kp_slp", "Kp1_zap", "Kp2_zap", "Kpa_i", "Kpa_yi", "Kpi_i", "Kpi_ya", "kxk", "LATa_init", "LATi_init", "LCK_switch", "LCKi_init", "LCKpi_init", "LCKya_init", "LCKyi_init", "LCKyiya_init", "PD1_init", "PD1p1_init", "PD1p2_init", "PI3K_init", "PI3Kb_init", "SHP2_init", "SLP76_init", "SLP76a_init", "SLP76i_init", "ZAP70_init", "ZAP70a1_init", "ZAP70a2_init", "ZAP70i_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "CD28a_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CD28i_init", internal, 250, -Infinity, Infinity, false);
@@ -90,7 +90,6 @@ export class model {
     this.base.user.setUserScalar(user, "LCKya_init", internal, 25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LCKyi_init", internal, 25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "LCKyiya_init", internal, 25, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_0", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PD1_init", internal, 500, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PD1p1_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "PD1p2_init", internal, 0, -Infinity, Infinity, false);
@@ -132,6 +131,7 @@ export class model {
     internal.initial_ZAP70a1 = internal.ZAP70a1_init;
     internal.initial_ZAP70a2 = internal.ZAP70a2_init;
     internal.initial_ZAP70i = internal.ZAP70i_init;
+    internal.ModelValue_0 = internal.LCK_switch;
     internal.Kdpa_pi = 1.1999999999999999e-07 * internal.ModelValue_0;
     internal.Kdpa_ya = 6.0000000000000002e-06 * internal.ModelValue_0;
     internal.Kdpa_yiya = 2.4000000000000001e-05 * internal.ModelValue_0;
@@ -191,17 +191,17 @@ export class model {
     dstatedt[12] = 0 - 1 * internal.Cell * (internal.Kp_cd28 * LCKactive * CD28i / (internal.KMp_cd28 + CD28i)) + 1 * internal.Cell * (internal.Kdp_cd28 * CPactive * CD28a / (internal.KMdp_cd28 + CD28a));
     dstatedt[15] = 0 + 1 * internal.Cell * (internal.Kp_cd3 * LCKactive * CD3i / (internal.KMp_cd3 + CD3i)) - 1 * internal.Cell * (internal.Kdp_cd3 * CPactive * CD3a / (internal.KMdp_cd3 + CD3a)) - 1 * internal.Cell * (internal.Ka_zap * CD3a * ZAP70 - internal.Kd_zap * ZAP70i);
     dstatedt[16] = 0 - 1 * internal.Cell * (internal.Kp_cd3 * LCKactive * CD3i / (internal.KMp_cd3 + CD3i)) + 1 * internal.Cell * (internal.Kdp_cd3 * CPactive * CD3a / (internal.KMdp_cd3 + CD3a));
-    dstatedt[0] = 0 - 1 * internal.Cell * internal.Kpi_i * LCKi - 1 * internal.Cell * internal.Kpa_i * LCKi + 1 * internal.Cell * (internal.Kdpa_ya * CPactive * LCKya) + 1 * internal.Cell * (internal.Kdpi_yi * CPactive * LCKyi);
-    dstatedt[4] = 0 + 1 * internal.Cell * internal.Kpa_yi * LCKyi - 1 * internal.Cell * (internal.Kdpa_pi * CPactive * LCKpi);
-    dstatedt[2] = 0 + 1 * internal.Cell * internal.Kpa_i * LCKi - 1 * internal.Cell * internal.Kpi_ya * LCKya - 1 * internal.Cell * (internal.Kdpa_ya * CPactive * LCKya) + 1 * internal.Cell * (internal.Kdpi_yiya * CPactive * LCKyiya);
-    dstatedt[1] = 0 + 1 * internal.Cell * internal.Kpi_i * LCKi - 1 * internal.Cell * internal.Kpa_yi * LCKyi + 1 * internal.Cell * (internal.Kdpi_yiya * CPactive * LCKyiya) - 1 * internal.Cell * (internal.Kdpi_yi * CPactive * LCKyi) + 1 * internal.Cell * (internal.Kdpa_pi * CPactive * LCKpi);
-    dstatedt[3] = 0 + 1 * internal.Cell * internal.Kpi_ya * LCKya - 1 * internal.Cell * (internal.Kdpi_yiya * CPactive * LCKyiya) - 1 * internal.Cell * (internal.Kdpi_yiya * CPactive * LCKyiya);
     dstatedt[5] = 0 - 1 * internal.Cell * (internal.Kp_pd1 * LCKactive * PD1 / (internal.KMp_pd1 + PD1) * (1 - (PD1p1 + PD1p2) / (LCKt * internal.kxk))) + 1 * internal.Cell * internal.Kd2_shp * CP1;
     dstatedt[6] = 0 + 1 * internal.Cell * (internal.Kp_pd1 * LCKactive * PD1 / (internal.KMp_pd1 + PD1) * (1 - (PD1p1 + PD1p2) / (LCKt * internal.kxk))) - 1 * internal.Cell * (internal.Kp_pd1 * LCKactive * PD1p1 / (internal.KMp_pd1 + PD1p1)) - 1 * internal.Cell * (internal.Ka_shp * PD1p1 * SHP2 - internal.Kd1_shp * CP1) + 1 * internal.Cell * internal.Kd2_shp * CP2;
     dstatedt[7] = 0 + 1 * internal.Cell * (internal.Kp_pd1 * LCKactive * PD1p1 / (internal.KMp_pd1 + PD1p1)) - 1 * internal.Cell * (internal.Ka_shp * PD1p2 * SHP2 - internal.Kd1_shp * CP2);
     dstatedt[17] = 0 + 1 * internal.Cell * (internal.Kp1_zap * LCKactive * ZAP70i) - 1 * internal.Cell * (internal.Kp2_zap * LCKactive * ZAP70a1);
     dstatedt[20] = 0 + 1 * internal.Cell * (internal.Kp2_zap * LCKactive * ZAP70a1);
     dstatedt[18] = 0 + 1 * internal.Cell * (internal.Ka_zap * CD3a * ZAP70 - internal.Kd_zap * ZAP70i) - 1 * internal.Cell * (internal.Kp1_zap * LCKactive * ZAP70i);
+    dstatedt[0] = 0 - 1 * internal.Cell * internal.Kpi_i * LCKi - 1 * internal.Cell * internal.Kpa_i * LCKi + 1 * internal.Cell * (internal.Kdpa_ya * CPactive * LCKya) + 1 * internal.Cell * (internal.Kdpi_yi * CPactive * LCKyi);
+    dstatedt[4] = 0 + 1 * internal.Cell * internal.Kpa_yi * LCKyi - 1 * internal.Cell * (internal.Kdpa_pi * CPactive * LCKpi);
+    dstatedt[2] = 0 + 1 * internal.Cell * internal.Kpa_i * LCKi - 1 * internal.Cell * internal.Kpi_ya * LCKya - 1 * internal.Cell * (internal.Kdpa_ya * CPactive * LCKya) + 1 * internal.Cell * (internal.Kdpi_yiya * CPactive * LCKyiya);
+    dstatedt[1] = 0 + 1 * internal.Cell * internal.Kpi_i * LCKi - 1 * internal.Cell * internal.Kpa_yi * LCKyi + 1 * internal.Cell * (internal.Kdpi_yiya * CPactive * LCKyiya) - 1 * internal.Cell * (internal.Kdpi_yi * CPactive * LCKyi) + 1 * internal.Cell * (internal.Kdpa_pi * CPactive * LCKpi);
+    dstatedt[3] = 0 + 1 * internal.Cell * internal.Kpi_ya * LCKya - 1 * internal.Cell * (internal.Kdpi_yiya * CPactive * LCKyiya) - 1 * internal.Cell * (internal.Kdpi_yiya * CPactive * LCKyiya);
   }
   names() {
     return this.metadata.ynames.slice(1);

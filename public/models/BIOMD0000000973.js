@@ -14,19 +14,19 @@ export class model {
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["k_1", "k_2", "k1", "k2", "k3", "ModelValue_6", "N_init", "P_init", "p0"], unusedUserAction);
+    this.base.user.checkUser(user, ["k_1", "k_2", "k1", "k2", "k3", "N_init", "P_init", "p0"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "k_1", internal, 6.6000000000000004e-09, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k_2", internal, 0.029999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k1", internal, 0.00021000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k2", internal, 7.5000000000000002e-06, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "k3", internal, 1.1599999999999999, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "ModelValue_6", internal, 10000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "N_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "P_init", internal, 10000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "p0", internal, 10000, -Infinity, Infinity, false);
     internal.initial_N = internal.N_init;
     internal.initial_P = internal.P_init;
+    internal.ModelValue_6 = internal.p0;
     this.updateMetadata();
   }
   getInternal() {

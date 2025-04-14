@@ -41,9 +41,12 @@ export class model {
   }
   rhs(t, state, dstatedt) {
     var internal = this.internal;
-    dstatedt[1] = 0;
-    dstatedt[2] = 0;
-    dstatedt[0] = 0;
+    const M = state[0];
+    const FC = state[1];
+    const FN = state[2];
+    dstatedt[1] = 0 + internal.ks * M + internal.k2 * FN - (internal.vd * (FC / (internal.Kd + FC)) + internal.k1 * FC);
+    dstatedt[2] = 0 + internal.k1 * FC - internal.k2 * FN;
+    dstatedt[0] = 0 + internal.vs * (Math.pow((internal.KI), (internal.n)) / (Math.pow((internal.KI), (internal.n)) + Math.pow((FN), (internal.n)))) - internal.vm * (M / (internal.Km + M));
   }
   names() {
     return this.metadata.ynames.slice(1);

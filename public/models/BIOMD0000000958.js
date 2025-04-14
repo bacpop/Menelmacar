@@ -37,14 +37,14 @@ export class model {
     this.base.user.setUserScalar(user, "gamma_i", internal, 0.27000000000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "gamma_r", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Hospitalised_init", internal, 0, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Infectious_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Infectious_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "kappa", internal, 0.25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "lxl", internal, 1.5600000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "N", internal, 44000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Recovered_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho1", internal, 0.57999999999999996, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "rho2", internal, 0.001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Super_spreaders_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Super_spreaders_init", internal, 5, -Infinity, Infinity, false);
     internal.initial_Asymptomatic = internal.Asymptomatic_init;
     internal.initial_Exposed = internal.Exposed_init;
     internal.initial_Fatalities = internal.Fatalities_init;

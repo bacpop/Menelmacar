@@ -4,12 +4,11 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.Wee1_total = 7.9999999999999796;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(13).fill(0);
+    var state = Array(14).fill(0);
     state[0] = internal.initial_PCdk2_CycE;
     state[1] = internal.initial_Cdk2_CycE;
     state[2] = internal.initial_Wee1_a;
@@ -23,10 +22,11 @@ export class model {
     state[10] = internal.initial_Xic_PCdk2_CycErem;
     state[11] = internal.initial_Xicrem;
     state[12] = internal.initial_Kin_a;
+    state[13] = internal.initial_Wee1_total;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Cdk2_CycE_init", "Cdk2_CycErem_init", "Deg_a_init", "epsilon", "Jiact", "Jiinact", "Jwact", "Jwinact", "k25A", "kassoc", "kdact", "kdissoc", "kedeg", "kiact", "kiinact", "Kin_a_init", "koff", "kon", "kwact", "kwee", "kwinact", "kxdeg", "L", "n", "PCdk2_CycE_init", "PCdk2_CycErem_init", "theta", "Wee1_a_init", "Xic_Cdk2_CycE_init", "Xic_Cdk2_CycErem_init", "Xic_init", "Xic_PCdk2_CycE_init", "Xic_PCdk2_CycErem_init", "Xicrem_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["Cdk2_CycE_init", "Cdk2_CycErem_init", "Deg_a_init", "epsilon", "Jiact", "Jiinact", "Jwact", "Jwinact", "k25A", "kassoc", "kdact", "kdissoc", "kedeg", "kiact", "kiinact", "Kin_a_init", "koff", "kon", "kwact", "kwee", "kwinact", "kxdeg", "L", "n", "PCdk2_CycE_init", "PCdk2_CycErem_init", "theta", "Wee1_a_init", "Wee1_total_init", "Xic_Cdk2_CycE_init", "Xic_Cdk2_CycErem_init", "Xic_init", "Xic_PCdk2_CycE_init", "Xic_PCdk2_CycErem_init", "Xicrem_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "Cdk2_CycE_init", internal, 0.059999999999999901, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdk2_CycErem_init", internal, 0, -Infinity, Infinity, false);
@@ -56,6 +56,7 @@ export class model {
     this.base.user.setUserScalar(user, "PCdk2_CycErem_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "theta", internal, 0.29999999999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Wee1_a_init", internal, 1.02, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Wee1_total_init", internal, 7.9999999999999796, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xic_Cdk2_CycE_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xic_Cdk2_CycErem_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Xic_init", internal, 2.99999999999998, -Infinity, Infinity, false);
@@ -69,6 +70,7 @@ export class model {
     internal.initial_PCdk2_CycE = internal.PCdk2_CycE_init;
     internal.initial_PCdk2_CycErem = internal.PCdk2_CycErem_init;
     internal.initial_Wee1_a = internal.Wee1_a_init;
+    internal.initial_Wee1_total = internal.Wee1_total_init;
     internal.initial_Xic = internal.Xic_init;
     internal.initial_Xic_Cdk2_CycE = internal.Xic_Cdk2_CycE_init;
     internal.initial_Xic_Cdk2_CycErem = internal.Xic_Cdk2_CycErem_init;
@@ -95,8 +97,10 @@ export class model {
     const Xic_PCdk2_CycErem = state[10];
     const Xicrem = state[11];
     const Kin_a = state[12];
+    const Wee1_total = state[13];
+    dstatedt[13] = 0;
     dstatedt[12] = 0 + 1 * internal.compartment * (internal.kiact * (1 - Kin_a) / (internal.Jiact + 1 - Kin_a) - internal.kiinact * Cdk2_CycE * Kin_a / (internal.Jiinact + Kin_a));
-    dstatedt[2] = 0 + 1 * internal.compartment * (internal.kwact * (internal.Wee1_total - Wee1_a) / (internal.Jwact + internal.Wee1_total - Wee1_a) - internal.kwinact * Kin_a * Wee1_a / (internal.Jwinact + Wee1_a));
+    dstatedt[2] = 0 + 1 * internal.compartment * (internal.kwact * (Wee1_total - Wee1_a) / (internal.Jwact + Wee1_total - Wee1_a) - internal.kwinact * Kin_a * Wee1_a / (internal.Jwinact + Wee1_a));
     dstatedt[6] = 0 - 1 * internal.compartment * internal.kassoc * Xic * Cdk2_CycE - 1 * internal.compartment * internal.kassoc * Xic * Cdk2_CycErem + 1 * internal.compartment * internal.kdissoc * Xic_Cdk2_CycE + 1 * internal.compartment * internal.kdissoc * Xic_Cdk2_CycErem - 1 * internal.compartment * internal.kassoc * Xic * PCdk2_CycE - 1 * internal.compartment * internal.kassoc * Xic * PCdk2_CycErem + 1 * internal.compartment * internal.kdissoc * Xic_PCdk2_CycE + 1 * internal.compartment * internal.kdissoc * Xic_PCdk2_CycErem;
     dstatedt[11] = 0 + 1 * internal.compartment * (internal.kedeg * Xic_PCdk2_CycErem * Deg_a) + 1 * internal.compartment * (internal.kedeg * Xic_Cdk2_CycErem * Deg_a) - 1 * internal.compartment * internal.kxdeg * Xicrem;
     var pool = Cdk2_CycErem + PCdk2_CycErem + Xic_Cdk2_CycErem + Xic_PCdk2_CycErem;
@@ -119,9 +123,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "PCdk2_CycE", "Cdk2_CycE", "Wee1_a", "Cdk2_CycErem", "PCdk2_CycErem", "Deg_a", "Xic", "Xic_Cdk2_CycE", "Xic_PCdk2_CycE", "Xic_Cdk2_CycErem", "Xic_PCdk2_CycErem", "Xicrem", "Kin_a"];
-    this.metadata.internalOrder = {Cdk2_CycE_init: null, Cdk2_CycErem_init: null, compartment: null, Deg_a_init: null, epsilon: null, initial_Cdk2_CycE: null, initial_Cdk2_CycErem: null, initial_Deg_a: null, initial_Kin_a: null, initial_PCdk2_CycE: null, initial_PCdk2_CycErem: null, initial_Wee1_a: null, initial_Xic: null, initial_Xic_Cdk2_CycE: null, initial_Xic_Cdk2_CycErem: null, initial_Xic_PCdk2_CycE: null, initial_Xic_PCdk2_CycErem: null, initial_Xicrem: null, Jiact: null, Jiinact: null, Jwact: null, Jwinact: null, k25A: null, kassoc: null, kdact: null, kdissoc: null, kedeg: null, kiact: null, kiinact: null, Kin_a_init: null, koff: null, kon: null, kwact: null, kwee: null, kwinact: null, kxdeg: null, L: null, n: null, PCdk2_CycE_init: null, PCdk2_CycErem_init: null, theta: null, Wee1_a_init: null, Wee1_total: null, Xic_Cdk2_CycE_init: null, Xic_Cdk2_CycErem_init: null, Xic_init: null, Xic_PCdk2_CycE_init: null, Xic_PCdk2_CycErem_init: null, Xicrem_init: null};
-    this.metadata.variableOrder = {PCdk2_CycE: null, Cdk2_CycE: null, Wee1_a: null, Cdk2_CycErem: null, PCdk2_CycErem: null, Deg_a: null, Xic: null, Xic_Cdk2_CycE: null, Xic_PCdk2_CycE: null, Xic_Cdk2_CycErem: null, Xic_PCdk2_CycErem: null, Xicrem: null, Kin_a: null};
+    this.metadata.ynames = ["t", "PCdk2_CycE", "Cdk2_CycE", "Wee1_a", "Cdk2_CycErem", "PCdk2_CycErem", "Deg_a", "Xic", "Xic_Cdk2_CycE", "Xic_PCdk2_CycE", "Xic_Cdk2_CycErem", "Xic_PCdk2_CycErem", "Xicrem", "Kin_a", "Wee1_total"];
+    this.metadata.internalOrder = {Cdk2_CycE_init: null, Cdk2_CycErem_init: null, compartment: null, Deg_a_init: null, epsilon: null, initial_Cdk2_CycE: null, initial_Cdk2_CycErem: null, initial_Deg_a: null, initial_Kin_a: null, initial_PCdk2_CycE: null, initial_PCdk2_CycErem: null, initial_Wee1_a: null, initial_Wee1_total: null, initial_Xic: null, initial_Xic_Cdk2_CycE: null, initial_Xic_Cdk2_CycErem: null, initial_Xic_PCdk2_CycE: null, initial_Xic_PCdk2_CycErem: null, initial_Xicrem: null, Jiact: null, Jiinact: null, Jwact: null, Jwinact: null, k25A: null, kassoc: null, kdact: null, kdissoc: null, kedeg: null, kiact: null, kiinact: null, Kin_a_init: null, koff: null, kon: null, kwact: null, kwee: null, kwinact: null, kxdeg: null, L: null, n: null, PCdk2_CycE_init: null, PCdk2_CycErem_init: null, theta: null, Wee1_a_init: null, Wee1_total_init: null, Xic_Cdk2_CycE_init: null, Xic_Cdk2_CycErem_init: null, Xic_init: null, Xic_PCdk2_CycE_init: null, Xic_PCdk2_CycErem_init: null, Xicrem_init: null};
+    this.metadata.variableOrder = {PCdk2_CycE: null, Cdk2_CycE: null, Wee1_a: null, Cdk2_CycErem: null, PCdk2_CycErem: null, Deg_a: null, Xic: null, Xic_Cdk2_CycE: null, Xic_PCdk2_CycE: null, Xic_Cdk2_CycErem: null, Xic_PCdk2_CycErem: null, Xicrem: null, Kin_a: null, Wee1_total: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

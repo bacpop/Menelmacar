@@ -3,14 +3,12 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.AA = 1;
     internal.compartment = 1;
-    internal.degr = 1;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(13).fill(0);
+    var state = Array(15).fill(0);
     state[0] = internal.initial_Clb2;
     state[1] = internal.initial_Cdc20;
     state[2] = internal.initial_Cdh1;
@@ -24,11 +22,14 @@ export class model {
     state[10] = internal.initial_Tem1;
     state[11] = internal.initial_Cdc15;
     state[12] = internal.initial_MEN;
+    state[13] = internal.initial_AA;
+    state[14] = internal.initial_degr;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["Cdc14T", "Cdc15_init", "Cdc15T", "Cdc20_init", "Cdh1_init", "Cdh1T", "Clb2_init", "Inh", "Jcdc15", "Jcdh", "Jnet", "Jpolo", "Jtem1", "kaacdc15", "kaadclb2", "kaapolo", "kaatem", "kacdc15", "kad", "kadcdc20", "kadcdh", "kadclb2", "kadpolo", "kadsecurin", "kaicdc15", "kaitem", "kap", "kapcdh", "kapolo", "katem", "kd", "kdcdc20", "kdcdh", "kdclb2", "kdpolo", "kdsecurin", "kdseparase", "ki", "kicdc15", "kipolo", "kitem", "kp", "kpp", "kscdc20", "ksclb2", "kspolo", "kssecurin", "ksseparase", "lamen", "lanet", "lasecurin", "ldmen", "ldnet", "ldsecurin", "MEN_init", "Net1_init", "Net1Cdc14_init", "Net1T", "Polo_init", "PoloT_init", "PP2AT", "securinseparase_init", "securinT_init", "separaseT_init", "Tem1_init", "Tem1T"], unusedUserAction);
+    this.base.user.checkUser(user, ["AA_init", "Cdc14T", "Cdc15_init", "Cdc15T", "Cdc20_init", "Cdh1_init", "Cdh1T", "Clb2_init", "degr_init", "Inh", "Jcdc15", "Jcdh", "Jnet", "Jpolo", "Jtem1", "kaacdc15", "kaadclb2", "kaapolo", "kaatem", "kacdc15", "kad", "kadcdc20", "kadcdh", "kadclb2", "kadpolo", "kadsecurin", "kaicdc15", "kaitem", "kap", "kapcdh", "kapolo", "katem", "kd", "kdcdc20", "kdcdh", "kdclb2", "kdpolo", "kdsecurin", "kdseparase", "ki", "kicdc15", "kipolo", "kitem", "kp", "kpp", "kscdc20", "ksclb2", "kspolo", "kssecurin", "ksseparase", "lamen", "lanet", "lasecurin", "ldmen", "ldnet", "ldsecurin", "MEN_init", "Net1_init", "Net1Cdc14_init", "Net1T", "Polo_init", "PoloT_init", "PP2AT", "securinseparase_init", "securinT_init", "separaseT_init", "Tem1_init", "Tem1T"], unusedUserAction);
     var internal = this.internal;
+    this.base.user.setUserScalar(user, "AA_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdc14T", internal, 0.5, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdc15_init", internal, 0.025700000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdc15T", internal, 1, -Infinity, Infinity, false);
@@ -36,6 +37,7 @@ export class model {
     this.base.user.setUserScalar(user, "Cdh1_init", internal, 3.8000000000000002e-05, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdh1T", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Clb2_init", internal, 0.997, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "degr_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Inh", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Jcdc15", internal, 0.20000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Jcdh", internal, 0.0015, -Infinity, Infinity, false);
@@ -95,10 +97,12 @@ export class model {
     this.base.user.setUserScalar(user, "separaseT_init", internal, 0.25, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Tem1_init", internal, 0.0038899999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Tem1T", internal, 1, -Infinity, Infinity, false);
+    internal.initial_AA = internal.AA_init;
     internal.initial_Cdc15 = internal.Cdc15_init;
     internal.initial_Cdc20 = internal.Cdc20_init;
     internal.initial_Cdh1 = internal.Cdh1_init;
     internal.initial_Clb2 = internal.Clb2_init;
+    internal.initial_degr = internal.degr_init;
     internal.initial_MEN = internal.MEN_init;
     internal.initial_Net1 = internal.Net1_init;
     internal.initial_Net1Cdc14 = internal.Net1Cdc14_init;
@@ -128,6 +132,8 @@ export class model {
     const Tem1 = state[10];
     const Cdc15 = state[11];
     const MEN = state[12];
+    dstatedt[13] = 0;
+    dstatedt[14] = 0;
     var Cdc14 = internal.Cdc14T - Net1Cdc14;
     var Cdk = Clb2 / (1 + internal.Inh);
     dstatedt[1] = 0 + 1 * internal.kscdc20 - 1 * (internal.kdcdc20 + internal.kadcdc20 * Cdh1) * Cdc20;
@@ -154,9 +160,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Clb2", "Cdc20", "Cdh1", "securinT", "separaseT", "securinseparase", "Net1", "Net1Cdc14", "PoloT", "Polo", "Tem1", "Cdc15", "MEN"];
-    this.metadata.internalOrder = {AA: null, Cdc14T: null, Cdc15_init: null, Cdc15T: null, Cdc20_init: null, Cdh1_init: null, Cdh1T: null, Clb2_init: null, compartment: null, degr: null, Inh: null, initial_Cdc15: null, initial_Cdc20: null, initial_Cdh1: null, initial_Clb2: null, initial_MEN: null, initial_Net1: null, initial_Net1Cdc14: null, initial_Polo: null, initial_PoloT: null, initial_securinseparase: null, initial_securinT: null, initial_separaseT: null, initial_Tem1: null, Jcdc15: null, Jcdh: null, Jnet: null, Jpolo: null, Jtem1: null, kaacdc15: null, kaadclb2: null, kaapolo: null, kaatem: null, kacdc15: null, kad: null, kadcdc20: null, kadcdh: null, kadclb2: null, kadpolo: null, kadsecurin: null, kaicdc15: null, kaitem: null, kap: null, kapcdh: null, kapolo: null, katem: null, kd: null, kdcdc20: null, kdcdh: null, kdclb2: null, kdpolo: null, kdsecurin: null, kdseparase: null, ki: null, kicdc15: null, kipolo: null, kitem: null, kp: null, kpp: null, kscdc20: null, ksclb2: null, kspolo: null, kssecurin: null, ksseparase: null, lamen: null, lanet: null, lasecurin: null, ldmen: null, ldnet: null, ldsecurin: null, MEN_init: null, Net1_init: null, Net1Cdc14_init: null, Net1T: null, Polo_init: null, PoloT_init: null, PP2AT: null, securinseparase_init: null, securinT_init: null, separaseT_init: null, Tem1_init: null, Tem1T: null};
-    this.metadata.variableOrder = {Clb2: null, Cdc20: null, Cdh1: null, securinT: null, separaseT: null, securinseparase: null, Net1: null, Net1Cdc14: null, PoloT: null, Polo: null, Tem1: null, Cdc15: null, MEN: null};
+    this.metadata.ynames = ["t", "Clb2", "Cdc20", "Cdh1", "securinT", "separaseT", "securinseparase", "Net1", "Net1Cdc14", "PoloT", "Polo", "Tem1", "Cdc15", "MEN", "AA", "degr"];
+    this.metadata.internalOrder = {AA_init: null, Cdc14T: null, Cdc15_init: null, Cdc15T: null, Cdc20_init: null, Cdh1_init: null, Cdh1T: null, Clb2_init: null, compartment: null, degr_init: null, Inh: null, initial_AA: null, initial_Cdc15: null, initial_Cdc20: null, initial_Cdh1: null, initial_Clb2: null, initial_degr: null, initial_MEN: null, initial_Net1: null, initial_Net1Cdc14: null, initial_Polo: null, initial_PoloT: null, initial_securinseparase: null, initial_securinT: null, initial_separaseT: null, initial_Tem1: null, Jcdc15: null, Jcdh: null, Jnet: null, Jpolo: null, Jtem1: null, kaacdc15: null, kaadclb2: null, kaapolo: null, kaatem: null, kacdc15: null, kad: null, kadcdc20: null, kadcdh: null, kadclb2: null, kadpolo: null, kadsecurin: null, kaicdc15: null, kaitem: null, kap: null, kapcdh: null, kapolo: null, katem: null, kd: null, kdcdc20: null, kdcdh: null, kdclb2: null, kdpolo: null, kdsecurin: null, kdseparase: null, ki: null, kicdc15: null, kipolo: null, kitem: null, kp: null, kpp: null, kscdc20: null, ksclb2: null, kspolo: null, kssecurin: null, ksseparase: null, lamen: null, lanet: null, lasecurin: null, ldmen: null, ldnet: null, ldsecurin: null, MEN_init: null, Net1_init: null, Net1Cdc14_init: null, Net1T: null, Polo_init: null, PoloT_init: null, PP2AT: null, securinseparase_init: null, securinT_init: null, separaseT_init: null, Tem1_init: null, Tem1T: null};
+    this.metadata.variableOrder = {Clb2: null, Cdc20: null, Cdh1: null, securinT: null, separaseT: null, securinseparase: null, Net1: null, Net1Cdc14: null, PoloT: null, Polo: null, Tem1: null, Cdc15: null, MEN: null, AA: null, degr: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

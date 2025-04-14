@@ -3,15 +3,12 @@ export class model {
     this.base = base;
     this.internal = {};
     var internal = this.internal;
-    internal.ATP = 24000000;
     internal.compartment01 = 1;
-    internal.GDP = 1500000;
-    internal.GTP = 5000000;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(30).fill(0);
+    var state = Array(33).fill(0);
     state[0] = internal.initial_Ras2_GDP;
     state[1] = internal.initial_Cdc25;
     state[2] = internal.initial_Ras2_GDP_Cdc25;
@@ -42,12 +39,16 @@ export class model {
     state[27] = internal.initial_Cdc25f;
     state[28] = internal.initial_Ira2P;
     state[29] = internal.initial_Ras2_GTP_Ira2P;
+    state[30] = internal.initial_GDP;
+    state[31] = internal.initial_GTP;
+    state[32] = internal.initial_ATP;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["AMP_init", "C_init", "cAMP_init", "cAMP_Pde1f_init", "cAMP_Pde2_init", "cAMP_PKA_init", "Cdc25_init", "Cdc25f_init", "CYR1_init", "IIcAMP_PKA_init", "IIIcAMP_PKA_init", "Ira2_init", "Ira2P_init", "IVcAMP_PKA_init", "K0", "K1", "K10", "K11", "K12", "K13", "K14", "K15", "K16", "K17", "K18", "K19", "K2", "K20", "K21", "K22", "K23", "K24", "K25", "K26", "K27", "K28", "K29", "K3", "K30", "K31", "K32", "K33", "K34", "K35", "K36", "K37", "K38", "K4", "K5", "K6", "K7", "K8", "K9", "Pde1_init", "Pde1f_init", "Pde2_init", "PKA_init", "PPA2_init", "R_2cAMP_init", "R_C_init", "R_init", "Ras2_Cdc25_init", "Ras2_GDP_Cdc25_init", "Ras2_GDP_init", "Ras2_GTP_Cdc25_init", "Ras2_GTP_CYR1_init", "Ras2_GTP_init", "Ras2_GTP_Ira2_init", "Ras2_GTP_Ira2P_init"], unusedUserAction);
+    this.base.user.checkUser(user, ["AMP_init", "ATP_init", "C_init", "cAMP_init", "cAMP_Pde1f_init", "cAMP_Pde2_init", "cAMP_PKA_init", "Cdc25_init", "Cdc25f_init", "CYR1_init", "GDP_init", "GTP_init", "IIcAMP_PKA_init", "IIIcAMP_PKA_init", "Ira2_init", "Ira2P_init", "IVcAMP_PKA_init", "K0", "K1", "K10", "K11", "K12", "K13", "K14", "K15", "K16", "K17", "K18", "K19", "K2", "K20", "K21", "K22", "K23", "K24", "K25", "K26", "K27", "K28", "K29", "K3", "K30", "K31", "K32", "K33", "K34", "K35", "K36", "K37", "K38", "K4", "K5", "K6", "K7", "K8", "K9", "Pde1_init", "Pde1f_init", "Pde2_init", "PKA_init", "PPA2_init", "R_2cAMP_init", "R_C_init", "R_init", "Ras2_Cdc25_init", "Ras2_GDP_Cdc25_init", "Ras2_GDP_init", "Ras2_GTP_Cdc25_init", "Ras2_GTP_CYR1_init", "Ras2_GTP_init", "Ras2_GTP_Ira2_init", "Ras2_GTP_Ira2P_init"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "AMP_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "ATP_init", internal, 24000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "C_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cAMP_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "cAMP_Pde1f_init", internal, 0, -Infinity, Infinity, false);
@@ -56,6 +57,8 @@ export class model {
     this.base.user.setUserScalar(user, "Cdc25_init", internal, 300, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Cdc25f_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "CYR1_init", internal, 200, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "GDP_init", internal, 1500000, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "GTP_init", internal, 5000000, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IIcAMP_PKA_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IIIcAMP_PKA_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ira2_init", internal, 200, -Infinity, Infinity, false);
@@ -117,6 +120,7 @@ export class model {
     this.base.user.setUserScalar(user, "Ras2_GTP_Ira2_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Ras2_GTP_Ira2P_init", internal, 0, -Infinity, Infinity, false);
     internal.initial_AMP = internal.AMP_init;
+    internal.initial_ATP = internal.ATP_init;
     internal.initial_C = internal.C_init;
     internal.initial_cAMP = internal.cAMP_init;
     internal.initial_cAMP_Pde1f = internal.cAMP_Pde1f_init;
@@ -125,6 +129,8 @@ export class model {
     internal.initial_Cdc25 = internal.Cdc25_init;
     internal.initial_Cdc25f = internal.Cdc25f_init;
     internal.initial_CYR1 = internal.CYR1_init;
+    internal.initial_GDP = internal.GDP_init;
+    internal.initial_GTP = internal.GTP_init;
     internal.initial_IIcAMP_PKA = internal.IIcAMP_PKA_init;
     internal.initial_IIIcAMP_PKA = internal.IIIcAMP_PKA_init;
     internal.initial_Ira2 = internal.Ira2_init;
@@ -182,9 +188,15 @@ export class model {
     const Cdc25f = state[27];
     const Ira2P = state[28];
     const Ras2_GTP_Ira2P = state[29];
+    const GDP = state[30];
+    const GTP = state[31];
+    const ATP = state[32];
+    dstatedt[32] = 0;
+    dstatedt[30] = 0;
+    dstatedt[31] = 0;
     dstatedt[23] = 0 + 1 * internal.K28 * cAMP_Pde1f + 1 * internal.K32 * cAMP_Pde2;
     dstatedt[16] = 0 + 2 * internal.K21 * IVcAMP_PKA - 1 * internal.K23 * C * R - 1 * internal.K25 * C * Pde1 + 1 * internal.K25 * C * Pde1 - 1 * internal.K33 * Cdc25 * C + 1 * internal.K33 * Cdc25 * C - 1 * internal.K35 * Ira2 * C + 1 * internal.K35 * Ira2 * C;
-    dstatedt[10] = 0 + 1 * internal.K11 * Ras2_GTP_CYR1 * internal.ATP - 1 * internal.K13 * cAMP * PKA - 1 * internal.K14 * cAMP * cAMP_PKA - 1 * internal.K15 * cAMP * IIcAMP_PKA - 1 * internal.K16 * cAMP * IIIcAMP_PKA + 1 * internal.K17 * IVcAMP_PKA + 1 * internal.K18 * IIIcAMP_PKA + 1 * internal.K19 * IIcAMP_PKA + 1 * internal.K20 * cAMP_PKA + 2 * internal.K22 * R_2cAMP - 1 * internal.K26 * cAMP * Pde1f + 1 * internal.K27 * cAMP_Pde1f - 1 * internal.K30 * cAMP * Pde2 + 1 * internal.K31 * cAMP_Pde2;
+    dstatedt[10] = 0 + 1 * internal.K11 * Ras2_GTP_CYR1 * ATP - 1 * internal.K13 * cAMP * PKA - 1 * internal.K14 * cAMP * cAMP_PKA - 1 * internal.K15 * cAMP * IIcAMP_PKA - 1 * internal.K16 * cAMP * IIIcAMP_PKA + 1 * internal.K17 * IVcAMP_PKA + 1 * internal.K18 * IIIcAMP_PKA + 1 * internal.K19 * IIcAMP_PKA + 1 * internal.K20 * cAMP_PKA + 2 * internal.K22 * R_2cAMP - 1 * internal.K26 * cAMP * Pde1f + 1 * internal.K27 * cAMP_Pde1f - 1 * internal.K30 * cAMP * Pde2 + 1 * internal.K31 * cAMP_Pde2;
     dstatedt[22] = 0 + 1 * internal.K26 * cAMP * Pde1f - 1 * internal.K27 * cAMP_Pde1f - 1 * internal.K28 * cAMP_Pde1f;
     dstatedt[26] = 0 + 1 * internal.K30 * cAMP * Pde2 - 1 * internal.K31 * cAMP_Pde2 - 1 * internal.K32 * cAMP_Pde2;
     dstatedt[12] = 0 + 1 * internal.K13 * cAMP * PKA - 1 * internal.K14 * cAMP * cAMP_PKA + 1 * internal.K19 * IIcAMP_PKA - 1 * internal.K20 * cAMP_PKA;
@@ -204,12 +216,12 @@ export class model {
     dstatedt[18] = 0 + 1 * internal.K22 * R_2cAMP - 1 * internal.K23 * C * R;
     dstatedt[17] = 0 + 2 * internal.K21 * IVcAMP_PKA - 1 * internal.K22 * R_2cAMP;
     dstatedt[19] = 0 + 1 * internal.K23 * C * R - 2 * internal.K24 * (R_C * (R_C - 1) / 2);
-    dstatedt[3] = 0 + 1 * internal.K2 * Ras2_GDP_Cdc25 - 1 * internal.K3 * Ras2_Cdc25 * internal.GDP - 1 * internal.K4 * Ras2_Cdc25 * internal.GTP + 1 * internal.K5 * Ras2_GTP_Cdc25;
+    dstatedt[3] = 0 + 1 * internal.K2 * Ras2_GDP_Cdc25 - 1 * internal.K3 * Ras2_Cdc25 * GDP - 1 * internal.K4 * Ras2_Cdc25 * GTP + 1 * internal.K5 * Ras2_GTP_Cdc25;
     dstatedt[0] = 0 - 1 * internal.K0 * Ras2_GDP * Cdc25 + 1 * internal.K1 * Ras2_GDP_Cdc25 + 1 * internal.K9 * Ras2_GTP_Ira2 + 1 * internal.K12 * Ira2 * Ras2_GTP_CYR1 + 1 * internal.K37 * Ras2_GTP_Ira2P;
-    dstatedt[2] = 0 + 1 * internal.K0 * Ras2_GDP * Cdc25 - 1 * internal.K1 * Ras2_GDP_Cdc25 - 1 * internal.K2 * Ras2_GDP_Cdc25 + 1 * internal.K3 * Ras2_Cdc25 * internal.GDP;
+    dstatedt[2] = 0 + 1 * internal.K0 * Ras2_GDP * Cdc25 - 1 * internal.K1 * Ras2_GDP_Cdc25 - 1 * internal.K2 * Ras2_GDP_Cdc25 + 1 * internal.K3 * Ras2_Cdc25 * GDP;
     dstatedt[5] = 0 + 1 * internal.K6 * Ras2_GTP_Cdc25 - 1 * internal.K7 * Cdc25 * Ras2_GTP - 1 * internal.K8 * Ras2_GTP * Ira2 - 1 * internal.K10 * Ras2_GTP * CYR1 - 1 * internal.K36 * Ras2_GTP * Ira2P;
-    dstatedt[4] = 0 + 1 * internal.K4 * Ras2_Cdc25 * internal.GTP - 1 * internal.K5 * Ras2_GTP_Cdc25 - 1 * internal.K6 * Ras2_GTP_Cdc25 + 1 * internal.K7 * Cdc25 * Ras2_GTP;
-    dstatedt[9] = 0 + 1 * internal.K10 * Ras2_GTP * CYR1 - 1 * internal.K11 * Ras2_GTP_CYR1 * internal.ATP + 1 * internal.K11 * Ras2_GTP_CYR1 * internal.ATP - 1 * internal.K12 * Ira2 * Ras2_GTP_CYR1;
+    dstatedt[4] = 0 + 1 * internal.K4 * Ras2_Cdc25 * GTP - 1 * internal.K5 * Ras2_GTP_Cdc25 - 1 * internal.K6 * Ras2_GTP_Cdc25 + 1 * internal.K7 * Cdc25 * Ras2_GTP;
+    dstatedt[9] = 0 + 1 * internal.K10 * Ras2_GTP * CYR1 - 1 * internal.K11 * Ras2_GTP_CYR1 * ATP + 1 * internal.K11 * Ras2_GTP_CYR1 * ATP - 1 * internal.K12 * Ira2 * Ras2_GTP_CYR1;
     dstatedt[7] = 0 + 1 * internal.K8 * Ras2_GTP * Ira2 - 1 * internal.K9 * Ras2_GTP_Ira2;
     dstatedt[29] = 0 + 1 * internal.K36 * Ras2_GTP * Ira2P - 1 * internal.K37 * Ras2_GTP_Ira2P;
   }
@@ -219,9 +231,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "Ras2_GDP", "Cdc25", "Ras2_GDP_Cdc25", "Ras2_Cdc25", "Ras2_GTP_Cdc25", "Ras2_GTP", "Ira2", "Ras2_GTP_Ira2", "CYR1", "Ras2_GTP_CYR1", "cAMP", "PKA", "cAMP_PKA", "IIcAMP_PKA", "IIIcAMP_PKA", "IVcAMP_PKA", "C", "R_2cAMP", "R", "R_C", "Pde1", "Pde1f", "cAMP_Pde1f", "AMP", "PPA2", "Pde2", "cAMP_Pde2", "Cdc25f", "Ira2P", "Ras2_GTP_Ira2P"];
-    this.metadata.internalOrder = {AMP_init: null, ATP: null, C_init: null, cAMP_init: null, cAMP_Pde1f_init: null, cAMP_Pde2_init: null, cAMP_PKA_init: null, Cdc25_init: null, Cdc25f_init: null, compartment01: null, CYR1_init: null, GDP: null, GTP: null, IIcAMP_PKA_init: null, IIIcAMP_PKA_init: null, initial_AMP: null, initial_C: null, initial_cAMP: null, initial_cAMP_Pde1f: null, initial_cAMP_Pde2: null, initial_cAMP_PKA: null, initial_Cdc25: null, initial_Cdc25f: null, initial_CYR1: null, initial_IIcAMP_PKA: null, initial_IIIcAMP_PKA: null, initial_Ira2: null, initial_Ira2P: null, initial_IVcAMP_PKA: null, initial_Pde1: null, initial_Pde1f: null, initial_Pde2: null, initial_PKA: null, initial_PPA2: null, initial_R: null, initial_R_2cAMP: null, initial_R_C: null, initial_Ras2_Cdc25: null, initial_Ras2_GDP: null, initial_Ras2_GDP_Cdc25: null, initial_Ras2_GTP: null, initial_Ras2_GTP_Cdc25: null, initial_Ras2_GTP_CYR1: null, initial_Ras2_GTP_Ira2: null, initial_Ras2_GTP_Ira2P: null, Ira2_init: null, Ira2P_init: null, IVcAMP_PKA_init: null, K0: null, K1: null, K10: null, K11: null, K12: null, K13: null, K14: null, K15: null, K16: null, K17: null, K18: null, K19: null, K2: null, K20: null, K21: null, K22: null, K23: null, K24: null, K25: null, K26: null, K27: null, K28: null, K29: null, K3: null, K30: null, K31: null, K32: null, K33: null, K34: null, K35: null, K36: null, K37: null, K38: null, K4: null, K5: null, K6: null, K7: null, K8: null, K9: null, Pde1_init: null, Pde1f_init: null, Pde2_init: null, PKA_init: null, PPA2_init: null, R_2cAMP_init: null, R_C_init: null, R_init: null, Ras2_Cdc25_init: null, Ras2_GDP_Cdc25_init: null, Ras2_GDP_init: null, Ras2_GTP_Cdc25_init: null, Ras2_GTP_CYR1_init: null, Ras2_GTP_init: null, Ras2_GTP_Ira2_init: null, Ras2_GTP_Ira2P_init: null};
-    this.metadata.variableOrder = {Ras2_GDP: null, Cdc25: null, Ras2_GDP_Cdc25: null, Ras2_Cdc25: null, Ras2_GTP_Cdc25: null, Ras2_GTP: null, Ira2: null, Ras2_GTP_Ira2: null, CYR1: null, Ras2_GTP_CYR1: null, cAMP: null, PKA: null, cAMP_PKA: null, IIcAMP_PKA: null, IIIcAMP_PKA: null, IVcAMP_PKA: null, C: null, R_2cAMP: null, R: null, R_C: null, Pde1: null, Pde1f: null, cAMP_Pde1f: null, AMP: null, PPA2: null, Pde2: null, cAMP_Pde2: null, Cdc25f: null, Ira2P: null, Ras2_GTP_Ira2P: null};
+    this.metadata.ynames = ["t", "Ras2_GDP", "Cdc25", "Ras2_GDP_Cdc25", "Ras2_Cdc25", "Ras2_GTP_Cdc25", "Ras2_GTP", "Ira2", "Ras2_GTP_Ira2", "CYR1", "Ras2_GTP_CYR1", "cAMP", "PKA", "cAMP_PKA", "IIcAMP_PKA", "IIIcAMP_PKA", "IVcAMP_PKA", "C", "R_2cAMP", "R", "R_C", "Pde1", "Pde1f", "cAMP_Pde1f", "AMP", "PPA2", "Pde2", "cAMP_Pde2", "Cdc25f", "Ira2P", "Ras2_GTP_Ira2P", "GDP", "GTP", "ATP"];
+    this.metadata.internalOrder = {AMP_init: null, ATP_init: null, C_init: null, cAMP_init: null, cAMP_Pde1f_init: null, cAMP_Pde2_init: null, cAMP_PKA_init: null, Cdc25_init: null, Cdc25f_init: null, compartment01: null, CYR1_init: null, GDP_init: null, GTP_init: null, IIcAMP_PKA_init: null, IIIcAMP_PKA_init: null, initial_AMP: null, initial_ATP: null, initial_C: null, initial_cAMP: null, initial_cAMP_Pde1f: null, initial_cAMP_Pde2: null, initial_cAMP_PKA: null, initial_Cdc25: null, initial_Cdc25f: null, initial_CYR1: null, initial_GDP: null, initial_GTP: null, initial_IIcAMP_PKA: null, initial_IIIcAMP_PKA: null, initial_Ira2: null, initial_Ira2P: null, initial_IVcAMP_PKA: null, initial_Pde1: null, initial_Pde1f: null, initial_Pde2: null, initial_PKA: null, initial_PPA2: null, initial_R: null, initial_R_2cAMP: null, initial_R_C: null, initial_Ras2_Cdc25: null, initial_Ras2_GDP: null, initial_Ras2_GDP_Cdc25: null, initial_Ras2_GTP: null, initial_Ras2_GTP_Cdc25: null, initial_Ras2_GTP_CYR1: null, initial_Ras2_GTP_Ira2: null, initial_Ras2_GTP_Ira2P: null, Ira2_init: null, Ira2P_init: null, IVcAMP_PKA_init: null, K0: null, K1: null, K10: null, K11: null, K12: null, K13: null, K14: null, K15: null, K16: null, K17: null, K18: null, K19: null, K2: null, K20: null, K21: null, K22: null, K23: null, K24: null, K25: null, K26: null, K27: null, K28: null, K29: null, K3: null, K30: null, K31: null, K32: null, K33: null, K34: null, K35: null, K36: null, K37: null, K38: null, K4: null, K5: null, K6: null, K7: null, K8: null, K9: null, Pde1_init: null, Pde1f_init: null, Pde2_init: null, PKA_init: null, PPA2_init: null, R_2cAMP_init: null, R_C_init: null, R_init: null, Ras2_Cdc25_init: null, Ras2_GDP_Cdc25_init: null, Ras2_GDP_init: null, Ras2_GTP_Cdc25_init: null, Ras2_GTP_CYR1_init: null, Ras2_GTP_init: null, Ras2_GTP_Ira2_init: null, Ras2_GTP_Ira2P_init: null};
+    this.metadata.variableOrder = {Ras2_GDP: null, Cdc25: null, Ras2_GDP_Cdc25: null, Ras2_Cdc25: null, Ras2_GTP_Cdc25: null, Ras2_GTP: null, Ira2: null, Ras2_GTP_Ira2: null, CYR1: null, Ras2_GTP_CYR1: null, cAMP: null, PKA: null, cAMP_PKA: null, IIcAMP_PKA: null, IIIcAMP_PKA: null, IVcAMP_PKA: null, C: null, R_2cAMP: null, R: null, R_C: null, Pde1: null, Pde1f: null, cAMP_Pde1f: null, AMP: null, PPA2: null, Pde2: null, cAMP_Pde2: null, Cdc25f: null, Ira2P: null, Ras2_GTP_Ira2P: null, GDP: null, GTP: null, ATP: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

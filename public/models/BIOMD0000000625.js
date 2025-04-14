@@ -4,13 +4,11 @@ export class model {
     this.internal = {};
     var internal = this.internal;
     internal.compartment = 1;
-    internal.IL2 = 0.0001;
-    internal.STAT5 = 0;
     this.setUser(user, unusedUserAction);
   }
   initial(t) {
     var internal = this.internal;
-    var state = Array(17).fill(0);
+    var state = Array(19).fill(0);
     state[0] = internal.initial_NaiveCD4;
     state[1] = internal.initial_nTreg;
     state[2] = internal.initial_Tfh;
@@ -28,10 +26,12 @@ export class model {
     state[14] = internal.initial_TGFb;
     state[15] = internal.initial_Tgif1;
     state[16] = internal.initial_RXR;
+    state[17] = internal.initial_STAT5;
+    state[18] = internal.initial_IL2;
     return state;
   }
   setUser(user, unusedUserAction) {
-    this.base.user.checkUser(user, ["alpha", "alpha1", "alpha2", "alpha3", "Bcl6_init", "Blimp1_init", "CXCR5_init", "FoxP3_init", "gamma", "gamma1", "gamma2", "ICOS_init", "IL10_init", "IL21_init", "IL4_init", "IL6_init", "k1", "NaiveCD4_init", "nTreg_init", "RXR_init", "sigma", "sigma1", "sigma2", "STAT3_init", "Tfh_init", "Tfr_init", "TGFb_init", "Tgif1_init", "v"], unusedUserAction);
+    this.base.user.checkUser(user, ["alpha", "alpha1", "alpha2", "alpha3", "Bcl6_init", "Blimp1_init", "CXCR5_init", "FoxP3_init", "gamma", "gamma1", "gamma2", "ICOS_init", "IL10_init", "IL2_init", "IL21_init", "IL4_init", "IL6_init", "k1", "NaiveCD4_init", "nTreg_init", "RXR_init", "sigma", "sigma1", "sigma2", "STAT3_init", "STAT5_init", "Tfh_init", "Tfr_init", "TGFb_init", "Tgif1_init", "v"], unusedUserAction);
     var internal = this.internal;
     this.base.user.setUserScalar(user, "alpha", internal, 3.0498500000000002, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "alpha1", internal, 0.43475000000000003, -Infinity, Infinity, false);
@@ -46,6 +46,7 @@ export class model {
     this.base.user.setUserScalar(user, "gamma2", internal, 0.111444, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "ICOS_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL10_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "IL2_init", internal, 0.0001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL21_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL4_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "IL6_init", internal, 1, -Infinity, Infinity, false);
@@ -57,6 +58,7 @@ export class model {
     this.base.user.setUserScalar(user, "sigma1", internal, 0.99009999999999998, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "sigma2", internal, 2.9224299999999999, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "STAT3_init", internal, 1, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "STAT5_init", internal, 0, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Tfh_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "Tfr_init", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "TGFb_init", internal, 1, -Infinity, Infinity, false);
@@ -68,6 +70,7 @@ export class model {
     internal.initial_FoxP3 = internal.FoxP3_init;
     internal.initial_ICOS = internal.ICOS_init;
     internal.initial_IL10 = internal.IL10_init;
+    internal.initial_IL2 = internal.IL2_init;
     internal.initial_IL21 = internal.IL21_init;
     internal.initial_IL4 = internal.IL4_init;
     internal.initial_IL6 = internal.IL6_init;
@@ -75,6 +78,7 @@ export class model {
     internal.initial_nTreg = internal.nTreg_init;
     internal.initial_RXR = internal.RXR_init;
     internal.initial_STAT3 = internal.STAT3_init;
+    internal.initial_STAT5 = internal.STAT5_init;
     internal.initial_Tfh = internal.Tfh_init;
     internal.initial_Tfr = internal.Tfr_init;
     internal.initial_TGFb = internal.TGFb_init;
@@ -103,7 +107,10 @@ export class model {
     const TGFb = state[14];
     const Tgif1 = state[15];
     const RXR = state[16];
-    dstatedt[4] = 0 + 1 * internal.compartment * ((internal.sigma1 * ICOS + internal.sigma2 * STAT3) / ((internal.alpha1 + Blimp1) * (internal.alpha2 + internal.STAT5) * (internal.alpha3 + RXR))) - 1 * internal.compartment * internal.k1 * Bcl6;
+    const STAT5 = state[17];
+    dstatedt[18] = 0;
+    dstatedt[17] = 0;
+    dstatedt[4] = 0 + 1 * internal.compartment * ((internal.sigma1 * ICOS + internal.sigma2 * STAT3) / ((internal.alpha1 + Blimp1) * (internal.alpha2 + STAT5) * (internal.alpha3 + RXR))) - 1 * internal.compartment * internal.k1 * Bcl6;
     dstatedt[5] = 0 + 1 * internal.compartment * (internal.sigma * Tfr / (internal.alpha + Bcl6)) - 1 * internal.compartment * internal.k1 * Blimp1;
     dstatedt[12] = 0 + 1 * internal.compartment * ((internal.sigma1 * Tfh + internal.sigma2 * Tfr) / (internal.alpha + Blimp1)) - 1 * internal.compartment * internal.k1 * CXCR5;
     dstatedt[6] = 0 + 1 * internal.compartment * (internal.sigma * nTreg) - 1 * internal.compartment * internal.k1 * FoxP3;
@@ -127,9 +134,9 @@ export class model {
   updateMetadata() {
     this.metadata = {};
     var internal = this.internal;
-    this.metadata.ynames = ["t", "NaiveCD4", "nTreg", "Tfh", "Tfr", "Bcl6", "Blimp1", "FoxP3", "STAT3", "IL4", "IL6", "IL10", "IL21", "CXCR5", "ICOS", "TGFb", "Tgif1", "RXR"];
-    this.metadata.internalOrder = {alpha: null, alpha1: null, alpha2: null, alpha3: null, Bcl6_init: null, Blimp1_init: null, compartment: null, CXCR5_init: null, FoxP3_init: null, gamma: null, gamma1: null, gamma2: null, ICOS_init: null, IL10_init: null, IL2: null, IL21_init: null, IL4_init: null, IL6_init: null, initial_Bcl6: null, initial_Blimp1: null, initial_CXCR5: null, initial_FoxP3: null, initial_ICOS: null, initial_IL10: null, initial_IL21: null, initial_IL4: null, initial_IL6: null, initial_NaiveCD4: null, initial_nTreg: null, initial_RXR: null, initial_STAT3: null, initial_Tfh: null, initial_Tfr: null, initial_TGFb: null, initial_Tgif1: null, k1: null, NaiveCD4_init: null, nTreg_init: null, RXR_init: null, sigma: null, sigma1: null, sigma2: null, STAT3_init: null, STAT5: null, Tfh_init: null, Tfr_init: null, TGFb_init: null, Tgif1_init: null, v: null};
-    this.metadata.variableOrder = {NaiveCD4: null, nTreg: null, Tfh: null, Tfr: null, Bcl6: null, Blimp1: null, FoxP3: null, STAT3: null, IL4: null, IL6: null, IL10: null, IL21: null, CXCR5: null, ICOS: null, TGFb: null, Tgif1: null, RXR: null};
+    this.metadata.ynames = ["t", "NaiveCD4", "nTreg", "Tfh", "Tfr", "Bcl6", "Blimp1", "FoxP3", "STAT3", "IL4", "IL6", "IL10", "IL21", "CXCR5", "ICOS", "TGFb", "Tgif1", "RXR", "STAT5", "IL2"];
+    this.metadata.internalOrder = {alpha: null, alpha1: null, alpha2: null, alpha3: null, Bcl6_init: null, Blimp1_init: null, compartment: null, CXCR5_init: null, FoxP3_init: null, gamma: null, gamma1: null, gamma2: null, ICOS_init: null, IL10_init: null, IL2_init: null, IL21_init: null, IL4_init: null, IL6_init: null, initial_Bcl6: null, initial_Blimp1: null, initial_CXCR5: null, initial_FoxP3: null, initial_ICOS: null, initial_IL10: null, initial_IL2: null, initial_IL21: null, initial_IL4: null, initial_IL6: null, initial_NaiveCD4: null, initial_nTreg: null, initial_RXR: null, initial_STAT3: null, initial_STAT5: null, initial_Tfh: null, initial_Tfr: null, initial_TGFb: null, initial_Tgif1: null, k1: null, NaiveCD4_init: null, nTreg_init: null, RXR_init: null, sigma: null, sigma1: null, sigma2: null, STAT3_init: null, STAT5_init: null, Tfh_init: null, Tfr_init: null, TGFb_init: null, Tgif1_init: null, v: null};
+    this.metadata.variableOrder = {NaiveCD4: null, nTreg: null, Tfh: null, Tfr: null, Bcl6: null, Blimp1: null, FoxP3: null, STAT3: null, IL4: null, IL6: null, IL10: null, IL21: null, CXCR5: null, ICOS: null, TGFb: null, Tgif1: null, RXR: null, STAT5: null, IL2: null};
     this.metadata.outputOrder = null;
   }
   getMetadata() {

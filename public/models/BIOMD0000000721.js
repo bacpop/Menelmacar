@@ -26,7 +26,7 @@ export class model {
     this.base.user.setUserScalar(user, "beta_1", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta_2", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "beta_3", internal, 0.10000000000000001, -Infinity, Infinity, false);
-    this.base.user.setUserScalar(user, "Bone_volume__z_init", internal, 0, -Infinity, Infinity, false);
+    this.base.user.setUserScalar(user, "Bone_volume__z_init", internal, 100, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "delta", internal, 0.10000000000000001, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "epsilon", internal, 1, -Infinity, Infinity, false);
     this.base.user.setUserScalar(user, "f_12", internal, 1, -Infinity, Infinity, false);
