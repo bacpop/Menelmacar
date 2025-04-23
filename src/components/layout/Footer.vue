@@ -5,6 +5,12 @@
        :href="`https://github.com/bacpop/odinviewer/issues/new?title=Model%20error:%20${modelId}`">
       Noticed an error with a model? Report it here.
     </a>
+    <a target="_blank"
+      :href="`https://github.com/bacpop/SBMLtoOdin`">
+      Want to run a model locally on your machine? Install SBMLtoOdin following these instructions.
+    </a>
+    <p> And translate the model using SBMLtoOdin::importSBMLfromBioModels(BioModel_ID, file_name)</p>
+    <br>
     <p>&copy; 2025. All rights reserved.</p>
     <p> <b> Project idea and SBMLtoOdin: </b> Leonie Lorenz and John Lees,</p>
     <p> <b> Development of Menelmacar website: </b> Antoine Andréoletti, </p>
