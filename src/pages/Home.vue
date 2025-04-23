@@ -20,8 +20,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
         <RouterLink to="/view/BIOMD0000000012" class="hover:underline opacity-80 hover:opacity-100">
           BIOMD0000000012
         </RouterLink>
-        <RouterLink to="/view/BIOMD0000000003" class="hover:underline opacity-80 hover:opacity-100">
-          BIOMD0000000003
+        <RouterLink to="/view/BIOMD0000001021" class="hover:underline opacity-80 hover:opacity-100">
+          BIOMD0000001021
         </RouterLink>
       </div>
     </div>
@@ -32,14 +32,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
   <div class="w-full flex flex-row flex-nowrap justify-between gap-8 text-light-grey py-10 border-b border-slate">
 
-    <router-link to="/view/BIOMD0000000003/plot?time=70"
+    <router-link to="/view/BIOMD0000000012/plot?time=300"
                  class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
         Plot a model
       </h2>
       <img src="/assets/home-plot.png" alt="Plot a model" class="w-full h-[200px] bg-slate rounded-md overflow-hidden">
     </router-link>
-    <router-link to="/view/BIOMD0000000003/variables?time=70"
+    <router-link to="/view/BIOMD0000000012/variables?time=300"
                  class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
         Plot each variable individually
@@ -47,7 +47,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
       <img src="/assets/home-variables.png" alt="Plot each variable individually"
            class="w-full h-[200px] bg-slate rounded-md overflow-hidden">
     </router-link>
-    <router-link to="/view/BIOMD0000000003/graph"
+    <router-link to="/view/BIOMD0000000012/graph"
                  class="w-1/3 flex  flex-col gap-2">
       <h2 class="text-xl text-light-grey font-semibold">
         Show as a graph
