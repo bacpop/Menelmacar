@@ -178,7 +178,7 @@ watch(modelId, async () => {
 
 watch(activeTab, () => {
   if (activeTab.value === 'variables') {
-    ymax.value = 100
+    ymax.value = [100]
     void runModel()
   }
 })
