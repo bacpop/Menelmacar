@@ -1,7 +1,7 @@
 export const rangeAndDomain = (modelResults: { y: number[] }, ymax: number, logScale: boolean) => {
   let max_y = Math.max(...modelResults.y[0])
   let min_y = Math.min(...modelResults.y[0])
-
+  
   modelResults.y.forEach((d, i) => {
     if (Math.max(...d) > max_y) {
       max_y = Math.max(...d)
@@ -14,7 +14,7 @@ export const rangeAndDomain = (modelResults: { y: number[] }, ymax: number, logS
 
   const yDomain = [
     min_y - Math.abs(0.1 * min_y),
-    min_y + Math.exp(ymax) / Math.exp(100) * max_y * 1.1
+    (max_y * ymax/100)
   ]
 
   if (logScale) {
